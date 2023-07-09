@@ -30,7 +30,7 @@ function UserReviews (){
     return (
         <>
             <div className={styles.wrapper}>
-                <Container>
+                <Container >
                     <div className={styles.wrapper}>
                         <Carousel responsive={responsive} >
                             <div className={styles.cart}>

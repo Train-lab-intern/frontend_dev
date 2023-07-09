@@ -4,7 +4,7 @@ import styles from '../../styles/Banner.module.css'
 
 function Banner() {
     return (
-        <Container>
+        <Container >
             <div className={styles.wrapper}>
                 <Row className={styles.row_banner}>
                     <Col md={6}>

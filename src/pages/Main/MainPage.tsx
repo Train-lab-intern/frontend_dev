@@ -5,24 +5,27 @@ import UserReviews from "./UserReviews";
 import OurFeatures from "./OurFeatures";
 import Header from "./Header";
 import Banner from "./Banner";
+import styles from './../../styles/MainPage.module.css'
 
 function MainPage() {
   return (
-    <div>
-        <main>
-            <Header />
-            <Banner />
-            <MultiCarousel />
-            <br/>
-            <OurFeatures />
-            <br/>
-            <UserReviews />
-            <br/>
-        </main>
-        <footer>
-            <Footer />
-        </footer>
-    </div>
+        <div className={styles.wrapper_mainPage}>
+            <header>
+                <Header />
+                <Banner />
+            </header>
+            <main  className={styles.main_mainPage}>
+                <MultiCarousel />
+                <br/>
+                <OurFeatures />
+                <br/>
+                <UserReviews />
+                <br/>
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </div>
   )
 }
 

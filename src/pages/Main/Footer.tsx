@@ -6,7 +6,7 @@ import styles from "../../styles/Footer.module.css";
 function Footer() {
     return (
         <div className={styles.footer}>
-            <Container>
+            <Container >
                 <Row>
                     <Col md="3">
                         <div className={styles.right_block}>

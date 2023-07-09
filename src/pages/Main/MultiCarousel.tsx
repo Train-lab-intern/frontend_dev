@@ -26,7 +26,7 @@ const responsive = {
 
 function MultiCarousel() {
     return (
-        <Container>
+        <Container >
             <div className={styles.wrapper}>
                 <Carousel responsive={responsive}>
                     <div className={styles.cart}>
