@@ -1,0 +1,30 @@
+button{
+    width: 120px;
+    height: 40px;
+    background-color: #808185;
+    border-radius: 8px;
+    border: solid #808185 1px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav_1{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.nav_2{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}

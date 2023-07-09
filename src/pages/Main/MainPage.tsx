@@ -3,11 +3,15 @@ import Footer from './Footer'
 import MultiCarousel  from "./MultiCarousel";
 import UserReviews from "./UserReviews";
 import OurFeatures from "./OurFeatures";
+import Header from "./Header";
+import Banner from "./Banner";
 
 function MainPage() {
   return (
     <div>
         <main>
+            <Header />
+            <Banner />
             <MultiCarousel />
             <br/>
             <OurFeatures />

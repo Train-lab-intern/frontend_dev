@@ -1,4 +1,7 @@
-Main :__
+Main-Page :__
+    Header__ 
+    Banner__
     MultiCarousel __
     OurFeatures__
-    UserReviews___
+    UserReviews__
+    Footer__
