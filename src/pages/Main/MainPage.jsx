@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Footer from './Footer'
 import MultiCarousel  from "./MultiCarousel";
 import UserReviews from "./UserReviews";
@@ -6,15 +6,16 @@ import OurFeatures from "./OurFeatures";
 import Header from "./Header";
 import Banner from "./Banner";
 import styles from './../../styles/MainPage.module.css'
+import axios from 'axios'
 
 function MainPage() {
   return (
         <div className={styles.wrapper_mainPage}>
             <header>
                 <Header />
-                <Banner />
+                 <Banner />
             </header>
-            <main  className={styles.main_mainPage}>
+             <main  className={styles.main_mainPage}>
                 <MultiCarousel />
                 <br/>
                 <OurFeatures />

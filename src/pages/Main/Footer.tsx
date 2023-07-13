@@ -2,8 +2,19 @@ import {Container, Row, Col} from "react-bootstrap";
 import github from "../../img/github.png";
 import linkedin from "../../img/linkedin.png";
 import styles from "../../styles/Footer.module.css";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Footer() {
+    const [dataText, setDataText] = useState()
+
+    useEffect(() => {
+        axios.get("https://back-test-4zwpv.ondigitalocean.app/front/main-page")
+            .then(data => setDataText(data.data))
+    },[])
+
+
+
     return (
         <div className={styles.footer}>
             <Container >
@@ -15,8 +26,9 @@ function Footer() {
                             </a>
 
                             <div className={styles.icons}>
-                                <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/"> <img
-                                    src={linkedin} alt="linkedin"/></a>
+                                <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/">
+                                    <img src={linkedin} alt="linkedin"/>
+                                </a>
                                 <a href="https://github.com/Train-lab-intern"><img src={github} alt="github"/></a>
                             </div>
                         </div>
@@ -35,7 +47,7 @@ function Footer() {
                     <Col md="3">
                         <div className={styles.right_block}>
                             <div>Персональные данные</div>
-                            <div>© 2023 ООО “ХХХХХХХХ”</div>
+                            <div>{dataText ? dataText['1.9'] : ''}</div>
                         </div>
                     </Col>
                 </Row>
