@@ -5,14 +5,11 @@ import styles from "../../styles/Footer.module.css";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function Footer() {
-    const [dataText, setDataText] = useState()
+interface Props {
+    mainPageData: any;
+};
 
-    useEffect(() => {
-        axios.get("https://back-test-4zwpv.ondigitalocean.app/front/main-page")
-            .then(data => setDataText(data.data))
-    },[])
-
+function Footer({ mainPageData }:Props) {
 
 
     return (
@@ -47,7 +44,7 @@ function Footer() {
                     <Col md="3">
                         <div className={styles.right_block}>
                             <div>Персональные данные</div>
-                            <div>{dataText ? dataText['1.9'] : ''}</div>
+                            <div>{mainPageData ? mainPageData['1.9'] : ''}</div>
                         </div>
                     </Col>
                 </Row>

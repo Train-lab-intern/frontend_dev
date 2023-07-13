@@ -9,22 +9,32 @@ import styles from './../../styles/MainPage.module.css'
 import axios from 'axios'
 
 function MainPage() {
-  return (
+    
+    const [mainPageData, setMainPageData] = useState([])
+    useEffect(() => {
+        fetch('https://back-test-4zwpv.ondigitalocean.app/front/main-pages')
+            .then((response) => response.json())
+            .then((data) => setMainPageData(data))
+            .catch((error) => console.error(error))
+    }, [])
+    // console.log('>>>>>', mainPageData)
+
+    return (
         <div className={styles.wrapper_mainPage}>
             <header>
                 <Header />
-                 <Banner />
+                <Banner mainPageData={mainPageData}/>
             </header>
-             <main  className={styles.main_mainPage}>
+            <main className={styles.main_mainPage}>
                 <MultiCarousel />
                 <br/>
-                <OurFeatures />
+                <OurFeatures mainPageData={mainPageData}/>
                 <br/>
                 <UserReviews />
                 <br/>
             </main>
             <footer>
-                <Footer />
+                <Footer mainPageData={mainPageData}/>
             </footer>
         </div>
   )

@@ -3,13 +3,11 @@ import {Container, Row, Col} from "react-bootstrap";
 import styles from '../../styles/OurFeatures.module.css'
 import axios from "axios";
 
-function OurFeatures() {
-    const [dataText, setDataText] = useState()
+interface Props {
+    mainPageData: any;
+};
 
-    useEffect(() => {
-        axios.get("https://back-test-4zwpv.ondigitalocean.app/front/main-page")
-            .then(data => setDataText(data.data))
-    },[])
+function OurFeatures({ mainPageData }:Props) {
 
 
     return (
@@ -17,10 +15,10 @@ function OurFeatures() {
             <div className={styles.wrapper}>
                 <Container >
                     <Row>
-                        <Col className={styles.col}><div className={styles.block_1}><span>{dataText ? dataText['1.3'] : ''}</span></div></Col>
-                        <Col className={styles.col}><div className={styles.block_2}><span>{dataText ? dataText['1.4'] : ''}</span></div></Col>
-                        <Col className={styles.col}><div className={styles.block_3}><span>{dataText ? dataText['1.5'] : ''}</span></div></Col>
-                        <Col className={styles.col}><div className={styles.block_2}><span>{dataText ? dataText['1.6'] : ''}</span></div></Col>
+                        <Col className={styles.col}><div className={styles.block_1}><span>{mainPageData ? mainPageData['1.3'] : ''}</span></div></Col>
+                        <Col className={styles.col}><div className={styles.block_2}><span>{mainPageData ? mainPageData['1.4'] : ''}</span></div></Col>
+                        <Col className={styles.col}><div className={styles.block_3}><span>{mainPageData ? mainPageData['1.5'] : ''}</span></div></Col>
+                        <Col className={styles.col}><div className={styles.block_2}><span>{mainPageData ? mainPageData['1.6'] : ''}</span></div></Col>
                         <Col className={styles.col}><button className={styles.btn}>Задай нам  вопрос</button></Col>
                     </Row>
                 </Container>
