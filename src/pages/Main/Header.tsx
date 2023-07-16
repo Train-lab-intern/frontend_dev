@@ -18,7 +18,7 @@ function Header() {
                             </a>
                         </Navbar.Brand>
 
-                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" className={styles.toggle_button}/>
 
 
 

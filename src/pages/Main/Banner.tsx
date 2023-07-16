@@ -1,19 +1,11 @@
-import React, {useEffect, useState} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import styles from '../../styles/Banner.module.css'
-import axios from "axios";
 
 interface Props {
     mainPageData: any;
 };
 
 function Banner({ mainPageData }:Props) {
-    // const [dataText, setDataText] = useState()
-    console.log('<><><><><><><>', mainPageData)
-    // useEffect(() => {
-    //     axios.get("https://back-test-4zwpv.ondigitalocean.app/front/main-page")
-    //         .then(data => setDataText(data.data))
-    // },[])
 
     return (
         <Container >

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import styles from '../../styles/OurFeatures.module.css'
-import axios from "axios";
+
 
 interface Props {
     mainPageData: any;

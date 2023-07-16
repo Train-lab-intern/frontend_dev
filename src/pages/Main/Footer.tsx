@@ -3,7 +3,6 @@ import github from "../../img/github.png";
 import linkedin from "../../img/linkedin.png";
 import styles from "../../styles/Footer.module.css";
 import {useEffect, useState} from "react";
-import axios from "axios";
 
 interface Props {
     mainPageData: any;

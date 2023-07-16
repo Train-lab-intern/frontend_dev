@@ -6,7 +6,6 @@ import OurFeatures from "./OurFeatures";
 import Header from "./Header";
 import Banner from "./Banner";
 import styles from './../../styles/MainPage.module.css'
-import axios from 'axios'
 
 function MainPage() {
     
@@ -30,7 +29,7 @@ function MainPage() {
                 <br/>
                 <OurFeatures mainPageData={mainPageData}/>
                 <br/>
-                <UserReviews />
+                <UserReviews mainPageData={mainPageData}/>
                 <br/>
             </main>
             <footer>

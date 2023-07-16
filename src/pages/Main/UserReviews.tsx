@@ -4,7 +4,10 @@ import "react-multi-carousel/lib/styles.css";
 import {Container} from "react-bootstrap";
 import userImage from '../../img/userImg.png'
 import {useEffect, useState} from "react";
-import axios from "axios";
+
+interface Props {
+    mainPageData: any;
+};
 
 
 const responsive = {
@@ -23,44 +26,39 @@ const responsive = {
     },
     mobile: {
         breakpoint: {max: 464, min: 0},
-        items: 1
+        items: 1.5
     }
 };
 
 
-function UserReviews (){
-    const [dataText, setDataText] = useState()
-
-    useEffect(() => {
-        axios.get("https://back-test-4zwpv.ondigitalocean.app/front/main-page")
-            .then(data => setDataText(data.data))
-    },[])
+function UserReviews({mainPageData}: Props) {
 
 
     return (
         <>
             <div className={styles.wrapper}>
-                <Container >
+                <Container>
                     <div className={styles.wrapper}>
-                        <Carousel responsive={responsive} >
+                        <Carousel responsive={responsive}
+                            removeArrowOnDeviceType={["tablet", "mobile"]}>
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>{dataText ? dataText['1.8'] : ''}</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>{dataText ? dataText['1.8'] : ''}</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>{dataText ? dataText['1.8'] : ''}</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>{dataText ? dataText['1.8'] : ''}</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
                         </Carousel>
                     </div>
@@ -70,4 +68,4 @@ function UserReviews (){
     )
 }
 
-export default UserReviews ;
+export default UserReviews;
