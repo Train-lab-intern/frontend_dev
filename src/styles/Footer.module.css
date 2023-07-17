@@ -38,3 +38,50 @@ a{
 .email:hover{
     text-decoration: underline;
 }
+
+@media (max-width: 370px) {
+    footer{
+        background-color:#EEEEEE;
+        padding:5px 0;
+        bottom:0;
+    }
+
+    .icons img{
+        margin-right:20px;
+    }
+
+    .right_block{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rights{
+        font-size: 10px;
+        font-family: Nunito Sans;
+        font-weight: 400;
+        line-height: 16.37px;
+        color: #2B2D32;
+        text-align: center;
+    }
+
+    .email{
+        font-family: Nunito Sans;
+        font-size: 15px;
+        font-weight: 400;
+        color:#2B2D32 ;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    .email:hover{
+        text-decoration: underline;
+    }
+
+    .right_block{
+        font-size: 12px;
+    }
+}

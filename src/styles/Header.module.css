@@ -28,3 +28,40 @@ button{
     align-items: center;
     margin-top: 10px;
 }
+
+/* 320 480 600 768 800 1024 1280 1440 */
+
+@media (max-width: 320px){
+    *{
+        padding:10px;
+    }
+    button{
+        width: 100px;
+        height: 40px;
+        /* background-color: #808185; */
+        border-radius: 8px;
+        border: solid #808185 1px;
+        color: black;
+        font-size: 10px;
+        font-weight: bold;
+    }
+}
+
+
+
+@media (max-width: 390px) {
+
+
+
+    button{
+        width: 100px;
+        height: 40px;
+         background-color: white;
+        border-radius: 8px;
+        border: solid #808185 1px;
+        color: black;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+}

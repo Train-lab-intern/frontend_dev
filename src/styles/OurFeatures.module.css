@@ -40,3 +40,42 @@
     text-align: center;
     font-size: 18px;
 }
+
+@media (max-width: 370px) {
+    .block_1, .block_2, .block_3, .block_4{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 10px;
+    }
+
+    .btn{
+        width: 70%;
+        height: 40px;
+        background-color: gray;
+        color: white;
+        border-radius: 8px;
+        border: gray;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 990px) {
+    .block_1, .block_2, .block_3, .block_4{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        font-size: 10px;
+        margin-bottom: 10px;
+    }
+
+    /*.btn{*/
+    /*    width: 70%;*/
+    /*    height: 40px;*/
+    /*    background-color: gray;*/
+    /*    color: white;*/
+    /*    border-radius: 8px;*/
+    /*    border: gray;*/
+    /*    font-size: 12px;*/
+    /*}*/
+}
