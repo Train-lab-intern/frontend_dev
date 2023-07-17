@@ -5,6 +5,8 @@ import logo from "../../img/logo.jpg";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import {Link} from 'react-router-dom'
+
 
 function Header() {
     return (
@@ -36,7 +38,7 @@ function Header() {
                             <Nav className=" ms-auto">
                                 {/* Ссылки навигации */}
                                 <Nav.Link href="#signin">
-                                    <button className='btn btn-secondary'>Войти</button>
+                                    <Link to="/auth"><button className='btn btn-secondary'>Войти</button></Link>
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
