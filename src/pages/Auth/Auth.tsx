@@ -20,7 +20,7 @@ function Auth() {
 
     return (
         <div className={styles.auth}>
-            <Container>
+            <Container className={styles.container}>
                 <div>
                     {/* Обертка */}
                     <Col className={styles.wrapper}>
