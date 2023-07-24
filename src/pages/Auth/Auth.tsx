@@ -149,7 +149,7 @@ function Auth() {
                                         <label htmlFor="memberMe">Запомни меня</label>
                                         <input type="radio" name="memberMe" id="memberMe"/>
                                     </Col>
-                                    <Col className={styles.rememberWrapper}><a href="#">Забыли пароль?</a></Col>
+                                    <Col className={styles.rememberWrapper}><Link to="/changepassword">Забыли пароль?</Link></Col>
                                 </div>
                             </Row>
                         </form>
