@@ -31,7 +31,7 @@ function ChangePassword() {
             <div className='container w-full md:h-full'>
                 <Header/>
                 <main>
-                    <div className="md:w-72 mx-40 my-50 mt-10">
+                    <div className="md:w-72 mx-40 my-50 mt-10 sm:w-72">
                         <Link to="/">
                             <img src={logo} alt="logo"/>
                         </Link>
