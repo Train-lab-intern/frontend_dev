@@ -1,165 +1,184 @@
 import React, {useState} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import styles from '../../styles/Auth/Auth.module.css';
-import Logo from '../../img/fullLogo.jpg';
-import {Link} from 'react-router-dom';
-import {Field, Formik, Form, FormikHelpers} from 'formik';
+import styles from '../../styles/Auth/Auth.module.css'
+import Logo from '../../img/fullLogo.jpg'
+import {Link} from 'react-router-dom'
+import {useForm} from "react-hook-form";
 
-interface Values {
-    email: string,
-    username: string,
-    password: string
-}
 
 function Auth() {
+    const [gmail,setGmail] = useState('')
+    const [login,setLogin] = useState('')
+    const [password,setPassword] = useState('')
+    const [error,setError] = useState('')
 
+    const {
+        register,
+        formState: {errors},
+        handleSubmit
+    } = useForm<Inputs>({
+        mode: "onSubmit"
+    })
+
+    type Inputs = {
+        email: string
+        name: string
+        password: string
+    }
+
+
+    function onSubmit(data:any){
+        if (!login && !password && !gmail) {
+            setError('Заполните логин или пароль (Все поля должны быть заполнены)')
+        }
+
+        if (gmail){
+            setLogin('')
+            setPassword('')
+            alert(JSON.stringify({
+                gmail
+            }))
+        }
+        if (login && password){
+            setGmail('')
+            alert(JSON.stringify({
+                login,
+                password
+            }))
+        }
+    }
 
     return (
-        <Formik
-            initialValues={{
-                email: '',
-                username: '',
-                password: '',
-            }}
+        <div className={styles.auth}>
+            <Container>
+                <div>
+                    {/* Обертка */}
+                    <Col className={styles.wrapper}>
+                        {/* Логотип */}
+                        <Row className={styles.row}><a href="/"><img src={Logo} alt="Logo"/></a></Row>
 
-            onSubmit={(
-                values: Values,
-                {setSubmitting}: FormikHelpers<Values>
-            ) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 500);
-            }}>
-            {/*>>>>>>> be89a7b0d981bc53f4d687df91b2c1587dd93c96*/}
-
-            {({errors, touched}) => (
-                <Form>
-                    <div className={styles.auth}>
-                        <Container>
-                            <div>
-                                {/* Обертка */}
-                                <Col className={styles.wrapper}>
-                                    {/* Логотип */}
-                                    <Row className={styles.row}><a href="/"><img src={Logo}
-                                                                                 alt="Logo"/></a></Row>
-
-                                    {/* Заголовок */}
-                                    <Row className={styles.row}><h1 className={styles.headText}
-                                                                    style={{textAlign: 'center'}}>Мы
-                                        рады видеть вас</h1></Row>
+                        {/* Заголовок */}
+                        <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
+                            рады видеть вас</h1></Row>
 
 
-                                    {/* Вход через Google */}
-                                    <Row className={styles.row}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
 
-                                        <Field className={styles.input}
-                                               name='email'
-                                               type='email'
-                                               placeholder='Войти с Google'
-                                            // validate={validateEmail}
-                                        />
-                                        {errors.email && touched.email && (
-                                            <div>{errors.email}</div>
-                                        )}
+                            {/* Вход через Google */}
+                            <Row className={styles.row}>
+                                <input
+                                    className={errors.email ? styles.input_border_red : styles.input}
+                                       placeholder='Войти с Google'
+                                       {...register("email", {
+                                           min: 12,
+                                           pattern: {
+                                               value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+                                               message: "Please enter valid email",
+                                           },
+                                       })}
+                                    onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setGmail(e.target.value)}}
+                                />
+                            </Row>
+                            <Row className={styles.row}>
+                                {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
+                            </Row>
 
 
 
-                                    </Row>
+                            {/* Разделитель "ИЛИ" */}
+                            <Row className={styles.row}>
+                                <div className={styles.or_hr}>
+                                    <hr className={styles.hr}/>
+                                    <span className={styles.or}>или</span>
+                                    <hr className={styles.hr}/>
+                                </div>
+                            </Row>
 
 
-                                    {/* Разделитель "ИЛИ" */}
-                                    <Row className={styles.row}>
-                                        <div className={styles.or_hr}>
-                                            <hr className={styles.hr}/>
-                                            <span className={styles.or}>или</span>
-                                            <hr className={styles.hr}/>
-                                        </div>
-                                    </Row>
+                            {/* Поле ввода логина */}
+                            <Row className={styles.row}>
+                                <input
+                                    className={errors.name ? styles.input_border_red : styles.input}
+                                       placeholder='Логин'
+                                       {...register("name", {
+                                       })}
+                                       onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setLogin(e.target.value)}}
+                                />
+                            </Row>
+                            <Row className={styles.row}>
+                                {errors.name && (<div className={styles.errors}>{errors.name.message}</div>)}
+                            </Row>
+                            <br/>
 
 
-                                    {/* Поле ввода логина */}
-                                    <Row className={styles.row}>
+                            {/* Поле ввода пароля */}
+                            <Row className={styles.row}>
+                                <input className={errors.password ? styles.input_border_red : styles.input}
+                                       type="password"
+                                       autoComplete="current-password"
+                                       id="id_password"
+                                       placeholder='Пароль'
+                                       {...register("password", {
+                                           pattern: {
+                                               value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                                               message: "Пароль вводится латинскими буквами,должен состоять минимум из восьми символов,должен содержать как минимум одну букву, одну цифру,должен содержать символы верхнего и нижнего регистра."
+                                           }
+                                       })}
+                                       onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setPassword(e.target.value)}}
+                                />
+                            </Row>
+                            <Row className={styles.row}>
+                                {errors.password && (<div className={styles.errors}>{errors.password.message}</div>)}
+                            </Row>
 
-                                        <Field className={styles.input}
-                                               name='userName'
-                                               type='text'
-                                               placeholder='Логин'
-                                        />
-                                        {errors.username && touched.username && (
-                                            <div>{errors.username}</div>
-                                        )}
+                            <br/>
 
+                            {/* Кнопка "Войти" */}
+                            <Row className={styles.row}>
+                                <button className={styles.input}>Войти</button>
+                            </Row>
 
+                            <Row className={styles.row}>
+                                {error && (<div className={styles.errors}>{error}</div>)}
+                            </Row>
 
-                                    </Row>
-                                    <br/>
-
-
-                                    {/* Поле ввода пароля */}
-                                    <Row className={styles.row}>
-
-                                        <Field className={styles.input}
-                                               name='password'
-                                               type='password'
-                                               placeholder='Пароль'
-                                            // validate={validatePassword}
-                                        />
-                                        {errors.password && touched.password && (
-                                            <div>{errors.password}</div>
-                                        )}
-
-
-
-
-                                        {/* Кнопка "Войти" */}
-                                        <Row className={styles.row}>
-                                            <button className={styles.input}>Войти</button>
-                                        </Row>
-                                        <br/>
-
-
-                                        {/* Опция "Запомнить меня" и "Забыли пароль" */}
-                                    </Row>
-                                    <Row className={styles.row}>
-                                        <div className={styles.wrapperRemember}>
-                                            <Col md={6} className={styles.rememberWrapper}>
-                                                <label htmlFor="memberMe">Запомни меня</label>
-                                                <input type="radio" name="memberMe" id="memberMe"/>
-                                            </Col>
-                                            <Col className={styles.rememberWrapper}><a href="#">Забыли
-                                                пароль?</a></Col>
-                                        </div>
-                                    </Row>
+                            {/* Опция "Запомнить меня" и "Забыли пароль" */}
+                            <Row className={styles.row}>
+                                <div className={styles.wrapperRemember}>
+                                    <Col md={6} className={styles.rememberWrapper}>
+                                        <label htmlFor="memberMe">Запомни меня</label>
+                                        <input type="radio" name="memberMe" id="memberMe"/>
+                                    </Col>
+                                    <Col className={styles.rememberWrapper}><a href="#">Забыли пароль?</a></Col>
+                                </div>
+                            </Row>
+                        </form>
+                        <br/>
 
 
-                                    {/* Регистрация */}
-                                    <Row className={styles.row}>
-                                        <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
-                                        <Col md={8}><Link className={styles.linkPink} to="/registr">Присоединяйся
-                                            !</Link></Col>
-                                    </Row>
 
-                                    {/* Вопросы */}
-                                    <Row className={styles.row}>
-                                        <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-                                        <Col md={8}><a className={styles.linkPink} href="#">Спроси
-                                            нас!</a></Col>
-                                    </Row>
-                                    <br/>
 
-                                    {/* Соглашение на обработку данных */}
-                                    <Row className={styles.row}><p>Нажимая кнопку «Войти», вы
-                                        подтверждаете своё согласие с
-                                        условиями обработки данных.</p></Row>
-                                </Col>
-                            </div>
-                        </Container>
-                    </div>
-                </Form>
-            )}
-        </Formik>
-    )
+                        {/* Регистрация */}
+                        <Row className={styles.row}>
+                            <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
+                            <Col md={8}><Link className={styles.linkPink} to="/registr">Присоединяйся !</Link></Col>
+                        </Row>
+
+                        {/* Вопросы */}
+                        <Row className={styles.row}>
+                            <Col className={styles.textAccaunt}>Остались вопросы? </Col>
+                            <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+                        </Row>
+                        <br/>
+
+                        {/* Соглашение на обработку данных */}
+                        <Row className={styles.row}><p>Нажимая кнопку «Войти», вы подтверждаете своё согласие с
+                            условиями обработки данных.</p></Row>
+                    </Col>
+                </div>
+            </Container>
+        </div>
+    );
 };
 
 export default Auth;

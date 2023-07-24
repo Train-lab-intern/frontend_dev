@@ -21,6 +21,26 @@
     margin: 0 auto;
 }
 
+
+
+.input_border_red{
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: #CC0D18 solid 2px;
+    margin: 0 auto;
+}
+
+.errors{
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #CC0D18;
+}
+
+
+
 .row{
     margin: 10px;
     display: flex;
