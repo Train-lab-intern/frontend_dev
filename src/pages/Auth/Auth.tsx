@@ -28,8 +28,8 @@ function Auth() {
 
 
     function onSubmit(data:any){
-        if (!login && !password && !gmail) {
-            setError('Заполните логин или пароль (Все поля должны быть заполнены)')
+        if (!login && !password && !gmail || !login && !password) {
+            setError('Заполните логин и пароль (Все поля должны быть заполнены)')
         }
 
         if (gmail){
@@ -70,6 +70,7 @@ function Auth() {
                                     className={errors.email ? styles.input_border_red : styles.input}
                                        placeholder='Войти с Google'
                                        {...register("email", {
+
                                            min: 12,
                                            pattern: {
                                                value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
@@ -101,6 +102,11 @@ function Auth() {
                                     className={errors.name ? styles.input_border_red : styles.input}
                                        placeholder='Логин'
                                        {...register("name", {
+                                           required:'это поле обязательно для заполнения',
+                                           pattern:{
+                                               value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                                               message: 'Вы заполняете поле в неверном формате.'
+                                           }
                                        })}
                                        onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setLogin(e.target.value)}}
                                 />
@@ -108,7 +114,7 @@ function Auth() {
                             <Row className={styles.row}>
                                 {errors.name && (<div className={styles.errors}>{errors.name.message}</div>)}
                             </Row>
-                            <br/>
+
 
 
                             {/* Поле ввода пароля */}
@@ -119,6 +125,7 @@ function Auth() {
                                        id="id_password"
                                        placeholder='Пароль'
                                        {...register("password", {
+                                           required:'это поле обязательно для заполнения',
                                            pattern: {
                                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                                                message: "Пароль вводится латинскими буквами,должен состоять минимум из восьми символов,должен содержать как минимум одну букву, одну цифру,должен содержать символы верхнего и нижнего регистра."

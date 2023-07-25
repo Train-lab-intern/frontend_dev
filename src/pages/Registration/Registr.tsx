@@ -116,7 +116,13 @@ function Registr() {
                                 <input
                                     className={errors.name ? styles.input_border_red : styles.input}
                                     placeholder='Логин'
-                                    {...register("name", {})}
+                                    {...register("name", {
+                                        required:'это поле обязательно для заполнения',
+                                        pattern:{
+                                            value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                                            message: 'Вы заполняете поле в неверном формате.'
+                                        }
+                                    })}
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                         setLogin(e.target.value)
                                     }}
@@ -142,6 +148,7 @@ function Registr() {
                                         id="id_password"
                                         placeholder='Пароль'
                                         {...register("password1", {
+                                            required:'это поле обязательно для заполнения',
                                             pattern: {
                                                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                                                 message: "Пароль вводится латинскими буквами,должен состоять минимум из 8 символов,должен содержать как минимум 1 букву, 1 цифру,должен содержать символы верхнего и нижнего регистра."
@@ -165,6 +172,7 @@ function Registr() {
                                        id="id_password"
                                        placeholder='Пароль'
                                        {...register("password2", {
+                                           required:'это поле обязательно для заполнения',
                                            pattern: {
                                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                                                message: "Пароль вводится латинскими буквами,должен состоять минимум из восьми символов,должен содержать как минимум одну букву, одну цифру,должен содержать символы верхнего и нижнего регистра."
