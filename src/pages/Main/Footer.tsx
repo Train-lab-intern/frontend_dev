@@ -8,12 +8,12 @@ interface Props {
     mainPageData: any;
 };
 
-function Footer({ mainPageData }:Props) {
+function Footer({mainPageData}: Props) {
 
 
     return (
         <div className={styles.footer}>
-            <Container >
+            <Container>
                 <Row>
                     <Col md="3">
                         <div className={styles.right_block}>
@@ -21,7 +21,7 @@ function Footer({ mainPageData }:Props) {
                                 <div className={styles.email}>train.lab@gmail.com</div>
                             </a>
 
-                            <div className={styles.icons}>
+                            <div className={`${styles.icons} flex flex-row `}>
                                 <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/">
                                     <img src={linkedin} alt="linkedin"/>
                                 </a>
