@@ -2,6 +2,7 @@ import styles from "../../styles/Block.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Container } from "react-bootstrap";
+import "./../../index.css"
 
 const responsive = {
   superLargeDesktop: {
@@ -30,24 +31,21 @@ function MultiCarousel() {
       <div className={styles.wrapper}>
         <Carousel
           responsive={responsive}
-          removeArrowOnDeviceType={["tablet", "mobile"]}
+
         >
           <div className={styles.cart}>
             <h3>SQL</h3>
             <p>Какой оператор позволяет создать таблицу?</p>
           </div>
           <div className={styles.cart}>
-            <h3>SQL</h3>
-            <p>Какой оператор позволяет создать таблицу?</p>
+            <h3>Python</h3>
+            <p>Как получить остаток от деления в Python?</p>
           </div>
           <div className={styles.cart}>
-            <h3>SQL</h3>
-            <p>Какой оператор позволяет создать таблицу?</p>
+            <h3>JavaScript</h3>
+            <p>В чем отличия между глобальной и локальной переменными?</p>
           </div>
-          <div className={styles.cart}>
-            <h3>SQL</h3>
-            <p>Какой оператор позволяет создать таблицу?</p>
-          </div>
+
         </Carousel>
       </div>
     </Container>

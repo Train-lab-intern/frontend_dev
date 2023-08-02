@@ -11,7 +11,7 @@ function MainPage() {
     
     const [mainPageData, setMainPageData] = useState([])
     useEffect(() => {
-        fetch('https://back-test-4zwpv.ondigitalocean.app/front/main-pages')
+        fetch('https://test.app.it-roast.com/front/pages/1')
             .then((response) => response.json())
             .then((data) => setMainPageData(data))
             .catch((error) => console.error(error))

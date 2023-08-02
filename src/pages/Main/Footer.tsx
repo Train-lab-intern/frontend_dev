@@ -42,7 +42,10 @@ function Footer({mainPageData}: Props) {
 
                     <Col md="3">
                         <div className={styles.right_block}>
-                            <div>Персональные данные</div>
+                            <a href="#" className={styles.tooltip}
+                               data-tooltip="здесь будет переход на страницу о защите персональных данных">
+                                <div>Персональные данные</div>
+                            </a>
                             <div>{mainPageData ? mainPageData['1.9'] : ''}</div>
                         </div>
                     </Col>

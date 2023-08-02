@@ -40,6 +40,7 @@ function UserReviews({mainPageData}: Props) {
                 <Container>
                     <div className={styles.wrapper}>
                         <Carousel responsive={responsive}
+                                  arrows={true}
                             removeArrowOnDeviceType={["tablet", "mobile"]}>
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>

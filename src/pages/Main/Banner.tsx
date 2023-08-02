@@ -5,10 +5,10 @@ interface Props {
     mainPageData: any;
 };
 
-function Banner({ mainPageData }:Props) {
+function Banner({mainPageData}: Props) {
 
     return (
-        <Container >
+        <Container>
             <div className={styles.wrapper}>
                 <Row className={styles.row_banner}>
                     <Col md={6}>
@@ -16,7 +16,11 @@ function Banner({ mainPageData }:Props) {
                         <span className={styles.text_banner}>{mainPageData ? mainPageData['1.2'] : ''}</span>
                     </Col>
                     <Col md={4} className={styles.col_banner_btn}>
-                        <button className={styles.btn_banner}>Начать путь</button>
+                        <a href="#" className={styles.tooltip}
+                           data-tooltip="здесь будет переход на страницу регистрации">
+                            <button className={styles.btn_banner}>Начать путь</button>
+                        </a>
+
                     </Col>
                 </Row>
             </div>

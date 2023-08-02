@@ -39,6 +39,33 @@ a{
     text-decoration: underline;
 }
 
+
+
+.tooltip{
+    position: relative;
+}
+
+.tooltip::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -50px;
+    left: 75%;
+    transform: translateX(50%);
+    opacity: 0;
+    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+    transition: all .3s;
+    font-size: 12px;
+}
+
+.tooltip:hover::after{
+    opacity: 1;
+}
+
+
+
 @media (max-width: 370px) {
     footer{
         background-color:#EEEEEE;
