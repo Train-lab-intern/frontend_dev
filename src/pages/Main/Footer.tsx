@@ -2,11 +2,18 @@ import {Container, Row, Col} from "react-bootstrap";
 import github from "../../img/github.png";
 import linkedin from "../../img/linkedin.png";
 import styles from "../../styles/Footer.module.css";
+import {useEffect, useState} from "react";
 
-function Footer() {
+interface Props {
+    mainPageData: any;
+};
+
+function Footer({mainPageData}: Props) {
+
+
     return (
         <div className={styles.footer}>
-            <Container >
+            <Container>
                 <Row>
                     <Col md="3">
                         <div className={styles.right_block}>
@@ -14,9 +21,10 @@ function Footer() {
                                 <div className={styles.email}>train.lab@gmail.com</div>
                             </a>
 
-                            <div className={styles.icons}>
-                                <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/"> <img
-                                    src={linkedin} alt="linkedin"/></a>
+                            <div className={`${styles.icons} flex flex-row `}>
+                                <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/">
+                                    <img src={linkedin} alt="linkedin"/>
+                                </a>
                                 <a href="https://github.com/Train-lab-intern"><img src={github} alt="github"/></a>
                             </div>
                         </div>
@@ -34,8 +42,11 @@ function Footer() {
 
                     <Col md="3">
                         <div className={styles.right_block}>
-                            <div>Персональные данные</div>
-                            <div>© 2023 ООО “ХХХХХХХХ”</div>
+                            <a href="#" className={styles.tooltip}
+                               data-tooltip="здесь будет переход на страницу о защите персональных данных">
+                                <div>Персональные данные</div>
+                            </a>
+                            <div>{mainPageData ? mainPageData['1.9'] : ''}</div>
                         </div>
                     </Col>
                 </Row>

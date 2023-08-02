@@ -1,5 +1,5 @@
 .wrapper{
-    height: 180px;
+    /*height: 180px;*/
     background: url("../../src/img/banner.jpg") no-repeat center center ;
     background-size: 100% 100%;
     margin-top: 10px;
@@ -33,4 +33,77 @@
 .col_banner_btn{
     display: flex;
     justify-content: end;
+}
+
+
+@media (max-width: 1000px) {
+    .h3_banner{
+        font-size: 20px;
+        color: #FF40DF;
+    }
+    .text_banner{
+        font-size: 16px;
+        color: #2B2D32;
+    }
+    .btn_banner{
+        width: 200px;
+        height: 40px;
+        background-color: #F9FC5E;
+        border-radius: 5px;
+        color: #2B2D32;
+        border: lightgrey solid 0.5px;
+    }
+}
+
+
+.tooltip{
+    position: relative;
+}
+
+.tooltip::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50px;
+    left: 70%;
+    /*transform: translateX(-50%);*/
+    opacity: 0;
+    color: white;
+    background-color: gray;
+    border-radius: 5px;
+    padding: 3px 5px;
+    transition: all .3s;
+    font-size: 12px;
+}
+
+.tooltip:hover::after{
+    opacity: 1;
+}
+
+
+/* 320 480 600 768 800 1024 1280 1440 */
+
+
+
+@media (max-width: 370px) {
+    .wrapper{
+        padding: 0  5px;
+    }
+    .h3_banner{
+        font-size: 15px;
+        color: #FF40DF;
+    }
+    .text_banner{
+        font-size: 13px;
+        color: #2B2D32;
+    }
+    .btn_banner{
+        width:90px;
+        height: 30px;
+        background-color: #F9FC5E;
+        border-radius: 5px;
+        color: #2B2D32;
+        border: lightgrey solid 0.5px;
+        font-size:10px;
+        margin:10px;
+    }
 }

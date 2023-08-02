@@ -3,6 +3,11 @@ import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import {Container} from "react-bootstrap";
 import userImage from '../../img/userImg.png'
+import {useEffect, useState} from "react";
+
+interface Props {
+    mainPageData: any;
+};
 
 
 const responsive = {
@@ -21,36 +26,40 @@ const responsive = {
     },
     mobile: {
         breakpoint: {max: 464, min: 0},
-        items: 1
+        items: 1.5
     }
 };
 
 
-function UserReviews (){
+function UserReviews({mainPageData}: Props) {
+
+
     return (
         <>
             <div className={styles.wrapper}>
-                <Container >
+                <Container>
                     <div className={styles.wrapper}>
-                        <Carousel responsive={responsive} >
+                        <Carousel responsive={responsive}
+                                  arrows={true}
+                            removeArrowOnDeviceType={["tablet", "mobile"]}>
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>здесь будет история успеха нашего пользователя</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>здесь будет история успеха нашего пользователя</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>здесь будет история успеха нашего пользователя</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
 
                             <div className={styles.cart}>
                                 <img src={userImage} alt="User image"/>
-                                <span>здесь будет история успеха нашего пользователя</span>
+                                <span>{mainPageData ? mainPageData['1.8'] : ''}</span>
                             </div>
                         </Carousel>
                     </div>
@@ -60,4 +69,4 @@ function UserReviews (){
     )
 }
 
-export default UserReviews ;
+export default UserReviews;
