@@ -32,6 +32,7 @@ function Header() {
                                 <button className='btn btn-secondary'>О нас</button>
                             </a>
                         </Nav.Link>
+                        
                         <Nav.Link href="#tasks" className="d-flex justify-content-end ">
                             <a href="#" className={styles.tooltip}
                                data-tooltip="здесь будет переход на страницу с примерами заданий">
