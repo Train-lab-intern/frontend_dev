@@ -45,8 +45,7 @@ function Header() {
                     <Nav className=" ms-auto">
                         {/* Ссылки навигации */}
                         <Nav.Link href="#signin">
-                            <Link to="/auth" className={styles.tooltip}
-                                  data-tooltip="здесь будет переход на страницу авторизации">
+                            <Link to="/auth" >
                                 <button className='btn btn-secondary'>Войти</button>
                             </Link>
                         </Nav.Link>
