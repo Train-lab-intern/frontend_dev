@@ -1,8 +1,6 @@
 .wrapper {
   width: 100%;
   min-height: 100vh;
-  padding-top: 24px;
-
 }
 .container {
   width: 90%;
@@ -26,14 +24,30 @@
     width: 75%;
     display: flex;
 
-    a {
-      font-size: 18px;
-      font-weight: bold;
-      padding: 6px 24px;
-      margin: 0 4%;
-      background: #808185;
-      color: #fff;
+    .tooltip{
+      position: relative;
+    }
+
+    .tooltip::after{
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 50px;
+      left: 70%;
+      opacity: 0;
+      color: white;
+      background-color: gray;
       border-radius: 5px;
+      padding: 3px 5px;
+      transition: all .3s;
+      font-size: 12px;
+    }
+
+    .tooltip:hover::after{
+      opacity: 1;
+    }
+
+    a {
+      margin: 0 4%;
     }
     a:nth-last-child(1){
       margin-left: auto;
@@ -52,14 +66,12 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 
-    //background: #fafcaf;
     background-image: url("../../img/bg-diagram.png");
     background-size: cover;
 
     .avatar {
       width: 150px;
       margin: 20px auto 20px 20px;
-      //margin-right: auto;
 
       img {
         width: 100%;
@@ -83,6 +95,8 @@
     }
     .title {
       width: 100%;
+      display: flex;
+      justify-content: flex-end;
       padding: 0 24px;
       font-weight: bold;
       font-size: 20px;
@@ -105,6 +119,8 @@
       background: #808185;
       transition: .2s;
       cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
 
       z-index: 1;
 
@@ -131,6 +147,10 @@
       z-index: 10;
       transform: scale(1.1);
       transition: .3s;
+    }
+    .active {
+      z-index: 6;
+      transform: scale(1.1);
     }
 
     .recommendations {
