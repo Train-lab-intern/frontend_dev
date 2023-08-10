@@ -1,13 +1,13 @@
 import React, {useState,useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import styles from '../../styles/Auth/Auth.module.css'
-import Logo from '../../img/fullLogo.jpg'
+import styles from '../Auth/Auth.module.css'
+import Logo from '../../assets/img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import eye from '../../img/openEye.png'
-import closeEye from '../../img/closeEye.png'
+import eye from '../../assets/icons/openEye.png'
+import closeEye from '../../assets/icons/closeEye.png'
 
-function Registr() {
+function Registration() {
     const [gmail, setGmail] = useState('')
     const [login, setLogin] = useState('')
     const [password1, setPassword1] = useState('')
@@ -212,4 +212,4 @@ function Registr() {
     );
 };
 
-export default Registr;
+export default Registration;

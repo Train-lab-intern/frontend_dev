@@ -1,7 +1,7 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import styles from '../../styles/Auth/Auth.module.css'
-import Logo from '../../img/fullLogo.jpg'
+import styles from './Auth.module.css'
+import Logo from '../../assets/img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {ProfilePage} from "../ProfilePage/ProfilePage";

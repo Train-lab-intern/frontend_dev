@@ -1,9 +1,9 @@
 import React from 'react';
-import bannerImg from '../../img/banner.jpg'
-import Header from "../Main/Header";
-import Footer from '../../pages/Main/Footer'
-import styles from '../../styles/ChangePassword/ChangePassword.module.css'
-import logo from '../../img/fullLogo.jpg'
+import bannerImg from '../../assets/img/banner.jpg'
+import Header from "../../components/Header/Header";
+import Footer from '../../components/Footer/Footer'
+import styles from './ChangePassword.module.css'
+import logo from '../../assets/img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 

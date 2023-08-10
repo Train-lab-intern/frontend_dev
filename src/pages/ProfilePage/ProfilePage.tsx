@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from './ProfilePage.module.scss'
-import logo from '../../img/logo.jpg'
-import avatar from '../../img/avatar.png'
-import diagram from '../../img/diagram.png'
-import Footer from "../Main/Footer";
+import logo from '../../assets/img/logo.jpg'
+import avatar from '../../assets/img/avatar.png'
+import diagram from '../../assets/img/diagram.png'
+import Footer from "../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 
