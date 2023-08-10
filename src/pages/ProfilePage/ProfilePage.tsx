@@ -106,7 +106,6 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
-
       <Footer mainPageData={[]} />
     </div>
   );

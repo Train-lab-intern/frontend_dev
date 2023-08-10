@@ -4,7 +4,7 @@ import styles from '../../styles/Auth/Auth.module.css'
 import Logo from '../../img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import UserPage from '../userPage/UserPage'
+import {ProfilePage} from "../ProfilePage/ProfilePage";
 
 
 function Auth() {
@@ -49,6 +49,7 @@ function Auth() {
                     // Обработка ответа сервера
                     setToken(data.token)
                     if (!data.token) setError('Неправильный логин или пароль!')
+                    console.log(data)
                 })
 
 
@@ -64,7 +65,7 @@ function Auth() {
 
 
     if (token) {
-        return <div><UserPage/></div>;
+        return <div><ProfilePage/></div>;
     }
 
     return (

@@ -30,7 +30,7 @@ function OurFeatures({mainPageData}: Props) {
                         <Col className={styles.col}>
                             <a href="#" className={styles.tooltip}
                                data-tooltip="здесь будет возможно инициировать получение обратной связи">
-                                <button className={styles.btn}>Задай нам вопрос</button>
+                                <button className={`${styles.btn} btn btn-secondary`}>Задай нам вопрос</button>
                             </a>
                         </Col>
                     </Row>
