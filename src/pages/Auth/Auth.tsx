@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState,useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
 import styles from '../../styles/Auth/Auth.module.css'
 import Logo from '../../img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
+import UserPage from '../userPage/UserPage'
 
 
 function Auth() {
@@ -11,6 +12,9 @@ function Auth() {
     const [login,setLogin] = useState('')
     const [password,setPassword] = useState('')
     const [error,setError] = useState('')
+    const [token,setToken] = useState('')
+
+    const gmailRef = useRef<HTMLInputElement>(null )
 
     const {
         register,
@@ -28,24 +32,39 @@ function Auth() {
 
 
     function onSubmit(data:any){
-        if (!login && !password && !gmail || !login && !password) {
+        setError('')
+        if (gmail && password) {
+            fetch("https://test.app.it-roast.com/api/v1/auth", {
+                method: 'POST',
+                body: JSON.stringify({
+                    "userEmail": gmail,
+                    "userPassword": password
+                }),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Обработка ответа сервера
+                    setToken(data.token)
+                    if (!data.token) setError('Неправильный логин или пароль!')
+                })
+
+
+                .catch(error => {
+                    // Обработка ошибок
+                    console.error('Error:', error);
+                });
+        }else{
             setError('Заполните логин и пароль (Все поля должны быть заполнены)')
         }
+    }
 
-        if (gmail){
-            setLogin('')
-            setPassword('')
-            alert(JSON.stringify({
-                gmail
-            }))
-        }
-        if (login && password){
-            setGmail('')
-            alert(JSON.stringify({
-                login,
-                password
-            }))
-        }
+
+
+    if (token) {
+        return <div><UserPage/></div>;
     }
 
     return (
@@ -58,7 +77,7 @@ function Auth() {
                         <Row className={styles.row}><a href="/"><img src={Logo} alt="Logo"/></a></Row>
 
                         {/* Заголовок */}
-                        <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
+                        <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
                             рады видеть вас</h1></Row>
 
 
@@ -68,6 +87,7 @@ function Auth() {
                             <Row className={styles.row}>
                                 <input
                                     className={errors.email ? styles.input_border_red : styles.input}
+                                  autoComplete='off'
                                        placeholder='Войти с Google'
                                        {...register("email", {
 
@@ -78,39 +98,12 @@ function Auth() {
                                            },
                                        })}
                                     onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setGmail(e.target.value)}}
-                                />
+                                    />
                             </Row>
                             <Row className={styles.row}>
                                 {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
                             </Row>
 
-
-
-                            {/* Разделитель "ИЛИ" */}
-                            <Row className={styles.row}>
-                                <div className={styles.or_hr}>
-                                    <hr className={styles.hr}/>
-                                    <span className={styles.or}>или</span>
-                                    <hr className={styles.hr}/>
-                                </div>
-                            </Row>
-
-
-                            {/* Поле ввода логина */}
-                            <Row className={styles.row}>
-                                <input
-                                    className={errors.name ? styles.input_border_red : styles.input}
-                                       placeholder='Логин'
-                                       {...register("name", {
-                                           required:'это поле обязательно для заполнения',
-                                           pattern:{
-                                               value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
-                                               message: 'Вы заполняете поле в неверном формате.'
-                                           }
-                                       })}
-                                       onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setLogin(e.target.value)}}
-                                />
-                            </Row>
                             <Row className={styles.row}>
                                 {errors.name && (<div className={styles.errors}>{errors.name.message}</div>)}
                             </Row>

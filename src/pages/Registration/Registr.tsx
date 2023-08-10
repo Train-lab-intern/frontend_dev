@@ -37,24 +37,27 @@ function Registr() {
 
 
     function onSubmit(data: any) {
-        if (!login && !password1 && password2 && !gmail) {
-            setError('Заполните логин и пароль (Все поля должны быть заполнены)')
-        }
-        if (gmail) {
-            alert(JSON.stringify({
-                gmail
-            }))
-        }
-
-        if (login && password1 && password2) {
+        if (gmail && login && password1 && password2) {
             if (password1 === password2) {
-                alert(JSON.stringify({
-                    login,
-                    password1
-                }))
-            } else {
-                setErrorPassword('Введеные пароли не совпадают!')
+                fetch("https://test.app.it-roast.com/api/v1/users/register", {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        "username": login,
+                        "email": gmail,
+                        "password": password1
+                    }),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Обработка ответа сервера
+                        console.log(data)
+                    })
             }
+        }else {
+            setErrorPassword('Введеные пароли не совпадают!')
         }
 
     }
@@ -75,41 +78,25 @@ function Registr() {
 
                         <form onSubmit={handleSubmit(onSubmit)}>
 
-                            {/*//______________________________________________________________________________________________________________________________*/}
-                            {/* Вход через Google */}
+                            {/* Поле ввода Gmail */}
                             <Row className={styles.row}>
                                 <input
-                                    className={errors.email ? styles.input_border_red : styles.input}
-                                    placeholder='Войти с Google'
+                                    className={errors.name ? styles.input_border_red : styles.input}
+                                    placeholder='post@gmail.com'
                                     {...register("email", {
-                                        min: 12,
-                                        pattern: {
+                                        required:'это поле обязательно для заполнения',
+                                        pattern:{
                                             value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
-                                            message: "Please enter valid email",
-                                        },
+                                            message: 'Вы заполняете поле в неверном формате.'
+                                        }
                                     })}
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                         setGmail(e.target.value)
                                     }}
                                 />
                             </Row>
-                            <Row className={styles.row}>
-                                {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
-                            </Row>
 
 
-                            {/*//______________________________________________________________________________________________________________________________*/}
-
-                            {/* Разделитель "ИЛИ" */}
-                            <Row className={styles.row}>
-                                <div className={styles.or_hr}>
-                                    <hr className={styles.hr}/>
-                                    <span className={styles.or}>или</span>
-                                    <hr className={styles.hr}/>
-                                </div>
-                            </Row>
-
-                            {/*//______________________________________________________________________________________________________________________________*/}
 
                             {/* Поле ввода логина */}
                             <Row className={styles.row}>
@@ -119,7 +106,7 @@ function Registr() {
                                     {...register("name", {
                                         required:'это поле обязательно для заполнения',
                                         pattern:{
-                                            value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+                                            value: /^(?![A-Za-z]\d?$)[a-zA-Z]+\d*$/,
                                             message: 'Вы заполняете поле в неверном формате.'
                                         }
                                     })}
@@ -136,16 +123,12 @@ function Registr() {
                             {/*//______________________________________________________________________________________________________________________________*/}
                             {/* Поле ввода пароля */}
                             <Row className={styles.row}>
-
-
-                                <div className={`${styles.wrapperPasswordInput} input-group mb-3`} style={{width:'83%', margin: '0 auto' }} >
-
                                     <input
                                         className={`${errors.password1 ? styles.input_border_red : styles.input} form-control`}
                                         type="password"
                                         aria-label="username"
                                         autoComplete="current-password"
-                                        id="id_password"
+                                        id="id_password1"
                                         placeholder='Пароль'
                                         {...register("password1", {
                                             required:'это поле обязательно для заполнения',
@@ -158,10 +141,7 @@ function Registr() {
                                             setPassword1(e.target.value)
                                         }}
                                     />
-                                    <span className="input-group-text" id="basic-addon1">
-                                        <img src="" alt=""/>
-                                    </span>
-                                </div>
+
                             </Row>
 
 
@@ -169,7 +149,7 @@ function Registr() {
                                 <input className={errors.password2 ? styles.input_border_red : styles.input}
                                        type="password"
                                        autoComplete="current-password"
-                                       id="id_password"
+                                       id="id_password2"
                                        placeholder='Пароль'
                                        {...register("password2", {
                                            required:'это поле обязательно для заполнения',
