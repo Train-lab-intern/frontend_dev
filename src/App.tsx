@@ -5,6 +5,7 @@ import Registr from "./pages/Registration/Registr";
 import {Routes, Route, Link} from 'react-router-dom'
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import UserPage  from "./pages/userPage/UserPage";
+import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path='/registr' element={<Registr />} />
             <Route path='/changepassword' element={<ChangePassword />} />
             <Route path='/userpage' element={<UserPage />} />
+            <Route path='/profile' element={<ProfilePage />} />
         </Routes>
     </div>
   );
