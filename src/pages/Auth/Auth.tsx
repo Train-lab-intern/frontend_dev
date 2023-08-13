@@ -13,6 +13,7 @@ function Auth() {
     const [password,setPassword] = useState('')
     const [error,setError] = useState('')
     const [token,setToken] = useState('')
+    const url = process.env.REACT_APP_URL
 
     const gmailRef = useRef<HTMLInputElement>(null )
 
@@ -34,7 +35,7 @@ function Auth() {
     function onSubmit(data:any){
         setError('')
         if (gmail && password) {
-            fetch("https://test.app.it-roast.com/api/v1/auth", {
+            fetch(`${url}/api/v1/auth`, {
                 method: 'POST',
                 body: JSON.stringify({
                     "userEmail": gmail,

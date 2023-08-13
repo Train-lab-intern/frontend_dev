@@ -15,6 +15,8 @@ function Registr() {
     const [error, setError] = useState('')
     const [errorPassword, setErrorPassword] = useState('')
     const refPassword1 = useRef<HTMLInputElement | null>(null)
+    const url = process.env.REACT_APP_URL
+
 
     const {
         register,
@@ -39,7 +41,7 @@ function Registr() {
     function onSubmit(data: any) {
         if (gmail && login && password1 && password2) {
             if (password1 === password2) {
-                fetch("https://test.app.it-roast.com/api/v1/users/register", {
+                fetch(`${url}/api/v1/users/register`, {
                     method: 'POST',
                     body: JSON.stringify({
                         "username": login,
