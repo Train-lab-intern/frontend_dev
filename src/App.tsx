@@ -1,22 +1,24 @@
 import React from 'react';
 import MainPage from './pages/Main/MainPage';
 import Auth from "./pages/Auth/Auth";
-import Registr from "./pages/Registration/Registr";
-import {Routes, Route, Link} from 'react-router-dom'
+import Registration from "./pages/Registration/Registration";
+import {Routes, Route} from 'react-router-dom'
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
-import UserPage  from "./pages/userPage/UserPage";
 import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
 import NotPage from "./pages/NotPage/NotPage";
+import {Path} from "./constants/path";
+
 
 function App() {
+
   return (
     <div className="App">
         <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/auth' element={<Auth />} />
-            <Route path='/registr' element={<Registr />} />
-            <Route path='/changepassword' element={<ChangePassword />} />
-            <Route path='/profile' element={<ProfilePage />} />
+            <Route path={Path.HOME} element={<MainPage />} />
+            <Route path={Path.AUTH} element={<Auth />} />
+            <Route path={Path.REGISTRATION} element={<Registration />} />
+            <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
+            <Route path={Path.PROFILE} element={<ProfilePage />} />
             <Route path='*' element={<NotPage/>} />
         </Routes>
     </div>

@@ -1,13 +1,14 @@
 import React, {useState,useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import styles from '../../styles/Auth/Auth.module.css'
-import Logo from '../../img/fullLogo.jpg'
-import {Link} from 'react-router-dom'
+import styles from '../Auth/Auth.module.css'
+import Logo from '../../assets/img/fullLogo.jpg'
+import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import eye from '../../img/openEye.png'
-import closeEye from '../../img/closeEye.png'
+import eye from '../../assets/icons/openEye.png'
+import closeEye from '../../assets/icons/closeEye.png'
+import {Path} from "../../constants/path";
 
-function Registr() {
+function Registration() {
     const [gmail, setGmail] = useState('')
     const [login, setLogin] = useState('')
     const [password1, setPassword1] = useState('')
@@ -69,7 +70,7 @@ function Registr() {
                     {/* Обертка */}
                     <Col className={styles.wrapper}>
                         {/* Логотип */}
-                        <Row className={styles.row}><a href="/"><img src={Logo} alt="Logo"/></a></Row>
+                        <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
 
                         {/* Заголовок */}
                         <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
@@ -191,7 +192,7 @@ function Registr() {
                         {/* Есть аккаунт */}
                         <Row className={styles.row}>
                             <Col className={styles.textAccaunt}>Есть аккаунт? </Col>
-                            <Col md={8}><Link className={styles.linkPink} to="/auth">Войти!</Link></Col>
+                            <Col md={8}><Link className={styles.linkPink} to={Path.AUTH}>Войти!</Link></Col>
                         </Row>
 
                         {/* Вопросы */}
@@ -212,4 +213,4 @@ function Registr() {
     );
 };
 
-export default Registr;
+export default Registration;

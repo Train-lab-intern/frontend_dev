@@ -1,10 +1,11 @@
 import React, {useEffect, useState,useRef} from 'react';
 import {Container, Row, Col} from "react-bootstrap";
-import styles from '../../styles/Auth/Auth.module.css'
-import Logo from '../../img/fullLogo.jpg'
-import {Link} from 'react-router-dom'
+import styles from './Auth.module.css'
+import Logo from '../../assets/img/fullLogo.jpg'
+import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {ProfilePage} from "../ProfilePage/ProfilePage";
+import {Path} from "../../constants/path";
 
 
 function Auth() {
@@ -75,7 +76,7 @@ function Auth() {
                     {/* Обертка */}
                     <Col className={styles.wrapper}>
                         {/* Логотип */}
-                        <Row className={styles.row}><a href="/"><img src={Logo} alt="Logo"/></a></Row>
+                      <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
 
                         {/* Заголовок */}
                         <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
@@ -150,7 +151,7 @@ function Auth() {
                                         <label htmlFor="memberMe">Запомни меня</label>
                                         <input type="radio" name="memberMe" id="memberMe"/>
                                     </Col>
-                                    <Col className={styles.rememberWrapper}><Link to="/changepassword">Забыли пароль?</Link></Col>
+                                    <Col className={styles.rememberWrapper}><Link to={Path.CHANGE_PASSWORD}>Забыли пароль?</Link></Col>
                                 </div>
                             </Row>
                         </form>
@@ -162,7 +163,7 @@ function Auth() {
                         {/* Регистрация */}
                         <Row className={styles.row}>
                             <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
-                            <Col md={8}><Link className={styles.linkPink} to="/registr">Присоединяйся !</Link></Col>
+                            <Col md={8}><Link className={styles.linkPink} to={Path.REGISTRATION}>Присоединяйся !</Link></Col>
                         </Row>
 
                         {/* Вопросы */}
