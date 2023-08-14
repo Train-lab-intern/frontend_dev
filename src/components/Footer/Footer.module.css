@@ -50,7 +50,7 @@ a{
     position: absolute;
     top: -50px;
     left: 75%;
-    transform: translateX(50%);
+    transform: translateX(-50%);
     opacity: 0;
     color: white;
     background-color: gray;

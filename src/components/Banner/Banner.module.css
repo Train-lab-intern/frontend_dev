@@ -1,6 +1,6 @@
 .wrapper{
     /*height: 180px;*/
-    background: url("../../src/img/banner.jpg") no-repeat center center ;
+    background: url("../../assets/img/banner.jpg") no-repeat center center ;
     background-size: 100% 100%;
     margin-top: 10px;
 }
@@ -65,7 +65,7 @@
     position: absolute;
     top: 50px;
     left: 70%;
-    /*transform: translateX(-50%);*/
+    transform: translateX(-50%);
     opacity: 0;
     color: white;
     background-color: gray;
