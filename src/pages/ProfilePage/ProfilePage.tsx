@@ -106,7 +106,9 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <Footer mainPageData={[]} />
+      <div className={styles.footer}>
+        <Footer mainPageData={[]} />
+      </div>
     </div>
   );
 }

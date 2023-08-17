@@ -8,6 +8,7 @@ import Banner from "../../components/Banner/Banner";
 import styles from './MainPage.module.css'
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {getDataMainPage} from "../../redux/reducers/pagesDataReducer";
+import Loading  from "../../components/Loading/Loading";
 
 function MainPage() {
 
