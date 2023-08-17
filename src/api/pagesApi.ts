@@ -1,8 +1,9 @@
 import axios from "axios";
 
+const URL = process.env.REACT_APP_URL
 
 const instance = axios.create({
-  baseURL: 'https://test.app.it-roast.com/front/'
+  baseURL: `${URL}/front/`
 })
 
 export const pagesApi = {

@@ -3,6 +3,8 @@ import styles from './Banner.module.css'
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {Path} from "../../constants/path";
+import Loading from "../Loading/Loading";
+
 //title - 1.1
 //text - 1.2
 type PropsType = {

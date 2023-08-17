@@ -1,13 +1,13 @@
 import React from 'react';
 import MainPage from './pages/Main/MainPage';
-import Auth from "./pages/Auth/Auth";
+import Auth from "../src/pages/Auth/Auth";
 import Registration from "./pages/Registration/Registration";
 import {Routes, Route} from 'react-router-dom'
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
 import NotPage from "./pages/NotPage/NotPage";
 import {Path} from "./constants/path";
-
+import Loading from '../src/components/Loading/Loading'
 
 function App() {
 
