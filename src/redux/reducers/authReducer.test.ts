@@ -1,5 +1,5 @@
 import {RequestStatus} from "../../constants/requestStatus";
-import {authentication, authReducer, AuthReducerInitialStateType, registration} from "./authReducer";
+import {authentication, authReducer, AuthReducerInitialStateType, clearErrors, registration} from "./authReducer";
 
 let state = {} as AuthReducerInitialStateType
 
@@ -71,4 +71,18 @@ test('registration pending', () => {
   const newState = authReducer(state, action)
 
   expect(newState.authStatus).toBe(RequestStatus.LOADING)
+})
+
+test('clear error', () => {
+
+  const action1 = registration.rejected
+  const newState1 = authReducer(state, action1)
+
+  expect(newState1.authStatus).toBe(RequestStatus.FAILED)
+  expect(newState1.authErrors).toBeTruthy()
+
+  const action2 = clearErrors()
+  const newState2 = authReducer(newState1, action2)
+  expect(newState2.authStatus).toBe(RequestStatus.IDLE)
+  expect(newState2.authErrors).toBeNull()
 })

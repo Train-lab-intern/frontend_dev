@@ -35,7 +35,12 @@ const slice = createSlice({
     authStatus: RequestStatus.IDLE,
     authErrors: null
   } as AuthReducerInitialStateType,
-  reducers: {},
+  reducers: {
+    clearErrors: (state) => {
+      state.authErrors = null
+      state.authStatus = RequestStatus.IDLE
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(authentication.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
@@ -62,6 +67,7 @@ const slice = createSlice({
   }
 })
 
+export const {clearErrors} = slice.actions
 export const authReducer = slice.reducer
 
 export type AuthReducerInitialStateType = {
