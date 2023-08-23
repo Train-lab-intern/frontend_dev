@@ -16,7 +16,7 @@ type FormDataType = {
   passwordConfirm: string
 }
 
-function Registration() {
+export const Registration = () => {
 
   const dispatch = useAppDispatch()
   const authStatus = useAppSelector(state => state.auth.authStatus)
@@ -27,7 +27,8 @@ function Registration() {
     register,
     formState: {errors},
     control,
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm<FormDataType>({
     mode: "onSubmit"
   })
@@ -49,10 +50,18 @@ function Registration() {
   }
 
   useEffect(() => {
-    if (authStatus === RequestStatus.FAILED) alert(authErrors)
-    if (authStatus === RequestStatus.SUCCEEDED) alert(
-      'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
-    )
+    if (authStatus === RequestStatus.FAILED) {
+      alert(authErrors)
+      //Вместо alert notification
+      dispatch(clearErrors())
+    }
+    if (authStatus === RequestStatus.SUCCEEDED) {
+      alert(
+        'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
+      )
+      //Вместо alert notification
+      reset()
+    }
   }, [authStatus])
 
   useEffect(() => {
@@ -85,7 +94,7 @@ function Registration() {
                   {...register("email", {
                     required: 'это поле обязательно для заполнения',
                     pattern: {
-                      value: /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
+                      value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
                       message: 'Вы заполняете поле в неверном формате.'
                     }
                   })}
@@ -120,10 +129,7 @@ function Registration() {
               <Row className={styles.row}>
                 <input
                   className={`${errors.password ? styles.input_border_red : styles.input} form-control`}
-                  type="text"
-                  aria-label="username"
-                  autoComplete="current-password"
-                  id="id_password1"
+                  type="password"
                   placeholder='Пароль'
                   {...register("password", {
                     required: 'это поле обязательно для заполнения',
@@ -143,9 +149,7 @@ function Registration() {
 
               <Row className={styles.row}>
                 <input className={errors.passwordConfirm ? styles.input_border_red : styles.input}
-                       type="text"
-                       autoComplete="current-password"
-                       id="id_password2"
+                       type="password"
                        placeholder='Пароль'
                        {...register("passwordConfirm", {
                          required: 'это поле обязательно для заполнения'
@@ -190,6 +194,4 @@ function Registration() {
       </Container>
     </div>
   );
-};
-
-export default Registration;
+}

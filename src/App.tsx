@@ -1,7 +1,7 @@
 import React from 'react';
 import MainPage from './pages/Main/MainPage';
-import Auth from "../src/pages/Auth/Auth";
-import Registration from "./pages/Registration/Registration";
+import {Auth} from "./pages/Auth/Auth";
+import {Registration} from "./pages/Registration/Registration";
 import {Routes, Route} from 'react-router-dom'
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import {ProfilePage} from "./pages/ProfilePage/ProfilePage";

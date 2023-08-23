@@ -1,193 +1,156 @@
-import React, {useEffect, useState} from 'react';
-import {Container, Row, Col} from "react-bootstrap";
+import React, {useEffect} from 'react';
+import {Col, Container, Row} from "react-bootstrap";
 import styles from './Auth.module.css'
 import Logo from '../../assets/img/fullLogo.jpg'
-import {Link, NavLink} from 'react-router-dom'
+import {Link, Navigate, NavLink, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import {ProfilePage} from "../ProfilePage/ProfilePage";
 import {Path} from "../../constants/path";
+import {useAppDispatch, useAppSelector} from "../../redux/store";
+import {authentication, clearErrors} from "../../redux/reducers/authReducer";
+import {RequestStatus} from "../../constants/requestStatus";
 
-
-function Auth() {
-    const [gmail,setGmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [error,setError] = useState('')
-    const [token,setToken] = useState('')
-    const [session, setSession] = useState({ isLoggedIn: false, user: null });
-    const url = process.env.REACT_APP_URL
-
-
-    useEffect(() => {
-        const savedSession = localStorage.getItem("session");
-        if (savedSession) {
-            setSession(JSON.parse(savedSession));
-        }
-    }, []);
-
-
-    const {
-        register,
-        formState: {errors},
-        handleSubmit
-    } = useForm<Inputs>({
-        mode: "onSubmit"
-    })
-
-    type Inputs = {
-        email: string
-        name: string
-        password: string
-    }
-
-    function savedLocalstorage (data:any){
-        setSession({ isLoggedIn: true, user: data });
-        localStorage.setItem("session", JSON.stringify({ isLoggedIn: true, user:data }));
-    }
-
-    function onSubmit(){
-        setError('')
-        if (gmail && password) {
-            fetch(`${url}/api/v1/auth`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    "userEmail": gmail,
-                    "userPassword": password
-                }),
-                headers:{
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.token) setError('Неправильный логин или пароль!')
-                    savedLocalstorage(data)
-                })
-                .catch(error => {
-                    // Обработка ошибок
-                    console.error('Error:', error);
-                });
-        }else{
-            setError('Заполните логин и пароль (Все поля должны быть заполнены)')
-        }
-    }
-
-
-    return (
-        <>
-            {
-                !session.isLoggedIn ? <div className={styles.auth}>
-                    <Container>
-                        <div>
-                            {/* Обертка */}
-                            <Col className={styles.wrapper}>
-                                {/* Логотип */}
-                                <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
-
-                                {/* Заголовок */}
-                                <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
-                                    рады видеть вас</h1></Row>
-
-
-                                <form onSubmit={handleSubmit(onSubmit)}>
-
-                                    {/* Вход через Google */}
-                                    <Row className={styles.row}>
-                                        <input
-                                            className={errors.email ? styles.input_border_red : styles.input}
-                                            autoComplete='off'
-                                            placeholder='Войти с Google'
-                                            {...register("email", {
-
-                                                min: 12,
-                                                pattern: {
-                                                    value: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
-                                                    message: "Please enter valid email",
-                                                },
-                                            })}
-                                            onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setGmail(e.target.value)}}
-                                        />
-                                    </Row>
-                                    <Row className={styles.row}>
-                                        {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
-                                    </Row>
-
-                                    <Row className={styles.row}>
-                                        {errors.name && (<div className={styles.errors}>{errors.name.message}</div>)}
-                                    </Row>
-
-
-
-                                    {/* Поле ввода пароля */}
-                                    <Row className={styles.row}>
-                                        <input className={errors.password ? styles.input_border_red : styles.input}
-                                               type="password"
-                                               autoComplete="current-password"
-                                               id="id_password"
-                                               placeholder='Пароль'
-                                               {...register("password", {
-                                                   required:'это поле обязательно для заполнения',
-                                                   pattern: {
-                                                       value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-                                                       message: "Пароль вводится латинскими буквами,должен состоять минимум из восьми символов,должен содержать как минимум одну букву, одну цифру,должен содержать символы верхнего и нижнего регистра."
-                                                   }
-                                               })}
-                                               onChange={(e:React.ChangeEvent<HTMLInputElement>) => {setPassword(e.target.value)}}
-                                        />
-                                    </Row>
-                                    <Row className={styles.row}>
-                                        {errors.password && (<div className={styles.errors}>{errors.password.message}</div>)}
-                                    </Row>
-
-                                    <br/>
-
-                                    {/* Кнопка "Войти" */}
-                                    <Row className={styles.row}>
-                                        <button className={styles.input}>Войти</button>
-                                    </Row>
-
-                                    <Row className={styles.row}>
-                                        {error && (<div className={styles.errors}>{error}</div>)}
-                                    </Row>
-
-                                    {/* Опция "Запомнить меня" и "Забыли пароль" */}
-                                    <Row className={styles.row}>
-                                        <div className={styles.wrapperRemember}>
-                                            <Col md={6} className={styles.rememberWrapper}>
-                                                <label htmlFor="memberMe">Запомни меня</label>
-                                                <input type="radio" name="memberMe" id="memberMe"/>
-                                            </Col>
-                                            <Col className={styles.rememberWrapper}><Link to={Path.CHANGE_PASSWORD}>Забыли пароль?</Link></Col>
-                                        </div>
-                                    </Row>
-                                </form>
-                                <br/>
-
-
-
-
-                                {/* Регистрация */}
-                                <Row className={styles.row}>
-                                    <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
-                                    <Col md={8}><Link className={styles.linkPink} to={Path.REGISTRATION}>Присоединяйся !</Link></Col>
-                                </Row>
-
-                                {/* Вопросы */}
-                                <Row className={styles.row}>
-                                    <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-                                    <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
-                                </Row>
-                                <br/>
-
-                                {/* Соглашение на обработку данных */}
-                                <Row className={styles.row}><p>Нажимая кнопку «Войти», вы подтверждаете своё согласие с
-                                    условиями обработки данных.</p></Row>
-                            </Col>
-                        </div>
-                    </Container>
-                </div> : <ProfilePage />
-            }
-        </>
-    );
+type FormDataType = {
+  userEmail: string
+  userPassword: string
 }
 
-export default Auth;
+export const Auth = () => {
+
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const isLogged = useAppSelector(state => state.auth.isLogged)
+  const authStatus = useAppSelector(state => state.auth.authStatus)
+  const authError = useAppSelector(state => state.auth.authErrors)
+
+  const {
+    register,
+    formState: {errors},
+    handleSubmit,
+    control,
+    reset
+  } = useForm<FormDataType>({
+    mode: "onSubmit"
+  })
+
+  function onSubmit(data: FormDataType) {
+    dispatch(authentication(data))
+  }
+
+  useEffect(() => {
+    if(authStatus === RequestStatus.FAILED){
+      alert(authError)
+      //Вместо alert notification
+      dispatch(clearErrors())
+      control.setError('userEmail', {message: ''})
+      control.setError('userPassword', {message: ''})
+    }
+    if(authStatus === RequestStatus.SUCCEEDED){
+      navigate(Path.PROFILE)
+    }
+  }, [authStatus])
+
+  if (isLogged) {
+    return <Navigate to={Path.PROFILE}/>
+  }
+
+  return (
+    <>
+      {
+        <div className={styles.auth}>
+          <Container>
+            <div>
+              {/* Обертка */}
+              <Col className={styles.wrapper}>
+                {/* Логотип */}
+                <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
+
+                {/* Заголовок */}
+                <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
+                  рады видеть вас</h1></Row>
+
+
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                  {/* Вход через Google */}
+                  <Row className={styles.row}>
+                    <input
+                      className={errors.userEmail ? styles.input_border_red : styles.input}
+                      placeholder='Почта'
+                      {...register("userEmail", {
+                        required: 'это поле обязательно для заполнения',
+                        pattern: {
+                          value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+                          message: 'Вы заполняете поле в неверном формате.'
+                        }
+                      })}
+                    />
+                  </Row>
+                  <Row className={styles.row}>
+                    {errors.userEmail && (<div className={styles.errors}>{errors.userEmail.message}</div>)}
+                  </Row>
+
+                  {/* Поле ввода пароля */}
+                  <Row className={styles.row}>
+                    <input
+                      className={`${errors.userPassword ? styles.input_border_red : styles.input} form-control`}
+                      type="password"
+                      placeholder='Пароль'
+                      {...register("userPassword", {
+                        required: 'это поле обязательно для заполнения',
+                        pattern: {
+                          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+                          message: "Пароль вводится латинскими буквами,должен состоять минимум из 8 символов,должен содержать как минимум 1 букву, 1 цифру,должен содержать символы верхнего и нижнего регистра."
+                        }
+                      })}
+                    />
+                  </Row>
+                  <Row className={styles.row}>
+                    {errors.userPassword && (<div className={styles.errors}>{errors.userPassword.message}</div>)}
+                  </Row>
+
+                  <br/>
+
+                  {/* Кнопка "Войти" */}
+                  <Row className={styles.row}>
+                    <button className={styles.input}>Войти</button>
+                  </Row>
+
+                  {/* Опция "Запомнить меня" и "Забыли пароль" */}
+                  <Row className={styles.row}>
+                    <div className={styles.wrapperRemember}>
+                      <Col md={6} className={styles.rememberWrapper}>
+                        <label htmlFor="memberMe">Запомни меня</label>
+                        <input type="radio" name="memberMe" id="memberMe"/>
+                      </Col>
+                      <Col className={styles.rememberWrapper}><Link to={Path.CHANGE_PASSWORD}>Забыли
+                        пароль?</Link></Col>
+                    </div>
+                  </Row>
+                </form>
+                <br/>
+
+
+                {/* Регистрация */}
+                <Row className={styles.row}>
+                  <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
+                  <Col md={8}><Link className={styles.linkPink} to={Path.REGISTRATION}>Присоединяйся !</Link></Col>
+                </Row>
+
+                {/* Вопросы */}
+                <Row className={styles.row}>
+                  <Col className={styles.textAccaunt}>Остались вопросы? </Col>
+                  <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+                </Row>
+                <br/>
+
+                {/* Соглашение на обработку данных */}
+                <Row className={styles.row}><p>Нажимая кнопку «Войти», вы подтверждаете своё согласие с
+                  условиями обработки данных.</p></Row>
+              </Col>
+            </div>
+          </Container>
+        </div>
+      }
+    </>
+  );
+}
