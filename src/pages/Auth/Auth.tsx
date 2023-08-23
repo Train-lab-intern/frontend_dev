@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import styles from './Auth.module.css'
 import Logo from '../../assets/img/fullLogo.jpg'
@@ -6,8 +6,10 @@ import {Link, Navigate, NavLink, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {Path} from "../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {authentication, clearErrors} from "../../redux/reducers/authReducer";
+import {authentication, changeAuthStatus, clearErrors} from "../../redux/reducers/authReducer";
 import {RequestStatus} from "../../constants/requestStatus";
+import openEyeIcon from "../../assets/icons/openEye.png";
+import closeEyeIcon from "../../assets/icons/closeEye.png";
 
 type FormDataType = {
   userEmail: string
@@ -21,6 +23,7 @@ export const Auth = () => {
   const isLogged = useAppSelector(state => state.auth.isLogged)
   const authStatus = useAppSelector(state => state.auth.authStatus)
   const authError = useAppSelector(state => state.auth.authErrors)
+  const [showPassword, setShowPassword] = useState(false)
 
   const {
     register,
@@ -31,6 +34,10 @@ export const Auth = () => {
   } = useForm<FormDataType>({
     mode: "onSubmit"
   })
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   function onSubmit(data: FormDataType) {
     dispatch(authentication(data))
@@ -45,6 +52,7 @@ export const Auth = () => {
       control.setError('userPassword', {message: ''})
     }
     if(authStatus === RequestStatus.SUCCEEDED){
+      dispatch(changeAuthStatus(RequestStatus.IDLE))
       navigate(Path.PROFILE)
     }
   }, [authStatus])
@@ -91,9 +99,10 @@ export const Auth = () => {
 
                   {/* Поле ввода пароля */}
                   <Row className={styles.row}>
+                    <label className={styles.labelPassword}>
                     <input
                       className={`${errors.userPassword ? styles.input_border_red : styles.input} form-control`}
-                      type="password"
+                      type={showPassword ? 'text' : 'password'}
                       placeholder='Пароль'
                       {...register("userPassword", {
                         required: 'это поле обязательно для заполнения',
@@ -103,6 +112,13 @@ export const Auth = () => {
                         }
                       })}
                     />
+                      <img
+                        src={showPassword ? openEyeIcon : closeEyeIcon}
+                        className={styles.showPasswordIcon}
+                        alt="icon"
+                        onClick={handleShowPassword}
+                      />
+                    </label>
                   </Row>
                   <Row className={styles.row}>
                     {errors.userPassword && (<div className={styles.errors}>{errors.userPassword.message}</div>)}

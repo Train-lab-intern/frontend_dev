@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import styles from '../Auth/Auth.module.css'
+import styles from './Registration.module.css'
 import Logo from '../../assets/img/fullLogo.jpg'
 import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
@@ -8,6 +8,8 @@ import {Path} from "../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {clearErrors, registration} from "../../redux/reducers/authReducer";
 import {RequestStatus} from "../../constants/requestStatus";
+import closeEyeIcon from '../../assets/icons/closeEye.png'
+import openEyeIcon from '../../assets/icons/openEye.png'
 
 type FormDataType = {
   email: string
@@ -21,6 +23,7 @@ export const Registration = () => {
   const dispatch = useAppDispatch()
   const authStatus = useAppSelector(state => state.auth.authStatus)
   const authErrors = useAppSelector(state => state.auth.authErrors)
+  const [showPassword, setShowPassword] = useState(false)
 
 
   const {
@@ -33,7 +36,8 @@ export const Registration = () => {
     mode: "onSubmit"
   })
 
-  function handleEyePassword() {
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword)
   }
 
   function onSubmit(data: FormDataType) {
@@ -68,7 +72,7 @@ export const Registration = () => {
     return () => {
       dispatch(clearErrors())
     }
-  },[])
+  }, [])
 
   return (
     <div className={styles.auth}>
@@ -127,19 +131,26 @@ export const Registration = () => {
               {/*//______________________________________________________________________________________________________________________________*/}
               {/* Поле ввода пароля */}
               <Row className={styles.row}>
-                <input
-                  className={`${errors.password ? styles.input_border_red : styles.input} form-control`}
-                  type="password"
-                  placeholder='Пароль'
-                  {...register("password", {
-                    required: 'это поле обязательно для заполнения',
-                    pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
-                      message: "Пароль вводится латинскими буквами,должен состоять минимум из 8 символов,должен содержать как минимум 1 букву, 1 цифру,должен содержать символы верхнего и нижнего регистра."
-                    }
-                  })}
-                />
-
+                <label className={styles.labelPassword}>
+                  <input
+                    className={`${errors.password ? styles.input_border_red : styles.input} form-control`}
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder='Пароль'
+                    {...register("password", {
+                      required: 'это поле обязательно для заполнения',
+                      pattern: {
+                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+                        message: "Пароль вводится латинскими буквами,должен состоять минимум из 8 символов,должен содержать как минимум 1 букву, 1 цифру,должен содержать символы верхнего и нижнего регистра."
+                      }
+                    })}
+                  />
+                  <img
+                    src={showPassword ? openEyeIcon : closeEyeIcon}
+                    className={styles.showPasswordIcon}
+                    alt="icon"
+                    onClick={handleShowPassword}
+                  />
+                </label>
               </Row>
 
               <Row className={styles.row}>
@@ -148,13 +159,21 @@ export const Registration = () => {
 
 
               <Row className={styles.row}>
-                <input className={errors.passwordConfirm ? styles.input_border_red : styles.input}
-                       type="password"
-                       placeholder='Пароль'
-                       {...register("passwordConfirm", {
-                         required: 'это поле обязательно для заполнения'
-                       })}
-                />
+                <label className={styles.labelPassword}>
+                  <input className={errors.passwordConfirm ? styles.input_border_red : styles.input}
+                         type={showPassword ? 'text' : 'password'}
+                         placeholder='Пароль'
+                         {...register("passwordConfirm", {
+                           required: 'это поле обязательно для заполнения'
+                         })}
+                  />
+                  <img
+                    src={showPassword ? openEyeIcon : closeEyeIcon}
+                    className={styles.showPasswordIcon}
+                    alt="icon"
+                    onClick={handleShowPassword}
+                  />
+                </label>
               </Row>
 
               <Row className={styles.row}>
