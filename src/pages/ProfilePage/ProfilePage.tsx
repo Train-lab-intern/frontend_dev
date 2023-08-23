@@ -5,9 +5,12 @@ import avatar from '../../assets/img/avatar.png'
 import diagram from '../../assets/img/diagram.png'
 import Footer from "../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+import {useAppSelector} from "../../redux/store";
+import {Path} from "../../constants/path";
 
 export const ProfilePage = () => {
+
+  const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)
 
   const [activeStat, setActiveStat] = useState('statOne')
 
@@ -21,7 +24,7 @@ export const ProfilePage = () => {
         <div className={styles.inner}>
           <header className={styles.header}>
             <div className={styles.logo}>
-              <NavLink to={'/'}>
+              <NavLink to={Path.HOME}>
                 <img src={logo} alt="logo"/>
               </NavLink>
             </div>
@@ -58,7 +61,7 @@ export const ProfilePage = () => {
                 <img src={avatar} alt="avatar"/>
               </div>
               <div className={styles.userInfo}>
-                <h2 className={styles.name}>Фамилия Имя</h2>
+                <h2 className={styles.name}>{username}</h2>
                 <h3 className={styles.specialization}>Специальность</h3>
               </div>
               <div className={styles.title}>

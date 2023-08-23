@@ -1,5 +1,5 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {authApi, AuthenticationRequestType, RegistrationRequestDataType, UserDataType} from "../../api/authApi";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {authApi, AuthenticationRequestType, RegistrationRequestDataType} from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
 
 export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
@@ -7,8 +7,9 @@ export const authentication = createAsyncThunk<UserDataType, AuthenticationReque
     try {
       
       const data = await authApi.authentication(arg)
-      localStorage.setItem('tlToken', data.token)
-      return data
+      const {token, ...rest} = data
+      localStorage.setItem('tlToken', token)
+      return rest
       
     }catch (e) {
       return thunkAPI.rejectWithValue({message: 'auth error...'})
@@ -39,6 +40,9 @@ const slice = createSlice({
     clearErrors: (state) => {
       state.authErrors = null
       state.authStatus = RequestStatus.IDLE
+    },
+    changeAuthStatus: (state, action: PayloadAction<RequestStatusType>) => {
+      state.authStatus = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -67,12 +71,23 @@ const slice = createSlice({
   }
 })
 
-export const {clearErrors} = slice.actions
+export const {clearErrors, changeAuthStatus} = slice.actions
 export const authReducer = slice.reducer
 
 export type AuthReducerInitialStateType = {
   isLogged: boolean
-  userData: UserDataType | {}
+  userData: UserDataType
   authStatus: RequestStatusType
   authErrors: string | null
+}
+export type UserDataType = {
+  userEmail: string
+  userDto: {
+    id: number
+    username: string
+    email: string
+    created: string
+    changed: string
+    active: boolean
+  }
 }

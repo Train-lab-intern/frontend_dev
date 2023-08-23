@@ -6,7 +6,17 @@ let state = {} as AuthReducerInitialStateType
 beforeEach(() => {
   state = {
     isLogged: false,
-    userData: {},
+    userData: {
+      userEmail: 'null',
+      userDto: {
+        id: 0,
+        username: 'null',
+        email: 'null',
+        created: 'null',
+        changed: 'null',
+        active: false
+      }
+    },
     authStatus: RequestStatus.IDLE,
     authErrors: null
   }
@@ -14,7 +24,6 @@ beforeEach(() => {
 
 const userData = {
   userEmail: 'string',
-  token: 'string',
   userDto: {
     id: 1,
     username: 'string',

@@ -12,7 +12,7 @@ export const authApi = {
       .then(res => res)
   },
   authentication(data: AuthenticationRequestType){
-    return instance.post<UserDataType>('auth', data)
+    return instance.post<ResponseUserDataType>('auth', data)
       .then(res => res.data)
   }
 }
@@ -26,7 +26,7 @@ export type RegistrationRequestDataType = {
   email: string
   password: string
 }
-export type UserDataType = {
+export type ResponseUserDataType = {
   userEmail: string
   token: string
   userDto: {
