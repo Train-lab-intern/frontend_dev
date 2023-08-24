@@ -39,7 +39,17 @@
     border: #CC0D18 solid 2px;
     margin: 0 auto;
 }
-
+.labelPassword {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.showPasswordIcon {
+  position: absolute;
+  right: 15%;
+  width: 20px;
+  cursor: pointer;
+}
 .errors{
     width: 80%;
     margin: 0 auto;

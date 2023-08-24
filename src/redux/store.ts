@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {pagesDataReducer} from "./reducers/pagesDataReducer";
+import {authReducer} from "./reducers/authReducer";
 
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     pagesData: pagesDataReducer
   }
 })
