@@ -6,10 +6,11 @@ import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {Path} from "../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {clearErrors, registration} from "../../redux/reducers/authReducer";
+import {changeAuthStatus, clearErrors, registration} from "../../redux/reducers/authReducer";
 import {RequestStatus} from "../../constants/requestStatus";
 import closeEyeIcon from '../../assets/icons/closeEye.png'
 import openEyeIcon from '../../assets/icons/openEye.png'
+import {Notification} from "../../components/Notifications/Notification";
 
 type FormDataType = {
   email: string
@@ -53,29 +54,35 @@ export const Registration = () => {
     }
   }
 
+  const handleCloseNotification = () => {
+    dispatch(changeAuthStatus(RequestStatus.IDLE))
+    dispatch(clearErrors())
+  }
+
   useEffect(() => {
-    if (authStatus === RequestStatus.FAILED) {
-      alert(authErrors)
-      //Вместо alert notification
-      dispatch(clearErrors())
-    }
     if (authStatus === RequestStatus.SUCCEEDED) {
-      alert(
-        'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
-      )
-      //Вместо alert notification
       reset()
     }
   }, [authStatus])
 
   useEffect(() => {
     return () => {
+      dispatch(changeAuthStatus(RequestStatus.IDLE))
       dispatch(clearErrors())
     }
   }, [])
 
   return (
     <div className={styles.auth}>
+      {/*<button onClick={() => dispatch(changeAuthStatus(RequestStatus.SUCCEEDED))}>reg</button>*/}
+      {authStatus === RequestStatus.SUCCEEDED && <Notification
+        messages={
+          'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
+        }
+        handleClose={handleCloseNotification}
+      />}
+      {authStatus === RequestStatus.FAILED && authErrors &&
+        <Notification messages={authErrors} handleClose={handleCloseNotification} />}
       <Container>
         <div>
           {/* Обертка */}
@@ -90,19 +97,21 @@ export const Registration = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
 
-              {/* Поле ввода Gmail */}
+              {/* Поле ввода email */}
               <Row className={styles.row}>
-                <input
-                  className={errors.email ? styles.input_border_red : styles.input}
-                  placeholder='Почта'
-                  {...register("email", {
-                    required: 'это поле обязательно для заполнения',
-                    pattern: {
-                      value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
-                      message: 'Вы заполняете поле в неверном формате.'
-                    }
-                  })}
-                />
+                <label>
+                  <input
+                    className={`${errors.email ? styles.input_border_red : styles.input} form-control`}
+                    placeholder='Почта'
+                    {...register("email", {
+                      required: 'это поле обязательно для заполнения',
+                      pattern: {
+                        value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+                        message: 'Вы заполняете поле в неверном формате.'
+                      }
+                    })}
+                  />
+                </label>
               </Row>
               <Row className={styles.row}>
                 {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
@@ -111,17 +120,19 @@ export const Registration = () => {
 
               {/* Поле ввода логина */}
               <Row className={styles.row}>
-                <input
-                  className={errors.username ? styles.input_border_red : styles.input}
-                  placeholder='Логин'
-                  {...register("username", {
-                    required: 'это поле обязательно для заполнения',
-                    pattern: {
-                      value: /^(?![A-Za-z]\d?$)[a-zA-Z]+\d*$/,
-                      message: 'Вы заполняете поле в неверном формате.'
-                    }
-                  })}
-                />
+                <label>
+                  <input
+                    className={`${errors.username ? styles.input_border_red : styles.input} form-control`}
+                    placeholder='Логин'
+                    {...register("username", {
+                      required: 'это поле обязательно для заполнения',
+                      pattern: {
+                        value: /^(?![A-Za-z]\d?$)[a-zA-Z]+\d*$/,
+                        message: 'Вы заполняете поле в неверном формате.'
+                      }
+                    })}
+                  />
+                </label>
               </Row>
               <Row className={styles.row}>
                 {errors.username && (<div className={styles.errors}>{errors.username.message}</div>)}
@@ -160,7 +171,7 @@ export const Registration = () => {
 
               <Row className={styles.row}>
                 <label className={styles.labelPassword}>
-                  <input className={errors.passwordConfirm ? styles.input_border_red : styles.input}
+                  <input className={`${errors.passwordConfirm ? styles.input_border_red : styles.input} form-control`}
                          type={showPassword ? 'text' : 'password'}
                          placeholder='Пароль'
                          {...register("passwordConfirm", {
@@ -185,7 +196,11 @@ export const Registration = () => {
 
               {/* Кнопка "Войти" */}
               <Row className={styles.row}>
-                <button type={'submit'} className={styles.input}>Зарегистрироваться</button>
+                <button
+                  type={'submit'}
+                  className={styles.input}
+                  disabled={authStatus === RequestStatus.LOADING}
+                >Зарегистрироваться</button>
               </Row>
 
             </form>
