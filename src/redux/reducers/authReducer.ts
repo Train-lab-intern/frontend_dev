@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {authApi, AuthenticationRequestType, RegistrationRequestDataType} from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
+import {isAxiosError} from "axios";
 
 export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
@@ -12,7 +13,13 @@ export const authentication = createAsyncThunk<UserDataType, AuthenticationReque
       return rest
       
     }catch (e) {
-      return thunkAPI.rejectWithValue({message: 'auth error...'})
+      let errorMessage: string
+      if(isAxiosError(e)){
+        errorMessage = e.response? e.response.data.message : e.message
+        return thunkAPI.rejectWithValue({message: errorMessage})
+      }else{
+        return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
+      }
     }
   })
 
@@ -24,7 +31,13 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
       return true
 
     }catch (e) {
-      return thunkAPI.rejectWithValue({message: 'registration error...'})
+      let errorMessage: string
+      if(isAxiosError(e)){
+        errorMessage = e.response? e.response.data.message : e.message
+        return thunkAPI.rejectWithValue({message: errorMessage})
+      }else{
+        return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
+      }
     }
   })
 

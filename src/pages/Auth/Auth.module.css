@@ -39,7 +39,7 @@
     border: #CC0D18 solid 2px;
     margin: 0 auto;
 }
-.labelPassword {
+label {
   position: relative;
   display: flex;
   align-items: center;
@@ -96,6 +96,10 @@ button.input{
     font-weight: bold;
     font-family: 'Nunito Sans', sans-serif;
 
+}
+button.input:disabled {
+  background-color: #c4c4c4;
+  cursor: not-allowed;
 }
 
 a{

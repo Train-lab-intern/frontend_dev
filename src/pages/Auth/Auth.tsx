@@ -10,6 +10,7 @@ import {authentication, changeAuthStatus, clearErrors} from "../../redux/reducer
 import {RequestStatus} from "../../constants/requestStatus";
 import openEyeIcon from "../../assets/icons/openEye.png";
 import closeEyeIcon from "../../assets/icons/closeEye.png";
+import {Notification} from "../../components/Notifications/Notification";
 
 type FormDataType = {
   userEmail: string
@@ -43,19 +44,26 @@ export const Auth = () => {
     dispatch(authentication(data))
   }
 
+  const handleCloseNotification = () => {
+    dispatch(changeAuthStatus(RequestStatus.IDLE))
+  }
+
   useEffect(() => {
-    if(authStatus === RequestStatus.FAILED){
-      alert(authError)
-      //Вместо alert notification
-      dispatch(clearErrors())
+    if (authStatus === RequestStatus.FAILED) {
       control.setError('userEmail', {message: ''})
       control.setError('userPassword', {message: ''})
     }
-    if(authStatus === RequestStatus.SUCCEEDED){
-      dispatch(changeAuthStatus(RequestStatus.IDLE))
+    if (authStatus === RequestStatus.SUCCEEDED) {
       navigate(Path.PROFILE)
     }
   }, [authStatus])
+
+  useEffect(() => {
+    return () => {
+      dispatch(changeAuthStatus(RequestStatus.IDLE))
+      dispatch(clearErrors())
+    }
+  }, [])
 
   if (isLogged) {
     return <Navigate to={Path.PROFILE}/>
@@ -63,26 +71,30 @@ export const Auth = () => {
 
   return (
     <>
-      {
-        <div className={styles.auth}>
-          <Container>
-            <div>
-              {/* Обертка */}
-              <Col className={styles.wrapper}>
-                {/* Логотип */}
-                <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
+      {authStatus === RequestStatus.FAILED && authError && <Notification
+        messages={authError}
+        handleClose={handleCloseNotification}
+      />}
+      <div className={styles.auth}>
+        <Container>
+          <div>
+            {/* Обертка */}
+            <Col className={styles.wrapper}>
+              {/* Логотип */}
+              <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
 
-                {/* Заголовок */}
-                <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
-                  рады видеть вас</h1></Row>
+              {/* Заголовок */}
+              <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
+                рады видеть вас</h1></Row>
 
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit)}>
 
-                  {/* Вход через Google */}
-                  <Row className={styles.row}>
+                {/* Вход через Google */}
+                <Row className={styles.row}>
+                  <label>
                     <input
-                      className={errors.userEmail ? styles.input_border_red : styles.input}
+                      className={`${errors.userEmail ? styles.input_border_red : styles.input} form-control`}
                       placeholder='Почта'
                       {...register("userEmail", {
                         required: 'это поле обязательно для заполнения',
@@ -92,14 +104,15 @@ export const Auth = () => {
                         }
                       })}
                     />
-                  </Row>
-                  <Row className={styles.row}>
-                    {errors.userEmail && (<div className={styles.errors}>{errors.userEmail.message}</div>)}
-                  </Row>
+                  </label>
+                </Row>
+                <Row className={styles.row}>
+                  {errors.userEmail && (<div className={styles.errors}>{errors.userEmail.message}</div>)}
+                </Row>
 
-                  {/* Поле ввода пароля */}
-                  <Row className={styles.row}>
-                    <label className={styles.labelPassword}>
+                {/* Поле ввода пароля */}
+                <Row className={styles.row}>
+                  <label className={styles.labelPassword}>
                     <input
                       className={`${errors.userPassword ? styles.input_border_red : styles.input} form-control`}
                       type={showPassword ? 'text' : 'password'}
@@ -112,61 +125,63 @@ export const Auth = () => {
                         }
                       })}
                     />
-                      <img
-                        src={showPassword ? openEyeIcon : closeEyeIcon}
-                        className={styles.showPasswordIcon}
-                        alt="icon"
-                        onClick={handleShowPassword}
-                      />
-                    </label>
-                  </Row>
-                  <Row className={styles.row}>
-                    {errors.userPassword && (<div className={styles.errors}>{errors.userPassword.message}</div>)}
-                  </Row>
-
-                  <br/>
-
-                  {/* Кнопка "Войти" */}
-                  <Row className={styles.row}>
-                    <button className={styles.input}>Войти</button>
-                  </Row>
-
-                  {/* Опция "Запомнить меня" и "Забыли пароль" */}
-                  <Row className={styles.row}>
-                    <div className={styles.wrapperRemember}>
-                      <Col md={6} className={styles.rememberWrapper}>
-                        <label htmlFor="memberMe">Запомни меня</label>
-                        <input type="radio" name="memberMe" id="memberMe"/>
-                      </Col>
-                      <Col className={styles.rememberWrapper}><Link to={Path.CHANGE_PASSWORD}>Забыли
-                        пароль?</Link></Col>
-                    </div>
-                  </Row>
-                </form>
-                <br/>
-
-
-                {/* Регистрация */}
+                    <img
+                      src={showPassword ? openEyeIcon : closeEyeIcon}
+                      className={styles.showPasswordIcon}
+                      alt="icon"
+                      onClick={handleShowPassword}
+                    />
+                  </label>
+                </Row>
                 <Row className={styles.row}>
-                  <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
-                  <Col md={8}><Link className={styles.linkPink} to={Path.REGISTRATION}>Присоединяйся !</Link></Col>
+                  {errors.userPassword && (<div className={styles.errors}>{errors.userPassword.message}</div>)}
                 </Row>
 
-                {/* Вопросы */}
-                <Row className={styles.row}>
-                  <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-                  <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
-                </Row>
                 <br/>
 
-                {/* Соглашение на обработку данных */}
-                <Row className={styles.row}><p>Нажимая кнопку «Войти», вы подтверждаете своё согласие с
-                  условиями обработки данных.</p></Row>
-              </Col>
-            </div>
-          </Container>
-        </div>
-      }
+                {/* Кнопка "Войти" */}
+                <Row className={styles.row}>
+                  <button
+                    className={styles.input}
+                    disabled={authStatus === RequestStatus.LOADING}
+                  >Войти</button>
+                </Row>
+
+                {/* Опция "Запомнить меня" и "Забыли пароль" */}
+                <Row className={styles.row}>
+                  <div className={styles.wrapperRemember}>
+                    <Col md={6} className={styles.rememberWrapper}>
+                      <label htmlFor="memberMe">Запомни меня</label>
+                      <input type="checkbox" name="memberMe" id="memberMe"/>
+                    </Col>
+                    <Col className={styles.rememberWrapper}><Link to={Path.CHANGE_PASSWORD}>Забыли
+                      пароль?</Link></Col>
+                  </div>
+                </Row>
+              </form>
+              <br/>
+
+
+              {/* Регистрация */}
+              <Row className={styles.row}>
+                <Col className={styles.textAccaunt}>Нет аккаунта? </Col>
+                <Col md={8}><Link className={styles.linkPink} to={Path.REGISTRATION}>Присоединяйся !</Link></Col>
+              </Row>
+
+              {/* Вопросы */}
+              <Row className={styles.row}>
+                <Col className={styles.textAccaunt}>Остались вопросы? </Col>
+                <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+              </Row>
+              <br/>
+
+              {/* Соглашение на обработку данных */}
+              <Row className={styles.row}><p>Нажимая кнопку «Войти», вы подтверждаете своё согласие с
+                условиями обработки данных.</p></Row>
+            </Col>
+          </div>
+        </Container>
+      </div>
     </>
   );
 }
