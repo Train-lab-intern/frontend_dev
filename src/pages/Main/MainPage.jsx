@@ -10,8 +10,10 @@ import styles from './../../styles/MainPage.module.css'
 function MainPage() {
     
     const [mainPageData, setMainPageData] = useState([])
+    const url = process.env.REACT_APP_URL
+
     useEffect(() => {
-        fetch('https://test.app.it-roast.com/front/pages/1')
+        fetch(`${url}/front/pages/1`)
             .then((response) => response.json())
             .then((data) => setMainPageData(data))
             .catch((error) => console.error(error))

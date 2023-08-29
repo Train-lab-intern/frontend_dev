@@ -39,7 +39,17 @@
     border: #CC0D18 solid 2px;
     margin: 0 auto;
 }
-
+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.showPasswordIcon {
+  position: absolute;
+  right: 15%;
+  width: 20px;
+  cursor: pointer;
+}
 .errors{
     width: 80%;
     margin: 0 auto;
@@ -86,6 +96,10 @@ button.input{
     font-weight: bold;
     font-family: 'Nunito Sans', sans-serif;
 
+}
+button.input:disabled {
+  background-color: #c4c4c4;
+  cursor: not-allowed;
 }
 
 a{

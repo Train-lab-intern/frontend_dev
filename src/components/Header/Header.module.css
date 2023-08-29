@@ -32,6 +32,7 @@ button{
 
 .tooltip{
     position: relative;
+    margin: 0 24px;
 }
 
 .tooltip::after{

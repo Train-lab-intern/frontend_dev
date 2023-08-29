@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import styles from './ProfilePage.module.scss'
-import logo from '../../img/logo.jpg'
-import avatar from '../../img/avatar.png'
-import diagram from '../../img/diagram.png'
-import Footer from "../Main/Footer";
+import logo from '../../assets/img/logo.jpg'
+import avatar from '../../assets/img/avatar.png'
+import diagram from '../../assets/img/diagram.png'
+import Footer from "../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
-import Nav from "react-bootstrap/Nav";
+import {useAppSelector} from "../../redux/store";
+import {Path} from "../../constants/path";
 
 export const ProfilePage = () => {
+
+  const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)
 
   const [activeStat, setActiveStat] = useState('statOne')
 
@@ -21,35 +24,35 @@ export const ProfilePage = () => {
         <div className={styles.inner}>
           <header className={styles.header}>
             <div className={styles.logo}>
-              <NavLink to={'/'}>
+              <NavLink to={Path.HOME}>
                 <img src={logo} alt="logo"/>
               </NavLink>
             </div>
             <nav className={styles.navigation}>
-              <Nav.Link href="#tasks" className="d-flex justify-content-end ">
+              <span className="d-flex justify-content-end ">
                 <NavLink to='' className={styles.tooltip}
                    data-tooltip="здесь будет переход на страницу с примерами заданий">
                   <button className='btn btn-secondary'>Задания</button>
                 </NavLink>
-              </Nav.Link>
-              <Nav.Link href="#tasks" className="d-flex justify-content-end ">
+              </span>
+              <span className="d-flex justify-content-end ">
                 <NavLink to='' className={styles.tooltip}
                    data-tooltip="здесь будет переход на страницу резюме">
                   <button className='btn btn-secondary'>Резюме</button>
                 </NavLink>
-              </Nav.Link>
-              <Nav.Link href="#tasks" className="d-flex justify-content-end ">
+              </span>
+              <span className="d-flex justify-content-end ">
                 <NavLink to='' className={styles.tooltip}
                    data-tooltip="здесь будет переход на страницу с визиткой">
                   <button className='btn btn-secondary'>Визитка</button>
                 </NavLink>
-              </Nav.Link>
-              <Nav.Link href="#tasks" className="d-flex justify-content-end ">
+              </span>
+              <span className="d-flex justify-content-end ">
                 <NavLink to='' className={styles.tooltip}
                    data-tooltip="здесь будет переход на страницу настроек профиля">
                   <button className='btn btn-secondary'>Настройки</button>
                 </NavLink>
-              </Nav.Link>
+              </span>
             </nav>
           </header>
           <div className={styles.section}>
@@ -58,7 +61,7 @@ export const ProfilePage = () => {
                 <img src={avatar} alt="avatar"/>
               </div>
               <div className={styles.userInfo}>
-                <h2 className={styles.name}>Фамилия Имя</h2>
+                <h2 className={styles.name}>{username}</h2>
                 <h3 className={styles.specialization}>Специальность</h3>
               </div>
               <div className={styles.title}>
@@ -106,8 +109,9 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
-
-      <Footer mainPageData={[]} />
+      <div className={styles.footer}>
+        <Footer mainPageData={[]} />
+      </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import styles from "../../styles/Block.module.css";
+import styles from "./Block.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Container } from "react-bootstrap";
-import "./../../index.css"
+import "../../index.css"
 
 const responsive = {
   superLargeDesktop: {
