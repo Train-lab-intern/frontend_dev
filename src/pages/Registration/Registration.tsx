@@ -106,7 +106,7 @@ export const Registration = () => {
                     {...register("email", {
                       required: 'это поле обязательно для заполнения',
                       pattern: {
-                        value: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+                        value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
                         message: 'Вы заполняете поле в неверном формате.'
                       }
                     })}
@@ -126,10 +126,7 @@ export const Registration = () => {
                     placeholder='Логин'
                     {...register("username", {
                       required: 'это поле обязательно для заполнения',
-                      pattern: {
-                        value: /^(?![A-Za-z]\d?$)[a-zA-Z]+\d*$/,
-                        message: 'Вы заполняете поле в неверном формате.'
-                      }
+                      minLength: {value: 4, message: 'Минимальная длина имени 4 символа.'}
                     })}
                   />
                 </label>
