@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import MainPage from './pages/Main/MainPage';
 import {Auth} from "./pages/Auth/Auth";
 import {Registration} from "./pages/Registration/Registration";
@@ -7,12 +7,17 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
 import NotPage from "./pages/NotPage/NotPage";
 import {Path} from "./constants/path";
-import Loading from '../src/components/Loading/Loading'
-import {useAppSelector} from "./redux/store";
+import {useAppDispatch, useAppSelector} from "./redux/store";
+import {auth} from "./redux/reducers/authReducer";
 
 function App() {
 
+  const dispatch = useAppDispatch()
   const isLogged = useAppSelector(state => state.auth.isLogged)
+
+  useEffect(() => {
+    dispatch(auth())
+  },[])
 
   return (
     <div className="App">
