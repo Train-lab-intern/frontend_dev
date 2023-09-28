@@ -58,6 +58,12 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
     }
   })
 
+export const logout = createAsyncThunk(
+  'auth/logout', () => {
+    localStorage.removeItem('tlToken')
+  }
+)
+
 const slice = createSlice({
   name: 'auth',
   initialState: {
@@ -85,11 +91,9 @@ const slice = createSlice({
       state.authStatus = RequestStatus.SUCCEEDED
     })
     builder.addCase(auth.rejected, (state, action) => {
-      state.authStatus = RequestStatus.FAILED
-      state.authErrors = action.payload?.message || 'Что-то пошло не так.'
+      // state.authStatus = RequestStatus.FAILED
+      // state.authErrors = action.payload?.message || 'Что-то пошло не так.'
     })
-
-
     builder.addCase(authentication.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
     })
@@ -111,6 +115,9 @@ const slice = createSlice({
     builder.addCase(registration.rejected, (state, action) => {
       state.authStatus = RequestStatus.FAILED
       state.authErrors = action.payload?.message || 'Что-то пошло не так.'
+    })
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isLogged = false
     })
   }
 })

@@ -6,9 +6,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {NavLink} from 'react-router-dom'
 import {Path} from "../../constants/path";
+import {useAppSelector} from "../../redux/store";
 
 
 function Header() {
+
+  const isLogged = useAppSelector(state => state.auth.isLogged)
+
   return (
     // Компонент верхней панели навигации
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -38,13 +42,34 @@ function Header() {
             >
               <button className='btn btn-secondary'>Задания</button>
             </NavLink>
+            <NavLink
+              to={''}
+              className={`d-flex justify-content-end ${styles.tooltip}`}
+              data-tooltip="здесь будет переход на страницу резюме"
+            >
+              <button className='btn btn-secondary'>Резюме</button>
+            </NavLink>
+            <NavLink
+              to={''}
+              className={`d-flex justify-content-end ${styles.tooltip}`}
+              data-tooltip="здесь будет переход на страницу с визиткой"
+            >
+              <button className='btn btn-secondary'>Визитка</button>
+            </NavLink>
           </Nav>
 
           <Nav className="ms-auto">
             {/* Ссылки навигации */}
-            <NavLink to={Path.AUTH}>
-              <button className='btn btn-secondary'>Войти</button>
-            </NavLink>
+            {isLogged ?
+              <NavLink to={Path.PROFILE}>
+                <button
+                  className='btn btn-secondary'
+                >Мой кабинет</button>
+              </NavLink>
+               :
+              <NavLink to={Path.AUTH}>
+                <button className='btn btn-secondary'>Войти</button>
+              </NavLink>}
           </Nav>
         </Navbar.Collapse>
       </Container>
