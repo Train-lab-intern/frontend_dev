@@ -42,20 +42,22 @@ function Header() {
             >
               <button className='btn btn-secondary'>Задания</button>
             </NavLink>
-            <NavLink
-              to={''}
-              className={`d-flex justify-content-end ${styles.tooltip}`}
-              data-tooltip="здесь будет переход на страницу резюме"
-            >
-              <button className='btn btn-secondary'>Резюме</button>
-            </NavLink>
-            <NavLink
-              to={''}
-              className={`d-flex justify-content-end ${styles.tooltip}`}
-              data-tooltip="здесь будет переход на страницу с визиткой"
-            >
-              <button className='btn btn-secondary'>Визитка</button>
-            </NavLink>
+            {isLogged && <>
+              <NavLink
+                to={''}
+                className={`d-flex justify-content-end ${styles.tooltip}`}
+                data-tooltip="здесь будет переход на страницу резюме"
+              >
+                <button className='btn btn-secondary'>Резюме</button>
+              </NavLink>
+              <NavLink
+                to={''}
+                className={`d-flex justify-content-end ${styles.tooltip}`}
+                data-tooltip="здесь будет переход на страницу с визиткой"
+              >
+                <button className='btn btn-secondary'>Визитка</button>
+              </NavLink>
+            </>}
           </Nav>
 
           <Nav className="ms-auto">
@@ -64,9 +66,10 @@ function Header() {
               <NavLink to={Path.PROFILE}>
                 <button
                   className='btn btn-secondary'
-                >Мой кабинет</button>
+                >Мой кабинет
+                </button>
               </NavLink>
-               :
+              :
               <NavLink to={Path.AUTH}>
                 <button className='btn btn-secondary'>Войти</button>
               </NavLink>}
