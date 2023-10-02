@@ -5,17 +5,23 @@ import avatar from '../../assets/img/avatar.png'
 import diagram from '../../assets/img/diagram.png'
 import Footer from "../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
-import {useAppSelector} from "../../redux/store";
+import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {Path} from "../../constants/path";
+import {logout} from "../../redux/reducers/authReducer";
 
 export const ProfilePage = () => {
 
+  const dispatch = useAppDispatch()
   const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)
 
   const [activeStat, setActiveStat] = useState('statOne')
 
   const handleActiveStat = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setActiveStat(e.currentTarget.id)
+  }
+
+  const handleLogout = () => {
+    dispatch(logout())
   }
 
   return (
@@ -47,6 +53,10 @@ export const ProfilePage = () => {
                   <button className='btn btn-secondary'>Визитка</button>
                 </NavLink>
               </span>
+              <button
+                className='btn btn-secondary'
+                onClick={handleLogout}
+              >Выйти</button>
               <span className="d-flex justify-content-end ">
                 <NavLink to='' className={styles.tooltip}
                    data-tooltip="здесь будет переход на страницу настроек профиля">

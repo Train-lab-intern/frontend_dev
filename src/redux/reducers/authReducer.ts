@@ -1,10 +1,27 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {authApi, AuthenticationRequestType, RegistrationRequestDataType} from "../../api/authApi";
+import {authApi, AuthenticationRequestType, RegistrationRequestDataType, UserDto} from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
 import {isAxiosError} from "axios";
 
-export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
+export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
+    try {
+      // const userData = await authApi.getUserData()
+      return await authApi.getUserData()
+    }catch (e) {
+      let errorMessage: string
+      if(isAxiosError(e)){
+        errorMessage = e.response? e.response.data.message : e.message
+        return thunkAPI.rejectWithValue({message: errorMessage})
+      }else{
+        return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
+      }
+    }
+  }
+)
+
+export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
+  'auth/authentication', async (arg, thunkAPI) => {
     try {
       
       const data = await authApi.authentication(arg)
@@ -41,6 +58,12 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
     }
   })
 
+export const logout = createAsyncThunk(
+  'auth/logout', () => {
+    localStorage.removeItem('tlToken')
+  }
+)
+
 const slice = createSlice({
   name: 'auth',
   initialState: {
@@ -59,6 +82,18 @@ const slice = createSlice({
     }
   },
   extraReducers: (builder) => {
+    builder.addCase(auth.pending, (state) => {
+      state.authStatus = RequestStatus.LOADING
+    })
+    builder.addCase(auth.fulfilled, (state, action) => {
+      state.userData.userDto = action.payload
+      state.isLogged = true
+      state.authStatus = RequestStatus.SUCCEEDED
+    })
+    builder.addCase(auth.rejected, (state, action) => {
+      // state.authStatus = RequestStatus.FAILED
+      // state.authErrors = action.payload?.message || 'Что-то пошло не так.'
+    })
     builder.addCase(authentication.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
     })
@@ -81,6 +116,9 @@ const slice = createSlice({
       state.authStatus = RequestStatus.FAILED
       state.authErrors = action.payload?.message || 'Что-то пошло не так.'
     })
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isLogged = false
+    })
   }
 })
 
@@ -95,12 +133,5 @@ export type AuthReducerInitialStateType = {
 }
 export type UserDataType = {
   userEmail: string
-  userDto: {
-    id: number
-    username: string
-    email: string
-    created: string
-    changed: string
-    active: boolean
-  }
+  userDto: UserDto
 }
