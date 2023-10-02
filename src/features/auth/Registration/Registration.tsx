@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import styles from './Registration.module.css'
-import Logo from '../../assets/img/fullLogo.jpg'
+import Logo from '../../../assets/img/fullLogo.jpg'
 import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import {Path} from "../../constants/path";
-import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {changeAuthStatus, clearErrors, registration} from "../../redux/reducers/authReducer";
-import {RequestStatus} from "../../constants/requestStatus";
-import closeEyeIcon from '../../assets/icons/closeEye.png'
-import openEyeIcon from '../../assets/icons/openEye.png'
-import {Notification} from "../../components/Notifications/Notification";
+import {Path} from "../../../constants/path";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {changeAuthStatus, clearErrors, registration} from "../authReducer";
+import {RequestStatus} from "../../../constants/requestStatus";
+import closeEyeIcon from '../../../assets/icons/closeEye.png'
+import openEyeIcon from '../../../assets/icons/openEye.png'
+import {Notification} from "../../../components/Notifications/Notification";
 
 type FormDataType = {
   email: string
@@ -212,7 +212,7 @@ export const Registration = () => {
             {/* Вопросы */}
             <Row className={styles.row}>
               <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-              <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+              <Col md={8}><a className={styles.linkPink} href="src/features/auth/Registration/Registration#">Спроси нас!</a></Col>
             </Row>
             <br/>
 

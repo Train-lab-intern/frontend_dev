@@ -1,23 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
-import styles from './Auth.module.css'
-import Logo from '../../assets/img/fullLogo.jpg'
+import styles from './Login.module.css'
+import Logo from '../../../assets/img/fullLogo.jpg'
 import {Link, Navigate, NavLink, useNavigate} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import {Path} from "../../constants/path";
-import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {authentication, changeAuthStatus, clearErrors} from "../../redux/reducers/authReducer";
-import {RequestStatus} from "../../constants/requestStatus";
-import openEyeIcon from "../../assets/icons/openEye.png";
-import closeEyeIcon from "../../assets/icons/closeEye.png";
-import {Notification} from "../../components/Notifications/Notification";
+import {Path} from "../../../constants/path";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {authentication, changeAuthStatus, clearErrors} from "../authReducer";
+import {RequestStatus} from "../../../constants/requestStatus";
+import openEyeIcon from "../../../assets/icons/openEye.png";
+import closeEyeIcon from "../../../assets/icons/closeEye.png";
+import {Notification} from "../../../components/Notifications/Notification";
 
 type FormDataType = {
   userEmail: string
   userPassword: string
 }
 
-export const Auth = () => {
+export const Login = () => {
 
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -171,7 +171,7 @@ export const Auth = () => {
               {/* Вопросы */}
               <Row className={styles.row}>
                 <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-                <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+                <Col md={8}><a className={styles.linkPink} href="src/features/auth/Login/Auth#Login.tsx">Спроси нас!</a></Col>
               </Row>
               <br/>
 

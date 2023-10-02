@@ -2,8 +2,8 @@ import {Container, Row, Col} from "react-bootstrap";
 import styles from './Banner.module.css'
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {Path} from "../../constants/path";
-import Loading from "../Loading/Loading";
+import {Path} from "../../../constants/path";
+import Loading from "../../../components/Loading/Loading";
 
 //title - 1.1
 //text - 1.2

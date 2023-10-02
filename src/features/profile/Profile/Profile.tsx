@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import styles from './ProfilePage.module.scss'
-import logo from '../../assets/img/logo.jpg'
-import avatar from '../../assets/img/avatar.png'
-import diagram from '../../assets/img/diagram.png'
-import Footer from "../../components/Footer/Footer";
+import styles from './Profile.module.scss'
+import logo from '../../../assets/img/logo.jpg'
+import avatar from '../../../assets/img/avatar.png'
+import diagram from '../../../assets/img/diagram.png'
+import Footer from "../../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {Path} from "../../constants/path";
-import {logout} from "../../redux/reducers/authReducer";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {Path} from "../../../constants/path";
+import {logout} from "../../auth/authReducer";
 
-export const ProfilePage = () => {
+export const Profile = () => {
 
   const dispatch = useAppDispatch()
   const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)

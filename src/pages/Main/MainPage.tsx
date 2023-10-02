@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
 import Footer from '../../components/Footer/Footer'
-import MultiCarousel  from "../../components/MultiCarousel/MultiCarousel";
-import UserReviews from "../../components/UserReviews/UserReviews";
+import MultiCarousel  from "./MultiCarousel/MultiCarousel";
+import UserReviews from "./UserReviews/UserReviews";
 import OurFeatures from "./OurFeatures";
 import Header from "../../components/Header/Header";
-import Banner from "../../components/Banner/Banner";
+import Banner from "./Banner/Banner";
 import styles from './MainPage.module.css'
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {getDataMainPage} from "../../redux/reducers/pagesDataReducer";

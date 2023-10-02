@@ -1,12 +1,12 @@
 import React from 'react';
-import bannerImg from '../../assets/img/banner.jpg'
-import Header from "../../components/Header/Header";
-import Footer from '../../components/Footer/Footer'
+import bannerImg from '../../../assets/img/banner.jpg'
+import Header from "../../../components/Header/Header";
+import Footer from '../../../components/Footer/Footer'
 import styles from './ChangePassword.module.css'
-import logo from '../../assets/img/fullLogo.jpg'
+import logo from '../../../assets/img/fullLogo.jpg'
 import {Link} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import {Path} from "../../constants/path";
+import {Path} from "../../../constants/path";
 
 
 function ChangePassword() {

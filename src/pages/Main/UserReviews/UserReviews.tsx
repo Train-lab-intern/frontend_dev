@@ -3,7 +3,7 @@ import styles from './UserReviews.module.css'
 import Carousel from 'react-multi-carousel';
 import "react-multi-carousel/lib/styles.css";
 import {Container} from "react-bootstrap";
-import userImage from '../../assets/img/userImg.png'
+import userImage from '../../../assets/img/userImg.png'
 
 type PropsType = {
   reviews: string[];
