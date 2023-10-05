@@ -1,3 +1,44 @@
+.header {}
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+
+  .logo {}
+}
+.navigation {
+  width: 80%;
+  display: flex;
+  column-gap: 50px;
+
+  .link {
+    min-width: 120px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #808185;
+    border-radius: 8px;
+    border: solid #808185 1px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+
+  }
+  .link:last-child {
+    margin-left: auto;
+  }
+}
+
+
+
+
 button{
     min-width: 120px;
     height: 40px;

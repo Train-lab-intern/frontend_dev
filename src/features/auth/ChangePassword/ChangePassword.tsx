@@ -1,6 +1,6 @@
 import React from 'react';
 import bannerImg from '../../../assets/img/banner.jpg'
-import Header from "../../../components/Header/Header";
+import {Header} from "../../../components/Header/Header";
 import Footer from '../../../components/Footer/Footer'
 import styles from './ChangePassword.module.css'
 import logo from '../../../assets/img/fullLogo.jpg'
