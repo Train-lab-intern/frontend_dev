@@ -7,13 +7,15 @@ import ChangePassword from "./features/auth/ChangePassword/ChangePassword";
 import {Profile} from "./features/profile/Profile/Profile";
 import NotPage from "./pages/NotPage/NotPage";
 import {Path} from "./constants/path";
-import {useAppDispatch} from "./redux/store";
+import {useAppDispatch, useAppSelector} from "./redux/store";
 import {auth} from "./features/auth/authReducer";
 import {PrivateRoute} from "./pages/PrivateRoute";
+import {RequestStatus} from "./constants/requestStatus";
 
 function App() {
 
   const dispatch = useAppDispatch()
+  const appStatus = useAppSelector(state => state.app.appStatus)
 
   useEffect(() => {
     dispatch(auth())
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
+      {appStatus === RequestStatus.SUCCEEDED && <Routes>
         <Route path={Path.HOME} element={<MainPage/>}/>
         <Route path={Path.AUTH} element={<Login/>}/>
         <Route path={Path.REGISTRATION} element={<Registration/>}/>
@@ -32,7 +34,7 @@ function App() {
           </PrivateRoute>
         }/>
         <Route path='*' element={<NotPage/>}/>
-      </Routes>
+      </Routes>}
     </div>
   );
 }

@@ -6,7 +6,6 @@ import {isAxiosError} from "axios";
 export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
     try {
-      // const userData = await authApi.getUserData()
       return await authApi.getUserData()
     }catch (e) {
       let errorMessage: string
