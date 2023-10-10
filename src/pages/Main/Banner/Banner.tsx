@@ -1,37 +1,29 @@
-import {Container, Row, Col} from "react-bootstrap";
-import styles from './Banner.module.css'
+import styles from './Banner.module.scss'
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {Path} from "../../../constants/path";
-import Loading from "../../../components/Loading/Loading";
 
-//title - 1.1
-//text - 1.2
 type PropsType = {
   title: string
   text: string
 };
 
-const Banner:React.FC<PropsType> = ({title, text}) => {
+const Banner: React.FC<PropsType> = ({title, text}) => {
 
   return (
-    <Container>
       <div className={styles.wrapper}>
-        <Row className={styles.row_banner}>
-          <Col md={6}>
-            <h3 className={styles.h3_banner}>{title ? title : ''}</h3>
-            <span className={styles.text_banner}>{text ? text : ''}</span>
-          </Col>
-          <Col md={4} className={styles.col_banner_btn}>
-            <NavLink to={Path.REGISTRATION} className={styles.tooltip}
-               data-tooltip="здесь будет переход на страницу регистрации">
-              <button className={styles.btn_banner}>Начать путь</button>
+        <div className={styles.container}>
+          <div className={styles.inner}>
+            <div className={styles.content}>
+              <h3 className={styles.title}>{title ? title : ''}</h3>
+              <span className={styles.text}>{text ? text : ''}</span>
+            </div>
+            <NavLink to={Path.REGISTRATION} className={styles.link}>
+              Начать&nbsp;путь
             </NavLink>
-
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
-    </Container>
   );
 }
 
