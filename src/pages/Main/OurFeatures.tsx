@@ -1,6 +1,6 @@
 import React from 'react';
-import {Container, Row, Col} from "react-bootstrap";
-import styles from './OurFeatures.module.css'
+import styles from './OurFeatures.module.scss'
+import {NavLink} from "react-router-dom";
 
 
 type PropsType = {
@@ -10,26 +10,23 @@ type PropsType = {
 const OurFeatures: React.FC<PropsType> = ({items}) => {
 
   return (
-    <div>
-      <div className={styles.wrapper}>
-        <Container>
-          <Row>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.inner}>
+          <div className={styles.list}>
             {items && items.map((item, i) => (
-              <Col className={styles.col} key={i}>
+              <div className={styles.item}>
                 <div className={i % 2 === 0 ? styles.block_2 : styles.block_1}>
                   <span>{item}</span>
                 </div>
-              </Col>
+              </div>
             ))
             }
-            <Col className={styles.col}>
-              <a href="#" className={styles.tooltip}
-                 data-tooltip="здесь будет возможно инициировать получение обратной связи">
-                <button className={`${styles.btn} btn btn-secondary`}>Задай нам вопрос</button>
-              </a>
-            </Col>
-          </Row>
-        </Container>
+          </div>
+          <NavLink to={''} className={styles.link}>
+            Задай нам вопрос
+          </NavLink>
+        </div>
       </div>
     </div>
   );
