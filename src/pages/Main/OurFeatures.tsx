@@ -15,7 +15,7 @@ const OurFeatures: React.FC<PropsType> = ({items}) => {
         <div className={styles.inner}>
           <div className={styles.list}>
             {items && items.map((item, i) => (
-              <div className={styles.item}>
+              <div className={styles.item} key={i}>
                 <div className={i % 2 === 0 ? styles.block_2 : styles.block_1}>
                   <span>{item}</span>
                 </div>
