@@ -52,7 +52,7 @@ export const Navigation = () => {
                 Мой кабинет
               </NavLink>
             }
-            <button onClick={handleLogout} className={styles.logoutResponsive}>Выйти {iconLogout}</button>
+            <button onClick={handleLogout} className={`${styles.link} ${styles.logoutResponsive}`}>Выйти {iconLogout}</button>
           </div>
           :
           <div className={styles.linksProfile}>

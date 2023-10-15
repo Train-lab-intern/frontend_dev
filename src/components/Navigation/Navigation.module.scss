@@ -7,6 +7,7 @@
   column-gap: 5%;
 
   transition: .4s;
+}
 
   .linksProfile {
     display: flex;
@@ -37,7 +38,6 @@
     }
   }
   .logout, .logoutResponsive {
-    //margin-left: auto;
     border: none;
     border-radius: 8px;
     background: none;
@@ -54,9 +54,9 @@
   }
   .logoutResponsive {
     display: none;
+    background: #808185;
 
   }
-}
 
 @media screen and (max-width: 1130px) {
   .navigation {
@@ -108,26 +108,6 @@
       }
 
       .logoutResponsive {
-        min-width: 120px;
-        width: 45%;
-        height: 40px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 0 10px;
-        background-color: #808185;
-        border-radius: 8px;
-        border: solid #808185 1px;
-        color: white;
-        font-size: 18px;
-        font-weight: 700;
-
-        transition: .2s;
-
-        &:hover {
-          background: #5c636a;
-          transition: .2s;
-        }
 
         path {
           fill: #fff;
@@ -138,30 +118,6 @@
   .menu {
     display: block;
     margin-left: auto;
-
-    button {
-      min-width: 120px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 10px;
-      background-color: #808185;
-      border-radius: 8px;
-      border: solid #808185 1px;
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-
-      z-index: 1002;
-
-      transition: .2s;
-
-      &:hover {
-        background: #5c636a;
-        transition: .2s;
-      }
-    }
   }
 
   .active {
