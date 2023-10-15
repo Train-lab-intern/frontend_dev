@@ -74,7 +74,6 @@ export const Registration = () => {
 
   return (
     <div className={styles.auth}>
-      {/*<button onClick={() => dispatch(changeAuthStatus(RequestStatus.SUCCEEDED))}>reg</button>*/}
       {authStatus === RequestStatus.SUCCEEDED && <Notification
         messages={
           'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
@@ -88,7 +87,7 @@ export const Registration = () => {
           {/* Обертка */}
           <Col className={styles.wrapper}>
             {/* Логотип */}
-            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
+            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo" className={styles.logo}/></NavLink></Row>
 
             {/* Заголовок */}
             <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
