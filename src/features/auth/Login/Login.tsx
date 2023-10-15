@@ -81,7 +81,7 @@ export const Login = () => {
             {/* Обертка */}
             <Col className={styles.wrapper}>
               {/* Логотип */}
-              <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
+              <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo" className={styles.logo} /></NavLink></Row>
 
               {/* Заголовок */}
               <Row className={styles.row}><h1 className='md:text-3xl font-bold' style={{textAlign: 'center'}}>Мы
