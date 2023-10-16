@@ -11,6 +11,7 @@ import {useAppDispatch, useAppSelector} from "./redux/store";
 import {auth} from "./features/auth/authReducer";
 import {PrivateRoute} from "./pages/PrivateRoute";
 import {RequestStatus} from "./constants/requestStatus";
+import {ProfileSettings} from "./features/profile/ProfileSettings/ProfileSettings";
 
 function App() {
 
@@ -31,6 +32,11 @@ function App() {
         <Route path={Path.PROFILE} element={
           <PrivateRoute>
             <Profile/>
+          </PrivateRoute>
+        }/>
+        <Route path={Path.PROFILE_SETTINGS} element={
+          <PrivateRoute>
+            <ProfileSettings />
           </PrivateRoute>
         }/>
         <Route path='*' element={<NotPage/>}/>
