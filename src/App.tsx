@@ -1,19 +1,21 @@
 import React, {useEffect} from 'react';
 import MainPage from './pages/Main/MainPage';
-import {Auth} from "./pages/Auth/Auth";
-import {Registration} from "./pages/Registration/Registration";
+import {Login} from "./features/auth/Login/Login";
+import {Registration} from "./features/auth/Registration/Registration";
 import {Routes, Route} from 'react-router-dom'
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
-import {ProfilePage} from "./pages/ProfilePage/ProfilePage";
+import ChangePassword from "./features/auth/ChangePassword/ChangePassword";
+import {Profile} from "./features/profile/Profile/Profile";
 import NotPage from "./pages/NotPage/NotPage";
 import {Path} from "./constants/path";
-import {useAppDispatch} from "./redux/store";
-import {auth} from "./redux/reducers/authReducer";
+import {useAppDispatch, useAppSelector} from "./redux/store";
+import {auth} from "./features/auth/authReducer";
 import {PrivateRoute} from "./pages/PrivateRoute";
+import {RequestStatus} from "./constants/requestStatus";
 
 function App() {
 
   const dispatch = useAppDispatch()
+  const appStatus = useAppSelector(state => state.app.appStatus)
 
   useEffect(() => {
     dispatch(auth())
@@ -21,18 +23,18 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
+      {appStatus === RequestStatus.SUCCEEDED && <Routes>
         <Route path={Path.HOME} element={<MainPage/>}/>
-        <Route path={Path.AUTH} element={<Auth/>}/>
+        <Route path={Path.AUTH} element={<Login/>}/>
         <Route path={Path.REGISTRATION} element={<Registration/>}/>
         <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword/>}/>
         <Route path={Path.PROFILE} element={
           <PrivateRoute>
-            <ProfilePage/>
+            <Profile/>
           </PrivateRoute>
         }/>
         <Route path='*' element={<NotPage/>}/>
-      </Routes>
+      </Routes>}
     </div>
   );
 }

@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
-import styles from './ProfilePage.module.scss'
-import logo from '../../assets/img/logo.jpg'
-import avatar from '../../assets/img/avatar.png'
-import diagram from '../../assets/img/diagram.png'
-import Footer from "../../components/Footer/Footer";
+import styles from './Profile.module.scss'
+import logo from '../../../assets/img/logo.jpg'
+import avatar from '../../../assets/img/avatar.png'
+import diagram from '../../../assets/img/diagram.png'
+import Footer from "../../../components/Footer/Footer";
 import {NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {Path} from "../../constants/path";
-import {logout} from "../../redux/reducers/authReducer";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {Path} from "../../../constants/path";
+import {logout} from "../../auth/authReducer";
+import {Header} from "../../../components/Header/Header";
 
-export const ProfilePage = () => {
+export const Profile = () => {
 
   const dispatch = useAppDispatch()
   const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)
@@ -26,45 +27,11 @@ export const ProfilePage = () => {
 
   return (
     <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <Header />
+      </div>
       <div className={styles.container}>
         <div className={styles.inner}>
-          <header className={styles.header}>
-            <div className={styles.logo}>
-              <NavLink to={Path.HOME}>
-                <img src={logo} alt="logo"/>
-              </NavLink>
-            </div>
-            <nav className={styles.navigation}>
-              <span className="d-flex justify-content-end ">
-                <NavLink to='' className={styles.tooltip}
-                   data-tooltip="здесь будет переход на страницу с примерами заданий">
-                  <button className='btn btn-secondary'>Задания</button>
-                </NavLink>
-              </span>
-              <span className="d-flex justify-content-end ">
-                <NavLink to='' className={styles.tooltip}
-                   data-tooltip="здесь будет переход на страницу резюме">
-                  <button className='btn btn-secondary'>Резюме</button>
-                </NavLink>
-              </span>
-              <span className="d-flex justify-content-end ">
-                <NavLink to='' className={styles.tooltip}
-                   data-tooltip="здесь будет переход на страницу с визиткой">
-                  <button className='btn btn-secondary'>Визитка</button>
-                </NavLink>
-              </span>
-              <button
-                className='btn btn-secondary'
-                onClick={handleLogout}
-              >Выйти</button>
-              <span className="d-flex justify-content-end ">
-                <NavLink to='' className={styles.tooltip}
-                   data-tooltip="здесь будет переход на страницу настроек профиля">
-                  <button className='btn btn-secondary'>Настройки</button>
-                </NavLink>
-              </span>
-            </nav>
-          </header>
           <div className={styles.section}>
             <div className={styles.statDiagram}>
               <div className={styles.avatar}>

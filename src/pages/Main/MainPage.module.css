@@ -8,3 +8,6 @@
 .main_mainPage{
     flex: 1 1 auto;
 }
+.header {
+  margin-bottom: 20px;
+}

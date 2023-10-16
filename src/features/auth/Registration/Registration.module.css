@@ -2,17 +2,6 @@
     margin: 20px;
 }
 
-.wrapper:not(img){
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 10px;
-    width: 725px;
-    margin: 0 auto;
-}
-
-
-
-
 .eye{
     margin-left: -30px;
     cursor: pointer;
@@ -31,15 +20,7 @@
     border: gray solid 1px;
     margin: 0 auto;
 }
-
-.input_border_red{
-    width: 80%;
-    height: 40px;
-    border-radius: 5px;
-    border: #CC0D18 solid 2px;
-    margin: 0 auto;
-}
-label {
+.labelPassword {
   position: relative;
   display: flex;
   align-items: center;
@@ -50,6 +31,15 @@ label {
   width: 20px;
   cursor: pointer;
 }
+
+.input_border_red{
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    border: #CC0D18 solid 2px;
+    margin: 0 auto;
+}
+
 .errors{
     width: 80%;
     margin: 0 auto;
@@ -57,8 +47,6 @@ label {
     font-family: 'Nunito Sans', sans-serif;
     color: #CC0D18;
 }
-
-
 
 
 
@@ -84,7 +72,13 @@ label {
 }
 
 
-
+.wrapper:not(img){
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    width: 725px;
+    margin: 0 auto;
+}
 
 .logo{
     width: 300px;
@@ -141,20 +135,22 @@ p{
     margin-left: 5px;
 }
 
-
-
-
 @media  (max-width: 800px) {
-    .wrapper:not(img){
-        border: 1px solid lightgrey;
-        border-radius: 10px;
-        padding: 10px;
-        width: auto;
-        margin: 0 auto;
-    }
+  .wrapper:not(img){
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    width: auto;
+    margin: 0 auto;
+  }
 
-    .container{
-        margin: 0;
-    }
+  .container{
+    margin: 0;
+  }
 }
 
+@media screen and (max-width: 760px) {
+  .logo {
+    width: 100%;
+  }
+}

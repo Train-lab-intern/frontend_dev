@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import styles from './Registration.module.css'
-import Logo from '../../assets/img/fullLogo.jpg'
+import Logo from '../../../assets/img/fullLogo.jpg'
 import {Link, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
-import {Path} from "../../constants/path";
-import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {changeAuthStatus, clearErrors, registration} from "../../redux/reducers/authReducer";
-import {RequestStatus} from "../../constants/requestStatus";
-import closeEyeIcon from '../../assets/icons/closeEye.png'
-import openEyeIcon from '../../assets/icons/openEye.png'
-import {Notification} from "../../components/Notifications/Notification";
+import {Path} from "../../../constants/path";
+import {useAppDispatch, useAppSelector} from "../../../redux/store";
+import {changeAuthStatus, clearErrors, registration} from "../authReducer";
+import {RequestStatus} from "../../../constants/requestStatus";
+import closeEyeIcon from '../../../assets/icons/closeEye.png'
+import openEyeIcon from '../../../assets/icons/openEye.png'
+import {Notification} from "../../../components/Notifications/Notification";
 
 type FormDataType = {
   email: string
@@ -74,7 +74,6 @@ export const Registration = () => {
 
   return (
     <div className={styles.auth}>
-      {/*<button onClick={() => dispatch(changeAuthStatus(RequestStatus.SUCCEEDED))}>reg</button>*/}
       {authStatus === RequestStatus.SUCCEEDED && <Notification
         messages={
           'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
@@ -88,7 +87,7 @@ export const Registration = () => {
           {/* Обертка */}
           <Col className={styles.wrapper}>
             {/* Логотип */}
-            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"/></NavLink></Row>
+            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo" className={styles.logo}/></NavLink></Row>
 
             {/* Заголовок */}
             <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
@@ -212,7 +211,7 @@ export const Registration = () => {
             {/* Вопросы */}
             <Row className={styles.row}>
               <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-              <Col md={8}><a className={styles.linkPink} href="#">Спроси нас!</a></Col>
+              <Col md={8}><a className={styles.linkPink} href="src/features/auth/Registration/Registration#">Спроси нас!</a></Col>
             </Row>
             <br/>
 
