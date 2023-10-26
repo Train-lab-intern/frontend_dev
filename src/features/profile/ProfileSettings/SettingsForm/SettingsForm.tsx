@@ -99,7 +99,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
         <select defaultValue={''} className={styles.select} {...register('level', {
           required: 'Выберите уровень.'
         })}>
-          <option disabled value={''}>level</option>
+          <option disabled value={''}>Уровень</option>
           <option value="first">first</option>
           <option value="second">second</option>
           <option value="third">third</option>
@@ -108,9 +108,9 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
       </label>
       <label className={styles.label}>
         <select defaultValue={''} className={styles.select} {...register('direction', {
-          required: 'выберите направление.'
+          required: 'Выберите направление.'
         })}>
-          <option disabled value={''} >direction</option>
+          <option disabled value={''} >Направление</option>
           <option value="Java">Java</option>
           <option value="QA">QA</option>
           <option value="JavaScript">JavaScript</option>
