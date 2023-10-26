@@ -28,7 +28,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
   const [imgName, setImgName] = useState<null | string>(null)
 
   const {
-    register, handleSubmit, formState, watch, reset
+    register, handleSubmit, formState: {errors}, watch, reset
   } = useForm<InputsType>()
 
 
@@ -68,16 +68,22 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
           className={styles.inputText}
           type={'text'}
           placeholder={'Введите ваше имя'}
-          {...register('userName')}
+          {...register('userName', {
+            required: 'Это поле обязательно для заполнения.'
+          })}
         />
+        {errors.userName?.message && <span className={styles.error}>{errors.userName.message}</span>}
       </label>
       <label className={styles.label}>
         <input
           className={styles.inputText}
           type={'text'}
           placeholder={'Введите ваш логин'}
-          {...register('login')}
+          {...register('login', {
+            required: 'Это поле обязательно для заполнения.'
+          })}
         />
+        {errors.login?.message && <span className={styles.error}>{errors.login.message}</span>}
       </label>
       <label className={styles.label}>
         <input
@@ -90,21 +96,27 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
         </span>
       </label>
       <label className={styles.label}>
-        <select defaultValue={''} className={styles.select} {...register('level')}>
+        <select defaultValue={''} className={styles.select} {...register('level', {
+          required: 'Выберите уровень.'
+        })}>
           <option disabled value={''}>level</option>
           <option value="first">first</option>
           <option value="second">second</option>
           <option value="third">third</option>
         </select>
+        {errors.level?.message && <span className={styles.error}>{errors.level.message}</span>}
       </label>
       <label className={styles.label}>
-        <select defaultValue={''} className={styles.select} {...register('direction')}>
+        <select defaultValue={''} className={styles.select} {...register('direction', {
+          required: 'выберите направление.'
+        })}>
           <option disabled value={''} >direction</option>
           <option value="Java">Java</option>
           <option value="QA">QA</option>
           <option value="JavaScript">JavaScript</option>
           <option value="Python">Python</option>
         </select>
+        {errors.direction?.message && <span className={styles.error}>{errors.direction.message}</span>}
       </label>
       <div className={styles.buttons}>
         <button type="submit">Сохранить&nbsp;изменения</button>
