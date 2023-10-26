@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './SettingsForm.module.scss'
-import {SubmitHandler, useForm, Controller } from "react-hook-form";
-import {iconProfile} from '../../../../assets/icons/iconProfile'
+import {SubmitHandler, useForm } from "react-hook-form";
 
 type DataType = {
   userName?: string
@@ -42,9 +41,8 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
       // @ts-ignore
       setImgName(data['avatar'][0].name)
     }
-
-    // console.log(data)
     saveNewData(data)
+    reset()
   }
 
   const handleResetForm = () => {
@@ -87,22 +85,21 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
           type='file' {...register('avatar')}
         />
         <span className={styles.customInputFile}>
-          <span className={styles.loadFileButton}>Загрузить фото</span>
-          {!!imgName && <span className={styles.nameFile}>{imgName}</span>}
-          {/*<span className={styles.icon}>{iconProfile}</span>*/}
+          <span className={styles.loadFileButton}>Загрузить&nbsp;фото</span>
+          <span className={styles.nameFile}>{imgName}</span>
         </span>
       </label>
       <label className={styles.label}>
-        <select defaultValue={'level'} className={styles.select} {...register('level')}>
-          <option disabled value={'level'}>level</option>
+        <select defaultValue={''} className={styles.select} {...register('level')}>
+          <option disabled value={''}>level</option>
           <option value="first">first</option>
           <option value="second">second</option>
           <option value="third">third</option>
         </select>
       </label>
       <label className={styles.label}>
-        <select defaultValue={'direction'} className={styles.select} {...register('direction')}>
-          <option disabled value={'direction'}>direction</option>
+        <select defaultValue={''} className={styles.select} {...register('direction')}>
+          <option disabled value={''} >direction</option>
           <option value="Java">Java</option>
           <option value="QA">QA</option>
           <option value="JavaScript">JavaScript</option>
@@ -110,7 +107,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
         </select>
       </label>
       <div className={styles.buttons}>
-        <button type="submit">Сохранить изменения</button>
+        <button type="submit">Сохранить&nbsp;изменения</button>
         <button type="button" onClick={handleResetForm}>Очистить</button>
       </div>
     </form>
