@@ -45,7 +45,7 @@ export const Navigation = () => {
           <div className={styles.linksProfile}>
             <button onClick={handleLogout} className={styles.logout}>Выйти {iconLogout}</button>
             {pathname === Path.PROFILE ?
-              <NavLink to={''} className={styles.link}>
+              <NavLink to={Path.PROFILE_SETTINGS} className={styles.link}>
                 Настройки
               </NavLink> :
               <NavLink to={Path.PROFILE} className={styles.link}>

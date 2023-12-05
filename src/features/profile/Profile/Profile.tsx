@@ -1,28 +1,19 @@
 import React, {useState} from 'react';
 import styles from './Profile.module.scss'
-import logo from '../../../assets/img/logo.jpg'
-import avatar from '../../../assets/img/avatar.png'
 import diagram from '../../../assets/img/diagram.png'
 import Footer from "../../../components/Footer/Footer";
-import {NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../../redux/store";
-import {Path} from "../../../constants/path";
-import {logout} from "../../auth/authReducer";
+import {useAppSelector} from "../../../redux/store";
 import {Header} from "../../../components/Header/Header";
+import {iconProfile} from "../../../assets/icons/iconProfile";
 
 export const Profile = () => {
 
-  const dispatch = useAppDispatch()
   const {email, username, id} = useAppSelector(state => state.auth.userData.userDto)
 
   const [activeStat, setActiveStat] = useState('statOne')
 
   const handleActiveStat = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setActiveStat(e.currentTarget.id)
-  }
-
-  const handleLogout = () => {
-    dispatch(logout())
   }
 
   return (
@@ -35,7 +26,8 @@ export const Profile = () => {
           <div className={styles.section}>
             <div className={styles.statDiagram}>
               <div className={styles.avatar}>
-                <img src={avatar} alt="avatar"/>
+                {/*<img src={''} alt="avatar"/>*/}
+                {iconProfile}
               </div>
               <div className={styles.userInfo}>
                 <h2 className={styles.name}>{username}</h2>
