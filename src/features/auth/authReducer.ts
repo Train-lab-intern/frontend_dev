@@ -49,7 +49,7 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
     }catch (e) {
       let errorMessage: string
       if(isAxiosError(e)){
-        errorMessage = e.response? e.response.data.message : e.message
+        errorMessage = e.response ? e.response.data.message : e.message
         return thunkAPI.rejectWithValue({message: errorMessage})
       }else{
         return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
@@ -103,7 +103,7 @@ const slice = createSlice({
     })
     builder.addCase(authentication.rejected, (state, action) => {
       state.authStatus = RequestStatus.FAILED
-      state.authErrors = action.payload?.message || 'Что-то пошло не так.'
+      state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
     builder.addCase(registration.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
@@ -113,7 +113,7 @@ const slice = createSlice({
     })
     builder.addCase(registration.rejected, (state, action) => {
       state.authStatus = RequestStatus.FAILED
-      state.authErrors = action.payload?.message || 'Что-то пошло не так.'
+      state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
     builder.addCase(logout.fulfilled, (state) => {
       state.isLogged = false

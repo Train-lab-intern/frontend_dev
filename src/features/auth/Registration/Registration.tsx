@@ -14,7 +14,6 @@ import {Notification} from "../../../components/Notifications/Notification";
 
 type FormDataType = {
   email: string
-  username: string
   password: string
   passwordConfirm: string
 }
@@ -46,7 +45,6 @@ export const Registration = () => {
     if (data.password === data.passwordConfirm) {
       dispatch(registration({
         email: data.email,
-        username: data.username,
         password: data.password
       }))
     } else {
@@ -81,22 +79,15 @@ export const Registration = () => {
         handleClose={handleCloseNotification}
       />}
       {authStatus === RequestStatus.FAILED && authErrors &&
-        <Notification messages={authErrors} handleClose={handleCloseNotification} />}
+        <Notification messages={authErrors} handleClose={handleCloseNotification}/>}
       <Container>
         <div>
-          {/* Обертка */}
           <Col className={styles.wrapper}>
-            {/* Логотип */}
-            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo" className={styles.logo}/></NavLink></Row>
-
-            {/* Заголовок */}
+            <Row className={styles.row}><NavLink to={Path.HOME}><img src={Logo} alt="Logo"
+                                                                     className={styles.logo}/></NavLink></Row>
             <Row className={styles.row}><h1 className={styles.headText} style={{textAlign: 'center'}}>Мы
               рады видеть вас</h1></Row>
-
-
             <form onSubmit={handleSubmit(onSubmit)}>
-
-              {/* Поле ввода email */}
               <Row className={styles.row}>
                 <label>
                   <input
@@ -105,7 +96,7 @@ export const Registration = () => {
                     {...register("email", {
                       required: 'это поле обязательно для заполнения',
                       pattern: {
-                        value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+                        value: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
                         message: 'Вы заполняете поле в неверном формате.'
                       }
                     })}
@@ -115,28 +106,7 @@ export const Registration = () => {
               <Row className={styles.row}>
                 {errors.email && (<div className={styles.errors}>{errors.email.message}</div>)}
               </Row>
-
-
-              {/* Поле ввода логина */}
-              <Row className={styles.row}>
-                <label>
-                  <input
-                    className={`${errors.username ? styles.input_border_red : styles.input} form-control`}
-                    placeholder='Логин'
-                    {...register("username", {
-                      required: 'это поле обязательно для заполнения',
-                      minLength: {value: 4, message: 'Минимальная длина имени 4 символа.'}
-                    })}
-                  />
-                </label>
-              </Row>
-              <Row className={styles.row}>
-                {errors.username && (<div className={styles.errors}>{errors.username.message}</div>)}
-              </Row>
               <br/>
-
-              {/*//______________________________________________________________________________________________________________________________*/}
-              {/* Поле ввода пароля */}
               <Row className={styles.row}>
                 <label className={styles.labelPassword}>
                   <input
@@ -163,8 +133,6 @@ export const Registration = () => {
               <Row className={styles.row}>
                 {errors.password && (<div className={styles.errors}>{errors.password.message}</div>)}
               </Row>
-
-
               <Row className={styles.row}>
                 <label className={styles.labelPassword}>
                   <input className={`${errors.passwordConfirm ? styles.input_border_red : styles.input} form-control`}
@@ -182,40 +150,30 @@ export const Registration = () => {
                   />
                 </label>
               </Row>
-
               <Row className={styles.row}>
                 {errors.passwordConfirm && (<div className={styles.errors}>{errors.passwordConfirm.message}</div>)}
               </Row>
-              {/*//______________________________________________________________________________________________________________________________*/}
-
               <br/>
-
-              {/* Кнопка "Войти" */}
               <Row className={styles.row}>
                 <button
                   type={'submit'}
                   className={styles.input}
                   disabled={authStatus === RequestStatus.LOADING}
-                >Зарегистрироваться</button>
+                >Зарегистрироваться
+                </button>
               </Row>
-
             </form>
             <br/>
-
-            {/* Есть аккаунт */}
             <Row className={styles.row}>
               <Col className={styles.textAccaunt}>Есть аккаунт? </Col>
               <Col md={8}><Link className={styles.linkPink} to={Path.AUTH}>Войти!</Link></Col>
             </Row>
-
-            {/* Вопросы */}
             <Row className={styles.row}>
               <Col className={styles.textAccaunt}>Остались вопросы? </Col>
-              <Col md={8}><a className={styles.linkPink} href="src/features/auth/Registration/Registration#">Спроси нас!</a></Col>
+              <Col md={8}><a className={styles.linkPink} href="src/features/auth/Registration/Registration#">Спроси
+                нас!</a></Col>
             </Row>
             <br/>
-
-            {/* Соглашение на обработку данных */}
             <Row className={styles.row}><p>Нажимая кнопку «Зарегистрироваться», вы подтверждаете своё
               согласие с
               условиями обработки данных.</p></Row>
