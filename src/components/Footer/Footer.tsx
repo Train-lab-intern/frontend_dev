@@ -22,7 +22,7 @@ const Footer:React.FC<PropsType> = ({mainPageData}) => {
               </a>
 
               <div className={`${styles.icons} flex flex-row `}>
-                <a href="src/components/Footer/Footer">
+                <a href="https://www.linkedin.com/company/train-lab-interns/mycompany/" target='_blank'>
                   <img src={linkedin} alt="linkedin"/>
                 </a>
                 <a href="https://github.com/Train-lab-intern"><img src={github} alt="github"/></a>
