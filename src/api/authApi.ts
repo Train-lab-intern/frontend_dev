@@ -1,9 +1,12 @@
 import {axiosAuthInstance} from "./authInstance";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
+
+const URL = process.env.REACT_APP_URL
 
 export const authApi = {
   registration(data: RegistrationRequestDataType){
-    return axiosAuthInstance.post('/api/v1/users/register', data)
+    return axios.post(`${URL}/api/v1/users/register`, data)
       .then(res => res)
   },
   authentication(data: AuthenticationRequestType){
@@ -39,7 +42,6 @@ export type AuthenticationRequestType = {
   userPassword: string
 }
 export type RegistrationRequestDataType = {
-  username: string
   email: string
   password: string
 }

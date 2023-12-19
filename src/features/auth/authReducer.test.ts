@@ -63,7 +63,7 @@ test('auth pending', () => {
 })
 
 test('registration fulfilled', () => {
-  const action = registration.fulfilled(true, '', {email: 'email', username: 'name', password: 'password'})
+  const action = registration.fulfilled(true, '', {email: 'email', password: 'password'})
   const newState = authReducer(state, action)
 
   expect(newState.authStatus).toBe(RequestStatus.SUCCEEDED)
