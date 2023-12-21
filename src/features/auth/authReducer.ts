@@ -3,11 +3,10 @@ import {
   authApi,
   AuthenticationRequestType,
   RegistrationRequestDataType,
-  ResponseUserDataType,
   UserDto
 } from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
-import {isAxiosError, ResponseType} from "axios";
+import {isAxiosError} from "axios";
 
 export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
@@ -56,12 +55,18 @@ export const authentication = createAsyncThunk<UserDto, AuthenticationRequestTyp
     }
   })
 
-export const registration = createAsyncThunk<boolean, RegistrationRequestDataType, { rejectValue: { message: string } }>(
+export const registration = createAsyncThunk<UserDto, RegistrationRequestDataType, { rejectValue: { message: string } }>(
   'auth/registration', async (arg, thunkAPI) => {
     try {
 
-      await authApi.registration(arg)
-      return true
+      const userData = await authApi.registration(arg)
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
 
     }catch (e) {
       let errorMessage: string
@@ -129,8 +134,10 @@ const slice = createSlice({
     builder.addCase(registration.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
     })
-    builder.addCase(registration.fulfilled, (state) => {
+    builder.addCase(registration.fulfilled, (state, action) => {
       state.authStatus = RequestStatus.SUCCEEDED
+      state.userData = action.payload
+      state.isLogged = true
     })
     builder.addCase(registration.rejected, (state, action) => {
       state.authStatus = RequestStatus.FAILED

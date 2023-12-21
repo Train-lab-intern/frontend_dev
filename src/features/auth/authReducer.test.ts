@@ -1,5 +1,6 @@
 import {RequestStatus} from "../../constants/requestStatus";
 import {authentication, authReducer, AuthReducerInitialStateType, clearErrors, registration} from "./authReducer";
+import {UserDto} from "../../api/authApi";
 
 let state = {} as AuthReducerInitialStateType
 
@@ -27,12 +28,12 @@ beforeEach(() => {
   }
 })
 
-const userData = {
+const userData: UserDto = {
   id: 150,
   username: 'Aleks',
   email: 'Aleks@gmail.com',
-  created: 153,
-  changed: 188,
+  created: '153',
+  changed: '188',
   roles: [
     {
       id: 2,
@@ -44,16 +45,16 @@ const userData = {
   ]
 }
 
-// test('auth fulfilled', () => {
-//
-//   const action = authentication.fulfilled(userData, '', {userEmail: 'email', userPassword: 'password'})
-//   const newState = authReducer(state, action)
-//
-//   expect(newState.userData).toEqual(userData)
-//   expect(newState.authStatus).toBe(RequestStatus.SUCCEEDED)
-//   expect(newState.isLogged).toBe(true)
-//
-// })
+test('auth fulfilled', () => {
+
+  const action = authentication.fulfilled(userData, '', {userEmail: 'email', userPassword: 'password'})
+  const newState = authReducer(state, action)
+
+  expect(newState.userData).toEqual(userData)
+  expect(newState.authStatus).toBe(RequestStatus.SUCCEEDED)
+  expect(newState.isLogged).toBe(true)
+
+})
 test('auth rejected', () => {
 
   const action = authentication.rejected
@@ -73,7 +74,7 @@ test('auth pending', () => {
 })
 
 test('registration fulfilled', () => {
-  const action = registration.fulfilled(true, '', {email: 'email', password: 'password'})
+  const action = registration.fulfilled(userData, '', {email: 'email', password: 'password'})
   const newState = authReducer(state, action)
 
   expect(newState.authStatus).toBe(RequestStatus.SUCCEEDED)
