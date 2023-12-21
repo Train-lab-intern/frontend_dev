@@ -79,12 +79,19 @@ export const registration = createAsyncThunk<UserDto, RegistrationRequestDataTyp
     }
   })
 
-export const logout = createAsyncThunk(
-  'auth/logout', () => {
+export const logout = createAsyncThunk<true, undefined,  { rejectValue: { message: string } }>(
+  'auth/logout', async (arg, thunkAPI) => {
     try {
-      return authApi.logout()
+      const logout = await authApi.logout()
+      return true
     }catch (e) {
-      console.log(e)
+      let errorMessage: string
+      if(isAxiosError(e)){
+        errorMessage = e.response ? e.response.data.message : e.message
+        return thunkAPI.rejectWithValue({message: errorMessage})
+      }else{
+        return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
+      }
     }
   }
 )
@@ -143,8 +150,17 @@ const slice = createSlice({
       state.authStatus = RequestStatus.FAILED
       state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
+    builder.addCase(logout.pending, (state) => {
+      state.authStatus = RequestStatus.LOADING
+    })
     builder.addCase(logout.fulfilled, (state) => {
-      state.isLogged = false
+        state.authStatus = RequestStatus.SUCCEEDED
+        state.isLogged = false
+      }
+    )
+    builder.addCase(logout.rejected, (state, action) => {
+      state.authStatus = RequestStatus.FAILED
+      state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
   }
 })
