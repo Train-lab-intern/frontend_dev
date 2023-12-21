@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import styles from './Registration.module.css'
 import Logo from '../../../assets/img/fullLogo.jpg'
-import {Link, NavLink} from 'react-router-dom'
+import {Link, Navigate, NavLink} from 'react-router-dom'
 import {useForm} from "react-hook-form";
 import {Path} from "../../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../../redux/store";
@@ -21,8 +21,7 @@ type FormDataType = {
 export const Registration = () => {
 
   const dispatch = useAppDispatch()
-  const authStatus = useAppSelector(state => state.auth.authStatus)
-  const authErrors = useAppSelector(state => state.auth.authErrors)
+  const {authStatus, authErrors, isLogged} = useAppSelector(state => state.auth)
   const [showPassword, setShowPassword] = useState(false)
 
 
@@ -70,14 +69,12 @@ export const Registration = () => {
     }
   }, [])
 
+  if (isLogged) {
+    return <Navigate to={Path.PROFILE}/>
+  }
+
   return (
     <div className={styles.auth}>
-      {authStatus === RequestStatus.SUCCEEDED && <Notification
-        messages={
-          'На адрес Вашей электронной почты было отправлено письмо. Для завершения регистрации перейдите по указанной в письме ссылке.'
-        }
-        handleClose={handleCloseNotification}
-      />}
       {authStatus === RequestStatus.FAILED && authErrors &&
         <Notification messages={authErrors} handleClose={handleCloseNotification}/>}
       <Container>

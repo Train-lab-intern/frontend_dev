@@ -1,40 +1,29 @@
 import {axiosAuthInstance} from "./authInstance";
-import jwtDecode from "jwt-decode";
 import axios from "axios";
 
 const URL = process.env.REACT_APP_URL
 
 export const authApi = {
-  registration(data: RegistrationRequestDataType){
-    return axios.post(`${URL}/api/v1/users/register`, data)
-      .then(res => res)
-  },
-  authentication(data: AuthenticationRequestType){
-    return axiosAuthInstance.post<ResponseUserDataType>('/api/v1/auth', data)
+  registration(data: RegistrationRequestDataType) {
+    return axios.post<ResponseUserDataType>(`${URL}/api/v1/users/register`, data)
       .then(res => res.data)
   },
-  getUserData(){
+  authentication(data: AuthenticationRequestType) {
+    return axiosAuthInstance.post<ResponseUserDataType>('/api/v1/auth/login', data)
+      .then(res => res.data)
+  },
+  auth(){
     const token = localStorage.getItem('tlToken')
-    if (token) {
-      const {sub} = jwtDecode<DecodeTokenType>(token)
-      //достаем email
-    return axiosAuthInstance.get(`/users/search/findByAuthenticationInfoEmail?email=${sub}`)
-      //получаем idUser
-      .then(
-        data => axiosAuthInstance.get<UserDto>(`/api/v1/users/${data.data._links.user.href.split('/').at(-1)}`)
-          //по idUser получаем dataUser
-          .then(res => res.data)
-      )
-  }else{
-      return Promise.reject('auth error')
-    }
-  }
-}
-type DecodeTokenType = {
-  "sub": string
-  "created": number
-  "roles": string[]
-  "exp": number
+    return axios.post<ResponseUserDataType>(`${URL}/api/v1/auth/refresh-token`, {refreshToken: token})
+      .then(res => {
+        return res.data
+      })
+  },
+  logout(){
+    const token = localStorage.getItem('tlToken')
+    return axios.post(`${URL}/api/v1/auth/logout`, {refreshToken: token})
+      .then(res => res)
+  },
 }
 
 export type AuthenticationRequestType = {
@@ -46,8 +35,16 @@ export type RegistrationRequestDataType = {
   password: string
 }
 export type ResponseUserDataType = {
-  userEmail: string
-  token: string
+  token: {
+    value: string
+    issuedAt: number
+    expiresAt: number
+  }
+  refreshToken: {
+    value: string
+    issuedAt: number
+    expiredAt: number
+  }
   userDto: UserDto
 }
 export type UserDto = {
@@ -56,5 +53,13 @@ export type UserDto = {
   email: string
   created: string
   changed: string
-  active: boolean
+  roles: [
+    {
+      id: number,
+      roleName: string,
+      created: number,
+      changed: number,
+      isDeleted: boolean
+    }
+  ]
 }

@@ -1,12 +1,24 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {authApi, AuthenticationRequestType, RegistrationRequestDataType, UserDto} from "../../api/authApi";
+import {
+  authApi,
+  AuthenticationRequestType,
+  RegistrationRequestDataType,
+  UserDto
+} from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
 import {isAxiosError} from "axios";
 
 export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
     try {
-      return await authApi.getUserData()
+      const userData = await authApi.auth()
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
     }catch (e) {
       let errorMessage: string
       if(isAxiosError(e)){
@@ -19,14 +31,18 @@ export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { messag
   }
 )
 
-export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
+export const authentication = createAsyncThunk<UserDto, AuthenticationRequestType, { rejectValue: { message: string } }>(
   'auth/authentication', async (arg, thunkAPI) => {
     try {
       
-      const data = await authApi.authentication(arg)
-      const {token, ...rest} = data
-      localStorage.setItem('tlToken', token)
-      return rest
+      const userData = await authApi.authentication(arg)
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
       
     }catch (e) {
       let errorMessage: string
@@ -39,12 +55,18 @@ export const authentication = createAsyncThunk<UserDataType, AuthenticationReque
     }
   })
 
-export const registration = createAsyncThunk<boolean, RegistrationRequestDataType, { rejectValue: { message: string } }>(
+export const registration = createAsyncThunk<UserDto, RegistrationRequestDataType, { rejectValue: { message: string } }>(
   'auth/registration', async (arg, thunkAPI) => {
     try {
 
-      await authApi.registration(arg)
-      return true
+      const userData = await authApi.registration(arg)
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
 
     }catch (e) {
       let errorMessage: string
@@ -57,9 +79,20 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
     }
   })
 
-export const logout = createAsyncThunk(
-  'auth/logout', () => {
-    localStorage.removeItem('tlToken')
+export const logout = createAsyncThunk<true, undefined,  { rejectValue: { message: string } }>(
+  'auth/logout', async (arg, thunkAPI) => {
+    try {
+      const logout = await authApi.logout()
+      return true
+    }catch (e) {
+      let errorMessage: string
+      if(isAxiosError(e)){
+        errorMessage = e.response ? e.response.data.message : e.message
+        return thunkAPI.rejectWithValue({message: errorMessage})
+      }else{
+        return thunkAPI.rejectWithValue({message: 'Что-то пошло не так.'})
+      }
+    }
   }
 )
 
@@ -85,12 +118,12 @@ const slice = createSlice({
       state.authStatus = RequestStatus.LOADING
     })
     builder.addCase(auth.fulfilled, (state, action) => {
-      state.userData.userDto = action.payload
+      state.userData = action.payload
       state.isLogged = true
       state.authStatus = RequestStatus.SUCCEEDED
     })
     builder.addCase(auth.rejected, (state, action) => {
-      // state.authStatus = RequestStatus.FAILED
+      state.authStatus = RequestStatus.IDLE
       // state.authErrors = action.payload?.message || 'Что-то пошло не так.'
     })
     builder.addCase(authentication.pending, (state) => {
@@ -108,15 +141,26 @@ const slice = createSlice({
     builder.addCase(registration.pending, (state) => {
       state.authStatus = RequestStatus.LOADING
     })
-    builder.addCase(registration.fulfilled, (state) => {
+    builder.addCase(registration.fulfilled, (state, action) => {
       state.authStatus = RequestStatus.SUCCEEDED
+      state.userData = action.payload
+      state.isLogged = true
     })
     builder.addCase(registration.rejected, (state, action) => {
       state.authStatus = RequestStatus.FAILED
       state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
+    builder.addCase(logout.pending, (state) => {
+      state.authStatus = RequestStatus.LOADING
+    })
     builder.addCase(logout.fulfilled, (state) => {
-      state.isLogged = false
+        state.authStatus = RequestStatus.SUCCEEDED
+        state.isLogged = false
+      }
+    )
+    builder.addCase(logout.rejected, (state, action) => {
+      state.authStatus = RequestStatus.FAILED
+      state.authErrors = action.payload?.message ? action.payload.message : 'Что-то пошло не так.'
     })
   }
 })
@@ -126,11 +170,7 @@ export const authReducer = slice.reducer
 
 export type AuthReducerInitialStateType = {
   isLogged: boolean
-  userData: UserDataType
+  userData: UserDto
   authStatus: RequestStatusType
   authErrors: string | null
-}
-export type UserDataType = {
-  userEmail: string
-  userDto: UserDto
 }
