@@ -7,7 +7,7 @@ export const axiosAuthInstance = axios.create({
 })
 
 const authRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  config.headers.Authorization = `${localStorage.getItem('tlToken')}`
+  config.headers.Authorization = `${sessionStorage.getItem('tlToken')}`
   return config;
 };
 

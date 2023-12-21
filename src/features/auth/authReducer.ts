@@ -1,12 +1,25 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {authApi, AuthenticationRequestType, RegistrationRequestDataType, UserDto} from "../../api/authApi";
+import {
+  authApi,
+  AuthenticationRequestType,
+  RegistrationRequestDataType,
+  ResponseUserDataType,
+  UserDto
+} from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
-import {isAxiosError} from "axios";
+import {isAxiosError, ResponseType} from "axios";
 
 export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
     try {
-      return await authApi.getUserData()
+      const userData = await authApi.auth()
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
     }catch (e) {
       let errorMessage: string
       if(isAxiosError(e)){
@@ -19,14 +32,18 @@ export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { messag
   }
 )
 
-export const authentication = createAsyncThunk<UserDataType, AuthenticationRequestType, { rejectValue: { message: string } }>(
+export const authentication = createAsyncThunk<UserDto, AuthenticationRequestType, { rejectValue: { message: string } }>(
   'auth/authentication', async (arg, thunkAPI) => {
     try {
       
-      const data = await authApi.authentication(arg)
-      const {token, ...rest} = data
-      localStorage.setItem('tlToken', token)
-      return rest
+      const userData = await authApi.authentication(arg)
+
+      const token = userData.token
+      sessionStorage.setItem('tlToken', token.value)
+      const refreshToken = userData.refreshToken
+      localStorage.setItem('tlToken', refreshToken.value)
+
+      return userData.userDto
       
     }catch (e) {
       let errorMessage: string
@@ -59,7 +76,11 @@ export const registration = createAsyncThunk<boolean, RegistrationRequestDataTyp
 
 export const logout = createAsyncThunk(
   'auth/logout', () => {
-    localStorage.removeItem('tlToken')
+    try {
+      return authApi.logout()
+    }catch (e) {
+      console.log(e)
+    }
   }
 )
 
@@ -85,12 +106,12 @@ const slice = createSlice({
       state.authStatus = RequestStatus.LOADING
     })
     builder.addCase(auth.fulfilled, (state, action) => {
-      state.userData.userDto = action.payload
+      state.userData = action.payload
       state.isLogged = true
       state.authStatus = RequestStatus.SUCCEEDED
     })
     builder.addCase(auth.rejected, (state, action) => {
-      // state.authStatus = RequestStatus.FAILED
+      state.authStatus = RequestStatus.IDLE
       // state.authErrors = action.payload?.message || 'Что-то пошло не так.'
     })
     builder.addCase(authentication.pending, (state) => {
@@ -126,11 +147,7 @@ export const authReducer = slice.reducer
 
 export type AuthReducerInitialStateType = {
   isLogged: boolean
-  userData: UserDataType
+  userData: UserDto
   authStatus: RequestStatusType
   authErrors: string | null
-}
-export type UserDataType = {
-  userEmail: string
-  userDto: UserDto
 }
