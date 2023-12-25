@@ -1,21 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Navigation.module.scss'
 import {NavLink, useLocation} from "react-router-dom";
 import {Path} from "../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {iconLogout} from "../../assets/icons/iconLogout";
 import {logout} from "../../features/auth/authReducer";
+import {CommonButton} from "../CommonButton/CommonButton";
 
 export const Navigation = () => {
 
   const dispatch = useAppDispatch()
   const {pathname} = useLocation()
   const isLogged = useAppSelector(state => state.auth.isLogged)
-  const [navShow, setNavShow] = useState(false)
-
-  const handleShowNav = () => {
-    setNavShow(!navShow)
-  }
 
   const handleLogout = () => {
     dispatch(logout())
@@ -23,15 +18,15 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className={styles.menu}>
-        <button onClick={handleShowNav} className={styles.link}>Меню</button>
-      </div>
-      <nav className={`${styles.navigation} ${navShow ? styles.active : ''}`}>
+      <nav className={styles.navigation}>
         {pathname === '/' && <NavLink to={''} className={styles.link}>
           О нас
         </NavLink>}
         <NavLink to={''} className={styles.link}>
-          Задания
+          Продегустируй <br/> тестовое меню
+        </NavLink>
+        <NavLink to={''} className={styles.link}>
+          Меню тестов
         </NavLink>
         {isLogged && <>
           <NavLink to={''} className={styles.link}>
@@ -43,21 +38,33 @@ export const Navigation = () => {
         </>}
         {isLogged ?
           <div className={styles.linksProfile}>
-            <button onClick={handleLogout} className={styles.logout}>Выйти {iconLogout}</button>
+            <CommonButton variant={'outline'} onClick={handleLogout} className={styles.logout}>
+              Выйти
+            </CommonButton>
             {pathname === Path.PROFILE ?
-              <NavLink to={Path.PROFILE_SETTINGS} className={styles.link}>
-                Настройки
+              <NavLink to={Path.PROFILE_SETTINGS}>
+                <CommonButton variant={'primary'}>
+                  Настройки
+                </CommonButton>
               </NavLink> :
-              <NavLink to={Path.PROFILE} className={styles.link}>
-                Мой кабинет
+              <NavLink to={Path.PROFILE}>
+                <CommonButton variant={'primary'}>
+                  Мой кабинет
+                </CommonButton>
               </NavLink>
             }
-            <button onClick={handleLogout} className={`${styles.link} ${styles.logoutResponsive}`}>Выйти {iconLogout}</button>
           </div>
           :
           <div className={styles.linksProfile}>
-            <NavLink to={Path.AUTH} className={styles.link}>
-              Войти
+            <NavLink to={Path.AUTH}>
+              <CommonButton variant={'outline'}>
+                Войти
+              </CommonButton>
+            </NavLink>
+            <NavLink to={Path.REGISTRATION}>
+              <CommonButton variant={'primary'}>
+                Регистрация
+              </CommonButton>
             </NavLink>
           </div>
         }
