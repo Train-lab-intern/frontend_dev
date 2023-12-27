@@ -38,17 +38,17 @@ export const Navigation = () => {
         </>}
         {isLogged ?
           <div className={styles.linksProfile}>
-            <CommonButton variant={'outline'} onClick={handleLogout} className={styles.logout}>
+            <CommonButton variant={'outline'} onClick={handleLogout} className={styles.button}>
               Выйти
             </CommonButton>
             {pathname === Path.PROFILE ?
               <NavLink to={Path.PROFILE_SETTINGS}>
-                <CommonButton variant={'primary'}>
+                <CommonButton variant={'primary'} className={styles.button}>
                   Настройки
                 </CommonButton>
               </NavLink> :
               <NavLink to={Path.PROFILE}>
-                <CommonButton variant={'primary'}>
+                <CommonButton variant={'primary'} className={styles.button}>
                   Мой кабинет
                 </CommonButton>
               </NavLink>
@@ -57,12 +57,12 @@ export const Navigation = () => {
           :
           <div className={styles.linksProfile}>
             <NavLink to={Path.AUTH}>
-              <CommonButton variant={'outline'}>
+              <CommonButton variant={'outline'} className={styles.button}>
                 Войти
               </CommonButton>
             </NavLink>
             <NavLink to={Path.REGISTRATION}>
-              <CommonButton variant={'primary'}>
+              <CommonButton variant={'primary'} className={styles.button}>
                 Регистрация
               </CommonButton>
             </NavLink>
