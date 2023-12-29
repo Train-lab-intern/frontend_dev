@@ -3,7 +3,7 @@ import styles from './MainPage.module.scss'
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {getDataMainPage} from "../../redux/reducers/pagesDataReducer";
 import {Header} from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import {Footer} from "../../components/Footer/Footer";
 import {useEffect} from "react";
 import icon_001 from '../../assets/icons/icon_001.png'
 import icon_002 from '../../assets/icons/icon_002.png'

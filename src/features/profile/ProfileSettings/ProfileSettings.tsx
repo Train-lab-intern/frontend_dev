@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styles from './ProfileSettings.module.scss'
 import {Header} from "../../../components/Header/Header";
-import Footer from "../../../components/Footer/Footer";
 import {SettingsForm} from "./SettingsForm/SettingsForm";
 import {iconProfile} from "../../../assets/icons/iconProfile";
 import {iconSettings} from "../../../assets/icons/iconSettings";
+import {Footer} from "../../../components/Footer/Footer";
 
 type DataType = {
   userName?: string
