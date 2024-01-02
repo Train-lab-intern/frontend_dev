@@ -51,6 +51,41 @@
     flex-direction: column;
 
     margin-bottom: 110px;
+
+    span {
+      font-weight: 400;
+      font-size: 14px;
+      color: $primary-dark-text;
+    }
+    label {
+      position: relative;
+      width: fit-content;
+
+      input {
+
+        padding: 3px 6px 6px;
+        border: 1px solid $secondary-light-bg;
+        border-radius: 4px;
+        color: #BFBFBF;
+
+        &::placeholder {
+          color: #BFBFBF;
+        }
+
+        &:focus-visible {
+          outline: none;
+        }
+      }
+
+      .iconSearch {
+        position: absolute;
+        right: 10px;
+
+        svg path {
+          fill: #BFBFBF;
+        }
+      }
+    }
   }
 
   .links {
