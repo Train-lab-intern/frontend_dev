@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import MainPage from './pages/Main/MainPage';
 import {Login} from "./features/auth/Login/Login";
 import {Registration} from "./features/auth/Registration/Registration";
 import {Routes, Route} from 'react-router-dom'
@@ -12,6 +11,7 @@ import {auth} from "./features/auth/authReducer";
 import {PrivateRoute} from "./pages/PrivateRoute";
 import {RequestStatus} from "./constants/requestStatus";
 import {ProfileSettings} from "./features/profile/ProfileSettings/ProfileSettings";
+import {MainPage} from "./pages/Main/MainPage";
 
 function App() {
 
