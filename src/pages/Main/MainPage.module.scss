@@ -30,7 +30,7 @@
   }
   .directionList {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-bottom: 73px;
 
     .directionItem {
@@ -71,6 +71,10 @@
       }
     }
   }
+  button {
+    max-width: 250px;
+    width: fit-content;
+  }
 }
 .manual {
   display: flex;
@@ -88,7 +92,7 @@
   }
   .manualList {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-bottom: 25px;
 
     .item {
@@ -97,12 +101,13 @@
       flex-direction: column;
       align-items: center;
 
-      img {
-        height: 200px;
-        width: fit-content;
-        margin-bottom: 20px;
+      .imgContainer {
+        img {
+          height: 200px;
+          width: fit-content;
+          margin-bottom: 20px;
+        }
       }
-
       span {
         font-weight: 500;
         font-size: 24px;
@@ -208,5 +213,240 @@
   }
   .button {
     padding: 12px 16px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .sectionTestMenu {
+
+    .testMenu {
+
+      .testMenuList {
+
+        .item {
+
+          .title {
+            margin: 40px 0;
+            font-size: 60px;
+          }
+          .text {
+            font-size: 45px;
+          }
+        }
+      }
+    }
+    .testMenuImgContainer {
+
+      img {}
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .direction {
+    .title {
+      h2 {
+        font-size: 40px;
+      }
+    }
+  }
+  .banner {
+    .title {
+      h1 {
+        font-size: 35px;
+        line-height: 55px;
+      }
+    }
+  }
+  .manual {
+    .title {
+      h2{
+        font-size: 40px;
+      }
+    }
+    .manualList {
+      .item {
+        .imgContainer {
+          img{
+            height: 150px;
+          }
+        }
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+    a {
+      button {
+        font-size: 20px;
+      }
+    }
+  }
+  .sectionTestMenu {
+
+    .testMenu {
+
+      .testMenuList {
+
+        .item {
+
+          .title {
+
+          }
+          .text {
+
+          }
+        }
+      }
+    }
+    .testMenuImgContainer {
+
+      img {}
+    }
+    .title {
+      h2 {
+        font-size: 50px;
+      }
+
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .direction {
+    .directionList {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      .directionItem {
+
+      }
+    }
+  }
+  .banner {
+    flex-direction: column;
+    .title {
+      margin-bottom: 30px;
+      h1 {}
+    }
+    button {
+      max-width: 500px;
+      align-self: flex-end;
+      padding: 10px 12px;
+    }
+  }
+  .manual {
+    .title {
+      h2{}
+    }
+    .manualList {
+      flex-direction: column;
+      align-self: flex-start;
+      gap: 50px;
+      .item {
+        width: 100%;
+        flex-direction: row;
+        .imgContainer {
+          min-width: 165px;
+
+          img{}
+        }
+        span {}
+      }
+    }
+    a {
+      button {
+
+      }
+    }
+  }
+    .sectionTestMenu {
+
+    .testMenu {
+      margin-bottom: 100px;
+
+      .testMenuList {
+        margin-bottom: 150px;
+
+        .item {
+
+          .title {
+            font-size: 50px;
+          }
+          .text {
+            font-size: 30px;
+          }
+        }
+      }
+      .testMenuImgContainer {
+        margin-bottom: 70px;
+
+        img {}
+      }
+    }
+      .title {
+        h2 {
+          font-size: 40px;
+        }
+        .subTitle {
+          flex-direction: column;
+
+          h2 {
+            margin-bottom: 30px;
+          }
+          a {
+            align-self: flex-end;
+
+            button {
+              padding: 10px 12px;
+            }
+          }
+        }
+      }
+  }
+}
+@media screen and (max-width: 750px) {
+  .direction {
+    .title {
+      h2 {
+        font-size: 30px;
+      }
+    }
+  }
+  .banner {
+    flex-direction: column;
+    .title {
+      margin-bottom: 30px;
+      h1 {
+        font-size: 30px;
+        line-height: 35px;
+      }
+    }
+  }
+    .sectionTestMenu {
+
+    .testMenu {
+
+      .testMenuList {
+
+        .item {
+
+          .title {
+
+          }
+          .text {
+
+          }
+        }
+      }
+    }
+    .testMenuImgContainer {
+
+      img {}
+    }
   }
 }
