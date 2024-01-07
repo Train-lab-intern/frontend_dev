@@ -14,9 +14,28 @@
   align-items: center;
   padding: 27px 0;
 
-  .logo {}
+  .logo {
+    margin-right: 20px;
+  }
   .nav {
     width: 85%;
     display: flex;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .inner {
+    .logo {
+      width: 10%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .container {
+    width: 95%;
   }
 }

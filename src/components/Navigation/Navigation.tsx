@@ -20,7 +20,7 @@ export const Navigation = () => {
     <>
       <nav className={styles.navigation}>
         {pathname === '/' && <NavLink to={''} className={styles.link}>
-          О нас
+          О&nbsp;нас
         </NavLink>}
         <NavLink to={''} className={styles.link}>
           Продегустируй <br/> тестовое меню
@@ -28,14 +28,14 @@ export const Navigation = () => {
         <NavLink to={''} className={styles.link}>
           Меню тестов
         </NavLink>
-        {isLogged && <>
-          <NavLink to={''} className={styles.link}>
-            Резюме
-          </NavLink>
-          <NavLink to={''} className={styles.link}>
-            Визитка
-          </NavLink>
-        </>}
+        {/*{isLogged && <>*/}
+        {/*  <NavLink to={''} className={styles.link}>*/}
+        {/*    Резюме*/}
+        {/*  </NavLink>*/}
+        {/*  <NavLink to={''} className={styles.link}>*/}
+        {/*    Визитка*/}
+        {/*  </NavLink>*/}
+        {/*</>}*/}
         {isLogged ?
           <div className={styles.linksProfile}>
             <CommonButton variant={'outline'} onClick={handleLogout} className={styles.button}>

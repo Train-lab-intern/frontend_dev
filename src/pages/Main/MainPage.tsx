@@ -74,7 +74,7 @@ export const MainPage = () => {
                 <br/> Выполняя задания и зарабатывая баллы, ты найдешь работу мечты.
               </h1>
             </div>
-            <CommonButton variant={'primary'}>Продегустируй <br/> тестовое меню</CommonButton>
+            <CommonButton variant={'primary'}>Продегустируй тестовое меню</CommonButton>
           </div>
         </div>
       </section>
@@ -86,25 +86,33 @@ export const MainPage = () => {
             </div>
             <div className={styles.manualList}>
               <div className={styles.item}>
-                <img src={icon_manual_001} alt="icon"/>
+                <div className={styles.imgContainer}>
+                  <img src={icon_manual_001} alt="icon"/>
+                </div>
                 <span>
                   1. Присоединяйся к IT Roast
                 </span>
               </div>
               <div className={styles.item}>
-                <img src={icon_manual_002} alt="icon"/>
+                <div className={styles.imgContainer}>
+                  <img src={icon_manual_002} alt="icon"/>
+                </div>
                 <span>
                   2. Выполняй задания и тренируйся
                 </span>
               </div>
               <div className={styles.item}>
-                <img src={icon_manual_003} alt="icon"/>
+                <div className={styles.imgContainer}>
+                  <img src={icon_manual_003} alt="icon"/>
+                </div>
                 <span>
                   3. Следи за статистикой и определи свой уровень  прожарки
                 </span>
               </div>
               <div className={styles.item}>
-                <img src={icon_manual_004} alt="icon"/>
+                <div className={styles.imgContainer}>
+                  <img src={icon_manual_004} alt="icon"/>
+                </div>
                 <span>
                   1. Поделись знаниями  и найди работу мечты
                 </span>
