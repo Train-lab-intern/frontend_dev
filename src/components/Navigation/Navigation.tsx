@@ -23,10 +23,10 @@ export const Navigation = () => {
           О&nbsp;нас
         </NavLink>}
         <NavLink to={''} className={styles.link}>
-          Продегустируй <br/> тестовое меню
+          Меню тестов
         </NavLink>
         <NavLink to={''} className={styles.link}>
-          Меню тестов
+          Резюме
         </NavLink>
         {/*{isLogged && <>*/}
         {/*  <NavLink to={''} className={styles.link}>*/}

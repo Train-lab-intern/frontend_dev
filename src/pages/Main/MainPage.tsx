@@ -153,12 +153,10 @@ export const MainPage = () => {
             </div>
             <div className={styles.title}>
               <h2>Устрой прожарку своей карьеры</h2>
-              <div className={styles.subTitle}>
-                <h2>Получи сертификат</h2>
-                <NavLink to={Path.REGISTRATION}>
-                  <CommonButton variant={'primary'}>Регистрация</CommonButton>
-                </NavLink>
-              </div>
+              <h3>Получи сертификат</h3>
+              <NavLink to={Path.REGISTRATION}>
+                <CommonButton variant={'primary'}>Регистрация</CommonButton>
+              </NavLink>
             </div>
 
           </div>
