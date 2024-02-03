@@ -5,7 +5,7 @@ const URL = process.env.REACT_APP_URL
 
 export const authApi = {
   registration(data: RegistrationRequestDataType) {
-    return axios.post<ResponseUserDataType>(`${URL}/api/v1/users/register`, data)
+    return axios.post<ResponseUserDataType>(`${URL}/api/v1/auth/register`, data)
       .then(res => res.data)
   },
   authentication(data: AuthenticationRequestType) {
