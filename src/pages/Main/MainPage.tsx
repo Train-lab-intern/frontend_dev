@@ -18,6 +18,7 @@ import test_menu from '../../assets/img/test_menu.png'
 import {CommonButton} from "../../components/CommonButton/CommonButton";
 import {NavLink} from "react-router-dom";
 import {Path} from "../../constants/path";
+import {Slider} from "./Slider/Slider";
 
 export const MainPage = () => {
 
@@ -127,29 +128,16 @@ export const MainPage = () => {
       <section className={`${styles.sectionLight} ${styles.sectionTestMenu}`}>
         <div className={styles.container}>
           <div className={styles.testMenu}>
-            <div className={styles.title}>
-              <h2>Пробное меню</h2>
-            </div>
-            <div className={styles.testMenuList}>
-              <div className={styles.item}>
-                <h3 className={styles.title}>
-                  SQL
-                </h3>
-                <span className={styles.text}>
-                  Какой оператор позволяет создать таблицу?
-                </span>
+            <Slider />
+            {/*<div className={styles.testMenuImgContainer}>*/}
+            {/*  <img src={test_menu} alt="test menu"/>*/}
+            {/*</div>*/}
+            <div className={styles.progressBlock}>
+              <div className={styles.title}>
+                <h2>Следи за своим успехом</h2>
               </div>
-              <div className={styles.item}>
-                <h3 className={styles.title}>
-                  SQL
-                </h3>
-                <span className={styles.text}>
-                  Какой оператор позволяет создать таблицу?
-                </span>
-              </div>
-            </div>
-            <div className={styles.testMenuImgContainer}>
-              <img src={test_menu} alt="test menu"/>
+              <div className={styles.item1}></div>
+              <div className={styles.item2}></div>
             </div>
             <div className={styles.title}>
               <h2>Устрой прожарку своей карьеры</h2>

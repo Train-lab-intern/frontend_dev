@@ -148,43 +148,64 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    //margin-bottom: 300px;
+    padding: 60px 0 0 0;
 
-    .testMenuList {
+    //.testMenuList {
+    //  display: flex;
+    //  justify-content: space-between;
+    //  margin-bottom: 80px;
+    //
+    //  .item {
+    //    width: 45%;
+    //    display: flex;
+    //    flex-direction: column;
+    //    align-items: center;
+    //    background: $secondary-bg;
+    //
+    //    .title {
+    //      margin: 75px 0;
+    //      font-weight: 700;
+    //      font-size: 80px;
+    //      color: $secondary-dark-title;
+    //    }
+    //
+    //    .text {
+    //      margin-bottom: 20px;
+    //      text-align: center;
+    //      font-weight: 400;
+    //      font-size: 60px;
+    //      color: $primary-dark-text;
+    //    }
+    //  }
+    //}
+
+    .progressBlock {
+      width: 70%;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 80px;
+      flex-direction: column;
+      margin-top: 50px;
+      padding: 30px;
+      background: $primary-dark-bg;
 
-      .item {
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: $secondary-bg;
-
-        .title {
-          margin: 75px 0;
-          font-weight: 700;
-          font-size: 80px;
-          color: $secondary-dark-title;
-        }
-
-        .text {
-          margin-bottom: 20px;
-          text-align: center;
-          font-weight: 400;
-          font-size: 60px;
-          color: $primary-dark-text;
+      .title {
+        margin: 0 0 40px 0;
+        h2 {
+          font-weight: 500;
+          font-size: 32px;
+          color: $primary-light-title;
         }
       }
-    }
-
-    .testMenuImgContainer {
-      width: 65%;
-      //margin-bottom: 190px;
-
-      img {
-        width: 100%;
+      .item1 {
+        width: 60%;
+        height: 200px;
+        background: #42DBBF;
+        margin-bottom: 30px;
+      }
+      .item2 {
+        width: 60%;
+        height: 200px;
+        background: #42DBBF;
+        align-self: flex-end;
       }
     }
   }
