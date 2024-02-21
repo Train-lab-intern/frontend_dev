@@ -1,6 +1,6 @@
 import {RequestStatus} from "../../constants/requestStatus";
 import {authentication, authReducer, AuthReducerInitialStateType, clearErrors, registration} from "./authReducer";
-import {UserDto} from "../../api/authApi";
+import {UserPageDto} from "../../api/authApi";
 
 let state = {} as AuthReducerInitialStateType
 
@@ -10,16 +10,16 @@ beforeEach(() => {
     userData: {
       id: 0,
       username: 'null',
-      email: 'null',
-      created: 'null',
-      changed: 'null',
+      generatedName: 'null',
+      userLevel: 'null',
+      specialty: 'null',
+      surname: 'null',
       roles: [
         {
           id: 1,
-          changed: 0,
-          created: 0,
-          roleName: 'null',
-          isDeleted: false
+          changed: '0',
+          created: '0',
+          roleName: 'null'
         }
       ]
     },
@@ -28,19 +28,19 @@ beforeEach(() => {
   }
 })
 
-const userData: UserDto = {
+const userData: UserPageDto = {
   id: 150,
   username: 'Aleks',
-  email: 'Aleks@gmail.com',
-  created: '153',
-  changed: '188',
+  generatedName: 'aleks',
+  userLevel: '1',
+  specialty: '2',
+  surname: 'aleks',
   roles: [
     {
       id: 2,
-      changed: 123,
-      created: 2344,
+      changed: '123',
+      created: '2344',
       roleName: 'User',
-      isDeleted: false
     }
   ]
 }

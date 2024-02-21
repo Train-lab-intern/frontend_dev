@@ -8,7 +8,7 @@ import {iconProfile} from "../../../assets/icons/iconProfile";
 
 export const Profile = () => {
 
-  const {email, username, id} = useAppSelector(state => state.auth.userData)
+  const {username, id} = useAppSelector(state => state.auth.userData)
 
   const [activeStat, setActiveStat] = useState('statOne')
 

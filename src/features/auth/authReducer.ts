@@ -2,13 +2,12 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {
   authApi,
   AuthenticationRequestType,
-  RegistrationRequestDataType,
-  UserDto
+  RegistrationRequestDataType, UserPageDto,
 } from "../../api/authApi";
 import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
 import {isAxiosError} from "axios";
 
-export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { message: string } }>(
+export const auth = createAsyncThunk<UserPageDto, undefined, { rejectValue: { message: string } }>(
   'auth/auth', async (arg, thunkAPI) => {
     try {
       const userData = await authApi.auth()
@@ -18,7 +17,7 @@ export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { messag
       const refreshToken = userData.refreshToken
       localStorage.setItem('tlToken', refreshToken.value)
 
-      return userData.userDto
+      return userData.userPageDto
     }catch (e) {
       let errorMessage: string
       if(isAxiosError(e)){
@@ -31,7 +30,7 @@ export const auth = createAsyncThunk<UserDto, undefined, { rejectValue: { messag
   }
 )
 
-export const authentication = createAsyncThunk<UserDto, AuthenticationRequestType, { rejectValue: { message: string } }>(
+export const authentication = createAsyncThunk<UserPageDto, AuthenticationRequestType, { rejectValue: { message: string } }>(
   'auth/authentication', async (arg, thunkAPI) => {
     try {
       
@@ -42,7 +41,7 @@ export const authentication = createAsyncThunk<UserDto, AuthenticationRequestTyp
       const refreshToken = userData.refreshToken
       localStorage.setItem('tlToken', refreshToken.value)
 
-      return userData.userDto
+      return userData.userPageDto
       
     }catch (e) {
       let errorMessage: string
@@ -55,7 +54,7 @@ export const authentication = createAsyncThunk<UserDto, AuthenticationRequestTyp
     }
   })
 
-export const registration = createAsyncThunk<UserDto, RegistrationRequestDataType, { rejectValue: { message: string } }>(
+export const registration = createAsyncThunk<UserPageDto, RegistrationRequestDataType, { rejectValue: { message: string } }>(
   'auth/registration', async (arg, thunkAPI) => {
     try {
 
@@ -66,7 +65,7 @@ export const registration = createAsyncThunk<UserDto, RegistrationRequestDataTyp
       const refreshToken = userData.refreshToken
       localStorage.setItem('tlToken', refreshToken.value)
 
-      return userData.userDto
+      return userData.userPageDto
 
     }catch (e) {
       let errorMessage: string
@@ -170,7 +169,7 @@ export const authReducer = slice.reducer
 
 export type AuthReducerInitialStateType = {
   isLogged: boolean
-  userData: UserDto
+  userData: UserPageDto
   authStatus: RequestStatusType
   authErrors: string | null
 }

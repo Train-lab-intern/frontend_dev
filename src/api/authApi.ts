@@ -37,29 +37,29 @@ export type RegistrationRequestDataType = {
 export type ResponseUserDataType = {
   token: {
     value: string
-    issuedAt: number
-    expiresAt: number
+    issuedAt: string
+    expiresAt: string
   }
   refreshToken: {
     value: string
-    issuedAt: number
-    expiredAt: number
+    issuedAt: string
+    expiredAt: string
   }
-  userDto: UserDto
+  userPageDto: UserPageDto
 }
-export type UserDto = {
+export type UserPageDto = {
   id: number
+  generatedName: string | null
   username: string
-  email: string
-  created: string
-  changed: string
+  surname: string
+  userLevel: any
+  specialty: any
   roles: [
     {
       id: number,
       roleName: string,
-      created: number,
-      changed: number,
-      isDeleted: boolean
+      created: string,
+      changed: string,
     }
   ]
 }
