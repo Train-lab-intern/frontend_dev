@@ -26,6 +26,8 @@ export const Slider = () => {
   const [prevEl, prevElRef] = useSwiperRef();
 
 
+
+
   return (
     <div className={styles.wrapper}>
       <button className={styles.arrowPrev} ref={prevElRef}>{arrowSlider}</button>
@@ -38,7 +40,15 @@ export const Slider = () => {
         effect={"cube"}
         modules={[Navigation]}
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={1}
+        breakpoints={{
+          700: {
+            slidesPerView: 2
+          },
+          1000: {
+            slidesPerView: 3
+          }
+        }}
       >
         <SwiperSlide>
             <div className={styles.item}>

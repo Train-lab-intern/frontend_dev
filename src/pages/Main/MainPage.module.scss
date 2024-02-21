@@ -150,35 +150,6 @@
     align-items: center;
     padding: 60px 0 0 0;
 
-    //.testMenuList {
-    //  display: flex;
-    //  justify-content: space-between;
-    //  margin-bottom: 80px;
-    //
-    //  .item {
-    //    width: 45%;
-    //    display: flex;
-    //    flex-direction: column;
-    //    align-items: center;
-    //    background: $secondary-bg;
-    //
-    //    .title {
-    //      margin: 75px 0;
-    //      font-weight: 700;
-    //      font-size: 80px;
-    //      color: $secondary-dark-title;
-    //    }
-    //
-    //    .text {
-    //      margin-bottom: 20px;
-    //      text-align: center;
-    //      font-weight: 400;
-    //      font-size: 60px;
-    //      color: $primary-dark-text;
-    //    }
-    //  }
-    //}
-
     .progressBlock {
       width: 70%;
       display: flex;
@@ -190,6 +161,7 @@
       .title {
         margin: 0 0 40px 0;
         h2 {
+          text-align: center;
           font-weight: 500;
           font-size: 32px;
           color: $primary-light-title;
@@ -218,6 +190,7 @@
     margin: 70px 0;
 
     h2 {
+      text-align: center;
       font-weight: 500;
       font-size: 32px;
       color: $primary-dark-title;
@@ -346,30 +319,17 @@
 
     .testMenu {
 
-      .testMenuList {
+      .progressBlock {
+        width: 80%;
 
-        .item {
-
-          .title {
-
-          }
-
-          .text {
-
-          }
+        .item1, .item2 {
+          width: 80%;
         }
-      }
-    }
-
-    .testMenuImgContainer {
-
-      img {
       }
     }
 
     .title {
       h2 {
-        //font-size: 50px;
       }
 
     }
@@ -440,7 +400,7 @@
   .sectionTestMenu {
 
     .testMenu {
-      margin-bottom: 100px;
+      //margin-bottom: 100px;
 
       .testMenuList {
         margin-bottom: 150px;
@@ -513,24 +473,48 @@
 
     .testMenu {
 
-      .testMenuList {
+      .progressBlock {
+        width: 90%;
 
-        .item {
+        .item1, .item2 {
+          width: 100%;
+        }
+      }
+    }
+  }
 
-          .title {
+  .manual {
 
-          }
+    .manualList {
 
-          .text {
+      .item {
 
+        .imgContainer {
+          min-width: 110px;
+          img {
+            height: 100px;
           }
         }
       }
     }
+  }
+}
 
-    .testMenuImgContainer {
+@media screen and (max-width: 500px) {
+  .manual {
 
-      img {
+    .manualList {
+
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .imgContainer {
+
+          img {
+
+          }
+        }
       }
     }
   }

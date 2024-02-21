@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './MainPage.module.scss'
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {getDataMainPage} from "../../redux/reducers/pagesDataReducer";
@@ -128,7 +128,7 @@ export const MainPage = () => {
       <section className={`${styles.sectionLight} ${styles.sectionTestMenu}`}>
         <div className={styles.container}>
           <div className={styles.testMenu}>
-            <Slider />
+            <Slider/>
             {/*<div className={styles.testMenuImgContainer}>*/}
             {/*  <img src={test_menu} alt="test menu"/>*/}
             {/*</div>*/}

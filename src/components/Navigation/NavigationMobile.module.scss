@@ -1,0 +1,46 @@
+.navigationMobile {
+  position: fixed;
+  top: 18px;
+  right: -220px;
+  display: none;
+
+  transition: .3s;
+
+  z-index: 1000;
+
+  .iconMenu {
+    padding: 10px;
+    background: #FFFFFF;
+
+    cursor: pointer;
+  }
+  .navList {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    padding: 10px;
+
+    background: #FFFFFF;
+
+  }
+}
+
+.active {
+  right: 0;
+  transition: .3s;
+
+  .iconMenu {
+    svg {
+
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .navigationMobile {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
