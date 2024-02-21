@@ -1,0 +1,60 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $secondary-bg;
+
+  .title {
+    margin: 20px 0;
+    font-weight: 700;
+    font-size: 60px;
+    color: $secondary-dark-title;
+  }
+
+  .text {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+    color: $primary-dark-text;
+  }
+}
+.arrowPrev {
+  border: none;
+  background: none;
+
+  &:disabled {
+    cursor: not-allowed;
+
+    path {
+      fill: #bbc8ff;
+    }
+  }
+
+  svg {
+    transform: rotate(180deg);
+  }
+}
+.arrowNext {
+  border: none;
+  background: none;
+
+  &:disabled {
+    cursor: not-allowed;
+
+    path {
+      fill: #bbc8ff;
+    }
+  }
+}

@@ -5,6 +5,8 @@ import {Path} from "../../constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
 import {logout} from "../../features/auth/authReducer";
 import {CommonButton} from "../CommonButton/CommonButton";
+import {iconBurgerMenu} from "../../assets/icons/iconBurgerMenu";
+import {NavigationMobile} from "./NavigationMobile";
 
 export const Navigation = () => {
 
@@ -18,24 +20,17 @@ export const Navigation = () => {
 
   return (
     <>
+      <NavigationMobile />
       <nav className={styles.navigation}>
         {pathname === '/' && <NavLink to={''} className={styles.link}>
           О&nbsp;нас
         </NavLink>}
         <NavLink to={''} className={styles.link}>
-          Продегустируй <br/> тестовое меню
-        </NavLink>
-        <NavLink to={''} className={styles.link}>
           Меню тестов
         </NavLink>
-        {/*{isLogged && <>*/}
-        {/*  <NavLink to={''} className={styles.link}>*/}
-        {/*    Резюме*/}
-        {/*  </NavLink>*/}
-        {/*  <NavLink to={''} className={styles.link}>*/}
-        {/*    Визитка*/}
-        {/*  </NavLink>*/}
-        {/*</>}*/}
+        <NavLink to={''} className={styles.link}>
+          Резюме
+        </NavLink>
         {isLogged ?
           <div className={styles.linksProfile}>
             <CommonButton variant={'outline'} onClick={handleLogout} className={styles.button}>

@@ -4,14 +4,15 @@
   background: $primary-light-bg;
 }
 .container {
-  width: 90%;
+  width: 80%;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .inner {
-  max-width: 1470px;
+  //max-width: 1470px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   padding: 27px 0;
 
   .logo {
@@ -23,19 +24,25 @@
   }
 }
 
+@media screen and (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 760px) {
   .inner {
     .logo {
-      width: 10%;
+      //width: 10%;
 
       img {
-        width: 100%;
+        width: 65px;
       }
     }
   }
 }
 @media screen and (max-width: 500px) {
   .container {
-    width: 95%;
+    width: 90%;
   }
 }

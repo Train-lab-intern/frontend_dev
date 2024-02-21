@@ -5,7 +5,7 @@ const URL = process.env.REACT_APP_URL
 
 export const authApi = {
   registration(data: RegistrationRequestDataType) {
-    return axios.post<ResponseUserDataType>(`${URL}/api/v1/users/register`, data)
+    return axios.post<ResponseUserDataType>(`${URL}/api/v1/auth/register`, data)
       .then(res => res.data)
   },
   authentication(data: AuthenticationRequestType) {
@@ -37,29 +37,29 @@ export type RegistrationRequestDataType = {
 export type ResponseUserDataType = {
   token: {
     value: string
-    issuedAt: number
-    expiresAt: number
+    issuedAt: string
+    expiresAt: string
   }
   refreshToken: {
     value: string
-    issuedAt: number
-    expiredAt: number
+    issuedAt: string
+    expiredAt: string
   }
-  userDto: UserDto
+  userPageDto: UserPageDto
 }
-export type UserDto = {
+export type UserPageDto = {
   id: number
+  generatedName: string | null
   username: string
-  email: string
-  created: string
-  changed: string
+  surname: string
+  userLevel: any
+  specialty: any
   roles: [
     {
       id: number,
       roleName: string,
-      created: number,
-      changed: number,
-      isDeleted: boolean
+      created: string,
+      changed: string,
     }
   ]
 }

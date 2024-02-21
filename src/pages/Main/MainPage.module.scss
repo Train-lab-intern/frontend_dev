@@ -5,16 +5,21 @@
   display: flex;
   flex-direction: column;
 }
+
 .sectionDark {
   background: $primary-dark-bg;
 }
+
 .sectionLight {
   background: $primary-light-bg;
 }
+
 .container {
-  width: 70%;
+  width: 80%;
+  max-width: 1440px;
   margin: 0 auto;
 }
+
 .direction {
   .title {
     display: flex;
@@ -22,12 +27,14 @@
     align-items: center;
     margin: 20px 0 40px;
     color: $primary-light-title;
+
     h2 {
       text-align: center;
-      font-weight: 350;
-      font-size: 56px;
+      font-weight: 400;
+      font-size: 36px;
     }
   }
+
   .directionList {
     display: flex;
     justify-content: space-between;
@@ -45,12 +52,13 @@
       h4 {
         text-align: center;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 16px;
         color: $primary-dark-text;
       }
     }
   }
 }
+
 .banner {
   display: flex;
   align-items: center;
@@ -63,19 +71,21 @@
 
     h1 {
       font-weight: 400;
-      font-size: 44px;
-      line-height: 70px;
+      font-size: 24px;
+      line-height: 45px;
 
       .bold {
         font-weight: 600;
       }
     }
   }
+
   button {
-    max-width: 250px;
+    //max-width: 250px;
     width: fit-content;
   }
 }
+
 .manual {
   display: flex;
   flex-direction: column;
@@ -84,12 +94,14 @@
   .title {
     margin-top: 10px;
     margin-bottom: 70px;
+
     h2 {
-      font-weight: 600;
-      font-size: 46px;
+      font-weight: 400;
+      font-size: 36px;
       color: $primary-light-title;
     }
   }
+
   .manualList {
     display: flex;
     justify-content: space-between;
@@ -108,86 +120,93 @@
           margin-bottom: 20px;
         }
       }
+
       span {
-        font-weight: 500;
-        font-size: 24px;
+        font-weight: 400;
+        font-size: 20px;
         color: $primary-light-text;
       }
     }
   }
-  a{
+
+  a {
     margin-bottom: 45px;
+
     button {
       padding: 12px 10px;
     }
   }
 }
+
 .sectionTestMenu {
 
   .container {
     width: 95%;
   }
+
   .testMenu {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 300px;
+    padding: 60px 0 0 0;
 
-    .testMenuList {
+    .progressBlock {
+      width: 70%;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 260px;
+      flex-direction: column;
+      margin-top: 50px;
+      padding: 30px;
+      background: $primary-dark-bg;
 
-      .item {
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: $secondary-bg;
-
-        .title {
-          margin: 75px 0;
-          font-weight: 700;
-          font-size: 80px;
-          color: $secondary-dark-title;
-        }
-        .text {
-          margin-bottom: 20px;
+      .title {
+        margin: 0 0 40px 0;
+        h2 {
           text-align: center;
-          font-weight: 400;
-          font-size: 60px;
-          color: $primary-dark-text;
+          font-weight: 500;
+          font-size: 32px;
+          color: $primary-light-title;
         }
       }
-    }
-    .testMenuImgContainer {
-      width: 65%;
-      margin-bottom: 190px;
-
-      img {
-        width: 100%;
+      .item1 {
+        width: 60%;
+        height: 200px;
+        background: #42DBBF;
+        margin-bottom: 30px;
+      }
+      .item2 {
+        width: 60%;
+        height: 200px;
+        background: #42DBBF;
+        align-self: flex-end;
       }
     }
   }
 
   .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
     margin: 70px 0;
+
     h2 {
-      font-weight: 700;
-      font-size: 60px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 32px;
       color: $primary-dark-title;
     }
-    .subTitle {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 50px;
 
-      a {
-        display: flex;
-      }
+    h3 {
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    a {
+      display: flex;
     }
   }
 }
+
 .sectionLast {
   display: flex;
   flex-direction: column;
@@ -205,12 +224,14 @@
     font-weight: 400;
     font-size: 16px;
   }
+
   h3 {
     text-align: center;
     margin-bottom: 30px;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 36px;
   }
+
   .button {
     padding: 12px 16px;
   }
@@ -221,6 +242,7 @@
     width: 90%;
   }
 }
+
 @media screen and (max-width: 1200px) {
   .sectionTestMenu {
 
@@ -232,17 +254,20 @@
 
           .title {
             margin: 40px 0;
-            font-size: 60px;
+            //font-size: 60px;
           }
+
           .text {
-            font-size: 45px;
+            //font-size: 45px;
           }
         }
       }
     }
+
     .testMenuImgContainer {
 
-      img {}
+      img {
+      }
     }
   }
 }
@@ -251,39 +276,42 @@
   .direction {
     .title {
       h2 {
-        font-size: 40px;
+        //font-size: 40px;
       }
     }
   }
   .banner {
     .title {
       h1 {
-        font-size: 35px;
-        line-height: 55px;
+        //font-size: 35px;
+        //line-height: 55px;
       }
     }
   }
   .manual {
     .title {
-      h2{
-        font-size: 40px;
+      h2 {
+        //font-size: 40px;
       }
     }
+
     .manualList {
       .item {
         .imgContainer {
-          img{
+          img {
             height: 150px;
           }
         }
+
         span {
-          font-size: 20px;
+          //font-size: 20px;
         }
       }
     }
+
     a {
       button {
-        font-size: 20px;
+        //font-size: 20px;
       }
     }
   }
@@ -291,37 +319,30 @@
 
     .testMenu {
 
-      .testMenuList {
+      .progressBlock {
+        width: 80%;
 
-        .item {
-
-          .title {
-
-          }
-          .text {
-
-          }
+        .item1, .item2 {
+          width: 80%;
         }
       }
     }
-    .testMenuImgContainer {
 
-      img {}
-    }
     .title {
       h2 {
-        font-size: 50px;
       }
 
     }
   }
 }
+
 @media screen and (max-width: 900px) {
   .direction {
     .directionList {
       justify-content: center;
       flex-wrap: wrap;
       gap: 30px;
+
       .directionItem {
 
       }
@@ -329,10 +350,14 @@
   }
   .banner {
     flex-direction: column;
+
     .title {
       margin-bottom: 30px;
-      h1 {}
+
+      h1 {
+      }
     }
+
     button {
       max-width: 500px;
       align-self: flex-end;
@@ -341,33 +366,41 @@
   }
   .manual {
     .title {
-      h2{}
+      h2 {
+      }
     }
+
     .manualList {
       flex-direction: column;
       align-self: flex-start;
       gap: 50px;
+
       .item {
         width: 100%;
         flex-direction: row;
+
         .imgContainer {
           min-width: 165px;
 
-          img{}
+          img {
+          }
         }
-        span {}
+
+        span {
+        }
       }
     }
+
     a {
       button {
 
       }
     }
   }
-    .sectionTestMenu {
+  .sectionTestMenu {
 
     .testMenu {
-      margin-bottom: 100px;
+      //margin-bottom: 100px;
 
       .testMenuList {
         margin-bottom: 150px;
@@ -375,78 +408,114 @@
         .item {
 
           .title {
-            font-size: 50px;
+            //font-size: 50px;
           }
+
           .text {
-            font-size: 30px;
+            //font-size: 30px;
           }
         }
       }
+
       .testMenuImgContainer {
         margin-bottom: 70px;
 
-        img {}
+        img {
+        }
       }
     }
-      .title {
+
+    .title {
+      h2 {
+        //font-size: 40px;
+      }
+
+      .subTitle {
+        flex-direction: column;
+
         h2 {
-          font-size: 40px;
+          margin-bottom: 30px;
         }
-        .subTitle {
-          flex-direction: column;
 
-          h2 {
-            margin-bottom: 30px;
-          }
-          a {
-            align-self: flex-end;
+        a {
+          align-self: flex-end;
 
-            button {
-              padding: 10px 12px;
-            }
+          button {
+            padding: 10px 12px;
           }
         }
       }
+    }
   }
 }
+
 @media screen and (max-width: 750px) {
   .direction {
     .title {
       h2 {
-        font-size: 30px;
+        //font-size: 30px;
       }
     }
   }
   .banner {
     flex-direction: column;
+
     .title {
       margin-bottom: 30px;
+
       h1 {
-        font-size: 30px;
-        line-height: 35px;
+        //font-size: 30px;
+        //line-height: 35px;
       }
     }
   }
-    .sectionTestMenu {
+  .sectionTestMenu {
 
     .testMenu {
 
-      .testMenuList {
+      .progressBlock {
+        width: 90%;
 
-        .item {
+        .item1, .item2 {
+          width: 100%;
+        }
+      }
+    }
+  }
 
-          .title {
+  .manual {
 
-          }
-          .text {
+    .manualList {
 
+      .item {
+
+        .imgContainer {
+          min-width: 110px;
+          img {
+            height: 100px;
           }
         }
       }
     }
-    .testMenuImgContainer {
+  }
+}
 
-      img {}
+@media screen and (max-width: 500px) {
+  .manual {
+
+    .manualList {
+
+      .item {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .imgContainer {
+
+          img {
+
+          }
+        }
+      }
     }
   }
 }
