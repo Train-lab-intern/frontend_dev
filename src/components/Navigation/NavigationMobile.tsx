@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styles from './NavigationMobile.module.scss'
-import {iconBurgerMenu} from "../../assets/icons/iconBurgerMenu";
 import {NavLink} from "react-router-dom";
 import {Path} from "../../constants/path";
 
@@ -22,14 +21,14 @@ export const NavigationMobile = () => {
         className={styles.iconMenu}
         onClick={handleOpenMenu}
       >
-        {iconBurgerMenu}
+        <div className={styles.line}></div>
       </div>
       <div className={styles.navList}>
-        <NavLink to={''}>О нас</NavLink>
-        <NavLink to={''}>Меню тестов</NavLink>
-        <NavLink to={''}>Резюме</NavLink>
-        <NavLink to={Path.REGISTRATION}>Регистрация</NavLink>
-        <NavLink to={Path.AUTH}>Войти</NavLink>
+        <NavLink to={''} className={styles.link}>О нас</NavLink>
+        <NavLink to={''} className={styles.link}>Меню тестов</NavLink>
+        <NavLink to={''} className={styles.link}>Резюме</NavLink>
+        <NavLink to={Path.REGISTRATION} className={styles.link}>Регистрация</NavLink>
+        <NavLink to={Path.AUTH} className={styles.link}>Войти</NavLink>
       </div>
     </nav>
   );
