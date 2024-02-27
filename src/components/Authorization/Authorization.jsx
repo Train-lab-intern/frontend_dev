@@ -7,17 +7,22 @@ import eyeIconOpen from '../../assets/icons/eye-open-16-Regular.svg'
 import {Header} from "../Header/Header";
 import {CommonButton} from "../CommonButton/CommonButton";
 import PropTypes from "prop-types";
-import {InputField} from "../InputField";
 import {Footer} from "../Footer/Footer";
-import axios from "axios";
+import {useAppDispatch} from "../../redux/store";
+import {authentication} from "../../features/auth/authReducer";
+import {Path} from "../../constants/path";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 
 export const Authorization = ({primary}) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState ("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const dispatch = useAppDispatch()
 
   const handleRememberMeChange = (e) => {
     setRememberMe(e.target.checked);
@@ -25,55 +30,51 @@ export const Authorization = ({primary}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setEmailError("");
+    setPasswordError("");
 
-
-    if (!validateEmail(email)) {
+    if (!email) {
+      setEmailError("Это поле обязательно для заполнения");
+    } else if (!validateEmail(email)) {
       setEmailError("Вы заполняете поле в неверном формате");
-    } else {
-      setEmailError("");
     }
-
-
-    if (!validatePassword(password)) {
+    if (!password) {
+      setPasswordError("Это поле обязательно для заполнения");
+    } else if (!validatePassword(password)) {
       setPasswordError("Пароль должен содержать минимум 8 символов");
-    } else {
-      setPasswordError("");
     }
-
     if (emailError || passwordError) {
+      setShowSuccessMessage(false);
       return;
     }
-
-    try {
-      const response = await axios.post('https://your-api-endpoint.com/login', { email, password });
-      const token = response.data.token;
-      alert('Вход выполнен успешно!');
-    } catch (error) {
-      alert('Ошибка при входе. Пожалуйста, проверьте введенные данные.');
-    }
-  };
-
-  const onEmailChange = (event) => {
+    // @ts-ignore
+    dispatch(authentication({
+      userEmail: email,
+      userPassword: password
+    }))
+  }
+    const onEmailChange = (event) => {
     setEmail(event.target.value);
     setEmailError("");
   };
-
   const onPasswordChange = (event) => {
     setPassword(event.target.value);
     setPasswordError("");
   };
-
-
   const validateEmail = (email) => {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    };
-    const validatePassword = (password) => {
-      return password.length >= 8;
-    };
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return emailRegex.test(email);
+  };
+  const validatePassword = (password) => {
+    if (typeof password === 'string') {
+      return password.trim() !== '' && password.length >= 8;
+    } else {
+      return false;
+    }
+  };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-
   return (
     <div className='wrapper'>
       <Header />
@@ -82,39 +83,42 @@ export const Authorization = ({primary}) => {
           <img src={imageCard} alt="картинка с сине-голубым оттенком" className='imageCard' />
           <div className='dialog-window'>
             <h1 className='dialog-title'>Mы рады вас видеть</h1>
-            <form className="dialog-content">
+            <form className="dialog-content" onSubmit={handleSubmit}>
               <p className={"error " + (emailError ? "error-text" : "")}>{emailError}</p>
-              <InputField type="email"
+              <input className='input-field' type="email"
                           id="email"
                           name="email"
                           placeholder="Логин"
+                          value={email}
                           onChange={onEmailChange}
-                          style={{borderColor: emailError ? "red" : "black"}}/>
-
+                          style={{borderColor: emailError ? "red" : "##282828", borderWidth: '1px'}}/>
               <p className={"error " + (passwordError ? "error-text" : "")}>{passwordError}</p>
-              <InputField type={passwordVisible ? 'text' : 'password'}
+              <input className='input-field' type={passwordVisible ? 'text' : 'password'}
                           id="pass"
                           name="password"
                           minLength={8}
                           required
+                          value={password}
                           placeholder="Пароль"
                           onChange={onPasswordChange}
-                          style={{borderColor: passwordError ? "red" : "black"}}/>
-
+                          style={{borderColor: passwordError ? "red" : "#282828", borderWidth: '1px'}}/>
             </form>
             <img src={passwordVisible ? eyeIconOpen : eyeIcon} alt="eye icon"
-                 className={'eye-icon' + (emailError || passwordError ? ' error-icon' : '')}
+                 className={'eye-icon' +
+                   (passwordError ? ' password-error-icon' : '') +
+                   (emailError ? ' email-error-icon' : '') +
+                   (emailError && passwordError ? ' both-error-icon' : '')}
                  onClick={togglePasswordVisibility} />
               <CommonButton  className='btn' variant="primary" onClick={handleSubmit}>Войти</CommonButton>
             <div className="links-block" >
               <ul>
                 <li>Запомнить меня <input id="yes" type="checkbox" name="rememberMe"  checked={rememberMe} onChange={handleRememberMeChange}   /></li>
-                <li className='medium'><a aria-current='page' href='/' >Нет аккаунта на IT Roast?</a></li>
-                <li><a aria-current='page' href='/'>Остались вопросы?</a></li>
+                <li className='medium'> Нет аккаунта на IT Roast?</li>
+                <li>Остались вопросы?</li>
               </ul>
               <ul>
-                <li><a className="hidden" href="/">Забыли пароль?</a></li>
-                <li className='medium'><a href="/" >Присоединяйся!</a></li>
+                <li><Link className="hidden" to={Path.CHANGE_PASSWORD}>Забыли пароль?</Link></li>
+                <li className='medium'><Link to={Path.REGISTRATION} >Присоединяйся!</Link></li>
                 <li><a href="mailto:google.com">Спроси нас!</a></li>
               </ul>
               <div>
