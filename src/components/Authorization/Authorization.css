@@ -1,0 +1,325 @@
+*{
+  box-sizing: border-box;
+
+}
+input::placeholder {
+  font-size: 14px;
+}
+
+.input-field{
+  width: 60%;
+  height: 50px;
+  flex-grow: 1;
+  padding-right: 10px;
+  border-color: #282828;
+}
+
+.imageCard {
+  margin-right: 47px;
+max-width:476px ;
+  height: 658px;
+  aspect-ratio: 0.5/0.5;
+}
+
+.error-text {
+  color: red;
+}
+
+.error-input {
+  border-color: red;
+}
+
+p{
+font-size: 14px;
+}
+
+.links-block{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-bottom: 96px;
+}
+
+.wrapper {
+ width: 100%;
+  margin: 0 auto;
+}
+
+.block-auth{
+  display: flex;
+  justify-content: center;
+}
+
+.medium{
+  margin-bottom: 28px;
+  margin-top: 28px;
+}
+
+.dialog-window {
+  position: relative;
+}
+
+.dialog-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 66px ;
+}
+
+#email{
+  margin-bottom: 71px;
+}
+
+.dialog-title{
+  margin-bottom: 44px;
+  text-align: center;
+}
+
+a{
+  font-size: 18px;
+  color: black;
+}
+
+.wrapper-m{
+  margin-top: 21px;
+  padding-left: 131px;
+}
+
+.eye-icon {
+  position: absolute;
+  top: calc(36.6% - 8px);
+  left: calc(75% - 8px)
+}
+
+.password-error-icon{
+  position: absolute;
+  top: 37.5% ;
+  left: 75%;
+}
+
+.email-error-icon{
+  position: absolute;
+  top: 37.5% ;
+  left: 75%;
+}
+
+.both-error-icon{
+  position: absolute;
+  top: 39.2% ;
+  left: 75%;
+}
+
+.btn {
+ align-self: center;
+  display: inline-flex;
+  margin-bottom: 66px;
+  margin-left: 263px;
+}
+
+.links-block ul {
+  margin-left: 38px;
+}
+
+@media (max-width: 1130px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .wrapper-m {
+    padding-left: 0;
+    max-width: 100%;
+
+  }
+  .dialog-title{
+    margin-bottom: 44px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .block-auth {
+    padding: 10px;
+  }
+
+  .imageCard {
+    display: none;
+  }
+
+  .dialog-window {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .dialog-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 66px;
+    padding-left: 0;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: calc(33% - 8px);
+    left: calc(76% - 8px)
+  }
+
+  .password-error-icon{
+    position: absolute;
+    top: 33.9% ;
+    left:74%;
+  }
+  .email-error-icon{
+    position: absolute;
+    top: 34% ;
+    left: 75%;
+  }
+
+  .both-error-icon{
+    position: absolute;
+    top: 35.9% ;
+    left: 75%;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .wrapper-m {
+    padding-left: 0;
+    max-width: 100%;
+  }
+
+  .block-auth {
+    padding: 10px;
+  }
+
+  .imageCard {
+    display: none;
+  }
+
+  .dialog-window {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .dialog-title{
+    margin-bottom: 44px;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .dialog-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 66px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 660px) {
+  .eye-icon {
+    position: absolute;
+    top: 30.5%;
+    left: 75%;
+  }
+
+  .password-error-icon {
+    position: absolute;
+    top: 32.5%;
+    left: 74%;
+  }
+
+  .email-error-icon{
+    position: absolute;
+    top: 32.5% ;
+    left: 75%;
+  }
+
+  .both-error-icon{
+    position: absolute;
+    top: 34.2% ;
+    left: 75%;
+  }
+}
+
+@media (max-width: 430px) {
+  .hidden {
+    visibility: hidden;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 37%;
+    left: 72%;
+  }
+
+  .password-error-icon {
+    position: absolute;
+    top: 40%;
+    left: 71%;
+  }
+
+  .email-error-icon{
+    position: absolute;
+    top: 39.9% ;
+    left: 72%;
+  }
+
+  .both-error-icon{
+    position: absolute;
+    top: 42.6% ;
+    left: 72%;
+  }
+
+  .dialog-title {
+    margin-bottom: 20px;
+  }
+
+  .dialog-content{
+    margin-bottom:30px ;
+  }
+
+  #email {
+    margin-bottom: 30px;
+  }
+
+  a {
+    font-size: 14px;
+    color: black;
+  }
+
+  .medium {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 21px;
+  }
+
+
+  .links-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .links-block ul {
+     margin-left: 0;
+  }
+
+  .wrapper-m{
+    margin-top: 0;
+  }
+}

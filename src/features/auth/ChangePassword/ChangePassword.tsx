@@ -31,7 +31,7 @@ function ChangePassword() {
                 <main>
                     <div className="md:w-72 mx-40 my-50 mt-10 sm:w-72">
                         <Link to={Path.HOME}>
-                            <img src={logo} alt="logo"/>
+
                         </Link>
                     </div>
 

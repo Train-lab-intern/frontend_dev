@@ -2,6 +2,7 @@
 
 .header {
   background: $primary-light-bg;
+  box-shadow: -1px 3px 13px 0px;
 }
 .container {
   width: 80%;
@@ -44,5 +45,8 @@
 @media screen and (max-width: 500px) {
   .container {
     width: 90%;
+  }
+  .header {
+    box-shadow:none;
   }
 }
