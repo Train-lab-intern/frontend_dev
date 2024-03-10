@@ -1,0 +1,9 @@
+@import '../../styles/variables';
+@import '../../styles/mixins.scss';
+
+.UserInfo {
+  height: 400px;
+  background-image: url('../../assets/img/sectionLastBG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
