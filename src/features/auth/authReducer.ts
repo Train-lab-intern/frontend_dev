@@ -95,6 +95,7 @@ export const logout = createAsyncThunk<true, undefined,  { rejectValue: { messag
   }
 )
 
+
 const slice = createSlice({
   name: 'auth',
   initialState: {
