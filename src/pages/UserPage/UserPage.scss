@@ -15,7 +15,7 @@
     gap: 200px;
   }
   .UserDescription {
-    color: #fff;
+    color: $primary-light-text;
     &-name {
       font-size: 34px;
       font-weight: 400;
@@ -71,82 +71,7 @@
 }
 
 .Tests {
-  padding: 50px 0;
-  .Test{
-    margin-bottom: 40px;
-    padding: 25px;
-    min-width: 320px;
-    border-radius: 12px;
-    background-color: $primary-dark-bg;
-    color: $primary-light-text;
-    &-title {
-      font-size: 34px;
-      font-weight: 600;
-    }
-    &-result {
-      padding: 20px 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-    &-message {
-      div:last-child {
-        margin-top: 10px;
-      }
-    }
-    .Bar {
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 130px;
-      height: 64px;
-      border: 1px solid $secondary-bg;
-      border-radius: 12px;
-      overflow: hidden;
-      &-fill {
-        position: absolute;
-        height: 100%;
-        width: 30%;
-        background-color: $secondary-bg;
-      }
-      &-procent {
-        margin-left: 10px;
-        position: relative;
-        font-size: 28px;
-        font-weight: 600;
-      }
-      &-done {
-        position: absolute;
-        left: 100px;
-      }
-    }
-  }  
-}
-
-.SwiperWrapper {
-  display: flex;
-  gap: 20px;
-}
-
-.SwiperArrow {
-  padding: 10px;
-  border: 0;
-  background: none;
-  transition: ease-in-out 200ms;
-  cursor: pointer;
-  &:hover {
-    background-color: #4e4e4e30;
-  }
-  &:first-child {
-    transform: rotate(180deg);
-  }
-  &:disabled {
-    cursor: not-allowed;
-
-    path {
-      fill: #bbc8ff;
-    }
-  }
+  padding: 50px 0;  
 }
 
 .Recomendation {
@@ -166,27 +91,5 @@
     font-size: 32px;
     text-align: center;
     color: $primary-light-text;
-  }
-  &-Card {
-    margin-bottom: 40px;
-    padding: 20px;
-    width: 420px;
-    border-radius: 6px;
-    background-color: #42DBBF;  
-    &--Title {
-      padding-bottom: 20px;
-      font-size: 24px;
-      font-weight: 500;
-    }
-    &--Description {
-      display: flex;
-      gap: 10px;
-    }
-    &--Time {
-      display: flex;
-      justify-content: flex-end;
-      gap: 30px;
-      color: #787878;
-    }
   }
 }

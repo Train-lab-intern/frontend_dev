@@ -6,28 +6,15 @@ import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import UserPhoto from '../../assets/img/userImg.png';
 import { IconUserLevel } from '../../assets/icons/icon_user_level';
-import { CommonButton } from '../../components/CommonButton/CommonButton';
-import { iconDone } from '../../assets/icons/icon_done';
-
-import { Navigation, Pagination } from 'swiper/modules';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSwiperRef } from '../Main/Slider/Slider';
-import { arrowSlider } from '../../assets/icons/arrowSlider';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import { CommonButton } from '../../components/CommonButton/CommonButton'; 
+import { CustomSlider } from '../../components/CustomSlider/CustomSlider';
+import { TestCard } from '../../components/TestCard/TestCard';
+import { RecomendationCard } from '../../components/RecomendationCard/RecomendationCard';
 
 export const UserPage = () => {
 
   const dispatch = useAppDispatch()
-  const mainPageData = useAppSelector(state => state.pagesData.mainPageData)
-
-  const [nextEl, nextElRef] = useSwiperRef();
-  const [prevEl, prevElRef] = useSwiperRef();
-
-  const [nextEl2, nextElRef2] = useSwiperRef();
-  const [prevEl2, prevElRef2] = useSwiperRef();
+  const mainPageData = useAppSelector(state => state.pagesData.mainPageData) 
 
   useEffect(() => {
     dispatch(getDataMainPage())
@@ -44,21 +31,13 @@ export const UserPage = () => {
           <div className='UserDescription'>
             <div className='UserDescription-name'>Алена Павлова</div>
             <ul className='UserDescription-shortResults'>
-              <li>
+              {[1,2,3].map(el => {
+                return <li key={el}>
                 <div className='UserDescription-shortResults-speciality'>QA Manual</div>
                 <div className='UserDescription-shortResults-level'>Уровень прожарки</div>
                 <div className='UserDescription-shortResults-levelIcon'>{IconUserLevel}</div>
               </li>
-              <li>
-                <div className='UserDescription-shortResults-speciality'>QA Manual</div>
-                <div className='UserDescription-shortResults-level'>Уровень прожарки</div>
-                <div className='UserDescription-shortResults-levelIcon'>{IconUserLevel}</div>
-              </li>
-              <li>
-                <div className='UserDescription-shortResults-speciality'>AQA Pyton</div>
-                <div className='UserDescription-shortResults-level'>Уровень прожарки</div>
-                <div className='UserDescription-shortResults-levelIcon'>{IconUserLevel}</div>
-              </li>
+              })}             
             </ul>
           </div>
         </div>
@@ -75,71 +54,9 @@ export const UserPage = () => {
       </section>
       <section className='Tests'>
         <div className='container SwiperWrapper'>
-        <button className='SwiperArrow swiper1-button-prev' ref={prevElRef}>{arrowSlider}</button>
-        <Swiper
-        className='Swiper1'
-        navigation={{
-          prevEl,
-          nextEl,
-        }}
-        modules={[Navigation, Pagination]}
-        effect={"cube"}
-        pagination={true}
-        spaceBetween={50}
-        slidesPerView={1}
-        breakpoints={{
-          700: {
-            slidesPerView: 2
-          },
-          1000: {
-            slidesPerView: 3
-          }
-        }}       
-      >
-        {
-        [1,2,3,4,5].map(item => {
-          return (
-            <SwiperSlide>
-              <div className='Test'>
-                <div className='Test-title'>QA Manual</div>
-                <div className='Test-result'>
-                  <div className='Bar'>
-                    <div className='Bar-fill'></div>
-                    <div className='Bar-procent'>30%</div>
-                    <div className='Bar-done'>{iconDone}</div>
-                  </div>
-                  <div className='Test-result--date'>тест от 4 января</div>
-                </div>
-                <div className='Test-message'>
-                  <div>Rare.</div>
-                  <div>Это только начало пути!</div>
-                  <div>Прожарь свои знания с нами.</div>
-                </div>            
-              </div>
-            </SwiperSlide>
-          )
-        })
-        }
-      </Swiper>
-      <button className='SwiperArrow swiper1-button-next' ref={nextElRef}>{arrowSlider}</button>
-    </div>
-      </section>
-      <section className='Recomendation'>
-        <div className='container'>
-          <div className='Recomendation-Title'>Полезные материалы для прожарки знаний</div>
-          <div className='SwiperWrapper'>          
-            <button className='SwiperArrow' ref={prevElRef2}>{arrowSlider}</button>
-            <Swiper
-            className='Swiper2'
-            navigation={{
-              prevEl2,
-              nextEl2,
-            }}
-            modules={[Navigation, Pagination]}
-            effect={"cube"}
+          <CustomSlider
             pagination={true}
-            loop={true}
-            spaceBetween={64}
+            spaceBetween={50}
             slidesPerView={1}
             breakpoints={{
               700: {
@@ -149,29 +66,31 @@ export const UserPage = () => {
                 slidesPerView: 3
               }
             }}
+            slides={[1,2,3,4].map(item => <TestCard/>)}            
           >            
-            {
-              [1,2,3,4,5].map(item => {
-                return (
-                  <SwiperSlide>
-                    <div className='Recomendation-Card'>
-                      <div className='Recomendation-Card--Title'>Java без опыта!</div>
-                      <div className='Recomendation-Card--Description'>
-                        <div>В Java-программирование можно прийти практически из любой сферы: это подтверждают результаты опроса. Для начала мы решили узнать, чем наши</div>
-                        <div className='IconRecomendation'>{IconUserLevel}</div>
-                      </div>
-                      <div className='Recomendation-Card--Time'>
-                        <div>10 дек 2023</div>
-                        <div>Время чтения 10мин</div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                )
-              })
+          </CustomSlider>
+    </div>
+      </section>
+      <section className='Recomendation'>
+        <div className='container'>
+          <div className='Recomendation-Title'>Полезные материалы для прожарки знаний</div>
+          <CustomSlider
+            loop={true}
+            spaceBetween={64}
+            pagination={true}
+            slidesPerView={1}
+            breakpoints={{
+              700: {
+                slidesPerView: 2
+              },
+              1000: {
+                slidesPerView: 3
               }
-            </Swiper>
-            <button className='SwiperArrow' ref={nextElRef2}>{arrowSlider}</button>
-          </div>
+            }} 
+            slides={[1,2,3,4,5].map(item => <RecomendationCard/>)}
+            lightTheme={true}
+          >
+          </CustomSlider>
         </div>
       </section>
       <Footer mainPageData={mainPageData}/>
