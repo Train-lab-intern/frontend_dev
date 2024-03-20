@@ -1,9 +1,5 @@
 *{
   box-sizing: border-box;
-
-}
-input::placeholder {
-  font-size: 14px;
 }
 
 .input-field{
@@ -14,9 +10,13 @@ input::placeholder {
   border-color: #282828;
 }
 
+.input-field.has-value label {
+  top: -25px;
+}
+
 .imageCard {
   margin-right: 47px;
-max-width:476px ;
+  max-width:476px ;
   height: 658px;
   aspect-ratio: 0.5/0.5;
 }
@@ -76,9 +76,10 @@ font-size: 14px;
   text-align: center;
 }
 
-a{
+li a{
   font-size: 18px;
   color: black;
+  text-decoration: none;
 }
 
 .wrapper-m{
@@ -87,34 +88,32 @@ a{
 }
 
 .eye-icon {
+  padding:10px;
   position: absolute;
-  top: calc(36.6% - 8px);
-  left: calc(75% - 8px)
+  top: calc(41% - 8px);
+  left: calc(88% - 8px)
 }
 
 .password-error-icon{
   position: absolute;
-  top: 37.5% ;
-  left: 75%;
+  left: 81%;
 }
 
 .email-error-icon{
   position: absolute;
-  top: 37.5% ;
-  left: 75%;
+  left: 86%;
 }
 
 .both-error-icon{
   position: absolute;
-  top: 39.2% ;
-  left: 75%;
+  left: 81%;
 }
 
-.btn {
+.btn-enter {
  align-self: center;
-  display: inline-flex;
+  display: block;
+  margin: 0 auto;
   margin-bottom: 66px;
-  margin-left: 263px;
 }
 
 .links-block ul {
@@ -159,29 +158,6 @@ a{
     margin-bottom: 66px;
     padding-left: 0;
   }
-
-  .eye-icon {
-    position: absolute;
-    top: calc(33% - 8px);
-    left: calc(76% - 8px)
-  }
-
-  .password-error-icon{
-    position: absolute;
-    top: 33.9% ;
-    left:74%;
-  }
-  .email-error-icon{
-    position: absolute;
-    top: 34% ;
-    left: 75%;
-  }
-
-  .both-error-icon{
-    position: absolute;
-    top: 35.9% ;
-    left: 75%;
-  }
 }
 
 @media (max-width: 767px) {
@@ -225,66 +201,43 @@ a{
   }
 }
 
-@media (max-width: 660px) {
-  .eye-icon {
-    position: absolute;
-    top: 32.1%;
-    left: 73%;
+@media (max-width: 600px) {
+  .btn-enter {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 21px;
   }
 
   .password-error-icon {
-    position: absolute;
-    top: 34%;
-    left: 74%;
-  }
-
-  .email-error-icon{
-    position: absolute;
-    top: 34% ;
-    left: 75%;
+    left: 78%;
   }
 
   .both-error-icon{
     position: absolute;
-    top: 36% ;
-    left: 74%;
-  }
-  .btn {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 21px;
-
-
+    top: 25% ;
+    left: 76%;
   }
 }
 
-@media (max-width: 430px) {
-  .hidden {
+@media (max-width: 485px) {
+  .hidden-link {
     visibility: hidden;
   }
 
   .eye-icon {
-    position: absolute;
-    top: 37%;
-    left: 72%;
+    left: 79%;
   }
 
   .password-error-icon {
-    position: absolute;
-    top: 40%;
-    left: 71%;
+    left: 70%;
   }
 
   .email-error-icon{
-    position: absolute;
-    top: 39.9% ;
-    left: 72%;
+    left: 80%;
   }
 
   .both-error-icon{
-    position: absolute;
-    top: 42.6% ;
-    left: 72%;
+    left: 73%;
   }
 
   .dialog-title {
@@ -299,22 +252,26 @@ a{
     margin-bottom: 30px;
   }
 
-  a {
+ li a {
     font-size: 14px;
     color: black;
+    text-decoration: none;
   }
+
+li{
+  font-size: 14px;
+}
 
   .medium {
     margin-bottom: 20px;
     margin-top: 20px;
   }
 
-  .btn {
+  .btn-enter {
     display: block;
     margin: 0 auto;
     margin-bottom: 21px;
   }
-
 
   .links-block {
     display: flex;
@@ -330,20 +287,21 @@ a{
     margin-top: 0;
   }
 }
-@media (max-width: 350px) {
+
+@media (max-width: 390px) {
   .eye-icon {
-    position: absolute;
-    top: 36%;
-    left: 70%;
+    left: 75%;
   }
+
   .email-error-icon {
-    position: absolute;
-    top: 39%;
-    left: 70%;
+    left: 75%;
   }
-  .both-error-icon{
-    position: absolute;
-    top: 42% ;
-    left: 70%;
+
+  .both-error-icon {
+    left: 67%;
   }
+
+  .password-error-icon {
+    left: 65%;
   }
+}
