@@ -4,5 +4,6 @@ export enum Path {
   REGISTRATION='/registration',
   CHANGE_PASSWORD='/change-password',
   PROFILE='/profile',
-  PROFILE_SETTINGS='/profile-settings'
+  PROFILE_SETTINGS='/profile-settings',
+  USER_PAGE='/id'
 }

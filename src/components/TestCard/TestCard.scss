@@ -1,0 +1,51 @@
+@import "../../styles/variables.scss";
+
+.Test{
+  margin-bottom: 40px;
+  padding: 25px;
+  min-width: 320px;
+  border-radius: 12px;
+  background-color: $primary-dark-bg;
+  color: $primary-light-text;
+  &-title {
+    font-size: 34px;
+    font-weight: 600;
+  }
+  &-result {
+    padding: 20px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  &-message {
+    div:last-child {
+      margin-top: 10px;
+    }
+  }
+  .Bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 130px;
+    height: 64px;
+    border: 1px solid $secondary-bg;
+    border-radius: 12px;
+    overflow: hidden;
+    &-fill {
+      position: absolute;
+      height: 100%;
+      width: 30%;
+      background-color: $secondary-bg;
+    }
+    &-procent {
+      margin-left: 10px;
+      position: relative;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    &-done {
+      position: absolute;
+      left: 100px;
+    }
+  }
+}  

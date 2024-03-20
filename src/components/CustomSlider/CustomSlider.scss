@@ -1,0 +1,33 @@
+@import "../../styles/variables.scss";
+
+.CustomSlider {
+  display: flex;
+  gap: 20px;
+  &-Arrow {
+    padding: 10px;
+    border: 0;
+    background: none;
+    transition: $primary-transition;
+    cursor: pointer;
+    &:hover {
+      background-color: $primary-dark-hover;
+    }
+    &:first-child {
+      transform: rotate(180deg);
+    }
+    &:disabled {
+      cursor: not-allowed;
+      path {
+        fill: #D8D8FE;
+      }
+    }
+  }
+  &-Arrow.light {
+    path {
+      fill: $primary-light-text;
+    }
+    &:hover {
+      background-color: $primary-light-hover;
+    }
+  }
+}

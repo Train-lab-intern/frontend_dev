@@ -14,6 +14,8 @@ import {ProfileSettings} from "./features/profile/ProfileSettings/ProfileSetting
 import {MainPage} from "./pages/Main/MainPage";
 import {Authorization} from "./components/Authorization";
 import {CommonButton} from "./components/CommonButton/CommonButton";
+import { UserPage } from "./pages/UserPage/UserPage";
+import "./styles/main.scss";
 
 function App() {
   const primary = true;
@@ -42,6 +44,7 @@ function App() {
             <ProfileSettings />
           </PrivateRoute>
         }/>
+        <Route path={Path.USER_PAGE} element={<UserPage/>}/>
         <Route path='*' element={<NotPage/>}/>
       </Routes>}
     </div>
