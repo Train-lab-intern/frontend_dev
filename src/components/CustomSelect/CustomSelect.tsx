@@ -1,15 +1,15 @@
 import "./CustomSelect.scss"
 import {arrowSlider} from "../../assets/icons/arrowSlider"
-import { MouseEventHandler, useState } from "react"
+import { useState } from "react"
 
-export const CustomSelect = (_specialityList:Array<string>,_userSpeciality:Array<string>) => {
+export const CustomSelect = (props:{specialityList:Array<string>, userSpeciality:Array<string>, callback:Function}) => {
 
   const spec = ["BA", "QA Manual", "AQA Pyton", "AQ/AQA", "PM", "Java developer", "JS developer", "Project manager", "Product owner", "System analyst"]
   const userSpec =[ "Java developer", "JS developer"];
 
   const [isActive, setActive] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(new Set(userSpec));
-  const [specList, setSpecList] = useState(spec);
+  const [selectedItem, setSelectedItem] = useState(new Set(props.userSpeciality));
+  const [specList, setSpecList] = useState(props.specialityList);
 
   const maxSelectedItem = 3;
 
@@ -20,21 +20,23 @@ export const CustomSelect = (_specialityList:Array<string>,_userSpeciality:Array
   const changeSpeciality = (event: { target: HTMLInputElement }) => {
     const target = event.target;
     const value = target.value;
-    if (target.checked) {      
-      setSelectedItem(new Set(selectedItem.add(value)));
-    } else {
-      deleteSpeciality(value)
-    }
+    target.checked ? addSpeciality(value) : deleteSpeciality(value)
   }
 
   const deleteSpeciality = (value:string) => {
-    selectedItem.delete(value)
+    selectedItem.delete(value);
     setSelectedItem(new Set(selectedItem));
+    props.callback(selectedItem);
+  }
+
+  const addSpeciality = (value:string) => {
+    setSelectedItem(new Set(selectedItem.add(value)))
+    props.callback(selectedItem);
   }
 
   const removeSpeciality = (event: React.MouseEvent<HTMLButtonElement>) => {
     const target = event.currentTarget;
-    deleteSpeciality(target.name)
+    deleteSpeciality(target.name);
   }
 
   return (

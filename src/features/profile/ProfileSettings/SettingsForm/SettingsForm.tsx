@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import styles from './SettingsForm.module.scss'
 import {SubmitHandler, useForm } from "react-hook-form";
+import { CustomSelect } from '../../../../components/CustomSelect/CustomSelect';
+import { JSX } from 'react/jsx-runtime';
 
 type DataType = {
   userName?: string
@@ -27,6 +29,9 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
 
   const [imgName, setImgName] = useState<null | string>(null)
 
+  const spec = ["BA", "QA Manual", "AQA Pyton", "AQ/AQA", "PM", "Java developer", "JS developer", "Project manager", "Product owner", "System analyst"]
+  const userSpec =[ "Java developer", "JS developer"];
+
   const {
     register, handleSubmit, formState: {errors}, watch, reset
   } = useForm<InputsType>()
@@ -48,6 +53,10 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
   const handleResetForm = () => {
     reset()
     setImgName('')
+  }
+
+  const selectSpeciality = (selectedSpeciality:Array<string>) => {
+    console.log(selectedSpeciality);
   }
 
   React.useEffect(() => {
@@ -106,7 +115,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
         </select>
         {errors.level?.message && <span className={styles.error}>{errors.level.message}</span>}
       </label>
-      <label className={styles.label}>
+      {/* <label className={styles.label}>
         <select defaultValue={''} className={styles.select} {...register('direction', {
           required: 'Выберите направление.'
         })}>
@@ -117,7 +126,8 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
           <option value="Python">Python</option>
         </select>
         {errors.direction?.message && <span className={styles.error}>{errors.direction.message}</span>}
-      </label>
+      </label> */}
+      <CustomSelect specialityList={spec} userSpeciality={userSpec} callback={selectSpeciality}></CustomSelect>
       <div className={styles.buttons}>
         <button type="submit">Сохранить&nbsp;изменения</button>
         <button type="button" onClick={handleResetForm}>Очистить</button>
