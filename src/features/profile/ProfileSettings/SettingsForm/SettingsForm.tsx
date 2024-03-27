@@ -30,6 +30,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
 
   const spec = ["BA", "QA Manual", "AQA Pyton", "AQ/AQA", "PM", "Java developer", "JS developer", "Project manager", "Product owner", "System analyst"]
   const userSpec =[ "Java developer", "JS developer"];
+  const maxSelectedItem = 3;
 
   const {
     register, handleSubmit, formState: {errors}, watch, reset
@@ -126,7 +127,7 @@ export const SettingsForm: React.FC<PropsType> = ({changeAvatar, saveNewData}) =
         </select>
         {errors.direction?.message && <span className={styles.error}>{errors.direction.message}</span>}
       </label> */}
-      <CustomSelect specialityList={spec} userSpeciality={userSpec} callback={selectSpeciality}></CustomSelect>
+      <CustomSelect specialityList={spec} userSpeciality={userSpec} maxSelectedItem={maxSelectedItem} callback={selectSpeciality}></CustomSelect>
       <div className={styles.buttons}>
         <button type="submit">Сохранить&nbsp;изменения</button>
         <button type="button" onClick={handleResetForm}>Очистить</button>

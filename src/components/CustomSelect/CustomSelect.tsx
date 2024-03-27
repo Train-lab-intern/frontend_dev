@@ -2,16 +2,13 @@ import "./CustomSelect.scss"
 import {arrowSlider} from "../../assets/icons/arrowSlider"
 import { useState } from "react"
 
-export const CustomSelect = (props:{specialityList:Array<string>, userSpeciality:Array<string>, callback:Function}) => {
-
-  const spec = ["BA", "QA Manual", "AQA Pyton", "AQ/AQA", "PM", "Java developer", "JS developer", "Project manager", "Product owner", "System analyst"]
-  const userSpec =[ "Java developer", "JS developer"];
+export const CustomSelect = (props:{specialityList:Array<string>, userSpeciality:Array<string>, maxSelectedItem:number, callback:Function}) => {
 
   const [isActive, setActive] = useState(false);
   const [selectedItem, setSelectedItem] = useState(new Set(props.userSpeciality));
   const [specList, setSpecList] = useState(props.specialityList);
 
-  const maxSelectedItem = 3;
+  const maxSelectedItem = props.maxSelectedItem;
 
   const chengeActive = () => {
     setActive(!isActive);
