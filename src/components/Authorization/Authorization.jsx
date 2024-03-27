@@ -12,7 +12,6 @@ import {useAppDispatch} from "../../redux/store";
 import {authentication} from "../../features/auth/authReducer";
 import {Path} from "../../constants/path";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { CustomSelect } from "../CustomSelect/CustomSelect";
 
 
 export const Authorization = ({primary}) => {
@@ -112,7 +111,6 @@ export const Authorization = ({primary}) => {
                    (emailError && passwordError ? ' both-error-icon' : '')}
                  onClick={togglePasswordVisibility} />
               <CommonButton  className='btn' variant="primary" onClick={handleSubmit}>Войти</CommonButton>
-              <CustomSelect></CustomSelect>
             <div className="links-block" >
               <ul>
                 <li>Запомнить меня <input id="yes" type="checkbox" name="rememberMe"  checked={rememberMe} onChange={handleRememberMeChange}   /></li>
