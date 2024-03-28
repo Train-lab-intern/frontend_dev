@@ -1,27 +1,37 @@
-*{
+@import '../../styles/variables.scss';
+@import '../../styles/breakpoints.scss';
+
+* {
   box-sizing: border-box;
 }
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
 
-.input-field{
+  &-m {
+    margin-top: 21px;
+    padding-left: 131px;
+  }
+}
+.input-field {
   width: 70%;
   padding-right: 10px;
-}
-
-.form-control {
-  margin-bottom: 55px;
 }
 
 .input-field.has-value label {
   top: -25px;
 }
 
-#pass{
+.form-control {
+  margin-bottom: 55px;
+}
+#pass {
   position: relative;
 }
 
 .imageCard {
   margin-right: 47px;
-  max-width:495px ;
+  max-width: 495px;
   height: 763px;
   aspect-ratio: 0.5/0.5;
 }
@@ -30,60 +40,47 @@
   color: red;
 }
 
-.error-input {
-  border-color: red;
+p {
+  font-size: 14px;
 }
 
-p{
- font-size: 14px;
-}
-
-.links-block{
+.links-block {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
   margin-bottom: 96px;
 }
 
-.wrapper {
-  width: 100%;
-  margin: 0 auto;
-}
-
-.wrapper-m{
-  margin-top: 21px;
-  padding-left: 131px;
-}
-.block-auth{
+.block-auth {
   display: flex;
   justify-content: center;
 }
 
-.medium{
+.medium {
   margin-bottom: 28px;
   margin-top: 28px;
 }
 
-.dialog-content{
+.dialog-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 66px ;
+  margin-bottom: 66px;
 }
 
-.dialog-title{
+.dialog-title {
   margin-bottom: 44px;
   text-align: center;
 }
 
-li a{
-  font-size: 18px;
-  color: black;
-  text-decoration: none;
+li {
+  a {
+    font-size: 18px;
+    color: $primary-dark-text;
+    text-decoration: none;
+  }
 }
-
-
 
 .eye-icon {
   position: absolute;
@@ -98,18 +95,20 @@ li a{
   margin-bottom: 66px;
 }
 
-.links-block ul {
-  margin-left: 38px;
+.links-block {
+  ul {
+    margin-left: 38px;
+  }
 }
 
-@media (max-width: 1130px) {
+@media (max-width: $breakpoint-tablet) {
   .wrapper {
     flex-direction: column;
-  }
 
-  .wrapper-m {
-    padding-left: 0;
-    max-width: 100%;
+    &-m {
+      padding-left: 0;
+      max-width: 100%;
+    }
   }
 
   .block-auth {
@@ -123,26 +122,26 @@ li a{
   .dialog-window {
     max-width: 100%;
     padding: 10px;
-  }
 
-  .dialog-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-left: 0;
-    margin-bottom: 20px;
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: $breakpoint-mobile) {
   .btn-enter {
     margin-bottom: 21px;
   }
 }
 
-@media (max-width: 485px) {
+@media (max-width: $breakpoint-small) {
   .hidden-link {
     visibility: hidden;
   }
@@ -151,19 +150,21 @@ li a{
     margin-bottom: 20px;
   }
 
-  .dialog-content{
-    margin-bottom:20px;
+  .dialog-content {
+    margin-bottom: 20px;
   }
 
- li a {
+  li {
+    a {
+      font-size: 14px;
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  li {
     font-size: 14px;
-    color: black;
-    text-decoration: none;
   }
-
-li{
-  font-size: 14px;
-}
 
   .medium {
     margin-bottom: 20px;
@@ -176,16 +177,18 @@ li{
     margin-bottom: 20px;
   }
 
-  .links-block ul {
-     margin-left: 0;
+  .links-block {
+    ul {
+      margin-left: 0;
+    }
   }
 
-  .wrapper-m{
+  .wrapper-m {
     margin-top: 0;
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: $breakpoint-extra-small) {
   .eye-icon {
     left: 85%;
   }

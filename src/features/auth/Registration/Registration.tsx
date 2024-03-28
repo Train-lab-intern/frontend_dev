@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {Col, Container, Row} from "react-bootstrap";
-import styles from './Registration.module.css'
-import Logo from '../../../assets/img/fullLogo.jpg'
-import {Link, Navigate, NavLink} from 'react-router-dom'
-import {useForm} from "react-hook-form";
-import {Path} from "../../../constants/path";
-import {useAppDispatch, useAppSelector} from "../../../redux/store";
-import {changeAuthStatus, clearErrors, registration} from "../authReducer";
-import {RequestStatus} from "../../../constants/requestStatus";
-import closeEyeIcon from '../../../assets/icons/closeEye.png'
-import openEyeIcon from '../../../assets/icons/openEye.png'
-import {Notification} from "../../../components/Notifications/Notification";
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { Link, Navigate, NavLink } from 'react-router-dom';
+import styles from './Registration.module.css';
+import Logo from '../../../assets/img/fullLogo.jpg';
+import { Path } from '../../../constants/path';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { changeAuthStatus, clearErrors, registration } from '../authReducer';
+import { RequestStatus } from '../../../constants/requestStatus';
+import closeEyeIcon from '../../../assets/icons/closeEye.png';
+import openEyeIcon from '../../../assets/icons/openEye.png';
+import { Notification } from '../../../components/Notifications/Notification';
 
 type FormDataType = {
   email: string
@@ -20,8 +20,8 @@ type FormDataType = {
 
 export const Registration = () => {
 
-  const dispatch = useAppDispatch()
-  const {authStatus, authErrors, isLogged} = useAppSelector(state => state.auth)
+  const dispatch = useAppDispatch();
+  const { authStatus, authErrors, isLogged } = useAppSelector(state => state.auth)
   const [showPassword, setShowPassword] = useState(false)
 
 
