@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import { Registration } from './features/auth/Registration/Registration';
 import ChangePassword from './features/auth/ChangePassword/ChangePassword';
 import { Profile } from './features/profile/Profile/Profile';
@@ -12,6 +11,11 @@ import { RequestStatus } from './constants/requestStatus';
 import { ProfileSettings } from './features/profile/ProfileSettings/ProfileSettings';
 import { MainPage } from './pages/Main/MainPage';
 import { Authorization } from './components/Authorization';
+import {Login} from "./features/auth/Login/Login";
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import {CommonButton} from "./components/CommonButton/CommonButton";
+import { UserPage } from "./pages/UserPage/UserPage";
+import "./styles/main.scss";
 
 function App() {
   const primary = true;
@@ -46,6 +50,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path={Path.USER_PAGE} element={<UserPage/>}/>
           <Route path="*" element={<NotPage />} />
         </Routes>
       )}
