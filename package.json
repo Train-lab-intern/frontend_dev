@@ -1,5 +1,6 @@
 {
   "name": "frontend_dev",
+  "homepage": "https://Train-lab-intern.github.io/frontend_dev/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -29,6 +30,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
@@ -54,6 +57,7 @@
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1",
     "sass": "^1.65.1",
     "tailwindcss": "^3.3.3"
   }
