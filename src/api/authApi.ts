@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const URL = process.env.REACT_APP_URL;
+
+const URL = process.env.REACT_APP_URL
 
 export const authApi = {
   registration(data: RegistrationRequestDataType) {
@@ -11,7 +12,7 @@ export const authApi = {
   },
   authentication(data: AuthenticationRequestType) {
     return axios
-      .post<ResponseUserDataType>('/api/v1/auth/login', data)
+      .post<ResponseUserDataType>(`${URL}/api/v1/auth/login`, data)
       .then((res) => {
         const expiresAt = new Date();
         expiresAt.setDate(expiresAt.getDate() + 30);
