@@ -103,6 +103,7 @@ export const Authorization = ({primary}) => {
                           onChange={onPasswordChange}
                           style={{borderColor: passwordError ? "red" : "#282828", borderWidth: '1px'}}/>
             </form>
+            
             <img src={passwordVisible ? eyeIconOpen : eyeIcon} alt="eye icon"
                  className={'eye-icon' +
                    (passwordError ? ' password-error-icon' : '') +
