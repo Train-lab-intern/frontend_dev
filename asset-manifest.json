@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/frontend_dev/static/css/main.63c4acd1.css",
-    "main.js": "/frontend_dev/static/js/main.b028a917.js",
-    "static/media/author.png": "/frontend_dev/static/media/author.708d8cba258bc42be53a.png",
-    "static/media/sectionLastBG.png": "/frontend_dev/static/media/sectionLastBG.84d4b8d78724bebdb42b.png",
-    "static/media/bg-diagram.png": "/frontend_dev/static/media/bg-diagram.7a7d689a6f32df2936e1.png",
-    "static/media/fullLogo.jpg": "/frontend_dev/static/media/fullLogo.2ca0e704cba5151b5e95.jpg",
-    "static/media/diagram.png": "/frontend_dev/static/media/diagram.46c1a92509b086859e79.png",
-    "static/media/userImg.png": "/frontend_dev/static/media/userImg.2d76cd2bf58d527466e1.png",
-    "static/media/bg-recommendations.png": "/frontend_dev/static/media/bg-recommendations.e2c5bec1569cdf56c37c.png",
-    "static/media/icon_manual_004.png": "/frontend_dev/static/media/icon_manual_004.8de8663af094ff2fce02.png",
-    "index.html": "/frontend_dev/index.html",
-    "static/media/eye-open-16-Regular.svg": "/frontend_dev/static/media/eye-open-16-Regular.8a3ad065724bdc67002f12ea6ceafa8d.svg",
-    "main.63c4acd1.css.map": "/frontend_dev/static/css/main.63c4acd1.css.map",
-    "main.b028a917.js.map": "/frontend_dev/static/js/main.b028a917.js.map"
+    "main.css": "./static/css/main.3672800d.css",
+    "main.js": "./static/js/main.188d6847.js",
+    "static/media/author.png": "./static/media/author.708d8cba258bc42be53a.png",
+    "static/media/sectionLastBG.png": "./static/media/sectionLastBG.84d4b8d78724bebdb42b.png",
+    "static/media/bg-diagram.png": "./static/media/bg-diagram.7a7d689a6f32df2936e1.png",
+    "static/media/fullLogo.jpg": "./static/media/fullLogo.2ca0e704cba5151b5e95.jpg",
+    "static/media/diagram.png": "./static/media/diagram.46c1a92509b086859e79.png",
+    "static/media/userImg.png": "./static/media/userImg.2d76cd2bf58d527466e1.png",
+    "static/media/bg-recommendations.png": "./static/media/bg-recommendations.e2c5bec1569cdf56c37c.png",
+    "static/media/icon_manual_004.png": "./static/media/icon_manual_004.8de8663af094ff2fce02.png",
+    "index.html": "./index.html",
+    "static/media/eye-open-16-Regular.svg": "./static/media/eye-open-16-Regular.8a3ad065724bdc67002f12ea6ceafa8d.svg",
+    "main.3672800d.css.map": "./static/css/main.3672800d.css.map",
+    "main.188d6847.js.map": "./static/js/main.188d6847.js.map"
   },
   "entrypoints": [
-    "static/css/main.63c4acd1.css",
-    "static/js/main.b028a917.js"
+    "static/css/main.3672800d.css",
+    "static/js/main.188d6847.js"
   ]
 }
