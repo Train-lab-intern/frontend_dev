@@ -1,6 +1,6 @@
 {
   "name": "frontend_dev",
-  "homepage": "https://Train-lab-intern.github.io/frontend_dev/",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
