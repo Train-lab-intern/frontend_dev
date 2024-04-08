@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# TrainLab
+
+## Overview
+
+TrainLab is a non-commercial volunteer project designed to help novice programmers gain practical experience and immerse themselves in the real atmosphere of the development process. Our goal is to help our participants find a job faster, and we are proud that our participants do indeed find it.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
