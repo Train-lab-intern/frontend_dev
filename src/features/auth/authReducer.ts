@@ -11,12 +11,6 @@ export const auth = createAsyncThunk<UserPageDto, undefined, { rejectValue: { me
   'auth/auth', async (arg, thunkAPI) => {
     try {
       const userData = await authApi.auth()
-
-      const token = userData.token
-      sessionStorage.setItem('tlToken', token.value)
-      const refreshToken = userData.refreshToken
-      localStorage.setItem('tlToken', refreshToken.value)
-
       return userData.userPageDto
     }catch (e) {
       let errorMessage: string
@@ -35,12 +29,6 @@ export const authentication = createAsyncThunk<UserPageDto, AuthenticationReques
     try {
       
       const userData = await authApi.authentication(arg)
-
-      const token = userData.token
-      sessionStorage.setItem('tlToken', token.value)
-      const refreshToken = userData.refreshToken
-      localStorage.setItem('tlToken', refreshToken.value)
-
       return userData.userPageDto
       
     }catch (e) {
@@ -57,14 +45,7 @@ export const authentication = createAsyncThunk<UserPageDto, AuthenticationReques
 export const registration = createAsyncThunk<UserPageDto, RegistrationRequestDataType, { rejectValue: { message: string } }>(
   'auth/registration', async (arg, thunkAPI) => {
     try {
-
       const userData = await authApi.registration(arg)
-
-      const token = userData.token
-      sessionStorage.setItem('tlToken', token.value)
-      const refreshToken = userData.refreshToken
-      localStorage.setItem('tlToken', refreshToken.value)
-
       return userData.userPageDto
 
     }catch (e) {
@@ -94,6 +75,7 @@ export const logout = createAsyncThunk<true, undefined,  { rejectValue: { messag
     }
   }
 )
+
 
 const slice = createSlice({
   name: 'auth',
