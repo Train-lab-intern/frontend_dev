@@ -1,9 +1,33 @@
+# TrainLab
+## Overview
+
+We are developing a platform designed for budding IT
+professionals. Our goal is to help beginners check and improve
+their knowledge and skills. The platform provides unique opportunities
+for learning and self-development. It includes tests and links to 
+useful educational materials that will help users deepen their
+knowledge and improve their skills.
+
+![screenshotMain.png](src%2Fassets%2Fimg%2FscreenshotMain.png)
+
+# We used the following technologies for development:
+- React 
+- Redux 
+- JavaScript (ES6+)
+- TypeScript
+
+# Test user for verification and registration:
+logIn: test@test.com <br>
+password: Test@test.com1
+
+![screenshotAuth.png](src%2Fassets%2Fimg%2FscreenshotAuth.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
+ 
 In the project directory, you can run:
 
 ### `npm start`
