@@ -8,7 +8,27 @@ for learning and self-development. It includes tests and links to
 useful educational materials that will help users deepen their
 knowledge and improve their skills.
 
+Project Structure:
+1. Test directory: A directory where test files are stored for various professions or topics.
+
+2. Testing module: Code responsible for providing tests to the user, executing them, and evaluating the results. 
+
+3. User profile: A page or section where users can register, log in to the system, view their test results, save progress, and manage their profile.
+
+4. Test selection page: An interface where users can choose tests based on specific professions to take.
+
 ![screenshotMain.png](src%2Fassets%2Fimg%2FscreenshotMain.png)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Installation and Running the Project
+
+1. Clone the repository to your computer:
+   git clone git@github.com:Train-lab-intern/frontend_dev.git
+
+
+2. Install project dependencies:
+   npm install
 
 # We used the following technologies for development:
 - React 
@@ -21,10 +41,6 @@ logIn: test@test.com <br>
 password: Test@test.com1
 
 ![screenshotAuth.png](src%2Fassets%2Fimg%2FscreenshotAuth.png)
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
  
@@ -64,7 +80,16 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
+- Check server configuration to support SPA (e.g., setting up routes).
+- Visit the [Create React App documentation](https://create-react-app.dev/docs/deployment/) for additional information on deploying applications.
+- To learn React, check out the [React documentation](https://reactjs.org/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Team
+- Irina Skiba (https://github.com/iraskiba) - Frontend Developer
+- Egor Ryabtsev (https://github.com/Lansyfonseka) - Frontend Developer
+- Sergey Zhachek - QA Engineer
+- Oxana Sidorova - UI/UX Designer
+- Pavel Naibich - Backend Developer
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
