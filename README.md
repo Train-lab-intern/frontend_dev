@@ -8,6 +8,12 @@ for learning and self-development. It includes tests and links to
 useful educational materials that will help users deepen their
 knowledge and improve their skills.
 
+## Technologies Used:
+- React
+- Redux
+- JavaScript (ES6+)
+- TypeScript
+
 Project Structure:
 1. Test directory: A directory where test files are stored for various professions or topics.
 
@@ -26,17 +32,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Clone the repository to your computer:
    git clone git@github.com:Train-lab-intern/frontend_dev.git
 
-
 2. Install project dependencies:
    npm install
 
-# We used the following technologies for development:
-- React 
-- Redux 
-- JavaScript (ES6+)
-- TypeScript
+3. Run the project on a local server:
+      npm start
 
-# Test user for verification and registration:
+
+### Deployment
+https://alpha.it-roast.com/
+
+### Test user for verification and registration:
 logIn: test@test.com <br>
 password: Test@test.com1
 
@@ -89,7 +95,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 - Egor Ryabtsev (https://github.com/Lansyfonseka) - Frontend Developer
 - Sergey Zhachek - QA Engineer
 - Oxana Sidorova - UI/UX Designer
-- Pavel Naibich - Backend Developer
-
 
 
