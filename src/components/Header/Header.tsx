@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 import logo from "../../assets/img/logo.png";
 import {NavLink, useLocation} from 'react-router-dom'
-import {Path} from "../../constants/path";
+import {Path} from "../../pages/constants/path";
 import {Navigation} from "../Navigation/Navigation";
 
 

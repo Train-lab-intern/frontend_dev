@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {pagesDataReducer} from "./reducers/pagesDataReducer";
-import {authReducer} from "../features/auth/authReducer";
+import {authReducer} from "../modules/auth/authReducer";
 import {appReducer} from "./reducers/appReducer";
 
 

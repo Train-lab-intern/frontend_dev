@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './NavigationMobile.module.scss'
 import {NavLink} from "react-router-dom";
-import {Path} from "../../constants/path";
+import {Path} from "../../pages/constants/path";
 
 export const NavigationMobile = () => {
 

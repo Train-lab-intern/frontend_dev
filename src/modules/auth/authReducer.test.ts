@@ -1,4 +1,4 @@
-import {RequestStatus} from "../../constants/requestStatus";
+import {RequestStatus} from "../../pages/constants/requestStatus";
 import {authentication, authReducer, AuthReducerInitialStateType, clearErrors, registration} from "./authReducer";
 import {UserPageDto} from "../../api/authApi";
 

@@ -4,7 +4,7 @@ import {
   AuthenticationRequestType,
   RegistrationRequestDataType, UserPageDto,
 } from "../../api/authApi";
-import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
+import {RequestStatus, RequestStatusType} from "../../pages/constants/requestStatus";
 import {isAxiosError} from "axios";
 
 export const auth = createAsyncThunk<UserPageDto, undefined, { rejectValue: { message: string } }>(

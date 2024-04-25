@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Navigation.module.scss'
 import {NavLink, useLocation} from "react-router-dom";
-import {Path} from "../../constants/path";
+import {Path} from "../../pages/constants/path";
 import {useAppDispatch, useAppSelector} from "../../redux/store";
-import {logout} from "../../features/auth/authReducer";
-import {CommonButton} from "../CommonButton/CommonButton";
+import {logout} from "../../modules/auth/authReducer";
+import {CommonButton} from "../../UI/CommonButton/CommonButton";
 import {iconBurgerMenu} from "../../assets/icons/iconBurgerMenu";
 import {NavigationMobile} from "./NavigationMobile";
 
