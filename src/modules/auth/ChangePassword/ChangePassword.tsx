@@ -2,12 +2,12 @@ import React from "react";
 import { Header } from "../../../components/Header/Header";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Path } from "../../../constants/path";
+import { Path } from "../../../pages/constants/path";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import { NotificationComponent } from "./NotificationComponent";
 import { useState } from "react";
-import { CommonButton } from "../../../components/CommonButton/CommonButton";
+import { CommonButton } from "../../../UI/CommonButton/CommonButton";
 import "./ChangePassword.css";
 
 function ChangePassword() {

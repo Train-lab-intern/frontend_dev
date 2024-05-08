@@ -1,21 +1,21 @@
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { Registration } from './features/auth/Registration/Registration';
-import ChangePassword from './features/auth/ChangePassword/ChangePassword';
-import { Profile } from './features/profile/Profile/Profile';
+import { Registration } from './modules/auth/Registration/Registration';
+import ChangePassword from './modules/auth/ChangePassword/ChangePassword';
+import { Profile } from './modules/Profile/Profile';
 import NotPage from './pages/NotPage/NotPage';
-import { Path } from './constants/path';
+import { Path } from './pages/constants/path';
 import { useAppDispatch, useAppSelector } from './redux/store';
-import { auth } from './features/auth/authReducer';
+import { auth } from './modules/auth/authReducer';
 import { PrivateRoute } from './pages/PrivateRoute';
-import { RequestStatus } from './constants/requestStatus';
-import { ProfileSettings } from './features/profile/ProfileSettings/ProfileSettings';
+import { RequestStatus } from './pages/constants/requestStatus';
+import { ProfileSettings } from './modules/ProfileSettings/ProfileSettings';
 import { MainPage } from './pages/Main/MainPage';
-import { Authorization } from './components/Authorization';
-import {Login} from "./features/auth/Login/Login";
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import {CommonButton} from "./components/CommonButton/CommonButton";
-import { UserPage } from "./pages/UserPage/UserPage";
-import "./styles/main.scss";
+import { Authorization } from './modules/Authorization';
+import { Login } from './modules/auth/Login/Login';
+import { CommonButton } from './UI/CommonButton/CommonButton';
+import { UserPage } from './pages/UserPage/UserPage';
+import './styles/main.scss';
 
 function App() {
   const primary = true;
@@ -44,13 +44,13 @@ function App() {
           />
           <Route
             path={Path.PROFILE_SETTINGS}
-            element={
+            element={(
               <PrivateRoute>
                 <ProfileSettings />
               </PrivateRoute>
-            }
+            )}
           />
-          <Route path={Path.USER_PAGE} element={<UserPage/>}/>
+          <Route path={Path.USER_PAGE} element={<UserPage />} />
           <Route path="*" element={<NotPage />} />
         </Routes>
       )}

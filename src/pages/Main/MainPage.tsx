@@ -15,9 +15,9 @@ import icon_manual_002 from '../../assets/icons/icon_manual_002.png'
 import icon_manual_003 from '../../assets/icons/icon_manual_003.png'
 import icon_manual_004 from '../../assets/icons/icon_manual_004.png'
 import test_menu from '../../assets/img/test_menu.png'
-import {CommonButton} from "../../components/CommonButton/CommonButton";
+import {CommonButton} from "../../UI/CommonButton/CommonButton";
 import {NavLink} from "react-router-dom";
-import {Path} from "../../constants/path";
+import {Path} from "../constants/path";
 import {Slider} from "./Slider/Slider";
 
 export const MainPage = () => {

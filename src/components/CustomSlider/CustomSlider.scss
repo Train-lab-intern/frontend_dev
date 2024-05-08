@@ -7,10 +7,10 @@
     padding: 10px;
     border: 0;
     background: none;
-    transition: $primary-transition;
+    transition: $main-transition;
     cursor: pointer;
     &:hover {
-      background-color: $primary-dark-hover;
+      background-color: $hover-color-dark;
     }
     &:first-child {
       transform: rotate(180deg);
@@ -24,10 +24,10 @@
   }
   &-Arrow.light {
     path {
-      fill: $primary-light-text;
+      fill: $text-color-middle;
     }
     &:hover {
-      background-color: $primary-light-hover;
+      background-color: $hover-color-light;
     }
   }
 }

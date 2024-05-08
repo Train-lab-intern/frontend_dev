@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {RequestStatus, RequestStatusType} from "../../constants/requestStatus";
-import {auth} from "../../features/auth/authReducer";
+import {RequestStatus, RequestStatusType} from "../../pages/constants/requestStatus";
+import {auth} from "../../modules/auth/authReducer";
 
 
 const slice = createSlice({
