@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from './SettingsForm.module.scss'
 import {SubmitHandler, useForm } from "react-hook-form";
-import { CustomSelect } from '../../../../components/CustomSelect/CustomSelect';
+import { CustomSelect } from '../../../UI/CustomSelect/CustomSelect';
 
 type DataType = {
   userName?: string

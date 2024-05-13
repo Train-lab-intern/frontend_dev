@@ -1,7 +1,7 @@
 import React from 'react';
 import {useAppSelector} from "../redux/store";
 import {Navigate} from "react-router-dom";
-import {Path} from "../constants/path";
+import {Path} from "./constants/path";
 
 type PropsType = {
   children: React.ReactElement

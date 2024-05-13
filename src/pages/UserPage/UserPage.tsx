@@ -6,7 +6,7 @@ import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import UserPhoto from '../../assets/img/userImg.png';
 import { IconUserLevel } from '../../assets/icons/icon_user_level';
-import { CommonButton } from '../../components/CommonButton/CommonButton'; 
+import { CommonButton } from '../../UI/CommonButton/CommonButton'; 
 import { CustomSlider } from '../../components/CustomSlider/CustomSlider';
 import { TestCard } from '../../components/TestCard/TestCard';
 import { RecomendationCard } from '../../components/RecomendationCard/RecomendationCard';

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styles from './Profile.module.scss'
-import diagram from '../../../assets/img/diagram.png'
-import {Footer} from "../../../components/Footer/Footer";
-import {useAppSelector} from "../../../redux/store";
-import {Header} from "../../../components/Header/Header";
-import {iconProfile} from "../../../assets/icons/iconProfile";
+import diagram from '../../assets/img/diagram.png'
+import {Footer} from "../../components/Footer/Footer";
+import {useAppSelector} from "../../redux/store";
+import {Header} from "../../components/Header/Header";
+import {iconProfile} from "../../assets/icons/iconProfile";
 
 export const Profile = () => {
 
