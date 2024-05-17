@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Header } from '../../../components/Header/Header';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
+import Header from '../../../components/Header/Header';
 import { Path } from '../../../pages/constants/path';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form } from 'react-bootstrap';
 import { NotificationComponent } from './NotificationComponent';
 
-import { CommonButton } from '../../../UI/CommonButton/CommonButton';
+import CommonButton from '../../../UI/CommonButton/CommonButton';
 import './ChangePassword.css';
 
 function ChangePassword() {
@@ -26,13 +26,9 @@ function ChangePassword() {
     handleClose: (index: number) => void;
   };
 
-  // @ts-ignore
   const [passwordChangeState, setPasswordChangeState] = useState<string>('');
-  // @ts-ignore
   const [messages, setMessages] = useState<string[]>([]);
-  // @ts-ignore
   const [showNotification, setShowNotification] = useState(false);
-  // @ts-ignore
   const onSubmit = async (data) => {
     console.log(data);
     try {

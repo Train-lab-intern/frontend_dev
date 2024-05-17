@@ -1,22 +1,22 @@
 import styles from './CommonButton.module.scss';
 
-interface CommonButtonType {
-  text: string;
+interface CommonButtonPropType {
   variant: 'primary' | 'outline';
   className: string;
+  children: string;
 }
 
 export default function CommonButton({
   variant,
-  className,
-  text,
-}: CommonButtonType) {
+  className,  
+  children
+}: CommonButtonPropType) {
   return (
     <button
       className={`${styles.button} ${styles[variant]} ${className}`}
       type="button"
     >
-      {text}
+      {children}
     </button>
   );
 }
