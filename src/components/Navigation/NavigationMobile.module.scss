@@ -6,14 +6,14 @@
   right: -220px;
   display: none;
 
-  transition: .4s;
+  transition: 0.4s;
 
   z-index: 1000;
 
   .iconMenu {
     position: relative;
     padding: 25px 10px;
-    background: #FFFFFF;
+    background: #ffffff;
 
     cursor: pointer;
 
@@ -22,20 +22,20 @@
       height: 5px;
       background: black;
 
-      &:after, &:before {
+      &:after,
+      &:before {
         position: absolute;
         top: 10px;
         width: 45px;
         height: 5px;
         content: '';
         background: black;
-        transition: .3s;
+        transition: 0.3s;
       }
       &:before {
         top: 40px;
       }
     }
-
   }
   .navList {
     width: 200px;
@@ -45,28 +45,28 @@
 
     padding: 20px;
 
-    background: #FFFFFF;
+    background: #ffffff;
 
     .link {
-      @include link
+      @include link;
     }
-
   }
 }
 
 .active {
   right: 0;
-  transition: .4s;
+  transition: 0.4s;
 
   .iconMenu {
     .line {
       height: 0;
 
-      &:after, &:before {
+      &:after,
+      &:before {
         top: 20px;
         border-radius: 3px;
         transform: rotate(45deg);
-        transition: .5s;
+        transition: 0.5s;
       }
       &:before {
         transform: rotate(-45deg);

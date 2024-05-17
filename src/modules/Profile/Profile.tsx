@@ -1,20 +1,21 @@
-import React, {useState} from 'react';
-import styles from './Profile.module.scss'
-import diagram from '../../assets/img/diagram.png'
-import {Footer} from "../../components/Footer/Footer";
-import {useAppSelector} from "../../redux/store";
-import {Header} from "../../components/Header/Header";
-import {iconProfile} from "../../assets/icons/iconProfile";
+import React, { useState } from 'react';
+import styles from './Profile.module.scss';
+import diagram from '../../assets/img/diagram.png';
+import { Footer } from '../../components/Footer/Footer';
+import { useAppSelector } from '../../redux/store';
+import { Header } from '../../components/Header/Header';
+import { iconProfile } from '../../assets/icons/iconProfile';
 
-export const Profile = () => {
+export default function Profile() {
+  const { username, id } = useAppSelector((state) => state.auth.userData);
 
-  const {username, id} = useAppSelector(state => state.auth.userData)
+  const [activeStat, setActiveStat] = useState('statOne');
 
-  const [activeStat, setActiveStat] = useState('statOne')
-
-  const handleActiveStat = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setActiveStat(e.currentTarget.id)
-  }
+  const handleActiveStat = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    setActiveStat(e.currentTarget.id);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -26,7 +27,7 @@ export const Profile = () => {
           <div className={styles.section}>
             <div className={styles.statDiagram}>
               <div className={styles.avatar}>
-                {/*<img src={''} alt="avatar"/>*/}
+                {/* <img src={''} alt="avatar"/> */}
                 {iconProfile}
               </div>
               <div className={styles.userInfo}>
@@ -37,41 +38,42 @@ export const Profile = () => {
                 <span>здесь будет статистика по выполнению задания</span>
               </div>
               <div className={styles.diagram}>
-                <img src={diagram} alt="diagram"/>
+                <img src={diagram} alt="diagram" />
               </div>
             </div>
             <div className={styles.statNav}>
               <div
                 className={`${styles.item} ${styles.one} ${activeStat === 'statOne' ? styles.active : ''}`}
-                id='statOne'
+                id="statOne"
                 onClick={handleActiveStat}
               >
                 <span>информация по статистике выполненных мной заданий</span>
               </div>
               <div
                 className={`${styles.item} ${styles.two} ${activeStat === 'statTwo' ? styles.active : ''}`}
-                id='statTwo'
+                id="statTwo"
                 onClick={handleActiveStat}
               >
                 <span>информация по статистике выполненных мной заданий</span>
               </div>
               <div
                 className={`${styles.item} ${styles.three} ${activeStat === 'statThree' ? styles.active : ''}`}
-                id='statThree'
+                id="statThree"
                 onClick={handleActiveStat}
               >
                 <span>информация по статистике выполненных мной заданий</span>
               </div>
               <div
                 className={`${styles.item} ${styles.four} ${activeStat === 'statFour' ? styles.active : ''}`}
-                id='statFour'
+                id="statFour"
                 onClick={handleActiveStat}
               >
                 <span>информация по статистике выполненных мной заданий</span>
               </div>
               <div className={styles.recommendations}>
                 <span>
-                  здесь будут советы и ссылки на интересные для пользователя ресурсы
+                  здесь будут советы и ссылки на интересные для пользователя
+                  ресурсы
                 </span>
               </div>
             </div>

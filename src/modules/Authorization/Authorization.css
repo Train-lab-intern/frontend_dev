@@ -1,8 +1,8 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-.input-field{
+.input-field {
   width: 70%;
   padding-right: 10px;
 }
@@ -15,13 +15,13 @@
   top: -25px;
 }
 
-#pass{
+#pass {
   position: relative;
 }
 
 .imageCard {
   margin-right: 47px;
-  max-width:495px ;
+  max-width: 495px;
   height: 763px;
   aspect-ratio: 0.5/0.5;
 }
@@ -34,11 +34,11 @@
   border-color: red;
 }
 
-p{
- font-size: 14px;
+p {
+  font-size: 14px;
 }
 
-.links-block{
+.links-block {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -50,40 +50,38 @@ p{
   margin: 0 auto;
 }
 
-.wrapper-m{
+.wrapper-m {
   margin-top: 21px;
   padding-left: 131px;
 }
-.block-auth{
+.block-auth {
   display: flex;
   justify-content: center;
 }
 
-.medium{
+.medium {
   margin-bottom: 28px;
   margin-top: 28px;
 }
 
-.dialog-content{
+.dialog-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 66px ;
+  margin-bottom: 66px;
 }
 
-.dialog-title{
+.dialog-title {
   margin-bottom: 44px;
   text-align: center;
 }
 
-li a{
+li a {
   font-size: 18px;
   color: black;
   text-decoration: none;
 }
-
-
 
 .eye-icon {
   position: absolute;
@@ -151,19 +149,19 @@ li a{
     margin-bottom: 20px;
   }
 
-  .dialog-content{
-    margin-bottom:20px;
+  .dialog-content {
+    margin-bottom: 20px;
   }
 
- li a {
+  li a {
     font-size: 14px;
     color: black;
     text-decoration: none;
   }
 
-li{
-  font-size: 14px;
-}
+  li {
+    font-size: 14px;
+  }
 
   .medium {
     margin-bottom: 20px;
@@ -177,10 +175,10 @@ li{
   }
 
   .links-block ul {
-     margin-left: 0;
+    margin-left: 0;
   }
 
-  .wrapper-m{
+  .wrapper-m {
     margin-top: 0;
   }
 }

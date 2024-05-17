@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .CustomSelect {
   position: relative;
@@ -21,7 +21,7 @@
         display: block;
         width: 12px;
         height: 12px;
-        background-image: url("../../assets/icons/cross.svg");
+        background-image: url('../../assets/icons/cross.svg');
         background-size: cover;
         background-position: center;
       }
@@ -34,22 +34,22 @@
     padding: 8px 10px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #A9A9A9;
+    border: 1px solid #a9a9a9;
     border-radius: 6px;
     background-color: $primary-light-bg;
     cursor: pointer;
     &--Placeholder {
       // position: absolute;
     }
-    &--Arrow  {
+    &--Arrow {
       transition: 200ms ease-in-out;
       transform: rotate(90deg);
       svg {
         height: 14px;
         path {
-          fill: $primary-dark-text
+          fill: $primary-dark-text;
         }
-       }
+      }
     }
   }
   &-Body {
@@ -57,7 +57,7 @@
     width: 100%;
     left: 0;
     top: 100%;
-    border: 1px solid #A9A9A9;
+    border: 1px solid #a9a9a9;
     border-radius: 6px;
     background-color: $primary-light-bg;
     display: flex;

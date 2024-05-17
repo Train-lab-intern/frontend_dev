@@ -1,13 +1,7 @@
-import React from 'react';
-import styles from './Loading.module.css'
-
+import styles from './Loading.module.css';
 
 function Loading() {
-    return (
-        <>
-            <span className={styles.loader}></span>
-        </>
-    );
+  return <span className={styles.loader} />;
 }
 
 export default Loading;

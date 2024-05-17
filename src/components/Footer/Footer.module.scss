@@ -1,6 +1,5 @@
 @import '../../styles/variables.scss';
 
-
 .footer {
   background: $primary-light-bg;
   box-shadow: -6px 20px 19px 16px;
@@ -44,7 +43,6 @@
         }
       }
     }
-
   }
 
   .search {
@@ -63,14 +61,13 @@
       width: fit-content;
 
       input {
-
         padding: 3px 6px 6px;
         border: 1px solid $secondary-light-bg;
         border-radius: 4px;
-        color: #BFBFBF;
+        color: #bfbfbf;
 
         &::placeholder {
-          color: #BFBFBF;
+          color: #bfbfbf;
         }
 
         &:focus-visible {
@@ -83,7 +80,7 @@
         right: 10px;
 
         svg path {
-          fill: #BFBFBF;
+          fill: #bfbfbf;
         }
       }
     }
@@ -98,23 +95,21 @@
     .iconLinks {
       margin-bottom: 20px;
 
-      a{
+      a {
         margin-left: 30px;
       }
     }
 
     .mail {
-
-      a{
+      a {
         padding-left: 15px;
-        color: #1890FF;
-        border-left: 1px solid #1890FF;
+        color: #1890ff;
+        border-left: 1px solid #1890ff;
       }
     }
   }
 
   .info {
-
     font-weight: 400;
 
     span {
@@ -129,5 +124,4 @@
       color: $primary-dark-text;
     }
   }
-
 }

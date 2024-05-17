@@ -139,7 +139,6 @@
 }
 
 .sectionTestMenu {
-
   .container {
     width: 95%;
   }
@@ -170,13 +169,13 @@
       .item1 {
         width: 60%;
         height: 200px;
-        background: #42DBBF;
+        background: #42dbbf;
         margin-bottom: 30px;
       }
       .item2 {
         width: 60%;
         height: 200px;
-        background: #42DBBF;
+        background: #42dbbf;
         align-self: flex-end;
       }
     }
@@ -214,7 +213,7 @@
 
   padding: 80px 0 45px;
 
-  background-image: url("../../assets/img/sectionLastBG.png");
+  background-image: url('../../assets/img/sectionLastBG.png');
   background-size: cover;
   color: $primary-light-text;
 
@@ -245,13 +244,9 @@
 
 @media screen and (max-width: 1200px) {
   .sectionTestMenu {
-
     .testMenu {
-
       .testMenuList {
-
         .item {
-
           .title {
             margin: 40px 0;
             //font-size: 60px;
@@ -265,7 +260,6 @@
     }
 
     .testMenuImgContainer {
-
       img {
       }
     }
@@ -316,13 +310,12 @@
     }
   }
   .sectionTestMenu {
-
     .testMenu {
-
       .progressBlock {
         width: 80%;
 
-        .item1, .item2 {
+        .item1,
+        .item2 {
           width: 80%;
         }
       }
@@ -331,7 +324,6 @@
     .title {
       h2 {
       }
-
     }
   }
 }
@@ -344,7 +336,6 @@
       gap: 30px;
 
       .directionItem {
-
       }
     }
   }
@@ -393,12 +384,10 @@
 
     a {
       button {
-
       }
     }
   }
   .sectionTestMenu {
-
     .testMenu {
       //margin-bottom: 100px;
 
@@ -406,7 +395,6 @@
         margin-bottom: 150px;
 
         .item {
-
           .title {
             //font-size: 50px;
           }
@@ -470,13 +458,12 @@
     }
   }
   .sectionTestMenu {
-
     .testMenu {
-
       .progressBlock {
         width: 90%;
 
-        .item1, .item2 {
+        .item1,
+        .item2 {
           width: 100%;
         }
       }
@@ -484,11 +471,8 @@
   }
 
   .manual {
-
     .manualList {
-
       .item {
-
         .imgContainer {
           min-width: 110px;
           img {
@@ -502,17 +486,13 @@
 
 @media screen and (max-width: 500px) {
   .manual {
-
     .manualList {
-
       .item {
         flex-direction: column;
         align-items: flex-start;
 
         .imgContainer {
-
           img {
-
           }
         }
       }

@@ -1,28 +1,24 @@
 import React from 'react';
-import styles from './Notifications.module.scss'
+import styles from './Notifications.module.scss';
 
 type PropsType = {
-  messages: string
-  handleClose: () => void
-}
+  messages: string;
+  handleClose: () => void;
+};
 
-export const Notification: React.FC<PropsType> = ({messages, handleClose}) => {
-
+export const Notification: React.FC<PropsType> = ({
+  messages,
+  handleClose,
+}) => {
   const handleCloseNotification = () => {
-    handleClose()
-  }
+    handleClose();
+  };
 
   return (
-    <div
-      className={styles.wrapper}
-      onClick={handleCloseNotification}
-    >
-      {<div
-        className={styles.wrapperNotification}
-      >
+    <div className={styles.wrapper} onClick={handleCloseNotification}>
+      <div className={styles.wrapperNotification}>
         <span className={styles.message}>{messages}</span>
-      </div>}
+      </div>
     </div>
-
   );
-}
+};

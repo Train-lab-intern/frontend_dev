@@ -1,8 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-
-const URL = process.env.REACT_APP_URL
+const URL = process.env.REACT_APP_URL;
 
 export const authApi = {
   registration(data: RegistrationRequestDataType) {
@@ -31,9 +30,7 @@ export const authApi = {
       .post<ResponseUserDataType>(`${URL}/api/v1/auth/refresh-token`, {
         refreshToken: token,
       })
-      .then((res) => {
-        return res.data;
-      });
+      .then((res) => res.data);
   },
   logout() {
     const token = Cookies.get('refreshToken');
