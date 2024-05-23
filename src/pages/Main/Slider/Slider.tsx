@@ -1,10 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import styles from './Slider.module.scss'
-import {Swiper, SwiperSlide} from 'swiper/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import styles from './Slider.module.scss';
 
 import 'swiper/css';
-import {arrowSlider} from "../../../assets/icons/arrowSlider";
+import { arrowSlider } from '../../../assets/icons/arrowSlider';
 
 export const useSwiperRef = () => {
   const [wrapper, setWrapper] = useState(null);
@@ -14,120 +14,99 @@ export const useSwiperRef = () => {
     setWrapper(ref.current);
   }, []);
 
-  return [
-    wrapper,
-    ref
-  ]
+  return [wrapper, ref];
 };
 
-export const Slider = () => {
-
+export function Slider() {
   const [nextEl, nextElRef] = useSwiperRef();
   const [prevEl, prevElRef] = useSwiperRef();
 
-
-
-
   return (
     <div className={styles.wrapper}>
-      <button className={styles.arrowPrev} ref={prevElRef}>{arrowSlider}</button>
+      <button className={styles.arrowPrev} ref={prevElRef}>
+        {arrowSlider}
+      </button>
       <Swiper
         navigation={{
           prevEl,
           nextEl,
         }}
         className={styles.swip}
-        effect={"cube"}
+        effect="cube"
         modules={[Navigation]}
         spaceBetween={50}
         slidesPerView={1}
         breakpoints={{
           700: {
-            slidesPerView: 2
+            slidesPerView: 2,
           },
           1000: {
-            slidesPerView: 3
-          }
+            slidesPerView: 3,
+          },
         }}
       >
         <SwiperSlide>
-            <div className={styles.item}>
-              <h3 className={styles.title}>
-                SQL
-              </h3>
-              <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-            <div className={styles.item}>
-              <h3 className={styles.title}>
-                SQL
-              </h3>
-              <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide>
-        <div className={styles.item}>
-          <h3 className={styles.title}>
-            SQL
-          </h3>
-          <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
-        </div>
-      </SwiperSlide>
-        <SwiperSlide>
           <div className={styles.item}>
-            <h3 className={styles.title}>
-              SQL
-            </h3>
+            <h3 className={styles.title}>SQL</h3>
             <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
+              Какой оператор позволяет создать таблицу?
+            </span>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.item}>
-            <h3 className={styles.title}>
-              SQL
-            </h3>
+            <h3 className={styles.title}>SQL</h3>
             <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
+              Какой оператор позволяет создать таблицу?
+            </span>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.item}>
-            <h3 className={styles.title}>
-              SQL
-            </h3>
+            <h3 className={styles.title}>SQL</h3>
             <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
+              Какой оператор позволяет создать таблицу?
+            </span>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.item}>
-            <h3 className={styles.title}>
-              SQL
-            </h3>
+            <h3 className={styles.title}>SQL</h3>
             <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
+              Какой оператор позволяет создать таблицу?
+            </span>
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.item}>
-            <h3 className={styles.title}>
-              SQL
-            </h3>
+            <h3 className={styles.title}>SQL</h3>
             <span className={styles.text}>
-                Какой оператор позволяет создать таблицу?
-              </span>
+              Какой оператор позволяет создать таблицу?
+            </span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <h3 className={styles.title}>SQL</h3>
+            <span className={styles.text}>
+              Какой оператор позволяет создать таблицу?
+            </span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <h3 className={styles.title}>SQL</h3>
+            <span className={styles.text}>
+              Какой оператор позволяет создать таблицу?
+            </span>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <h3 className={styles.title}>SQL</h3>
+            <span className={styles.text}>
+              Какой оператор позволяет создать таблицу?
+            </span>
           </div>
         </SwiperSlide>
       </Swiper>

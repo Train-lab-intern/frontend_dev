@@ -10,7 +10,7 @@
   background-image: url('../../assets/img/sectionLastBG.png');
   background-repeat: no-repeat;
   background-size: cover;
-  .container {    
+  .container {
     display: flex;
     gap: 200px;
   }
@@ -28,7 +28,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 60px 60px;
-        align-items: center;        
+        align-items: center;
       }
       &-speciality {
         align-self: start;
@@ -47,15 +47,14 @@
   }
   .UserPhoto {
     padding: 20px 20px 60px;
-    background-color: #42DBBF;
+    background-color: #42dbbf;
     border-radius: 5px;
   }
-
 }
 
 .Welcome {
   padding: 10px 0;
-  .container {    
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +70,7 @@
 }
 
 .Tests {
-  padding: 50px 0;  
+  padding: 50px 0;
 }
 
 .Recomendation {

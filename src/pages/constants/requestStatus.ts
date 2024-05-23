@@ -4,4 +4,8 @@ export enum RequestStatus {
   SUCCEEDED = 'succeeded',
   FAILED = 'failed',
 }
-export type RequestStatusType = RequestStatus.IDLE | RequestStatus.LOADING | RequestStatus.SUCCEEDED | RequestStatus.FAILED
+export type RequestStatusType =
+  | RequestStatus.IDLE
+  | RequestStatus.LOADING
+  | RequestStatus.SUCCEEDED
+  | RequestStatus.FAILED;

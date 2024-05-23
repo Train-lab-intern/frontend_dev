@@ -1,25 +1,22 @@
-import styles from './CommonButton.module.scss'
-import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+import styles from './CommonButton.module.scss';
 
-type PropsType = DefaultButtonPropsType & {
-  variant: 'primary' | 'outline'
+interface CommonButtonPropType {
+  variant: 'primary' | 'outline';
+  className: string;
+  children: string;
 }
 
-export const CommonButton: React.FC<PropsType> = (
-  {
-    variant,
-    className,
-    ...restProps
-  }
-) => {
-
-  const finalClassName = `${styles.button} ${styles[variant]} ${className}`
-
+export default function CommonButton({
+  variant,
+  className,  
+  children
+}: CommonButtonPropType) {
   return (
     <button
-      className={finalClassName}
-      {...restProps}
-    />
+      className={`${styles.button} ${styles[variant]} ${className}`}
+      type="button"
+    >
+      {children}
+    </button>
   );
 }
