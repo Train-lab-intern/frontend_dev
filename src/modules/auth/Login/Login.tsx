@@ -164,7 +164,7 @@ export function Login() {
                   <button
                     className={styles.input}
                     disabled={authStatus === RequestStatus.LOADING}
-                    type='button'
+                    type="button"
                   >
                     Войти
                   </button>
@@ -174,8 +174,9 @@ export function Login() {
                 <Row className={styles.row}>
                   <div className={styles.wrapperRemember}>
                     <Col md={6} className={styles.rememberWrapper}>
-                      <label htmlFor="memberMe">Запомни меня
-                      <input type="checkbox" name="memberMe" id="memberMe" />
+                      <label htmlFor="memberMe">
+                        Запомни меня
+                        <input type="checkbox" name="memberMe" id="memberMe" />
                       </label>
                     </Col>
                     <Col className={styles.rememberWrapper}>
