@@ -2,7 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import logo from '../../assets/img/logo.png';
 import { Path } from '../../pages/constants/path';
-import { Navigation } from '../Navigation/Navigation';
+import Navigation from '../Navigation/Navigation';
 
 export default function Header() {
   const { pathname } = useLocation();

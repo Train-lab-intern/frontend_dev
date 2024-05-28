@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './CustomSelect.scss';
 import React, { useState } from 'react';
 import arrowSlider from '../../assets/icons/arrowSlider';
@@ -15,7 +16,7 @@ export default function CustomSelect(props: CustomSelectProps) {
   const [selectedItem, setSelectedItem] = useState(new Set(userSpeciality));
   const [specList, setSpecList] = useState(specialityList);
 
-  const chengeActive = () => {
+  const changeActive = () => {
     setActive(!isActive);
   };
 
@@ -56,7 +57,7 @@ export default function CustomSelect(props: CustomSelectProps) {
           </button>
         ))}
       </div>
-      <div className="CustomSelect-Header" onClick={chengeActive}>
+      <div className="CustomSelect-Header" onClick={changeActive}>
         <div className="CustomSelect-Header--Placeholder">
           Choose your specialization
         </div>

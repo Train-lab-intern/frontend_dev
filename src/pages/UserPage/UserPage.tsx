@@ -2,14 +2,14 @@ import './UserPage.scss';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
-import { Header } from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import UserPhoto from '../../assets/img/userImg.png';
 import iconUserLevel from '../../assets/icons/icon_user_level';
-import { CommonButton } from '../../UI/CommonButton/CommonButton';
+import CommonButton from '../../UI/CommonButton/CommonButton';
 import { CustomSlider } from '../../components/CustomSlider/CustomSlider';
-import { TestCard } from '../../components/TestCard/TestCard';
-import { RecomendationCard } from '../../components/RecomendationCard/RecomendationCard';
+import TestCard from '../../components/TestCard/TestCard';
+import RecommendationCard from '../../components/RecomendationCard/RecomendationCard';
 
 export default function UserPage() {
   const dispatch = useAppDispatch();
@@ -98,7 +98,7 @@ export default function UserPage() {
               },
             }}
             slides={[1, 2, 3, 4, 5].map(() => (
-              <RecomendationCard />
+              <RecommendationCard />
             ))}
             lightTheme
           />
