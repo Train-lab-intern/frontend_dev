@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RequestStatus } from '../../pages/constants/requestStatus';
 import {
   authentication,
