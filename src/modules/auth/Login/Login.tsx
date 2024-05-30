@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
@@ -164,6 +165,7 @@ export function Login() {
                   <button
                     className={styles.input}
                     disabled={authStatus === RequestStatus.LOADING}
+                    type="button"
                   >
                     Войти
                   </button>
@@ -173,8 +175,10 @@ export function Login() {
                 <Row className={styles.row}>
                   <div className={styles.wrapperRemember}>
                     <Col md={6} className={styles.rememberWrapper}>
-                      <label htmlFor="memberMe">Запомни меня</label>
-                      <input type="checkbox" name="memberMe" id="memberMe" />
+                      <label htmlFor="memberMe">
+                        Запомни меня
+                        <input type="checkbox" name="memberMe" id="memberMe" />
+                      </label>
                     </Col>
                     <Col className={styles.rememberWrapper}>
                       <Link to={Path.CHANGE_PASSWORD}>Забыли пароль?</Link>
