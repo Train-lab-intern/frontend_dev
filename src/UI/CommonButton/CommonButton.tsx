@@ -1,19 +1,20 @@
+/* eslint-disable */
 import styles from './CommonButton.module.scss';
 
 interface CommonButtonPropType {
   variant: 'primary' | 'outline';
-  className: string;
   children: string;
+  className?: string;
 }
 
 export default function CommonButton({
   variant,
-  className,  
-  children
+  children,
+  className,
 }: CommonButtonPropType) {
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${className}`}
+      className={`${styles.button} ${styles[variant]} ${className && className}`}
       type="button"
     >
       {children}

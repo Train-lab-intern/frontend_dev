@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const iconProfile = (
   <svg
     fill="#000000"

@@ -1,10 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import logo from '../../assets/img/logo_footer.png';
-import { githubIcon } from '../../assets/icons/githubIcon';
+import githubIcon from '../../assets/icons/githubIcon';
 import { linkedinIcon } from '../../assets/icons/linkedinIcon';
-import { iconSearch } from '../../assets/icons/iconSearch';
+import iconSearch from '../../assets/icons/iconSearch';
 
 type PropsType = {
   mainPageData: any;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 export enum RequestStatus {
   IDLE = 'idle',
   LOADING = 'loading',

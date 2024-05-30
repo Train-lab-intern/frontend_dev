@@ -1,5 +1,14 @@
 import './InputField.css';
 
+interface InputFieldType {
+  type: string;
+  id: string;
+  name: string;
+  minLength: number;
+  required: boolean;
+  placeholder: string;
+}
+
 export default function InputField({
   type,
   id,
@@ -19,13 +28,4 @@ export default function InputField({
       placeholder={placeholder}
     />
   );
-}
-
-interface InputFieldType {
-  type: string;
-  id: string;
-  name: string;
-  minLength: number;
-  required: boolean;
-  placeholder: string;
 }

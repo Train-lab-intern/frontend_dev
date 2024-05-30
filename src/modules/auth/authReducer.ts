@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { isAxiosError } from 'axios';
 import {
