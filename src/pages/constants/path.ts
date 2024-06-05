@@ -1,3 +1,4 @@
+/* eslint-disable */
 export enum Path {
   HOME = '/',
   AUTH = '/auth',

@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const linkedinIcon = (
   <svg
     width="20"

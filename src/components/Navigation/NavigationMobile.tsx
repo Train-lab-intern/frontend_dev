@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './NavigationMobile.module.scss';

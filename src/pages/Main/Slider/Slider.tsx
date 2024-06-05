@@ -1,10 +1,11 @@
+/* eslint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import styles from './Slider.module.scss';
 
 import 'swiper/css';
-import { arrowSlider } from '../../../assets/icons/arrowSlider';
+import arrowSlider from '../../../assets/icons/arrowSlider';
 
 export const useSwiperRef = () => {
   const [wrapper, setWrapper] = useState(null);

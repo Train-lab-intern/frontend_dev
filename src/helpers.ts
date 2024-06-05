@@ -6,8 +6,8 @@ export function valideGmail(
   if (
     gmail.length > 11 &&
     gmail.lastIndexOf('@gmail.com') === 9 &&
-    username == '' &&
-    password == ''
+    username === '' &&
+    password === ''
   ) {
     return true;
   }

@@ -1,9 +1,11 @@
+// /* eslint-disable */
+// // @ts-nocheck
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MainPage.module.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
-import { Header } from '../../components/Header/Header';
+import Header from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 
 import icon001 from '../../assets/icons/icon_001.png';
@@ -15,8 +17,8 @@ import iconManual001 from '../../assets/icons/icon_manual_001.png';
 import iconManual002 from '../../assets/icons/icon_manual_002.png';
 import iconManual003 from '../../assets/icons/icon_manual_003.png';
 import iconManual004 from '../../assets/icons/icon_manual_004.png';
-import testMenu from '../../assets/img/test_menu.png';
-import { CommonButton } from '../../UI/CommonButton/CommonButton';
+// import testMenu from '../../assets/img/test_menu.png';
+import CommonButton from '../../UI/CommonButton/CommonButton';
 import { Path } from '../constants/path';
 import { Slider } from './Slider/Slider';
 

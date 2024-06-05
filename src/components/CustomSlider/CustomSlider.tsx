@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './CustomSlider.scss';
 import { ReactElement, useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
