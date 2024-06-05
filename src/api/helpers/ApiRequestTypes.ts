@@ -13,3 +13,8 @@ export interface RequestRegisterType{
   login: string;
   password: string
 }
+
+export interface RequsetRecoveryPasswordType {
+  password: string,
+  confirmPassword: string
+}

@@ -14,6 +14,7 @@ import { Path } from '../../pages/constants/path';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EyeIcon from '../../assets/icons/IconsSvg/EyeIcon';
 import EyeIconHidden from '../../assets/icons/IconsSvg/EyeIconHidden';
+import MainApiService from '../../api/MainApiService';
 
 export const Authorization = ({ primary }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -76,6 +77,11 @@ export const Authorization = ({ primary }) => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+  const userLogin = () => {
+    console.log(MainApiService.getAllUsers());
+    const response = MainApiService.userLogin({email,password});
+    console.log(response);
+  }
   return (
     <div className="wrapper">
       <Header />
@@ -154,6 +160,7 @@ export const Authorization = ({ primary }) => {
             >
               Войти
             </CommonButton>
+            <button type='button' onClick={userLogin}>Login</button>
             <div className="links-block">
               <ul>
                 <li>
