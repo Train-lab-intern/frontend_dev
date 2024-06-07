@@ -14,7 +14,11 @@ export interface RequestRegisterType{
   password: string
 }
 
-export interface RequsetRecoveryPasswordType {
+export interface RequestRecoveryPasswordType {
   password: string,
   confirmPassword: string
+}
+
+export interface RequestRefreshToken {
+  refreshToken: string
 }

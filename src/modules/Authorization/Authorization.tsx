@@ -77,11 +77,6 @@ export const Authorization = ({ primary }) => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  const userLogin = () => {
-    console.log(MainApiService.getAllUsers());
-    const response = MainApiService.userLogin({email,password});
-    console.log(response);
-  }
   return (
     <div className="wrapper">
       <Header />
@@ -160,7 +155,6 @@ export const Authorization = ({ primary }) => {
             >
               Войти
             </CommonButton>
-            <button type='button' onClick={userLogin}>Login</button>
             <div className="links-block">
               <ul>
                 <li>

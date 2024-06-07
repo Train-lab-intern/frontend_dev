@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-import { RequestRegisterType, RequsetRecoveryPasswordType } from './helpers/ApiRequestTypes';
+import { RequestRefreshToken, RequestRegisterType, RequestRecoveryPasswordType } from './helpers/ApiRequestTypes';
 import { MAIN_API_URLS } from './helpers/ApiConstant';
 import { servicesGet, servicesPost, servicesPut } from './helpers/ApiHelpers';
 
@@ -14,11 +14,13 @@ class MainApiService {
     return servicesPost(MAIN_API_URLS.USER.LOGIN, {params})
   }
 
-  async userRecoveryPassword (params:RequsetRecoveryPasswordType) {
+  async userRecoveryPassword (params:RequestRecoveryPasswordType) {
     return servicesPut(MAIN_API_URLS.USER.PASSWORD_RECOVERY, {params})
   }
 
-  // userRefreshToken() {}
+  userRefreshToken(params:RequestRefreshToken) {
+    return servicesPut(MAIN_API_URLS.USER.REFRESH_TOKEN, {params})
+  }
 
   // userLogout () {}
 

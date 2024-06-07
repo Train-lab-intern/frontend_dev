@@ -50,8 +50,6 @@ const generateRequestConfig = ({ method, token, params }: RequestConfigType) => 
 };
 
 const fetchMainAPI = async (url: string, requestConfig: RequestConfigType) => {
-  // console.log(requestConfig);
-  console.log(generateRequestConfig(requestConfig));
   const response = await fetch(generateEndpointUrl(url), generateRequestConfig(requestConfig));
   const json = await response.json();
   if (!response.ok) throw new Error((await json.message) || DEFAULT_ERROR_MESSAGE);
