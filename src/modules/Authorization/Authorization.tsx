@@ -52,7 +52,10 @@ export const Authorization = ({ primary }) => {
     if (!isValid) {
       return;
     }
-    const response = await MainApiService.userLogin({userEmail: email ,userPassword: password})
+    const response = await MainApiService.userLogin({
+      userEmail: email,
+      userPassword: password,
+    });
     if (response.statusCode === 0) {
       setEmailError(errorMessages.invalid);
       setPasswordError(errorMessages.invalid);
@@ -141,14 +144,14 @@ export const Authorization = ({ primary }) => {
                 )}
               </div>
               <CommonButton
-              className="btn-enter"
-              variant={'primary'}
-              onClick={handleSubmit}
-              type="submit"
-            >
-              Войти
-            </CommonButton>
-            </form>            
+                className="btn-enter"
+                variant={'primary'}
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Войти
+              </CommonButton>
+            </form>
             <div className="links-block">
               <ul>
                 <li>

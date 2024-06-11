@@ -1,27 +1,27 @@
 export interface IRequestLogin {
   userEmail: string;
-  userPassword: string
+  userPassword: string;
 }
 
 export interface IRequestRegister {
   login: string;
-  password: string
+  password: string;
 }
 
 export interface IRequestRecoveryPassword {
-  password: string,
-  confirmPassword: string
+  password: string;
+  confirmPassword: string;
 }
 
 export interface IRequestRefreshToken {
-  refreshToken: string
+  refreshToken: string;
 }
 
 export interface IRequestLogout {
-  refreshToken: string
+  refreshToken: string;
 }
 
-type RequestParams = 
+type RequestParams =
   | IRequestLogin
   | IRequestRegister
   | IRequestRecoveryPassword
@@ -32,5 +32,5 @@ type RequestParams =
 export interface IRequestConfig {
   method?: string;
   token?: string;
-  params?: RequestParams
+  params?: RequestParams;
 }

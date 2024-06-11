@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { IRequestConfig } from "./ApiRequestTypes";
-import { DEFAULT_ERROR_MESSAGE, MAIN_API_URLS, METHODS } from "./ApiConstant";
+import { IRequestConfig } from './ApiRequestTypes';
+import { DEFAULT_ERROR_MESSAGE, MAIN_API_URLS, METHODS } from './ApiConstant';
 
-const generateEndpointUrl = (url:string):string => MAIN_API_URLS.BASE+MAIN_API_URLS.VERSION+url;
+const generateEndpointUrl = (url: string): string =>
+  MAIN_API_URLS.BASE + MAIN_API_URLS.VERSION + url;
 
 const generateHeaders = (token: string | undefined) => {
   const headers: { [key: string]: string } = {
@@ -52,7 +53,10 @@ const generateRequestConfig = ({ method, token, params }: IRequestConfig) => {
 
 const fetchMainAPI = async (url: string, requestConfig: IRequestConfig) => {
   try {
-    const response = await fetch(generateEndpointUrl(url), generateRequestConfig(requestConfig));    
+    const response = await fetch(
+      generateEndpointUrl(url),
+      generateRequestConfig(requestConfig),
+    );
 
     if (!response.ok) {
       const error = await response.json();
@@ -61,21 +65,22 @@ const fetchMainAPI = async (url: string, requestConfig: IRequestConfig) => {
     }
 
     const json = await response.json();
-    return json
-  }
-  catch (error){
-    return {statusCode: 0, message: (error as Error).message}
+    return json;
+  } catch (error) {
+    return { statusCode: 0, message: (error as Error).message };
   }
 };
 
-export const servicesPost = (url:string, {params}:IRequestConfig) =>
-  fetchMainAPI(url, {method: METHODS.POST, params})
+export const servicesPost = (url: string, { params }: IRequestConfig) =>
+  fetchMainAPI(url, { method: METHODS.POST, params });
 
-export const servicesGet = (url:string) => 
-  fetchMainAPI(url, {method: METHODS.GET})
+export const servicesGet = (url: string) =>
+  fetchMainAPI(url, { method: METHODS.GET });
 
-export const servicesDelete = (url:string, {params, token}:IRequestConfig) => 
-  fetchMainAPI(url, {method: METHODS.DELETE, token, params})
+export const servicesDelete = (
+  url: string,
+  { params, token }: IRequestConfig,
+) => fetchMainAPI(url, { method: METHODS.DELETE, token, params });
 
-export const servicesPut = (url:string, {params, token}:IRequestConfig) =>
-  fetchMainAPI(url, {method: METHODS.PUT, token, params})
+export const servicesPut = (url: string, { params, token }: IRequestConfig) =>
+  fetchMainAPI(url, { method: METHODS.PUT, token, params });
