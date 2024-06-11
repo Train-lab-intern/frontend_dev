@@ -53,12 +53,9 @@ export const Authorization = ({ primary }) => {
       return;
     }
     try {
-      await dispatch(
-        authentication({
-          userEmail: email,
-          userPassword: password,
-        }),
-      );
+      const response = await MainApiService.userLogin({userEmail: email ,userPassword: password})
+      const statusCode = response.statusCode;
+      if (statusCode!==200) throw new Error (response.message)
     } catch (error) {
       setEmailError(errorMessages.invalid);
       setPasswordError(errorMessages.invalid);
@@ -146,8 +143,7 @@ export const Authorization = ({ primary }) => {
                   />
                 )}
               </div>
-            </form>
-            <CommonButton
+              <CommonButton
               className="btn-enter"
               variant={'primary'}
               onClick={handleSubmit}
@@ -155,6 +151,7 @@ export const Authorization = ({ primary }) => {
             >
               Войти
             </CommonButton>
+            </form>            
             <div className="links-block">
               <ul>
                 <li>
