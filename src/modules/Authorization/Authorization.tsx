@@ -52,11 +52,8 @@ export const Authorization = ({ primary }) => {
     if (!isValid) {
       return;
     }
-    try {
-      const response = await MainApiService.userLogin({userEmail: email ,userPassword: password})
-      const statusCode = response.statusCode;
-      if (statusCode!==200) throw new Error (response.message)
-    } catch (error) {
+    const response = await MainApiService.userLogin({userEmail: email ,userPassword: password})
+    if (response.statusCode === 0) {
       setEmailError(errorMessages.invalid);
       setPasswordError(errorMessages.invalid);
     }

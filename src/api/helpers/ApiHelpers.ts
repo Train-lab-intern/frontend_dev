@@ -52,18 +52,19 @@ const generateRequestConfig = ({ method, token, params }: IRequestConfig) => {
 
 const fetchMainAPI = async (url: string, requestConfig: IRequestConfig) => {
   try {
-    const response = await fetch(generateEndpointUrl(url), generateRequestConfig(requestConfig));
-    const json = await response.json();
-    const statusCode = response.status;
+    const response = await fetch(generateEndpointUrl(url), generateRequestConfig(requestConfig));    
 
-    if (statusCode !== 200)
-      throw new Error(json.message || DEFAULT_ERROR_MESSAGE)
-    
+    if (!response.ok) {
+      const error = await response.json();
+      const errorMessage = error.message || DEFAULT_ERROR_MESSAGE;
+      throw new Error(errorMessage);
+    }
+
+    const json = await response.json();
     return json
   }
   catch (error){
-    console.log(error)
-    return error
+    return {statusCode: 0, message: (error as Error).message}
   }
 };
 
