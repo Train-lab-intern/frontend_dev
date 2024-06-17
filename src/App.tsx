@@ -37,19 +37,19 @@ function App() {
           <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
           <Route
             path={Path.PROFILE}
-            element={(
+            element={
               <PrivateRoute>
                 <Profile />
               </PrivateRoute>
-            )}
+            }
           />
           <Route
             path={Path.PROFILE_SETTINGS}
-            element={(
+            element={
               <PrivateRoute>
                 <ProfileSettings />
               </PrivateRoute>
-            )}
+            }
           />
           <Route path={Path.USER_PAGE} element={<UserPage />} />
           <Route path="*" element={<NotPage />} />

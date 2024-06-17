@@ -15,7 +15,7 @@ export default function CommonButton({
   return (
     <button
       className={`${styles.button} ${styles[variant]} ${className && className}`}
-      type="button"
+      type="submit"
     >
       {children}
     </button>
