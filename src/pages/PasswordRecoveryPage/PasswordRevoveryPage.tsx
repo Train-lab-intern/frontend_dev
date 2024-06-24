@@ -1,14 +1,14 @@
-import { Fragment } from "react/jsx-runtime";
-import Header from "../../components/Header/Header";
-import { Footer } from "../../components/Footer/Footer";
-import PasswordRecovery from "../../modules/PasswordRecovery/PasswordRecovery";
+import { Fragment } from 'react/jsx-runtime';
+import Header from '../../components/Header/Header';
+import { Footer } from '../../components/Footer/Footer';
+import PasswordRecovery from '../../modules/PasswordRecovery/PasswordRecovery';
 
-export default function PasswordRecoveryPage () {
+export default function PasswordRecoveryPage() {
   return (
     <Fragment>
-      <Header/>
+      <Header />
       <PasswordRecovery />
-      <Footer mainPageData={undefined}/>
+      <Footer mainPageData={undefined} />
     </Fragment>
-  )
+  );
 }

@@ -38,22 +38,25 @@ function App() {
           <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
           <Route
             path={Path.PROFILE}
-            element={(
+            element={
               <PrivateRoute>
                 <Profile />
               </PrivateRoute>
-            )}
+            }
           />
           <Route
             path={Path.PROFILE_SETTINGS}
-            element={(
+            element={
               <PrivateRoute>
                 <ProfileSettings />
               </PrivateRoute>
-            )}
+            }
           />
           <Route path={Path.USER_PAGE} element={<UserPage />} />
-          <Route path={Path.PASSWORD_RECOVERY} element={<PasswordRecoveryPage/>}/>
+          <Route
+            path={Path.PASSWORD_RECOVERY}
+            element={<PasswordRecoveryPage />}
+          />
           <Route path="*" element={<NotPage />} />
         </Routes>
       )}

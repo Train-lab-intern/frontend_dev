@@ -7,5 +7,5 @@ export enum Path {
   PROFILE = '/profile',
   PROFILE_SETTINGS = '/profile-settings',
   USER_PAGE = '/id',
-  PASSWORD_RECOVERY = '/password-recovery'
+  PASSWORD_RECOVERY = '/password-recovery',
 }
