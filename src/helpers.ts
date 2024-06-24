@@ -13,3 +13,19 @@ export function valideGmail(
   }
   return false;
 }
+
+export function validOnlyNumber (value:string) {
+  const regExp = /^[0-9]*$/;
+  return regExp.test(value);
+}
+
+export function validRecoveryCode (recoveryCode:string) {
+  const recoveryCodeLength = 6;
+  const regExp = new RegExp(`^[0-9]{${recoveryCodeLength}}$`);
+  return regExp.test(recoveryCode);
+}
+
+export function validMail (mail:string) {
+  const regExp = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  return regExp.test(mail)
+}

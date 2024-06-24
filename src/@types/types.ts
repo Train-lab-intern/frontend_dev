@@ -2,4 +2,6 @@ import React from "react";
 
 type ChangeInputEvent = React.ChangeEvent<HTMLInputElement>
 
-export type { ChangeInputEvent };
+type SubmitFormEvent = React.FormEvent<HTMLFormElement>
+
+export type { ChangeInputEvent, SubmitFormEvent };
