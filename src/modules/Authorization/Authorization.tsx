@@ -14,6 +14,7 @@ import { Path } from '../../pages/constants/path';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EyeIcon from '../../assets/icons/IconsSvg/EyeIcon';
 import EyeIconHidden from '../../assets/icons/IconsSvg/EyeIconHidden';
+import MainApiService from '../../api/MainApiService';
 
 export const Authorization = ({ primary }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -51,14 +52,11 @@ export const Authorization = ({ primary }) => {
     if (!isValid) {
       return;
     }
-    try {
-      await dispatch(
-        authentication({
-          userEmail: email,
-          userPassword: password,
-        }),
-      );
-    } catch (error) {
+    const response = await MainApiService.userLogin({
+      userEmail: email,
+      userPassword: password,
+    });
+    if (response.statusCode === 0) {
       setEmailError(errorMessages.invalid);
       setPasswordError(errorMessages.invalid);
     }
@@ -145,15 +143,15 @@ export const Authorization = ({ primary }) => {
                   />
                 )}
               </div>
+              <CommonButton
+                className="btn-enter"
+                variant={'primary'}
+                onClick={handleSubmit}
+                type="submit"
+              >
+                Войти
+              </CommonButton>
             </form>
-            <CommonButton
-              className="btn-enter"
-              variant={'primary'}
-              onClick={handleSubmit}
-              type="submit"
-            >
-              Войти
-            </CommonButton>
             <div className="links-block">
               <ul>
                 <li>

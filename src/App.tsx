@@ -38,7 +38,10 @@ function App() {
           <Route
             path={Path.PROFILE}
             element={
+<<<<<<< fix_main-page
               /* eslint-disable */
+=======
+>>>>>>> test
               <PrivateRoute>
                 <Profile />
               </PrivateRoute>
