@@ -11,7 +11,7 @@ import LastSection from './LastSection/LastSection';
 import Direction from './Direction/Direction';
 
 // eslint-disable-next-line
-const MainPage: React.FC = () => {
+export function MainPage() {
   const dispatch = useAppDispatch();
   const mainPageData = useAppSelector((state) => state.pagesData.mainPageData);
 
@@ -30,5 +30,5 @@ const MainPage: React.FC = () => {
       <Footer mainPageData={mainPageData} />
     </div>
   );
-};
+}
 export default MainPage;

@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../MainPage.module.scss';
 import { Path } from '../../constants/path';

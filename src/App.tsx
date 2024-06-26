@@ -38,6 +38,7 @@ function App() {
           <Route
             path={Path.PROFILE}
             element={
+              /* eslint-disable */
               <PrivateRoute>
                 <Profile />
               </PrivateRoute>

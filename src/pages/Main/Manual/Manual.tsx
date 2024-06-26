@@ -1,10 +1,9 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../MainPage.module.scss';
-import iconManual001 from '../../../assets/icons/icon_manual_001.png';
-import iconManual002 from '../../../assets/icons/icon_manual_002.png';
-import iconManual003 from '../../../assets/icons/icon_manual_003.png';
-import iconManual004 from '../../../assets/icons/icon_manual_004.png';
+import iconManualStart from '../../../assets/icons/iconManualJoinITRoast.png';
+import iconManualTrain from '../../../assets/icons/iconManualTrain.png';
+import iconManualCheck from '../../../assets/icons/iconManualСheckStatistic.png';
+import iconManualShare from '../../../assets/icons/iconManualShare.png';
 import { Path } from '../../constants/path';
 import CommonButton from '../../../UI/CommonButton/CommonButton';
 
@@ -19,19 +18,19 @@ export function Manual() {
           <div className={styles.manualList}>
             <div className={styles.item}>
               <div className={styles.imgContainer}>
-                <img src={iconManual001} alt="icon" />
+                <img src={iconManualStart} alt="icon" />
               </div>
               <span>1. Присоединяйся к IT Roast</span>
             </div>
             <div className={styles.item}>
               <div className={styles.imgContainer}>
-                <img src={iconManual002} alt="icon" />
+                <img src={iconManualTrain} alt="icon" />
               </div>
               <span>2. Выполняй задания и тренируйся</span>
             </div>
             <div className={styles.item}>
               <div className={styles.imgContainer}>
-                <img src={iconManual003} alt="icon" />
+                <img src={iconManualCheck} alt="icon" />
               </div>
               <span>
                 3. Следи за статистикой и определи свой уровень прожарки
@@ -39,7 +38,7 @@ export function Manual() {
             </div>
             <div className={styles.item}>
               <div className={styles.imgContainer}>
-                <img src={iconManual004} alt="icon" />
+                <img src={iconManualShare} alt="icon" />
               </div>
               <span>4. Поделись знаниями и найди работу мечты</span>
             </div>

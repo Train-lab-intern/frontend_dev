@@ -1,10 +1,9 @@
-import React from 'react';
 import styles from '../MainPage.module.scss';
-import icon001 from '../../../assets/icons/icon_001.png';
-import icon002 from '../../../assets/icons/icon_002.png';
-import icon003 from '../../../assets/icons/icon_003.png';
-import icon004 from '../../../assets/icons/icon_004.png';
-import icon005 from '../../../assets/icons/icon_005.png';
+import iconQA from '../../../assets/icons/iconQA.png';
+import iconPM from '../../../assets/icons/iconPM.png';
+import iconUiUX from '../../../assets/icons/iconUiUX.png';
+import iconBA from '../../../assets/icons/iconBA.png';
+import iconPython from '../../../assets/icons/iconPython.png';
 
 interface DirectionItemProps {
   src: string;
@@ -13,11 +12,11 @@ interface DirectionItemProps {
 }
 
 const directionItems: DirectionItemProps[] = [
-  { src: icon001, alt: 'icon', title: 'QA' },
-  { src: icon002, alt: 'icon', title: 'Продакт менджмент' },
-  { src: icon003, alt: 'icon', title: 'Дизайн UX/UI' },
-  { src: icon004, alt: 'icon', title: 'Бизнес анализ' },
-  { src: icon005, alt: 'icon', title: 'Python' },
+  { src: iconQA, alt: 'icon', title: 'QA' },
+  { src: iconPM, alt: 'icon', title: 'Продакт менджмент' },
+  { src: iconUiUX, alt: 'icon', title: 'Дизайн UX/UI' },
+  { src: iconBA, alt: 'icon', title: 'Бизнес анализ' },
+  { src: iconPython, alt: 'icon', title: 'Python' },
 ];
 export function Direction() {
   return (
@@ -30,9 +29,8 @@ export function Direction() {
             <h2>Доведи себя до готовности к новой должности</h2>
           </div>
           <div className={styles.directionList}>
-            {directionItems.map((item, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <div key={index} className={styles.directionItem}>
+            {directionItems.map((item) => (
+              <div key={crypto.randomUUID()} className={styles.directionItem}>
                 <img src={item.src} alt={item.alt} />
                 <h4>{item.title}</h4>
               </div>

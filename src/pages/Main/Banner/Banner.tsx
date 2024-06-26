@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '../MainPage.module.scss';
 import CommonButton from '../../../UI/CommonButton/CommonButton';
 

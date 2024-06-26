@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from '../MainPage.module.scss';
 import { Slider } from '../Slider/Slider';
@@ -11,9 +10,6 @@ function TestMenu() {
       <div className={styles.container}>
         <div className={styles.testMenu}>
           <Slider />
-          {/* <div className={styles.testMenuImgContainer}> */}
-          {/*  <img src={test_menu} alt="test menu"/> */}
-          {/* </div> */}
           <div className={styles.progressBlock}>
             <div className={styles.title}>
               <h2>Следи за своим успехом</h2>
