@@ -18,7 +18,7 @@ export interface IRequestRecoveryMail {
 }
 
 export interface IRequestRecoveryCode {
-  recoveryCode: string
+  recoveryCode: string;
 }
 
 export interface IRequestRefreshToken {

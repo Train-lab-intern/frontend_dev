@@ -7,11 +7,11 @@ export const MAIN_API_URLS = {
     REGISTER: '/auth/register',
     LOGIN: '/auth/login',
     LOGOUT: '/auth/logout',
-    REFRESH_TOKEN: '/auth/refresh-token',    
+    REFRESH_TOKEN: '/auth/refresh-token',
     PASSWORD_RECOVERY: {
       RECOVERY_MAIL: '',
       RECOVERY_CODE: '',
-      RECOVERY_NEW_PASSWORD: '/auth/reset-password'
+      RECOVERY_NEW_PASSWORD: '/auth/reset-password',
     },
   },
   ALL_USERS: '/users',

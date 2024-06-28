@@ -17,7 +17,7 @@ class MainApiService {
 
   async userLogin(params: IRequestLogin) {
     return servicesPost(MAIN_API_URLS.USER.LOGIN, { params });
-  }  
+  }
 
   async userRefreshToken(params: IRequestRefreshToken) {
     return servicesPut(MAIN_API_URLS.USER.REFRESH_TOKEN, { params });
@@ -31,17 +31,24 @@ class MainApiService {
     return servicesGet(MAIN_API_URLS.ALL_USERS);
   }
 
-  async passwordRecoveryMail(params:IRequestRecoveryMail) {
-    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_MAIL, {params})
+  async passwordRecoveryMail(params: IRequestRecoveryMail) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_MAIL, {
+      params,
+    });
   }
 
-  async passwordRecoveryCode(params:IRequestRecoveryCode) {
-    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_CODE, {params})
+  async passwordRecoveryCode(params: IRequestRecoveryCode) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_CODE, {
+      params,
+    });
   }
 
   async userRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
-    return servicesPut(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_NEW_PASSWORD, { params });
-  } 
+    return servicesPut(
+      MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_NEW_PASSWORD,
+      { params },
+    );
+  }
 }
 
 export default new MainApiService();

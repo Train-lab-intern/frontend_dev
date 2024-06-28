@@ -41,15 +41,15 @@ export default function PasswordRecovery() {
     event.preventDefault();
     if (validMail(recoveryMail)) {
       try {
-        const json = await MainApiService.passwordRecoveryMail({recoveryMail});
-        console.log(json)
+        const json = await MainApiService.passwordRecoveryMail({
+          recoveryMail,
+        });
+        console.log(json);
         setMailFormVisible(false);
         setRecoveryCodeFormVisible(true);
+      } catch (error) {
+        console.log(error);
       }
-      catch (error) {
-        console.log(error)
-      }
-      
     }
   };
 
@@ -114,7 +114,7 @@ export default function PasswordRecovery() {
       {newPasswordFormVisible ? (
         <div className="recovery_container">
           <form onSubmit={SubmitNewPassword}>
-            <label htmlFor='newPassword'>
+            <label htmlFor="newPassword">
               Введите новый пароль
               <input
                 type="text"
@@ -124,7 +124,8 @@ export default function PasswordRecovery() {
                 onChange={onNewPasswordChage}
               />
             </label>
-            <label htmlFor='newPassword2'>Повторите новый пароль
+            <label htmlFor="newPassword2">
+              Повторите новый пароль
               <input
                 type="text"
                 name="newPassword2"
