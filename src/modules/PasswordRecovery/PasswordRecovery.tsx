@@ -4,9 +4,10 @@ import './PasswordRecovery.scss';
 import { ChangeInputEvent, SubmitFormEvent } from '../../@types/types';
 import CommonButton from '../../UI/CommonButton/CommonButton';
 import { validMail, validOnlyNumber, validRecoveryCode } from '../../helpers';
+import MainApiService from '../../api/MainApiService';
 
 export default function PasswordRecovery() {
-  const [mail, setMail] = useState('');
+  const [recoveryMail, setRecoveryMail] = useState('');
   const [recoveryCode, setRecoveryCode] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [newPassword2, setNewPassword2] = useState('');
@@ -20,7 +21,7 @@ export default function PasswordRecovery() {
   const onMailChage = (event: ChangeInputEvent) => {
     event.preventDefault();
     const target = event.target as HTMLInputElement;
-    setMail(target.value);
+    setRecoveryMail(target.value);
   };
 
   const onRecoveryCodeChage = (event: ChangeInputEvent) => {
@@ -36,11 +37,19 @@ export default function PasswordRecovery() {
     setNewPassword2(event.target.value);
   };
 
-  const submitMail = (event: SubmitFormEvent) => {
+  const submitMail = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    if (validMail(mail)) {
-      setMailFormVisible(false);
-      setRecoveryCodeFormVisible(true);
+    if (validMail(recoveryMail)) {
+      try {
+        const json = await MainApiService.passwordRecoveryMail({recoveryMail});
+        console.log(json)
+        setMailFormVisible(false);
+        setRecoveryCodeFormVisible(true);
+      }
+      catch (error) {
+        console.log(error)
+      }
+      
     }
   };
 
@@ -70,7 +79,7 @@ export default function PasswordRecovery() {
               type="text"
               name="mail"
               id="recoveryMail"
-              value={mail}
+              value={recoveryMail}
               onChange={onMailChage}
               placeholder="examplemail@mail.com"
             />
@@ -105,22 +114,25 @@ export default function PasswordRecovery() {
       {newPasswordFormVisible ? (
         <div className="recovery_container">
           <form onSubmit={SubmitNewPassword}>
-            <div>Введите новый пароль</div>
-            <input
-              type="text"
-              name="newPassword"
-              id="newPassword"
-              value={newPassword}
-              onChange={onNewPasswordChage}
-            />
-            <div>Повторите новый пароль</div>
-            <input
-              type="text"
-              name="newPassword2"
-              id="newPassword2"
-              value={newPassword2}
-              onChange={onNewPassword2Chage}
-            />
+            <label htmlFor='newPassword'>
+              Введите новый пароль
+              <input
+                type="text"
+                name="newPassword"
+                id="newPassword"
+                value={newPassword}
+                onChange={onNewPasswordChage}
+              />
+            </label>
+            <label htmlFor='newPassword2'>Повторите новый пароль
+              <input
+                type="text"
+                name="newPassword2"
+                id="newPassword2"
+                value={newPassword2}
+                onChange={onNewPassword2Chage}
+              />
+            </label>
             <CommonButton variant="primary">
               Сохранить новый пароль
             </CommonButton>
