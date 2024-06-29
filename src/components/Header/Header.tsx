@@ -6,12 +6,12 @@ import Navigation from '../Navigation/Navigation';
 // import InputField from '../../UI/InputField';
 
 export default function Header() {
-    const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-    return (
-        <header className={styles.header}>
-            {/* just for test */}
-            {/* <InputField
+  return (
+    <header className={styles.header}>
+      {/* just for test */}
+      {/* <InputField
                 onChange={() => ''}
                 placeholder='placeholderText'
                 className='input-field-UI'
@@ -23,22 +23,22 @@ export default function Header() {
             // value={newValue}
 
             /> */}
-            <div className={styles.container}>
-                <div className={styles.inner}>
-                    <div className={styles.logo}>
-                        {pathname === Path.HOME ? (
-                            <img src={logo} alt="Logo" />
-                        ) : (
-                            <NavLink to={Path.HOME}>
-                                <img src={logo} alt="Logo" />
-                            </NavLink>
-                        )}
-                    </div>
-                    <div className={styles.nav}>
-                        <Navigation />
-                    </div>
-                </div>
-            </div>
-        </header>
-    );
+      <div className={styles.container}>
+        <div className={styles.inner}>
+          <div className={styles.logo}>
+            {pathname === Path.HOME ? (
+              <img src={logo} alt="Logo" />
+            ) : (
+              <NavLink to={Path.HOME}>
+                <img src={logo} alt="Logo" />
+              </NavLink>
+            )}
+          </div>
+          <div className={styles.nav}>
+            <Navigation />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 }
