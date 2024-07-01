@@ -29,3 +29,9 @@ export function validMail(mail: string) {
   const regExp = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   return regExp.test(mail);
 }
+
+export function validPassword(password: string) {
+  const regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/;
+  // const regExp = /^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z\d]{8,16}$/;
+  return regExp.test(password)
+}

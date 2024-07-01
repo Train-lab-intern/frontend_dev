@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './PasswordRecovery.scss';
 import { ChangeInputEvent, SubmitFormEvent } from '../../@types/types';
 import CommonButton from '../../UI/CommonButton/CommonButton';
-import { validMail, validOnlyNumber, validRecoveryCode } from '../../helpers';
+import { validMail, validOnlyNumber, validPassword, validRecoveryCode } from '../../helpers';
 import MainApiService from '../../api/MainApiService';
 
 export default function PasswordRecovery() {
@@ -39,31 +39,46 @@ export default function PasswordRecovery() {
 
   const submitMail = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    if (validMail(recoveryMail)) {
-      try {
-        const json = await MainApiService.passwordRecoveryMail({
-          recoveryMail,
-        });
-        console.log(json);
+    if (validMail(recoveryMail)) {      
+      const json = await MainApiService.passwordRecoveryMail({recoveryMail})
+      if (json.statusCode !== 0) {
         setMailFormVisible(false);
         setRecoveryCodeFormVisible(true);
-      } catch (error) {
-        console.log(error);
+      } else {
+        console.log('Mail is not find')
       }
-    }
+    } else 
+    console.log('Invalid mail')
   };
 
-  const submitRecoveryCode = (event: SubmitFormEvent) => {
+  const submitRecoveryCode = async (event: SubmitFormEvent) => {
     event.preventDefault();
     if (validRecoveryCode(recoveryCode)) {
-      setRecoveryCodeFormVisible(false);
-      setNewPasswordFromVisible(true);
-    }
+      const json = await MainApiService.passwordRecoveryCode({recoveryCode});
+      if (json.statusCode !== 0) {
+        setRecoveryCodeFormVisible(false);
+        setNewPasswordFromVisible(true);
+      } else {
+        console.log('Code is not correct')
+      }
+    } else 
+    console.log('Invalid recovery code')
   };
 
-  const SubmitNewPassword = (event: SubmitFormEvent) => {
+  const SubmitNewPassword = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    navigate('/');
+    if (newPassword !== newPassword2) 
+      console.log('Password is not same');
+
+    else if (validPassword(newPassword)) {
+      const json = await MainApiService.userRecoveryNewPassword({newPassword})
+      if (json.statusCode !== 0) {
+        navigate('/');
+      } else {
+        console.log('Incorrect password (validation)')
+      }
+    } else 
+    console.log('Incorrect password (server)')
   };
 
   return (

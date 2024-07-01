@@ -169,7 +169,7 @@ export const Authorization = ({ primary }) => {
               </ul>
               <ul>
                 <li>
-                  <Link className="hidden-link" to={Path.CHANGE_PASSWORD}>
+                  <Link className="hidden-link" to={Path.PASSWORD_RECOVERY}>
                     Забыли пароль?
                   </Link>
                 </li>
