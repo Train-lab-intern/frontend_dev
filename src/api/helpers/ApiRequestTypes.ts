@@ -9,7 +9,7 @@ export interface IRequestRegister {
 }
 
 export interface IRequestRecoveryNewPassword {
-  newPassword: string
+  newPassword: string;
 }
 
 export interface IRequestRecoveryMail {
