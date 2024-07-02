@@ -1,18 +1,78 @@
-input::placeholder {
-  font-size: 14px;
+.input-group-UI {
+  position: relative;
+  margin-top: 20px;
+  /* margin just for test */
 }
 
-.input-field {
-  width: 60%;
-  height: 50px;
-  flex-grow: 1;
-  padding-right: 10px;
+.input-field-UI {
+  border: 2px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  height: 45px;
+  /* flex-grow: 1; */
+  padding: 10px;
+  font-size: 18px;
 }
+
+.input-field-UI.error {
+  border-color: red;
+}
+
+.input-field-UI:hover {
+  border-color: #8181da;
+}
+
+.input-field-UI:hover.error {
+  border-color: red;
+}
+
+.input-field-UI:focus {
+  border-color: #8181da;
+}
+
+.input-field-UI:focus.error {
+  border-color: red;
+}
+
+.placeholder-label {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  font-size: 15px;
+  color: #666;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.placeholder-label.error {
+  color: red;
+}
+
+.input-field-UI:focus + .placeholder-label,
+.input-field-UI:not(:placeholder-shown).input-field-UI:not(:focus)
+  + .placeholder-label {
+  top: -5px;
+  background-color: #fff;
+  font-size: 10px;
+}
+
+.input-error-hidden {
+  display: none;
+}
+
+.input-error-show {
+  display: block;
+  color: red;
+}
+
+/* .openEye {
+    
+} */
 
 @media (max-width: 1130px) {
-  .input-field {
+  .input-field-UI {
     width: 70%;
     flex-grow: 1;
-    padding-right: 10px;
+    padding: 10px;
   }
 }
