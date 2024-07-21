@@ -3,16 +3,16 @@
 .header {
   background: $primary-light-bg;
   box-shadow: -1px 3px 13px 0px;
-  
-}.imputFieldEye {
-    @media (max-width: 1130px) {
-        width: 70%;
-        .input-field-UI {
-          flex-grow: 1;
-          padding: 10px;
-        }
-      }
+}
+.imputFieldEye {
+  @media (max-width: 1130px) {
+    width: 70%;
+    .input-field-UI {
+      flex-grow: 1;
+      padding: 10px;
+    }
   }
+}
 .container {
   width: 80%;
   max-width: 1440px;

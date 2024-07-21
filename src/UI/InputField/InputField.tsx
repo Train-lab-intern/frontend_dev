@@ -42,7 +42,6 @@ function InputField({
         htmlFor="input-UI"
       >
         {placeholder}
-
       </label>
       <div className={`${isError ? 'input-error-show' : 'input-error-hidden'}`}>
         {errorText}

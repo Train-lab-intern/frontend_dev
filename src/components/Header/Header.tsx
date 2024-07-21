@@ -14,28 +14,27 @@ export default function Header() {
         <InputField
           onChange={() => ''}
           // placeholder='placeholderText'
-          placeholder='Text'
-          className='input-field-UI'
-          errorText='ERROR-TEXT'
+          placeholder="Text"
+          className="input-field-UI"
+          errorText="ERROR-TEXT"
           // isError
-          type='text'
-          name=''
-        // onChange={newValue}
-        // value={newValue}
-
+          type="text"
+          name=""
+          // onChange={newValue}
+          // value={newValue}
         />
         <InputField
           onChange={() => ''}
-          placeholder='Password'
-          className='input-field-UI'
-          errorText='ERROR-TEXT'
+          placeholder="Password"
+          className="input-field-UI"
+          errorText="ERROR-TEXT"
           // isError
-          type='password'
-          name=''
-        // onChange={newValue}
-        // value={newValue}
-
-        /></div>
+          type="password"
+          name=""
+          // onChange={newValue}
+          // value={newValue}
+        />
+      </div>
       <div className={styles.container}>
         <div className={styles.inner}>
           <div className={styles.logo}>
