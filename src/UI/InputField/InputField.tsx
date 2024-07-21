@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import EyeIcon from '../../assets/icons/IconsSvg/EyeIcon';
 import EyeIconHidden from '../../assets/icons/IconsSvg/EyeIconHidden';
-import './InputField.css';
+import './InputField.scss';
 
-interface InputFieldProps {
+interface IInputFieldProps {
   type?: string;
   name?: string;
   placeholder: string;
@@ -23,7 +23,7 @@ function InputField({
   className = '',
   onChange,
   errorText = '',
-}: InputFieldProps) {
+}: IInputFieldProps) {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
 
   return (
@@ -42,6 +42,7 @@ function InputField({
         htmlFor="input-UI"
       >
         {placeholder}
+
       </label>
       <div className={`${isError ? 'input-error-show' : 'input-error-hidden'}`}>
         {errorText}

@@ -16,51 +16,51 @@ import UserPage from './pages/UserPage/UserPage';
 import './styles/main.scss';
 
 function App() {
-  const primary = true;
-  const dispatch = useAppDispatch();
-  const appStatus = useAppSelector((state) => state.app.appStatus);
+    const primary = true;
+    const dispatch = useAppDispatch();
+    const appStatus = useAppSelector((state) => state.app.appStatus);
 
-  useEffect(() => {
-    dispatch(auth());
-  }, []);
+    useEffect(() => {
+        dispatch(auth());
+    }, []);
 
-  return (
-    <div className="App">
-      {appStatus === RequestStatus.SUCCEEDED && (
-        <Routes>
-          <Route path={Path.HOME} element={<MainPage />} />
-          <Route
-            path={Path.AUTH}
-            element={<Authorization primary={primary} />}
-          />
-          <Route path={Path.REGISTRATION} element={<Registration />} />
-          <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
-          <Route
-            path={Path.PROFILE}
-            element={
-<<<<<<< fix_main-page
-              /* eslint-disable */
-=======
->>>>>>> test
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={Path.PROFILE_SETTINGS}
-            element={
-              <PrivateRoute>
-                <ProfileSettings />
-              </PrivateRoute>
-            }
-          />
-          <Route path={Path.USER_PAGE} element={<UserPage />} />
-          <Route path="*" element={<NotPage />} />
-        </Routes>
-      )}
-    </div>
-  );
+    return (
+        <div className="App">
+            {appStatus === RequestStatus.SUCCEEDED && (
+                <Routes>
+                    <Route path={Path.HOME} element={<MainPage />} />
+                    <Route
+                        path={Path.AUTH}
+                        element={<Authorization primary={primary} />}
+                    />
+                    <Route path={Path.REGISTRATION} element={<Registration />} />
+                    <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
+                    <Route
+                        path={Path.PROFILE}
+                        element={
+                            //  fix_main-page
+                            /* eslint-disable */
+
+                            //  test
+                            <PrivateRoute>
+                                <Profile />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path={Path.PROFILE_SETTINGS}
+                        element={
+                            <PrivateRoute>
+                                <ProfileSettings />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route path={Path.USER_PAGE} element={<UserPage />} />
+                    <Route path="*" element={<NotPage />} />
+                </Routes>
+            )}
+        </div>
+    );
 }
 
 export default App;
