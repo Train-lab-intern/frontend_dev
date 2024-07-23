@@ -32,20 +32,20 @@ class MainApiService {
   }
 
   async passwordRecoveryMail(params: IRequestRecoveryMail) {
-    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_MAIL, {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.MAIL, {
       params,
     });
   }
 
-  async passwordRecoveryCode(params: IRequestRecoveryCode) {
-    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_CODE, {
+  async passwordRecoveryVerifyCode(params: IRequestRecoveryCode) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.VERIFY_CODE, {
       params,
     });
   }
 
-  async userRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
+  async passwordRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
     return servicesPost(
-      MAIN_API_URLS.USER.PASSWORD_RECOVERY.RECOVERY_NEW_PASSWORD,
+      MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD,
       { params },
     );
   }
