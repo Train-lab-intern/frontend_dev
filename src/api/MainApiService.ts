@@ -44,10 +44,9 @@ class MainApiService {
   }
 
   async passwordRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
-    return servicesPost(
-      MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD,
-      { params },
-    );
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD, {
+      params,
+    });
   }
 }
 

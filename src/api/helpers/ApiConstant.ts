@@ -11,7 +11,7 @@ export const MAIN_API_URLS = {
     PASSWORD_RECOVERY: {
       MAIL: '/auth/reset-password',
       NEW_PASSWORD: 'change-password',
-      VERIFY_CODE: '/auth/reset-password/verify'
+      VERIFY_CODE: '/auth/reset-password/verify',
     },
   },
   ALL_USERS: '/users',
