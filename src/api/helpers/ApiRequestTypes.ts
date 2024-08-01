@@ -8,11 +8,6 @@ export interface IRequestRegister {
   password: string;
 }
 
-export interface IRequestRecoveryNewPassword {
-  email: string;
-  password: string;
-}
-
 export interface IRequestRecoveryMail {
   email: string;
 }
@@ -20,6 +15,11 @@ export interface IRequestRecoveryMail {
 export interface IRequestRecoveryCode {
   email: string;
   code: string;
+}
+
+export interface IRequestRecoveryNewPassword {
+  email: string;
+  password: string;
 }
 
 export interface IRequestRefreshToken {
