@@ -9,9 +9,9 @@ export const MAIN_API_URLS = {
     LOGOUT: '/auth/logout',
     REFRESH_TOKEN: '/auth/refresh-token',
     PASSWORD_RECOVERY: {
-      RECOVERY_MAIL: '',
-      RECOVERY_CODE: '',
-      RECOVERY_NEW_PASSWORD: '/auth/reset-password',
+      RECOVERY_MAIL: '/reset-password',
+      RECOVERY_CODE: '/reset-password/verify',
+      RECOVERY_NEW_PASSWORD: '/reset-password/create-new-password',
     },
   },
   ALL_USERS: '/users',
@@ -25,6 +25,7 @@ export const METHODS = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
+  PATCH: 'PATCH',
 };
 
 export const DEFAULT_ERROR_MESSAGE = 'Server request error...';

@@ -45,7 +45,9 @@ export default function PasswordRecovery() {
   const submitMail = async (event: SubmitFormEvent) => {
     event.preventDefault();
     if (validMail(recoveryMail)) {
-      const json = await MainApiService.passwordRecoveryMail({ recoveryMail });
+      const json = await MainApiService.passwordRecoveryMail({
+        email: recoveryMail,
+      });
       if (json.statusCode !== 0) {
         setMailFormVisible(false);
         setRecoveryCodeFormVisible(true);
@@ -58,7 +60,10 @@ export default function PasswordRecovery() {
   const submitRecoveryCode = async (event: SubmitFormEvent) => {
     event.preventDefault();
     if (validRecoveryCode(recoveryCode)) {
-      const json = await MainApiService.passwordRecoveryCode({ recoveryCode });
+      const json = await MainApiService.passwordRecoveryCode({
+        email: recoveryMail,
+        code: recoveryCode,
+      });
       if (json.statusCode !== 0) {
         setRecoveryCodeFormVisible(false);
         setNewPasswordFromVisible(true);
@@ -73,7 +78,8 @@ export default function PasswordRecovery() {
     if (newPassword !== newPassword2) console.log('Password is not same');
     else if (validPassword(newPassword)) {
       const json = await MainApiService.userRecoveryNewPassword({
-        newPassword,
+        password: newPassword,
+        email: recoveryMail,
       });
       if (json.statusCode !== 0) {
         navigate('/');

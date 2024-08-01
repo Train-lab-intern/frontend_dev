@@ -20,7 +20,7 @@ export function validOnlyNumber(value: string) {
 }
 
 export function validRecoveryCode(recoveryCode: string) {
-  const recoveryCodeLength = 6;
+  const recoveryCodeLength = 10;
   const regExp = new RegExp(`^[0-9]{${recoveryCodeLength}}$`);
   return regExp.test(recoveryCode);
 }

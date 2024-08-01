@@ -9,15 +9,17 @@ export interface IRequestRegister {
 }
 
 export interface IRequestRecoveryNewPassword {
-  newPassword: string;
+  email: string;
+  password: string;
 }
 
 export interface IRequestRecoveryMail {
-  recoveryMail: string;
+  email: string;
 }
 
 export interface IRequestRecoveryCode {
-  recoveryCode: string;
+  email: string;
+  code: string;
 }
 
 export interface IRequestRefreshToken {
