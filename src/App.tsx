@@ -7,7 +7,7 @@ import NotPage from './pages/NotPage/NotPage';
 import { Path } from './pages/constants/path';
 import { useAppDispatch, useAppSelector } from './redux/store';
 import { auth } from './modules/auth/authReducer';
-import { PrivateRoute } from './pages/PrivateRoute';
+import PrivateRoute from './pages/PrivateRoute';
 import { RequestStatus } from './pages/constants/requestStatus';
 import ProfileSettings from './modules/ProfileSettings/ProfileSettings';
 import MainPage from './pages/Main/MainPage';
