@@ -8,7 +8,11 @@ export const MAIN_API_URLS = {
     LOGIN: '/auth/login',
     LOGOUT: '/auth/logout',
     REFRESH_TOKEN: '/auth/refresh-token',
-    PASSWORD_RECOVERY: '/auth/reset-password',
+    PASSWORD_RECOVERY: {
+      MAIL: '/reset-password',
+      VERIFY_CODE: '/reset-password/verify',
+      NEW_PASSWORD: '/reset-password/create-new-password',
+    },
   },
   ALL_USERS: '/users',
   ADMIN: {
@@ -21,6 +25,7 @@ export const METHODS = {
   POST: 'POST',
   PUT: 'PUT',
   DELETE: 'DELETE',
+  PATCH: 'PATCH',
 };
 
 export const DEFAULT_ERROR_MESSAGE = 'Server request error...';

@@ -14,6 +14,7 @@ import MainPage from './pages/Main/MainPage';
 import { Authorization } from './modules/Authorization';
 import UserPage from './pages/UserPage/UserPage';
 import './styles/main.scss';
+import PasswordRecoveryPage from './pages/PasswordRecoveryPage/PasswordRevoveryPage';
 
 function App() {
   const primary = true;
@@ -52,6 +53,10 @@ function App() {
             }
           />
           <Route path={Path.USER_PAGE} element={<UserPage />} />
+          <Route
+            path={Path.PASSWORD_RECOVERY}
+            element={<PasswordRecoveryPage />}
+          />
           <Route path="*" element={<NotPage />} />
         </Routes>
       )}

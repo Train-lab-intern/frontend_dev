@@ -2,8 +2,10 @@
 import {
   IRequestRefreshToken,
   IRequestRegister,
-  IRequestRecoveryPassword,
   IRequestLogin,
+  IRequestRecoveryNewPassword,
+  IRequestRecoveryMail,
+  IRequestRecoveryCode,
 } from './helpers/ApiRequestTypes';
 import { MAIN_API_URLS } from './helpers/ApiConstant';
 import { servicesGet, servicesPost, servicesPut } from './helpers/ApiHelpers';
@@ -17,10 +19,6 @@ class MainApiService {
     return servicesPost(MAIN_API_URLS.USER.LOGIN, { params });
   }
 
-  async userRecoveryPassword(params: IRequestRecoveryPassword) {
-    return servicesPut(MAIN_API_URLS.USER.PASSWORD_RECOVERY, { params });
-  }
-
   async userRefreshToken(params: IRequestRefreshToken) {
     return servicesPut(MAIN_API_URLS.USER.REFRESH_TOKEN, { params });
   }
@@ -31,6 +29,24 @@ class MainApiService {
 
   async getAllUsers() {
     return servicesGet(MAIN_API_URLS.ALL_USERS);
+  }
+
+  async passwordRecoveryMail(params: IRequestRecoveryMail) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.MAIL, {
+      params,
+    });
+  }
+
+  async passwordRecoveryVerifyCode(params: IRequestRecoveryCode) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.VERIFY_CODE, {
+      params,
+    });
+  }
+
+  async passwordRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
+    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD, {
+      params,
+    });
   }
 }
 

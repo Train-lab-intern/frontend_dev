@@ -43,6 +43,12 @@ const generateRequestConfig = ({ method, token, params }: IRequestConfig) => {
         headers: generateHeaders(token),
         body: JSON.stringify(params),
       };
+    case 'PATCH':
+      return {
+        method,
+        headers: generateHeaders(token),
+        body: JSON.stringify(params),
+      };
     default:
       return {
         method,
@@ -57,13 +63,11 @@ const fetchMainAPI = async (url: string, requestConfig: IRequestConfig) => {
       generateEndpointUrl(url),
       generateRequestConfig(requestConfig),
     );
-
     if (!response.ok) {
       const error = await response.json();
       const errorMessage = error.message || DEFAULT_ERROR_MESSAGE;
       throw new Error(errorMessage);
     }
-
     const json = await response.json();
     return json;
   } catch (error) {
@@ -84,3 +88,6 @@ export const servicesDelete = (
 
 export const servicesPut = (url: string, { params, token }: IRequestConfig) =>
   fetchMainAPI(url, { method: METHODS.PUT, token, params });
+
+export const servicePatch = (url: string, { params, token }: IRequestConfig) =>
+  fetchMainAPI(url, { method: METHODS.PATCH, token, params });

@@ -8,9 +8,18 @@ export interface IRequestRegister {
   password: string;
 }
 
-export interface IRequestRecoveryPassword {
+export interface IRequestRecoveryMail {
+  email: string;
+}
+
+export interface IRequestRecoveryCode {
+  email: string;
+  code: string;
+}
+
+export interface IRequestRecoveryNewPassword {
+  email: string;
   password: string;
-  confirmPassword: string;
 }
 
 export interface IRequestRefreshToken {
@@ -24,7 +33,9 @@ export interface IRequestLogout {
 type RequestParams =
   | IRequestLogin
   | IRequestRegister
-  | IRequestRecoveryPassword
+  | IRequestRecoveryMail
+  | IRequestRecoveryCode
+  | IRequestRecoveryNewPassword
   | IRequestRefreshToken
   | IRequestLogout
   | Record<string, unknown>;
