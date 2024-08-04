@@ -7,12 +7,10 @@ type PropsType = {
   children: React.ReactElement;
 };
 
-export default function PrivateRoute({children}:PropsType) {
-  const isLogged = useAppSelector((state) => state.auth.isLogged); 
+export default function PrivateRoute({ children }: PropsType) {
+  const isLogged = useAppSelector((state) => state.auth.isLogged);
 
-  if (!isLogged) 
-    return <Navigate to={Path.AUTH} />;
-      
-    
+  if (!isLogged) return <Navigate to={Path.AUTH} />;
+
   return children;
 }
