@@ -9,9 +9,9 @@ export const MAIN_API_URLS = {
     LOGOUT: '/auth/logout',
     REFRESH_TOKEN: '/auth/refresh-token',
     PASSWORD_RECOVERY: {
-      RECOVERY_MAIL: '/reset-password',
-      RECOVERY_CODE: '/reset-password/verify',
-      RECOVERY_NEW_PASSWORD: '/reset-password/create-new-password',
+      MAIL: '/reset-password',
+      VERIFY_CODE: '/reset-password/verify',
+      NEW_PASSWORD: '/reset-password/create-new-password',
     },
   },
   ALL_USERS: '/users',
