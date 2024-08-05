@@ -25,7 +25,7 @@ export default function PasswordRecovery() {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const user = useAppSelector(state => state.user);
+  const user = useAppSelector((state) => state.user);
 
   const onMailChage = (event: ChangeInputEvent) => {
     event.preventDefault();
@@ -87,8 +87,8 @@ export default function PasswordRecovery() {
         password: recoveryNewPassword,
       });
       if (json.statusCode !== 0) {
-        const {token, refreshToken, userPageDto} = await json;
-        dispatch(updateUser({token, refreshToken, userPageDto}))
+        const { token, refreshToken, userPageDto } = await json;
+        dispatch(updateUser({ token, refreshToken, userPageDto }));
         console.log(user);
         navigate('/');
       } else {
