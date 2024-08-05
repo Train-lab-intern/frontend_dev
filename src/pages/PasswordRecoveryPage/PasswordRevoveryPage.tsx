@@ -8,7 +8,7 @@ export default function PasswordRecoveryPage() {
     <Fragment>
       <Header />
       <PasswordRecovery />
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 }

@@ -16,28 +16,28 @@
 // }
 // export type UserAction = FetchUsersAction | FetchUsersErrorAction | FetchUsersSuccessAction
 
-
-
 export interface IUserState {
   token: string | null;
   refreshToken: {
     value: string;
     issuedAt: string;
     expiredAt: string;
-  } | null,
+  } | null;
   userPageDto: {
     id: number;
-    generatedName: string,
+    generatedName: string;
     username: string;
     surname: string;
     email: string;
     userLevel: string;
     specialties: Array<string>;
-    roles: [{
+    roles: [
+      {
         id: 0;
         roleName: string;
         created: string;
         changed: string;
-      }]
-  } | null
+      },
+    ];
+  } | null;
 }

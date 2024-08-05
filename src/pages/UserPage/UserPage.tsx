@@ -1,6 +1,6 @@
 import './UserPage.scss';
 import { useEffect } from 'react';
-import { useAppDispatch} from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
 import Header from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
@@ -23,7 +23,7 @@ export default function UserPage() {
       <UserWelcome />
       <UserResults />
       <Recomendation />
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -18,7 +18,7 @@ import PasswordRecoveryPage from './pages/PasswordRecoveryPage/PasswordRevoveryP
 function App() {
   const primary = true;
   const dispatch = useAppDispatch();
-  
+
   // const appStatus = useAppSelector((state) => state.app.appStatus);
 
   useEffect(() => {
@@ -29,10 +29,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path={Path.HOME} element={<MainPage />} />
-        <Route
-          path={Path.AUTH}
-          element={<Authorization primary={primary} />}
-        />
+        <Route path={Path.AUTH} element={<Authorization primary={primary} />} />
         <Route path={Path.REGISTRATION} element={<Registration />} />
         <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
         <Route

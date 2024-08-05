@@ -82,7 +82,7 @@ export default function Profile() {
         </div>
       </div>
       <div className={styles.footer}>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

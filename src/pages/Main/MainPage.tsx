@@ -27,7 +27,7 @@ export function MainPage() {
       <Manual />
       <TestMenu />
       <LastSection />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
