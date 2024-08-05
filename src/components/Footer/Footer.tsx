@@ -7,11 +7,7 @@ import githubIcon from '../../assets/icons/githubIcon';
 import { linkedinIcon } from '../../assets/icons/linkedinIcon';
 import iconSearch from '../../assets/icons/iconSearch';
 
-type PropsType = {
-  mainPageData: any;
-};
-
-export const Footer: React.FC<PropsType> = () => (
+export const Footer: React.FC = () => (
   <footer className={styles.footer}>
     <div className={styles.container}>
       <div className={styles.inner}>

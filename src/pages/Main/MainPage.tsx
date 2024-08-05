@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './MainPage.module.scss';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
 import Header from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
@@ -13,7 +13,7 @@ import Direction from './Direction/Direction';
 // eslint-disable-next-line
 export function MainPage() {
   const dispatch = useAppDispatch();
-  const mainPageData = useAppSelector((state) => state.pagesData.mainPageData);
+  // const mainPageData = useAppSelector((state) => state.pagesData.mainPageData);
 
   useEffect(() => {
     dispatch(getDataMainPage());
@@ -27,7 +27,7 @@ export function MainPage() {
       <Manual />
       <TestMenu />
       <LastSection />
-      <Footer mainPageData={mainPageData} />
+      <Footer/>
     </div>
   );
 }
