@@ -8,7 +8,7 @@ import {
   IRequestRecoveryCode,
 } from './helpers/ApiRequestTypes';
 import { MAIN_API_URLS } from './helpers/ApiConstant';
-import { servicesGet, servicesPost, servicesPut } from './helpers/ApiHelpers';
+import { servicePatch, servicesGet, servicesPost, servicesPut } from './helpers/ApiHelpers';
 
 class MainApiService {
   async userRegister(params: IRequestRegister): Promise<unknown> {
@@ -44,7 +44,7 @@ class MainApiService {
   }
 
   async passwordRecoveryNewPassword(params: IRequestRecoveryNewPassword) {
-    return servicesPost(MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD, {
+    return servicePatch(MAIN_API_URLS.USER.PASSWORD_RECOVERY.NEW_PASSWORD, {
       params,
     });
   }

@@ -17,7 +17,11 @@
 // export type UserAction = FetchUsersAction | FetchUsersErrorAction | FetchUsersSuccessAction
 
 export interface IUserState {
-  token: string | null;
+  token: {
+    value: string;
+    issuedAt: string;
+    expiredAt: string;
+  } | null;
   refreshToken: {
     value: string;
     issuedAt: string;
