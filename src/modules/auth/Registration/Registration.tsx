@@ -21,9 +21,13 @@ type FormDataType = {
 
 export function Registration() {
   const dispatch = useAppDispatch();
-  const { authStatus, authErrors, isLogged } = useAppSelector(
-    (state) => state.auth,
-  );
+  // const { authStatus, authErrors, isLogged } = useAppSelector(
+  //   (state) => state.auth,
+  // );
+  const authStatus = 'succeeded';
+  const isLogged = false;
+  const authErrors =false;
+
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -80,7 +84,7 @@ export function Registration() {
 
   return (
     <div className={styles.auth}>
-      {authStatus === RequestStatus.FAILED && authErrors && (
+      {authErrors && (
         <Notification
           messages={authErrors}
           handleClose={handleCloseNotification}
@@ -181,7 +185,7 @@ export function Registration() {
                 <button
                   type="submit"
                   className={styles.input}
-                  disabled={authStatus === RequestStatus.LOADING}
+                  disabled={false}
                 >
                   Зарегистрироваться
                 </button>

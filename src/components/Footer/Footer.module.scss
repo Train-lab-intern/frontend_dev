@@ -10,14 +10,14 @@
   }
 
   .inner {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding-top: 30px;
   }
 
   .logo {
     width: 180px;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 
     img {
       width: 100%;
@@ -25,14 +25,15 @@
   }
 
   .nav {
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 
     ul {
       display: flex;
       flex-direction: column;
+      padding: 0;
 
       li {
-        margin-bottom: 25px;
+        margin-bottom: 10px;
         padding: 0 15px;
         border-left: 1px solid $secondary-light-bg;
 
@@ -45,51 +46,13 @@
     }
   }
 
-  .search {
-    display: flex;
-    flex-direction: column;
-
-    margin-bottom: 110px;
-
-    span {
-      font-weight: 400;
-      font-size: 14px;
-      color: $primary-dark-text;
-    }
-    label {
-      position: relative;
-      width: fit-content;
-
-      input {
-        padding: 3px 6px 6px;
-        border: 1px solid $secondary-light-bg;
-        border-radius: 4px;
-        color: #bfbfbf;
-
-        &::placeholder {
-          color: #bfbfbf;
-        }
-
-        &:focus-visible {
-          outline: none;
-        }
-      }
-
-      .iconSearch {
-        position: absolute;
-        right: 10px;
-
-        svg path {
-          fill: #bfbfbf;
-        }
-      }
-    }
-  }
-
   .links {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: flex-end;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
     margin-bottom: 22px;
 
     .iconLinks {
@@ -111,7 +74,8 @@
 
   .info {
     font-weight: 400;
-
+    grid-column: 1 / 3;
+    
     span {
       font-size: 14px;
       color: #959595;

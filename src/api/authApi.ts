@@ -10,29 +10,29 @@ export const authApi = {
       .post<ResponseUserDataType>(`${URL}/api/v1/auth/register`, data)
       .then((res) => res.data);
   },
-  authentication(data: AuthenticationRequestType) {
-    return axios
-      .post<ResponseUserDataType>(`${URL}/api/v1/auth/login`, data)
-      .then((res) => {
-        const expiresAt = new Date();
-        expiresAt.setDate(expiresAt.getDate() + 30);
-        Cookies.set('accessToken', res.data.token.value, {
-          expires: expiresAt,
-        });
-        Cookies.set('refreshToken', res.data.refreshToken.value, {
-          expires: expiresAt,
-        });
-        return res.data;
-      });
-  },
-  auth() {
-    const token = Cookies.get('tlToken');
-    return axios
-      .post<ResponseUserDataType>(`${URL}/api/v1/auth/refresh-token`, {
-        refreshToken: token,
-      })
-      .then((res) => res.data);
-  },
+  // authentication(data: AuthenticationRequestType) {
+  //   return axios
+  //     .post<ResponseUserDataType>(`${URL}/api/v1/auth/login`, data)
+  //     .then((res) => {
+  //       const expiresAt = new Date();
+  //       expiresAt.setDate(expiresAt.getDate() + 30);
+  //       Cookies.set('accessToken', res.data.token.value, {
+  //         expires: expiresAt,
+  //       });
+  //       Cookies.set('refreshToken', res.data.refreshToken.value, {
+  //         expires: expiresAt,
+  //       });
+  //       return res.data;
+  //     });
+  // },
+  // auth() {
+  //   const token = Cookies.get('tlToken');
+  //   return axios
+  //     .post<ResponseUserDataType>(`${URL}/api/v1/auth/refresh-token`, {
+  //       refreshToken: token,
+  //     })
+  //     .then((res) => res.data);
+  // },
   logout() {
     const token = Cookies.get('refreshToken');
     Cookies.remove('accessToken');

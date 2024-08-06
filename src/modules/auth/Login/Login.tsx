@@ -21,9 +21,12 @@ type FormDataType = {
 export function Login() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isLogged = useAppSelector((state) => state.auth.isLogged);
-  const authStatus = useAppSelector((state) => state.auth.authStatus);
-  const authError = useAppSelector((state) => state.auth.authErrors);
+  // const isLogged = useAppSelector((state) => state.auth.isLogged);
+  // const authStatus = useAppSelector((state) => state.auth.authStatus);
+  // const authError = useAppSelector((state) => state.auth.authErrors);
+  const isLogged = false;
+  const authStatus = 'failed';
+  const authError = false;
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -53,9 +56,9 @@ export function Login() {
       control.setError('userEmail', { message: '' });
       control.setError('userPassword', { message: '' });
     }
-    if (authStatus === RequestStatus.SUCCEEDED) {
-      navigate(Path.PROFILE);
-    }
+    // if (authStatus === RequestStatus.SUCCEEDED) {
+    //   navigate(Path.PROFILE);
+    // }
   }, [authStatus]);
 
   useEffect(
@@ -164,7 +167,7 @@ export function Login() {
                 <Row className={styles.row}>
                   <button
                     className={styles.input}
-                    disabled={authStatus === RequestStatus.LOADING}
+                    disabled={false}
                     type="button"
                   >
                     Войти

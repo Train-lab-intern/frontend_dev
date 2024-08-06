@@ -8,7 +8,7 @@ type PropsType = {
 };
 
 export default function PrivateRoute({ children }: PropsType) {
-  const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const isLogged = useAppSelector((state) => !!state.user.user.token);
 
   if (!isLogged) return <Navigate to={Path.AUTH} />;
 

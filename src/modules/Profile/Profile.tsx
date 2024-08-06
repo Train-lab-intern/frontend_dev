@@ -8,7 +8,8 @@ import Header from '../../components/Header/Header';
 import { iconProfile } from '../../assets/icons/iconProfile';
 
 export default function Profile() {
-  const { username, id } = useAppSelector((state) => state.auth.userData);
+  const userInfo = useAppSelector((state) => state.user.user.userPageDto);
+  const userName = userInfo?.username;
 
   const [activeStat, setActiveStat] = useState('statOne');
 
@@ -32,7 +33,7 @@ export default function Profile() {
                 {iconProfile}
               </div>
               <div className={styles.userInfo}>
-                <h2 className={styles.name}>{username}</h2>
+                <h2 className={styles.name}>{userName}</h2>
                 <h3 className={styles.specialization}>Специальность</h3>
               </div>
               <div className={styles.title}>

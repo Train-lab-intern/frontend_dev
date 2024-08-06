@@ -20,23 +20,10 @@ export const Footer: React.FC = () => (
               <NavLink to=""> О нас</NavLink>
             </li>
             <li>
-              <NavLink to="">Продегустируй бесплатно</NavLink>
-            </li>
-            <li>
               <NavLink to="">Меню тестов</NavLink>
             </li>
-            <li>
-              <NavLink to="">Обратная связь</NavLink>
-            </li>
           </ul>
-        </div>
-        <div className={styles.search}>
-          <span>Поиск по сайту</span>
-          <label>
-            <input type="text" placeholder="введите текст" />
-            <span className={styles.iconSearch}>{iconSearch}</span>
-          </label>
-        </div>
+        </div>        
         <div className={styles.links}>
           <div className={styles.iconLinks}>
             <a href="">{githubIcon}</a>
