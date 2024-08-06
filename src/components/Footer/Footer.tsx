@@ -23,7 +23,7 @@ export const Footer: React.FC = () => (
               <NavLink to="">Меню тестов</NavLink>
             </li>
           </ul>
-        </div>        
+        </div>
         <div className={styles.links}>
           <div className={styles.iconLinks}>
             <a href="">{githubIcon}</a>

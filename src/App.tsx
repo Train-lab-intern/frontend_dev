@@ -27,34 +27,34 @@ function App() {
 
   return (
     <div className="App">
-        <Routes>
-          <Route path='/' element={<MainPage />} />
-          <Route path={Path.AUTH} element={<Authorization primary={primary} />} />
-          {/* <Route path={Path.REGISTRATION} element={<Registration />} /> */}
-          <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
-          <Route
-            path={Path.PROFILE}
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={Path.PROFILE_SETTINGS}
-            element={
-              <PrivateRoute>
-                <ProfileSettings />
-              </PrivateRoute>
-            }
-          />
-          <Route path={Path.USER_PAGE} element={<UserPage />} />
-          <Route
-            path={Path.PASSWORD_RECOVERY}
-            element={<PasswordRecoveryPage />}
-          />
-          {/* <Route path="*" element={<NotPage />} /> */}
-        </Routes>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path={Path.AUTH} element={<Authorization primary={primary} />} />
+        {/* <Route path={Path.REGISTRATION} element={<Registration />} /> */}
+        <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
+        <Route
+          path={Path.PROFILE}
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={Path.PROFILE_SETTINGS}
+          element={
+            <PrivateRoute>
+              <ProfileSettings />
+            </PrivateRoute>
+          }
+        />
+        <Route path={Path.USER_PAGE} element={<UserPage />} />
+        <Route
+          path={Path.PASSWORD_RECOVERY}
+          element={<PasswordRecoveryPage />}
+        />
+        {/* <Route path="*" element={<NotPage />} /> */}
+      </Routes>
     </div>
   );
 }

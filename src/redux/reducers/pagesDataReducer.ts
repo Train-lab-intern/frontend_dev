@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { DataMainPageResponseType, } from '../../api/pagesApi';
+import { DataMainPageResponseType } from '../../api/pagesApi';
 
 // export const getDataMainPage = createAsyncThunk(
 //   'pagesData/getDataMainPage',

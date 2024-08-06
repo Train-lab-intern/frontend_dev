@@ -26,7 +26,7 @@ export function Registration() {
   // );
   const authStatus = 'succeeded';
   const isLogged = false;
-  const authErrors =false;
+  const authErrors = false;
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -182,11 +182,7 @@ export function Registration() {
               </Row>
               <br />
               <Row className={styles.row}>
-                <button
-                  type="submit"
-                  className={styles.input}
-                  disabled={false}
-                >
+                <button type="submit" className={styles.input} disabled={false}>
                   Зарегистрироваться
                 </button>
               </Row>
