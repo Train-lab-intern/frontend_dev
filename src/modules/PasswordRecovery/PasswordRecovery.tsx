@@ -10,7 +10,7 @@ import {
   validRecoveryCode,
 } from '../../helpers';
 import MainApiService from '../../api/MainApiService';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
 import { updateUser } from '../../redux/reducers/userSlice';
 
 export default function PasswordRecovery() {
@@ -25,7 +25,6 @@ export default function PasswordRecovery() {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.user);
 
   const onMailChage = (event: ChangeInputEvent) => {
     event.preventDefault();
@@ -55,10 +54,12 @@ export default function PasswordRecovery() {
       if (json.statusCode !== 0) {
         setMailFormVisible(false);
         setRecoveryCodeFormVisible(true);
-      } else {
-        console.log('Mail is not find');
       }
-    } else console.log('Invalid mail');
+      // else {
+      //   console.log('Mail is not find');
+      // }
+    }
+    // else console.log('Invalid mail');
   };
 
   const submitRecoveryCode = async (event: SubmitFormEvent) => {
@@ -72,29 +73,33 @@ export default function PasswordRecovery() {
         setRecoveryCodeFormVisible(false);
         setNewPasswordFromVisible(true);
       } else {
-        console.log('Code is not correct');
+        // console.log('Code is not correct');
       }
-    } else console.log('Invalid recovery code');
+    }
+    // else console.log('Invalid recovery code');
   };
 
   const SubmitNewPassword = async (event: SubmitFormEvent) => {
     event.preventDefault();
     if (recoveryNewPassword !== recoveryNewPassword2)
-      console.log('Password is not same');
-    else if (validPassword(recoveryNewPassword)) {
-      const json = await MainApiService.passwordRecoveryNewPassword({
-        email: recoveryMail,
-        password: recoveryNewPassword,
-      });
-      if (json.statusCode !== 0) {
-        const { token, refreshToken, userPageDto } = await json;
-        dispatch(updateUser({ token, refreshToken, userPageDto }));
-        console.log(user);
-        navigate('/');
-      } else {
-        console.log('Incorrect password (server)');
+      if (validPassword(recoveryNewPassword)) {
+        // console.log('Password is not same');
+        // else
+        const json = await MainApiService.passwordRecoveryNewPassword({
+          email: recoveryMail,
+          password: recoveryNewPassword,
+        });
+        if (json.statusCode !== 0) {
+          const { token, refreshToken, userPageDto } = await json;
+          dispatch(updateUser({ token, refreshToken, userPageDto }));
+          // console.log(user);
+          navigate('/');
+        }
+        // else {
+        //   console.log('Incorrect password (server)');
+        // }
       }
-    } else console.log('Incorrect password (validation)');
+    // else console.log('Incorrect password (validation)');
   };
 
   return (
