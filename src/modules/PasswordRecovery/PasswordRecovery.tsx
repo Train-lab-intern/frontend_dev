@@ -55,10 +55,12 @@ export default function PasswordRecovery() {
       if (json.statusCode !== 0) {
         setMailFormVisible(false);
         setRecoveryCodeFormVisible(true);
-      } else {
-        console.log('Mail is not find');
-      }
-    } else console.log('Invalid mail');
+      } 
+      // else {
+      //   console.log('Mail is not find');
+      // }
+    } 
+    // else console.log('Invalid mail');
   };
 
   const submitRecoveryCode = async (event: SubmitFormEvent) => {
@@ -72,16 +74,18 @@ export default function PasswordRecovery() {
         setRecoveryCodeFormVisible(false);
         setNewPasswordFromVisible(true);
       } else {
-        console.log('Code is not correct');
+        // console.log('Code is not correct');
       }
-    } else console.log('Invalid recovery code');
+    } 
+    // else console.log('Invalid recovery code');
   };
 
   const SubmitNewPassword = async (event: SubmitFormEvent) => {
     event.preventDefault();
     if (recoveryNewPassword !== recoveryNewPassword2)
-      console.log('Password is not same');
-    else if (validPassword(recoveryNewPassword)) {
+      // console.log('Password is not same');
+    // else 
+    if (validPassword(recoveryNewPassword)) {
       const json = await MainApiService.passwordRecoveryNewPassword({
         email: recoveryMail,
         password: recoveryNewPassword,
@@ -91,10 +95,12 @@ export default function PasswordRecovery() {
         dispatch(updateUser({ token, refreshToken, userPageDto }));
         console.log(user);
         navigate('/');
-      } else {
-        console.log('Incorrect password (server)');
-      }
-    } else console.log('Incorrect password (validation)');
+      } 
+      // else {
+      //   console.log('Incorrect password (server)');
+      // }
+    }
+    // else console.log('Incorrect password (validation)');
   };
 
   return (
