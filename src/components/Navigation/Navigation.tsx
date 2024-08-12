@@ -11,7 +11,7 @@ import NavigationMobile from './NavigationMobile';
 export default function Navigation() {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  const isLogged = useAppSelector((state) => state.auth.isLogged);
+  const isLogged = useAppSelector((state) => !!state.user.user.token);
 
   const handleLogout = () => {
     dispatch(logout());

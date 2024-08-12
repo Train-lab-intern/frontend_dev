@@ -7,11 +7,7 @@ import githubIcon from '../../assets/icons/githubIcon';
 import { linkedinIcon } from '../../assets/icons/linkedinIcon';
 import iconSearch from '../../assets/icons/iconSearch';
 
-type PropsType = {
-  mainPageData: any;
-};
-
-export const Footer: React.FC<PropsType> = () => (
+export const Footer: React.FC = () => (
   <footer className={styles.footer}>
     <div className={styles.container}>
       <div className={styles.inner}>
@@ -24,22 +20,9 @@ export const Footer: React.FC<PropsType> = () => (
               <NavLink to=""> О нас</NavLink>
             </li>
             <li>
-              <NavLink to="">Продегустируй бесплатно</NavLink>
-            </li>
-            <li>
               <NavLink to="">Меню тестов</NavLink>
             </li>
-            <li>
-              <NavLink to="">Обратная связь</NavLink>
-            </li>
           </ul>
-        </div>
-        <div className={styles.search}>
-          <span>Поиск по сайту</span>
-          <label>
-            <input type="text" placeholder="введите текст" />
-            <span className={styles.iconSearch}>{iconSearch}</span>
-          </label>
         </div>
         <div className={styles.links}>
           <div className={styles.iconLinks}>

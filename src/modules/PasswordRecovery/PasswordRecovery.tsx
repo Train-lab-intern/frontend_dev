@@ -10,6 +10,8 @@ import {
   validRecoveryCode,
 } from '../../helpers';
 import MainApiService from '../../api/MainApiService';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { updateUser } from '../../redux/reducers/userSlice';
 
 export default function PasswordRecovery() {
   const [recoveryMail, setRecoveryMail] = useState('');
@@ -22,6 +24,8 @@ export default function PasswordRecovery() {
   const [newPasswordFormVisible, setNewPasswordFromVisible] = useState(false);
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user);
 
   const onMailChage = (event: ChangeInputEvent) => {
     event.preventDefault();
@@ -83,6 +87,9 @@ export default function PasswordRecovery() {
         password: recoveryNewPassword,
       });
       if (json.statusCode !== 0) {
+        const { token, refreshToken, userPageDto } = await json;
+        dispatch(updateUser({ token, refreshToken, userPageDto }));
+        console.log(user);
         navigate('/');
       } else {
         console.log('Incorrect password (server)');

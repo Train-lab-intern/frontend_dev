@@ -1,33 +1,33 @@
 /* eslint-disable */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { DataMainPageResponseType, pagesApi } from '../../api/pagesApi';
+import { DataMainPageResponseType } from '../../api/pagesApi';
 
-export const getDataMainPage = createAsyncThunk(
-  'pagesData/getDataMainPage',
-  async () => {
-    try {
-      return await pagesApi.getDataMainPage();
-    } catch (e) {
-      console.log(e);
-    }
-  },
-);
+// export const getDataMainPage = createAsyncThunk(
+//   'pagesData/getDataMainPage',
+//   async () => {
+//     try {
+//       return await pagesApi.getDataMainPage();
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   },
+// );
 
-const slice = createSlice({
-  name: 'pagesData',
-  initialState: {
-    mainPageData: {},
-  } as PagesDataInitialStateType,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getDataMainPage.fulfilled, (state, action) => {
-      if (action.payload) state.mainPageData = action.payload;
-    });
-  },
-});
+// const slice = createSlice({
+//   name: 'pagesData',
+//   initialState: {
+//     mainPageData: {},
+//   } as PagesDataInitialStateType,
+//   reducers: {},
+//   extraReducers: (builder) => {
+//     builder.addCase(getDataMainPage.fulfilled, (state, action) => {
+//       if (action.payload) state.mainPageData = action.payload;
+//     });
+//   },
+// });
 
-export const pagesDataReducer = slice.reducer;
+// export const pagesDataReducer = slice.reducer;
 
-type PagesDataInitialStateType = {
-  mainPageData: DataMainPageResponseType;
-};
+// type PagesDataInitialStateType = {
+//   mainPageData: DataMainPageResponseType;
+// };

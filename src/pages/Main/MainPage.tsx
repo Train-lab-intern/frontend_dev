@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './MainPage.module.scss';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
+// import { useAppDispatch } from '../../redux/store';
+// import { getDataMainPage } from '../../redux/reducers/pagesDataReducer';
 import Header from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
 import Banner from './Banner/Banner';
@@ -12,11 +12,11 @@ import Direction from './Direction/Direction';
 
 // eslint-disable-next-line
 export function MainPage() {
-  const dispatch = useAppDispatch();
-  const mainPageData = useAppSelector((state) => state.pagesData.mainPageData);
+  // const dispatch = useAppDispatch();
+  // const mainPageData = useAppSelector((state) => state.pagesData.mainPageData);
 
   useEffect(() => {
-    dispatch(getDataMainPage());
+    // dispatch(getDataMainPage());
   }, []);
 
   return (
@@ -27,7 +27,7 @@ export function MainPage() {
       <Manual />
       <TestMenu />
       <LastSection />
-      <Footer mainPageData={mainPageData} />
+      <Footer />
     </div>
   );
 }

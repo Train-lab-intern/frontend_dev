@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../redux/store';
@@ -8,13 +7,10 @@ type PropsType = {
   children: React.ReactElement;
 };
 
-export const PrivateRoute: React.FC<PropsType> = ({ children }) => {
-  const isLogged = useAppSelector((state) => state.auth.isLogged);
-  const appStatus = useAppSelector((state) => state.app.appStatus);
+export default function PrivateRoute({ children }: PropsType) {
+  const isLogged = useAppSelector((state) => !!state.user.user.token);
 
-  if (!isLogged) {
-    return <Navigate to={Path.AUTH} />;
-  }
+  if (!isLogged) return <Navigate to={Path.AUTH} />;
 
-  return <>{children}</>;
-};
+  return children;
+}
