@@ -11,7 +11,6 @@ import { Footer } from '../../components/Footer/Footer';
 import { useAppDispatch } from '../../redux/store';
 import { authentication } from '../auth/authReducer';
 import { Path } from '../../pages/constants/path';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import EyeIcon from '../../assets/icons/IconsSvg/EyeIcon';
 import EyeIconHidden from '../../assets/icons/IconsSvg/EyeIconHidden';
 import MainApiService from '../../api/MainApiService';
