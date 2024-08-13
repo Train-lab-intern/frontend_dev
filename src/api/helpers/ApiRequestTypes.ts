@@ -1,6 +1,6 @@
 export interface IRequestLogin {
-  userEmail: string;
-  userPassword: string;
+  email: string;
+  password: string;
 }
 
 export interface IRequestRegister {
