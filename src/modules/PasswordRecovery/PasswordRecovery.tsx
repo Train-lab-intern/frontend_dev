@@ -81,7 +81,7 @@ export default function PasswordRecovery() {
 
   const SubmitNewPassword = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    if (recoveryNewPassword !== recoveryNewPassword2)
+    if (recoveryNewPassword === recoveryNewPassword2)
       if (validPassword(recoveryNewPassword)) {
         // console.log('Password is not same');
         // else

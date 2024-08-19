@@ -41,7 +41,7 @@ export default function UserAuthorization() {
       password,
     });
     if (response.statusCode !== 0) {
-      const { token, refreshToken, userPageDto } = await response.json();
+      const { token, refreshToken, userPageDto } = await response;
       dispatch(updateUser({ token, refreshToken, userPageDto }));
       navigate('/');
     } else {

@@ -3,10 +3,20 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/img/logo.png';
 import { Path } from '../../pages/constants/path';
 import CommonButton from '../../UI/CommonButton/CommonButton';
-import { useAppSelector } from '../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import MainApiService from '../../api/MainApiService';
+import { updateUser } from '../../redux/reducers/userSlice';
 
 export default function Header() {
-  const token = useAppSelector((state) => state.user.user.token);
+  const {token, refreshToken} = useAppSelector((state) => state.user.user);
+  const dispatch = useAppDispatch();
+
+  const logOut = async () => {
+    const json = await MainApiService.userLogout({refreshToken: refreshToken?.value})
+    if (json.statusCode !== 0) {
+      dispatch(updateUser({ token: null, refreshToken: null, userPageDto: null }));
+    }
+  }
   return (
     <header className="header">
       <div className="container">
@@ -33,7 +43,7 @@ export default function Header() {
               <NavLink to={Path.PROFILE_SETTINGS}>
                 <CommonButton variant="outline">Настройки</CommonButton>
               </NavLink>
-              <CommonButton variant="primary">Выйти</CommonButton>
+              <button type='button' onClick={logOut}>Выйти</button>
             </>
           )}
         </div>

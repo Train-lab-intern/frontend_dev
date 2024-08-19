@@ -29,7 +29,7 @@ class MainApiService {
   }
 
   async userLogout(params: IRequestRefreshToken) {
-    servicesPost(MAIN_API_URLS.USER.LOGOUT, { params });
+    return servicesPost(MAIN_API_URLS.USER.LOGOUT, { params });
   }
 
   async getAllUsers() {
