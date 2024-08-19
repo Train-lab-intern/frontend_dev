@@ -8,15 +8,19 @@ import MainApiService from '../../api/MainApiService';
 import { updateUser } from '../../redux/reducers/userSlice';
 
 export default function Header() {
-  const {token, refreshToken} = useAppSelector((state) => state.user.user);
+  const { token, refreshToken } = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
 
   const logOut = async () => {
-    const json = await MainApiService.userLogout({refreshToken: refreshToken?.value})
+    const json = await MainApiService.userLogout({
+      refreshToken: refreshToken?.value,
+    });
     if (json.statusCode !== 0) {
-      dispatch(updateUser({ token: null, refreshToken: null, userPageDto: null }));
+      dispatch(
+        updateUser({ token: null, refreshToken: null, userPageDto: null }),
+      );
     }
-  }
+  };
   return (
     <header className="header">
       <div className="container">
@@ -43,7 +47,9 @@ export default function Header() {
               <NavLink to={Path.PROFILE_SETTINGS}>
                 <CommonButton variant="outline">Настройки</CommonButton>
               </NavLink>
-              <button type='button' onClick={logOut}>Выйти</button>
+              <button type="button" onClick={logOut}>
+                Выйти
+              </button>
             </>
           )}
         </div>

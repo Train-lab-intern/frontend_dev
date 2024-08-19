@@ -23,7 +23,7 @@ export interface IRequestRecoveryNewPassword {
 }
 
 export interface IRequestRefreshToken {
-  refreshToken: string | undefined
+  refreshToken: string | undefined;
 }
 
 export interface IRequestLogout {
