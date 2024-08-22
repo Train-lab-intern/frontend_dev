@@ -8,53 +8,57 @@ import { Path } from '../../pages/constants/path';
 import MainApiService from '../../api/MainApiService';
 import AddLinks from '../../components/AddLinks/AddLinks';
 import CommonButton from '../../UI/CommonButton/CommonButton';
-import { validMail, validPassword } from '../../helpers';
+import CustomInput from '../../UI/CustomInput/CustomInput';
 
 export default function UserAuthorization() {
   const [email, setEmail] = useState('');
+  const [isEmail, setIsEmail] = useState(true);
   const [password, setPassword] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
+  const [isPassword, setIsPassword] = useState(true);
   // const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
   };
 
-  // const errorMessages = {
-  //   required: 'Это поле обязательно для заполнения',
-  //   invalid: 'Неверный логин или пароль',
-  // };
-
   const handleSubmit = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    if (!validMail(email)) {
-      console.log('invalid mail');
+    setErrorPassword('');
+
+    if (email.length === 0 || password.length === 0) {
+      setIsEmail(!!email.length);
+      setIsPassword(!!password.length);
+      return;
     }
-    if (!validPassword(password)) {
-      console.log('invalid password');
-    }
+
     const response = await MainApiService.userLogin({
       email,
       password,
     });
+
     if (response.statusCode !== 0) {
       const { token, refreshToken, userPageDto } = await response;
       dispatch(updateUser({ token, refreshToken, userPageDto }));
       navigate('/');
     } else {
-      console.log(response.message);
+      setErrorPassword(await response.message);
     }
   };
 
   const onEmailChange = (event: ChangeInputEvent) => {
     setEmail(event.target.value);
+    setIsEmail(true);
   };
 
   const onPasswordChange = (event: ChangeInputEvent) => {
     setPassword(event.target.value);
+    setIsPassword(true);
+    setErrorPassword('');
   };
 
   // const togglePasswordVisibility = () => {
@@ -65,26 +69,23 @@ export default function UserAuthorization() {
     <div className="login">
       <h1 className="login-title">Mы рады вас видеть</h1>
       <form action="submit" className="login-form" onSubmit={handleSubmit}>
-        <label htmlFor="email" className="login-form--input">
-          Почта
-          <input
-            type="text"
-            name="email"
-            id="email"
-            value={email}
-            onChange={onEmailChange}
-          />
-        </label>
-        <label htmlFor="password" className="login-form--input">
-          Пароль
-          <input
-            type="text"
-            name="password"
-            id="password"
-            value={password}
-            onChange={onPasswordChange}
-          />
-        </label>
+        <CustomInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Почта"
+          callback={onEmailChange}
+          required={!isEmail}
+        />
+        <CustomInput
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Пароль"
+          errorMesage={errorPassword}
+          callback={onPasswordChange}
+          required={!isPassword}
+        />
         <CommonButton variant="primary" className="submit_button">
           Войти
         </CommonButton>

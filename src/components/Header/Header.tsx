@@ -33,7 +33,7 @@ export default function Header() {
           <NavLink to="/">Резюме</NavLink>
         </div>
         <div className="controls">
-          {token === null ? (
+          {!token ? (
             <>
               <NavLink to={Path.AUTH}>
                 <CommonButton variant="outline">Войти</CommonButton>
