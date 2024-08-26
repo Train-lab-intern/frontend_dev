@@ -41,6 +41,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Deployment
 https://alpha.it-roast.com/
+https://trainlab.netlify.app/
 
 ### Test user for verification and registration:
 logIn: test@test.com <br>
