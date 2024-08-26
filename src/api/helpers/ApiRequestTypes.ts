@@ -1,6 +1,6 @@
 export interface IRequestLogin {
-  userEmail: string;
-  userPassword: string;
+  email: string;
+  password: string;
 }
 
 export interface IRequestRegister {
@@ -23,7 +23,7 @@ export interface IRequestRecoveryNewPassword {
 }
 
 export interface IRequestRefreshToken {
-  refreshToken: string;
+  refreshToken: string | undefined;
 }
 
 export interface IRequestLogout {

@@ -1,201 +1,113 @@
-/* eslint-disable */
-// @ts-nocheck
-import { Link } from 'react-router-dom';
 import './Authorization.scss';
 import { useState } from 'react';
-import imageCard from '../../assets/img/author.png';
-import Header from '../../components/Header/Header';
-import CommonButton from '../../UI/CommonButton/CommonButton';
-// import PropTypes from 'prop-types';
-import { Footer } from '../../components/Footer/Footer';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
-import { authentication } from '../auth/authReducer';
+import { updateUser } from '../../redux/reducers/userSlice';
+import { ChangeInputEvent, SubmitFormEvent } from '../../@types/types';
 import { Path } from '../../pages/constants/path';
-import EyeIcon from '../../assets/icons/IconsSvg/EyeIcon';
-import EyeIconHidden from '../../assets/icons/IconsSvg/EyeIconHidden';
 import MainApiService from '../../api/MainApiService';
+import AddLinks from '../../components/AddLinks/AddLinks';
+import CommonButton from '../../UI/CommonButton/CommonButton';
+import CustomInput from '../../UI/CustomInput/CustomInput';
 
-export const Authorization = ({ primary }) => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+export default function UserAuthorization() {
   const [email, setEmail] = useState('');
+  const [isEmail, setIsEmail] = useState(true);
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [errorPassword, setErrorPassword] = useState('');
+  const [isPassword, setIsPassword] = useState(true);
+  // const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
   const dispatch = useAppDispatch();
-  const [emailInputText, setEmailInputText] = useState('');
-  const [passwordInputText, setPasswordInputText] = useState('');
+  const navigate = useNavigate();
 
-  const handleRememberMeChange = (event) => {
-    setRememberMe(event.target.checked);
+  const handleRememberMeChange = () => {
+    setRememberMe(!rememberMe);
   };
 
-  const errorMessages = {
-    required: 'Это поле обязательно для заполнения',
-    invalid: 'Неверный логин или пароль',
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: SubmitFormEvent) => {
     event.preventDefault();
-    setEmailError('');
-    setPasswordError('');
-    let isValid = true;
-    if (!email) {
-      setEmailError(errorMessages.required);
-      isValid = false;
-    }
-    if (!password) {
-      setPasswordError(errorMessages.required);
-      isValid = false;
-    }
-    if (!isValid) {
+    setErrorPassword('');
+
+    if (email.length === 0 || password.length === 0) {
+      setIsEmail(!!email.length);
+      setIsPassword(!!password.length);
       return;
     }
+
     const response = await MainApiService.userLogin({
-      userEmail: email,
-      userPassword: password,
+      email,
+      password,
     });
-    if (response.statusCode === 0) {
-      setEmailError(errorMessages.invalid);
-      setPasswordError(errorMessages.invalid);
+
+    if (response.statusCode !== 0) {
+      const { token, refreshToken, userPageDto } = await response;
+      dispatch(updateUser({ token, refreshToken, userPageDto }));
+      navigate('/');
+    } else {
+      setErrorPassword(await response.message);
     }
   };
-  const onEmailChange = (event) => {
-    setEmailInputText(event.target.value);
+
+  const onEmailChange = (event: ChangeInputEvent) => {
     setEmail(event.target.value);
-    setEmailError('');
+    setIsEmail(true);
   };
-  const onPasswordChange = (event) => {
-    setPasswordInputText(event.target.value);
+
+  const onPasswordChange = (event: ChangeInputEvent) => {
     setPassword(event.target.value);
-    setPasswordError('');
+    setIsPassword(true);
+    setErrorPassword('');
   };
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+
+  // const togglePasswordVisibility = () => {
+  //   setPasswordVisible(!passwordVisible); //Create fitch later
+  // };
+
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="wrapper-m">
-        <div
-          className="block-auth"
-          aria-label="диалоговое окно для авторизации"
-        >
-          <img
-            src={imageCard}
-            alt="картинка с сине-голубым оттенком"
-            className="imageCard"
+    <div className="login">
+      <h1 className="login-title">Mы рады вас видеть</h1>
+      <form action="submit" className="login-form" onSubmit={handleSubmit}>
+        <CustomInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Почта"
+          callback={onEmailChange}
+          required={!isEmail}
+        />
+        <CustomInput
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Пароль"
+          errorMesage={errorPassword}
+          callback={onPasswordChange}
+          required={!isPassword}
+        />
+        <CommonButton variant="primary" className="submit_button">
+          Войти
+        </CommonButton>
+      </form>
+      <div className="login-additional_control">
+        <label htmlFor="remeberMe">
+          Запомнить меня
+          <input
+            type="checkbox"
+            name="remeberMe"
+            id="remeberMe"
+            checked={rememberMe}
+            onChange={handleRememberMeChange}
           />
-          <div className="dialog-window">
-            <h1 className="dialog-title">Mы рады вас видеть</h1>
-
-            <form className="dialog-content" onSubmit={handleSubmit}>
-              {emailError && (
-                <p className={'error ' + 'error-text'}>{emailError}</p>
-              )}
-              <div
-                className={`form-floating mb-3 input-field ${email ? 'has-value' : ''}`}
-              >
-                <input
-                  className={`form-control ${emailError ? 'is-invalid' : ''}`}
-                  id="floatingInput"
-                  type="email"
-                  name="email"
-                  placeholder=" "
-                  value={email}
-                  onChange={onEmailChange}
-                />
-                <label htmlFor="floatingInput">Почта</label>
-              </div>
-              {passwordError && (
-                <p className={'error ' + 'error-text'}>{passwordError}</p>
-              )}
-              <div
-                className={`form-floating mb-3 input-field ${password ? 'has-value' : ''}`}
-              >
-                <input
-                  className={`form-control ${passwordError ? 'is-invalid' : ''}`}
-                  type={passwordVisible ? 'text' : 'password'}
-                  id="pass"
-                  name="password"
-                  minLength={8}
-                  required
-                  value={password}
-                  placeholder=" "
-                  onChange={onPasswordChange}
-                />
-                <label className="lab" htmlFor="pass">
-                  Пароль
-                </label>
-
-                {passwordVisible ? (
-                  <EyeIcon
-                    onClick={togglePasswordVisibility}
-                    passwordError={passwordError}
-                    emailError={emailError}
-                  />
-                ) : (
-                  <EyeIconHidden
-                    onClick={togglePasswordVisibility}
-                    emailError={emailError}
-                    passwordError={passwordError}
-                  />
-                )}
-              </div>
-              <CommonButton
-                className="btn-enter"
-                variant={'primary'}
-                onClick={handleSubmit}
-                type="submit"
-              >
-                Войти
-              </CommonButton>
-            </form>
-            <div className="links-block">
-              <ul>
-                <li>
-                  Запомнить меня{' '}
-                  <input
-                    id="yes"
-                    type="checkbox"
-                    name="rememberMe"
-                    checked={rememberMe}
-                    onChange={handleRememberMeChange}
-                  />
-                </li>
-                <li className="medium"> Нет аккаунта на IT Roast?</li>
-                <li>Остались вопросы?</li>
-              </ul>
-              <ul>
-                <li>
-                  <Link className="hidden-link" to={Path.PASSWORD_RECOVERY}>
-                    Забыли пароль?
-                  </Link>
-                </li>
-                <li className="medium">
-                  <Link to={Path.REGISTRATION}>Присоединяйся!</Link>
-                </li>
-                <li>
-                  <a href="mailto:google.com">Спроси нас!</a>
-                </li>
-              </ul>
-              <div></div>
-            </div>
-            <p>
-              Нажимая кнопку «Войти», вы подтверждаете своё согласие с условиями
-              обработки данных.
-            </p>
-          </div>
-        </div>
+        </label>
+        <Link to={Path.PASSWORD_RECOVERY}>Забыли пароль?</Link>
       </div>
-      <Footer mainPageData={testMainPageData} />
+      <AddLinks />
+      <div className="login-disclaimer">
+        Нажимая кнопку «Войти», вы подтверждаете своё согласие с условиями
+        обработки данных.
+      </div>
     </div>
   );
-};
-
-const testMainPageData = {
-  companyName: 'My Company',
-  address: '123 Main St, City',
-  phone: '555-1234',
-  email: 'info@mycompany.com',
-};
+}
