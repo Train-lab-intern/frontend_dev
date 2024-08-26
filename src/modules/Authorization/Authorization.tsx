@@ -62,7 +62,7 @@ export default function UserAuthorization() {
   };
 
   // const togglePasswordVisibility = () => {
-  //   setPasswordVisible(!passwordVisible);
+  //   setPasswordVisible(!passwordVisible); //Create fitch later
   // };
 
   return (

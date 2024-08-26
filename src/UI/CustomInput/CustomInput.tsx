@@ -1,24 +1,25 @@
+/* eslint-disable react/require-default-props */
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import './CustomInput.scss';
 
 interface ICustomInputProps {
-  type?: 'text' | 'email' | 'password' | 'number';
   id: string;
   name: string;
+  type?: 'text' | 'email' | 'password' | 'number';
   required?: boolean;
   placeholder?: string;
   errorMesage?: string;
-  callback: ChangeEventHandler<HTMLInputElement>;
+  callback?: ChangeEventHandler<HTMLInputElement>;
 }
 
 export default function CustomInput({
-  type,
   id,
   name,
-  required,
-  placeholder,
-  errorMesage,
-  callback,
+  type = 'text',
+  required = false,
+  placeholder = '',
+  errorMesage = '',
+  callback = ()=>undefined,
 }: ICustomInputProps) {
   const requiredMessage = 'Это поле обязательно для заполнения';
   const [isError, setIsError] = useState(false);
@@ -49,10 +50,3 @@ export default function CustomInput({
     </div>
   );
 }
-
-CustomInput.defaultProps = {
-  type: 'text',
-  placeholder: '',
-  required: false,
-  errorMesage: '',
-};
