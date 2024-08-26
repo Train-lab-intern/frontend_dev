@@ -10,13 +10,12 @@ import { auth } from './modules/auth/authReducer';
 import PrivateRoute from './pages/PrivateRoute';
 import ProfileSettings from './modules/ProfileSettings/ProfileSettings';
 import MainPage from './pages/Main/MainPage';
-import { Authorization } from './modules/Authorization';
 import UserPage from './pages/UserPage/UserPage';
 import './styles/main.scss';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage/PasswordRevoveryPage';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
-  const primary = true;
   const dispatch = useAppDispatch();
 
   // const appStatus = useAppSelector((state) => state.app.appStatus);
@@ -29,7 +28,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path={Path.AUTH} element={<Authorization primary={primary} />} />
+        <Route path={Path.AUTH} element={<LoginPage />} />
         {/* <Route path={Path.REGISTRATION} element={<Registration />} /> */}
         <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
         <Route

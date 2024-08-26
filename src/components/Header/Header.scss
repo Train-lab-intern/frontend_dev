@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+@import '../../styles//fonts.scss';
+
+.header {
+  margin-bottom: 8px;
+  padding: 28px 0;
+  box-shadow: 0 4px 20px 0 $box-shadow-color;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .links {
+      display: flex;
+      gap: 60px;
+      font-size: $font-size-middle;
+      a {
+        padding: 10px;
+        color: $text-color-dark;
+      }
+    }
+    .controls {
+      display: flex;
+      gap: 60px;
+    }
+  }
+}
