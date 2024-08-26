@@ -19,7 +19,7 @@ export default function CustomInput({
   required = false,
   placeholder = '',
   errorMesage = '',
-  callback = ()=>undefined,
+  callback = () => undefined,
 }: ICustomInputProps) {
   const requiredMessage = 'Это поле обязательно для заполнения';
   const [isError, setIsError] = useState(false);
