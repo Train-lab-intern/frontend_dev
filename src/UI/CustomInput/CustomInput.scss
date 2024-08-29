@@ -17,7 +17,7 @@
 }
 
 .error {
-  height: 20px;
+  min-height: 20px;
   display: flex;
   align-items: center;
   &-message,

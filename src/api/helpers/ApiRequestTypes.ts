@@ -4,7 +4,7 @@ export interface IRequestLogin {
 }
 
 export interface IRequestRegister {
-  login: string;
+  email: string;
   password: string;
 }
 
