@@ -9,12 +9,8 @@ export default function RegisterPage() {
     <>
       <Header />
       <main className="main">
-        <img
-          src={imageCard}
-          alt="картинка искрами"
-          className="imageCard"
-        />
-        <UserAuthorization  register/>
+        <img src={imageCard} alt="картинка искрами" className="imageCard" />
+        <UserAuthorization register />
       </main>
       <Footer />
     </>

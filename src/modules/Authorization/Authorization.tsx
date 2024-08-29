@@ -11,10 +11,12 @@ import CommonButton from '../../UI/CommonButton/CommonButton';
 import CustomInput from '../../UI/CustomInput/CustomInput';
 
 interface IAuthorizationProps {
-  register?: boolean
+  register?: boolean;
 }
 
-export default function UserAuthorization({register=false}:IAuthorizationProps) {
+export default function UserAuthorization({
+  register = false,
+}: IAuthorizationProps) {
   const [email, setEmail] = useState('');
   const [isEmail, setIsEmail] = useState(true);
   const [password, setPassword] = useState('');
@@ -40,8 +42,10 @@ export default function UserAuthorization({register=false}:IAuthorizationProps) 
       return;
     }
 
-    const requestConfig = {email, password};
-    const response =  register ? await MainApiService.userRegister(requestConfig) : await MainApiService.userLogin(requestConfig)
+    const requestConfig = { email, password };
+    const response = register
+      ? await MainApiService.userRegister(requestConfig)
+      : await MainApiService.userLogin(requestConfig);
 
     if (response.statusCode !== 0) {
       const { token, refreshToken, userPageDto } = await response;
@@ -89,7 +93,7 @@ export default function UserAuthorization({register=false}:IAuthorizationProps) 
           required={!isPassword}
         />
         <CommonButton variant="primary" className="submit_button">
-          {register ? 'Зарегистрироваться' : "Войти"}
+          {register ? 'Зарегистрироваться' : 'Войти'}
         </CommonButton>
       </form>
       <div className="login-additional_control">
@@ -103,9 +107,13 @@ export default function UserAuthorization({register=false}:IAuthorizationProps) 
             onChange={handleRememberMeChange}
           />
         </label>
-        {register ? <div/> : <Link to={Path.PASSWORD_RECOVERY}>Забыли пароль?</Link>}     
+        {register ? (
+          <div />
+        ) : (
+          <Link to={Path.PASSWORD_RECOVERY}>Забыли пароль?</Link>
+        )}
       </div>
-      <AddLinks register={register}/>
+      <AddLinks register={register} />
       <div className="login-disclaimer">
         Нажимая кнопку «Войти», вы подтверждаете своё согласие с условиями
         обработки данных.

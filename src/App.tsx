@@ -14,7 +14,6 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 
 function App() {
-
   // const appStatus = useAppSelector((state) => state.app.appStatus);
 
   return (
