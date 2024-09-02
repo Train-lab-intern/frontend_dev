@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { IRequestConfig } from './ApiRequestTypes';
 import { DEFAULT_ERROR_MESSAGE, MAIN_API_URLS, METHODS } from './ApiConstant';
 

@@ -10,7 +10,13 @@ import AddLinks from '../../components/AddLinks/AddLinks';
 import CommonButton from '../../UI/CommonButton/CommonButton';
 import CustomInput from '../../UI/CustomInput/CustomInput';
 
-export default function UserAuthorization() {
+interface IAuthorizationProps {
+  register?: boolean;
+}
+
+export default function UserAuthorization({
+  register = false,
+}: IAuthorizationProps) {
   const [email, setEmail] = useState('');
   const [isEmail, setIsEmail] = useState(true);
   const [password, setPassword] = useState('');
@@ -36,10 +42,10 @@ export default function UserAuthorization() {
       return;
     }
 
-    const response = await MainApiService.userLogin({
-      email,
-      password,
-    });
+    const requestConfig = { email, password };
+    const response = register
+      ? await MainApiService.userRegister(requestConfig)
+      : await MainApiService.userLogin(requestConfig);
 
     if (response.statusCode !== 0) {
       const { token, refreshToken, userPageDto } = await response;
@@ -87,7 +93,7 @@ export default function UserAuthorization() {
           required={!isPassword}
         />
         <CommonButton variant="primary" className="submit_button">
-          Войти
+          {register ? 'Зарегистрироваться' : 'Войти'}
         </CommonButton>
       </form>
       <div className="login-additional_control">
@@ -101,9 +107,13 @@ export default function UserAuthorization() {
             onChange={handleRememberMeChange}
           />
         </label>
-        <Link to={Path.PASSWORD_RECOVERY}>Забыли пароль?</Link>
+        {register ? (
+          <div />
+        ) : (
+          <Link to={Path.PASSWORD_RECOVERY}>Забыли пароль?</Link>
+        )}
       </div>
-      <AddLinks />
+      <AddLinks register={register} />
       <div className="login-disclaimer">
         Нажимая кнопку «Войти», вы подтверждаете своё согласие с условиями
         обработки данных.

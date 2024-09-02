@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import { ChangeEventHandler, useEffect, useState } from 'react';
 import './CustomInput.scss';
 
