@@ -15,7 +15,7 @@ export function Banner() {
             </h1>
           </div>
           <CommonButton variant="primary">
-            Продегустируй тестовое меню
+            Продегустируй меню
           </CommonButton>
         </div>
       </div>
