@@ -38,9 +38,7 @@ export function Manual() {
               <div className={styles.imgContainer}>
                 <img src={iconManualCheck} alt="icon" />
               </div>
-              <span>
-                Определи свой уровень прожарки
-              </span>
+              <span>Определи свой уровень прожарки</span>
             </div>
 
             <div className={styles.dashedLine} />
