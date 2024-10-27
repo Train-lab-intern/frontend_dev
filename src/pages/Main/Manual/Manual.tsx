@@ -20,27 +20,36 @@ export function Manual() {
               <div className={styles.imgContainer}>
                 <img src={iconManualStart} alt="icon" />
               </div>
-              <span>1. Присоединяйся к IT Roast</span>
+              <span>Присоединяйся к IT Roast</span>
             </div>
+
+            <div className={styles.dashedLine} />
+
             <div className={styles.item}>
               <div className={styles.imgContainer}>
                 <img src={iconManualTrain} alt="icon" />
               </div>
-              <span>2. Выполняй задания и тренируйся</span>
+              <span>Выполняй задания и тренируйся</span>
             </div>
+
+            <div className={styles.dashedLine} />
+
             <div className={styles.item}>
               <div className={styles.imgContainer}>
                 <img src={iconManualCheck} alt="icon" />
               </div>
               <span>
-                3. Следи за статистикой и определи свой уровень прожарки
+                Определи свой уровень прожарки
               </span>
             </div>
+
+            <div className={styles.dashedLine} />
+
             <div className={styles.item}>
               <div className={styles.imgContainer}>
                 <img src={iconManualShare} alt="icon" />
               </div>
-              <span>4. Поделись знаниями и найди работу мечты</span>
+              <span>Поделись знаниями и найди работу мечты</span>
             </div>
           </div>
           <NavLink to={Path.REGISTRATION}>
