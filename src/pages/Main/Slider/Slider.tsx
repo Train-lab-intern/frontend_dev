@@ -35,16 +35,16 @@ export function Slider() {
         className={styles.swip}
         effect="cube"
         modules={[Navigation]}
-        spaceBetween={50}
-        slidesPerView={1}
-        breakpoints={{
-          700: {
-            slidesPerView: 2,
-          },
-          1000: {
-            slidesPerView: 3,
-          },
-        }}
+        spaceBetween={38}
+        slidesPerView={'auto'}
+        // breakpoints={{
+        //   700: {
+        //     slidesPerView: 2,
+        //   },
+        //   1000: {
+        //     slidesPerView: 4,
+        //   },
+        // }}
       >
         <SwiperSlide>
           <div className={styles.item}>
