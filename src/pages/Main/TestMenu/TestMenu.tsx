@@ -18,10 +18,12 @@ function TestMenu() {
             <div className={styles.item2} />
           </div>
           <div className={styles.title}>
-            <h2>Устрой прожарку своей карьеры</h2>
+            <h2 className={styles.smallHeader}>
+              Устрой прожарку своей карьеры
+            </h2>
             <h3>Получи сертификат</h3>
             <NavLink to={Path.REGISTRATION}>
-              <CommonButton variant="primary">Регистрация</CommonButton>
+              <CommonButton variant="primary">Продегустируй меню</CommonButton>
             </NavLink>
           </div>
         </div>
