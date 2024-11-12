@@ -190,23 +190,25 @@
   .title {
     display: flex;
     flex-direction: column;
-    align-items: center;
     row-gap: 50px;
     margin: 70px 0;
+    max-width: 500px;
 
     h2 {
-      text-align: center;
+      align-self: flex-start;
       font-weight: 500;
       font-size: 32px;
-      color: $primary-dark-title;
+      color: $primary-dark-text;
     }
 
     h3 {
+      align-self: center;
       font-weight: 500;
       font-size: 20px;
     }
 
     a {
+      align-self: center;
       display: flex;
     }
   }
@@ -217,7 +219,7 @@
   flex-direction: column;
   align-items: center;
 
-  padding: 80px 0 45px;
+  padding: 40px 0 45px;
 
   background-image: url('../../assets/img/sectionLastBG.png');
   background-size: cover;
@@ -227,7 +229,8 @@
     margin-bottom: 30px;
     text-align: center;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 30px;
   }
 
   h3 {
