@@ -1,0 +1,43 @@
+@import '../../styles/mixins';
+
+.navigation {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  column-gap: 7%;
+}
+.linksProfile {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+
+  .button {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+.link {
+  @include link;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .linksProfile {
+    //flex-direction: column;
+    .button {
+      //width: 100%;
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .navigation {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .linksProfile {
+    .button {
+      font-size: 12px;
+    }
+  }
+}

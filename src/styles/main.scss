@@ -1,0 +1,23 @@
+@import './normalize.scss';
+@import './fonts.scss';
+
+body {
+  height: 100%;
+  min-width: 300px;
+  min-height: 430px;
+  font-family: $app-font-family;
+}
+
+.container {
+  width: 80%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

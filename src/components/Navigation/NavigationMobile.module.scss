@@ -1,0 +1,84 @@
+@import '../../styles/mixins';
+
+.navigationMobile {
+  position: fixed;
+  top: 18px;
+  right: -220px;
+  display: none;
+
+  transition: 0.4s;
+
+  z-index: 1000;
+
+  .iconMenu {
+    position: relative;
+    padding: 25px 10px;
+    background: #ffffff;
+
+    cursor: pointer;
+
+    .line {
+      width: 45px;
+      height: 5px;
+      background: black;
+
+      &:after,
+      &:before {
+        position: absolute;
+        top: 10px;
+        width: 45px;
+        height: 5px;
+        content: '';
+        background: black;
+        transition: 0.3s;
+      }
+      &:before {
+        top: 40px;
+      }
+    }
+  }
+  .navList {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    .link {
+      @include link;
+    }
+  }
+}
+
+.active {
+  right: 0;
+  transition: 0.4s;
+
+  .iconMenu {
+    .line {
+      height: 0;
+
+      &:after,
+      &:before {
+        top: 20px;
+        border-radius: 3px;
+        transform: rotate(45deg);
+        transition: 0.5s;
+      }
+      &:before {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .navigationMobile {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

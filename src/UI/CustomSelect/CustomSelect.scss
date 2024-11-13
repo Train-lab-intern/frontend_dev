@@ -1,0 +1,100 @@
+@import '../../styles/variables.scss';
+
+.CustomSelect {
+  position: relative;
+
+  &-SelectedItems {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 25px;
+    height: 40px;
+    &--Item {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 6px;
+      background-color: $secondary-dark-title;
+      cursor: pointer;
+      &::after {
+        content: '';
+        display: block;
+        width: 12px;
+        height: 12px;
+        background-image: url('../../assets/icons/cross.svg');
+        background-size: cover;
+        background-position: center;
+      }
+      &:hover {
+        text-decoration: line-through;
+      }
+    }
+  }
+  &-Header {
+    padding: 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #a9a9a9;
+    border-radius: 6px;
+    background-color: $primary-light-bg;
+    cursor: pointer;
+    &--Placeholder {
+      // position: absolute;
+    }
+    &--Arrow {
+      transition: 200ms ease-in-out;
+      transform: rotate(90deg);
+      svg {
+        height: 14px;
+        path {
+          fill: $primary-dark-text;
+        }
+      }
+    }
+  }
+  &-Body {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    border: 1px solid #a9a9a9;
+    border-radius: 6px;
+    background-color: $primary-light-bg;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    &--Item {
+      padding: 6px 35px;
+      transition: 200ms ease-in-out;
+      cursor: pointer;
+      input {
+        margin-right: 24px;
+        transform: scale(1.3);
+      }
+      &:hover {
+        background-color: $secondary-dark-title;
+      }
+      &.Selected {
+        background-color: $secondary-dark-title;
+      }
+      &:first-child {
+        padding-top: 10px;
+      }
+      &:last-child {
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.CustomSelect.Active {
+  .CustomSelect-Header--Arrow {
+    transform: rotate(270deg);
+  }
+  .CustomSelect-Body {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+}

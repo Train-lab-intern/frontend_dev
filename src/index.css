@@ -1,12 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.react-multi-carousel-list{
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+  margin: 0;
 }
-
-.react-multiple-carousel__arrow {
-    width: 20px;
-    background-color: gray;
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
 }

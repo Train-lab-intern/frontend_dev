@@ -1,0 +1,14 @@
+@import 'variables';
+
+@mixin link {
+  font-weight: 400;
+  font-size: 14px;
+  color: $primary-dark-text;
+}
+
+@mixin container {
+  width: 80%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+}
