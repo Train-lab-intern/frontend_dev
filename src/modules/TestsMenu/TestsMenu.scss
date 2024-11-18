@@ -1,10 +1,10 @@
 @import '../../styles/variables';
 @import '../../styles/fonts.scss';
 
-/*.mainContainer {
+.mainContainer {
     display: flex;
     background: $primary-dark-bg;
-    .sectionDark {
+    .sectionConteinerDark {
         background: $primary-dark-bg;
         display: flex;
 
@@ -12,23 +12,27 @@
         max-width: 899px;
         display: flex;
         flex-direction: column;
-        margin-top: 2rem;
+        margin: 3rem 1rem 5rem 8rem;
+
+ 
         p {
             font-size: $font-size-large;
             color: $text-color-light;
+            line-height: 30px;
         }
         h2 {
             font-size: $font-size-h2;
             color:  $text-color-light;
-            padding: 1rem;
+            line-height: 60px;
+            text-decoration: underline;
         }
     }
         .sectionImgContainer {
             img {
-                width: 200px;
-                margin: 1.0rem;   
+                width: 250px;
+                margin: 1rem;   
                 color: $main-white;
             }
         }
     }
-}*/
+}
