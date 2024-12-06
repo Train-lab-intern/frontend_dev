@@ -2,37 +2,36 @@
 @import '../../styles/fonts.scss';
 
 .mainContainer {
-    display: flex;
+  display: flex;
+  background: $primary-dark-bg;
+  .sectionConteinerDark {
     background: $primary-dark-bg;
-    .sectionConteinerDark {
-        background: $primary-dark-bg;
-        display: flex;
+    display: flex;
 
     .sectionContainer {
-        max-width: 899px;
-        display: flex;
-        flex-direction: column;
-        margin: 3rem 1rem 5rem 8rem;
+      max-width: 899px;
+      display: flex;
+      flex-direction: column;
+      margin: 3rem 1rem 5rem 8rem;
 
- 
-        p {
-            font-size: $font-size-large;
-            color: $text-color-light;
-            line-height: 30px;
-        }
-        h2 {
-            font-size: $font-size-h2;
-            color:  $text-color-light;
-            line-height: 60px;
-            text-decoration: underline;
-        }
+      p {
+        font-size: $font-size-large;
+        color: $text-color-light;
+        line-height: 30px;
+      }
+      h2 {
+        font-size: $font-size-h2;
+        color: $text-color-light;
+        line-height: 60px;
+        text-decoration: underline;
+      }
     }
-        .sectionImgContainer {
-            img {
-                width: 250px;
-                margin: 1rem;   
-                color: $main-white;
-            }
-        }
+    .sectionImgContainer {
+      img {
+        width: 250px;
+        margin: 1rem;
+        color: $main-white;
+      }
     }
+  }
 }

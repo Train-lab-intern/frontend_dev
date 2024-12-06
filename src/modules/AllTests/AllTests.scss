@@ -68,6 +68,7 @@
 
 .answersAndImage {
   display: flex;
+  justify-content: space-between;
   align-items: flex-end;
   form {
     display: flex;
@@ -96,6 +97,9 @@
       button:hover {
         background-color: $secondary-bg;
       }
+    }
+    .img {
+      width: 40%
     }
   }
 }

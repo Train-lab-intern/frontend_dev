@@ -29,7 +29,7 @@ export function MainPage() {
       <TestMenu />
       <LastSection />
       <Footer />
-     </div>
+    </div>
   );
 }
 export default MainPage;

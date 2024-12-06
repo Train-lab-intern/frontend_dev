@@ -26,7 +26,7 @@ export default function Navigation() {
             О&nbsp;нас
           </NavLink>
         )}
-        <NavLink to="" className={styles.link}>
+        <NavLink to={Path.TESTS_MENU} className={styles.link}>
           Меню тестов
         </NavLink>
         <NavLink to="" className={styles.link}>

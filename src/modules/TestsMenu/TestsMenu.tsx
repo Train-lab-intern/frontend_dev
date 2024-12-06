@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Path } from '../../pages/constants/path';
-import iconQA from '../../assets/icons/iconQA.png';
+import iconQAWhite from '../../assets/icons/iconQAWhite.png';
 import './TestsMenu.scss';
 
 export default function TestsMenu() {
@@ -21,11 +21,10 @@ export default function TestsMenu() {
           </NavLink>
           <NavLink to={Path.HOME}>
             <h2>QA/AQA</h2>
-            </NavLink>
-          
+          </NavLink>
         </div>
         <div className="sectionImgContainer">
-          <img src={iconQA} alt="icon" />
+          <img src={iconQAWhite} alt="icon" />
         </div>
       </section>
     </div>

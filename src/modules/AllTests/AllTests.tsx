@@ -1,5 +1,6 @@
 import './AllTests.scss';
-import iconQA from '../../assets/icons/iconQA.png';
+import iconQAWhite from '../../assets/icons/iconQAWhite.png';
+import iconTest1 from '../../assets/icons/icon_test1.png';
 
 export default function AllTests() {
   return (
@@ -7,7 +8,7 @@ export default function AllTests() {
       <section className="sectionDark">
         <div className="sectionDarkContainer">
           <div className="sectionImgContainerTests">
-            <img src={iconQA} alt="icon" />
+            <img src={iconQAWhite} alt="icon" />
           </div>
           <div className="sectionContainerTests">
             <h2>Тест</h2>
@@ -46,7 +47,7 @@ export default function AllTests() {
             </div>
           </form>
           <div className="image">
-            <img src={iconQA} alt="icon" />
+            <img src={iconTest1} alt="icon" />
           </div>
         </div>
       </div>
