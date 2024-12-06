@@ -8,4 +8,6 @@ export enum Path {
   PROFILE_SETTINGS = '/profile-settings',
   USER_PAGE = '/id',
   PASSWORD_RECOVERY = '/password-recovery',
+  TESTS_MENU = '/tests-menu',
+
 }
