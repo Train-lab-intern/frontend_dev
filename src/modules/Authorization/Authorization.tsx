@@ -21,6 +21,7 @@ export default function UserAuthorization({
   const [isEmail, setIsEmail] = useState(true);
   const [password, setPassword] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
+  const [errorEmail, setErrorEmail] = useState('');
   const [isPassword, setIsPassword] = useState(true);
   // const [passwordVisible, setPasswordVisible] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -35,11 +36,27 @@ export default function UserAuthorization({
   const handleSubmit = async (event: SubmitFormEvent) => {
     event.preventDefault();
     setErrorPassword('');
+    setErrorEmail('');
 
-    if (email.length === 0 || password.length === 0) {
+    let hasError = false;
+
+    if (email.length === 0) {
       setIsEmail(!!email.length);
-      setIsPassword(!!password.length);
+      hasError = true;
       return;
+    }
+
+    if (password.length === 0) {
+      /* setIsEmail(!!email.length);
+      setIsPassword(!!password.length);
+      return; */
+      setIsPassword(!!password.length);
+      hasError = true;
+      return;
+    }
+
+    if(hasError) {
+      return
     }
 
     const requestConfig = { email, password };
@@ -52,13 +69,16 @@ export default function UserAuthorization({
       dispatch(updateUser({ token, refreshToken, userPageDto }));
       navigate('/');
     } else {
-      setErrorPassword(await response.message);
-    }
-  };
+       setErrorPassword(await response.message); 
+      }    
+}
+
+
 
   const onEmailChange = (event: ChangeInputEvent) => {
     setEmail(event.target.value);
     setIsEmail(true);
+    setErrorEmail('')
   };
 
   const onPasswordChange = (event: ChangeInputEvent) => {
@@ -73,13 +93,14 @@ export default function UserAuthorization({
 
   return (
     <div className="login">
-      <h1 className="login-title">Mы рады вас видеть</h1>
+      <h3 className="login-title">Mы рады вас видеть</h3>
       <form action="submit" className="login-form" onSubmit={handleSubmit}>
         <CustomInput
           type="email"
           id="email"
           name="email"
-          placeholder="Почта"
+          placeholder="email"
+          errorMesage={errorEmail}
           callback={onEmailChange}
           required={!isEmail}
         />
@@ -87,7 +108,7 @@ export default function UserAuthorization({
           type="password"
           id="password"
           name="password"
-          placeholder="Пароль"
+          placeholder="пароль"
           errorMesage={errorPassword}
           callback={onPasswordChange}
           required={!isPassword}

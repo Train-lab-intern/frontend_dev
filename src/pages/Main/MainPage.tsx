@@ -10,7 +10,6 @@ import TestMenu from './TestMenu/TestMenu';
 import LastSection from './LastSection/LastSection';
 import Direction from './Direction/Direction';
 
-
 // eslint-disable-next-line
 export function MainPage() {
   // const dispatch = useAppDispatch();

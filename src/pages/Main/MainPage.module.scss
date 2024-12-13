@@ -126,12 +126,15 @@
         font-size: 20px;
         color: $primary-light-text;
         text-align: center;
+        line-height: 30px;
       }
     }
 
     .dashedLine {
       width: 100px;
       border-top: 5px dashed $main-purple;
+      margin-right: 50px;
+      margin-bottom: 70px;
     }
   }
 

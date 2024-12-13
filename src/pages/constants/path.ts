@@ -9,5 +9,4 @@ export enum Path {
   USER_PAGE = '/id',
   PASSWORD_RECOVERY = '/password-recovery',
   TESTS_MENU = '/tests-menu',
-
 }
