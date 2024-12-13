@@ -55,8 +55,8 @@ export default function UserAuthorization({
       return;
     }
 
-    if(hasError) {
-      return
+    if (hasError) {
+      return;
     }
 
     const requestConfig = { email, password };
@@ -69,16 +69,14 @@ export default function UserAuthorization({
       dispatch(updateUser({ token, refreshToken, userPageDto }));
       navigate('/');
     } else {
-       setErrorPassword(await response.message); 
-      }    
-}
-
-
+      setErrorPassword(await response.message);
+    }
+  };
 
   const onEmailChange = (event: ChangeInputEvent) => {
     setEmail(event.target.value);
     setIsEmail(true);
-    setErrorEmail('')
+    setErrorEmail('');
   };
 
   const onPasswordChange = (event: ChangeInputEvent) => {
