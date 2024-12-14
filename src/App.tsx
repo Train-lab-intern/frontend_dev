@@ -12,6 +12,7 @@ import './styles/main.scss';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage/PasswordRevoveryPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import MenuPage from './pages/Tests/MenuPage/MenuPage';
 
 function App() {
   // const appStatus = useAppSelector((state) => state.app.appStatus);
@@ -39,6 +40,7 @@ function App() {
           }
         />
         <Route path={Path.USER_PAGE} element={<UserPage />} />
+        <Route path={Path.TESTS_MENU} element={<MenuPage />} />
         <Route
           path={Path.PASSWORD_RECOVERY}
           element={<PasswordRecoveryPage />}

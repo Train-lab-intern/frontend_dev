@@ -29,7 +29,7 @@ export default function Header() {
         </NavLink>
         <div className="links">
           <NavLink to="/">О нас</NavLink>
-          <NavLink to="/">Меню тестов</NavLink>
+          <NavLink to={Path.TESTS_MENU}>Меню тестов</NavLink>
           <NavLink to="/">Резюме</NavLink>
         </div>
         <div className="controls">
