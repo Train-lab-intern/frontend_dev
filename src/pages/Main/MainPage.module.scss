@@ -176,17 +176,23 @@
         }
       }
       .item1 {
-        width: 60%;
-        height: 200px;
-        background: #42dbbf;
         margin-bottom: 30px;
+
       }
       .item2 {
-        width: 60%;
-        height: 200px;
-        background: #42dbbf;
         align-self: flex-end;
       }
+
+      .item1, .item2 {
+        width: 60%;
+        height: 200px;
+        background:
+            linear-gradient(to top left, transparent calc(50% - 3px), #684ADD 50%, transparent calc(50% + 3px)),
+            linear-gradient(to top right, transparent calc(50% - 3px), #684ADD 50%, transparent calc(50% + 3px));
+        background-color: #CEFFF6; /* Цвет фона */
+        margin-bottom: 30px;
+        position: relative;
+    }
     }
   }
 
