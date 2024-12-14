@@ -15,7 +15,6 @@ const directionItems: DirectionItemProps[] = [
   { src: iconPM, alt: 'icon', title: 'Developer' },
   { src: iconBA, alt: 'icon', title: 'BA' },
   { src: iconUIUX, alt: 'icon', title: 'PM' },
-
 ];
 export function Direction() {
   return (
