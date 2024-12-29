@@ -30,18 +30,18 @@
     height: 64px;
     border: 1px solid $secondary-bg;
     border-radius: 12px;
-    overflow: hidden;
     &-fill {
       position: absolute;
       height: 100%;
       width: 30%;
+      border-radius: 10px;
       background-color: $secondary-bg;
     }
     &-procent {
       margin-left: 10px;
       position: relative;
       font-size: 28px;
-      font-weight: 600;
+      font-weight: 600;      
     }
     &-done {
       position: absolute;

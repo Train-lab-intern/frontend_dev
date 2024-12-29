@@ -18,7 +18,7 @@ export default function UserPage() {
 
   return (
     <>
-      <Header />
+      <Header settings/>
       <UserInfo />
       <UserWelcome />
       <UserResults />

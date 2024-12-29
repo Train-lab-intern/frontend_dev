@@ -9,7 +9,7 @@ import iconSearch from '../../assets/icons/iconSearch';
 
 export const Footer: React.FC = () => (
   <footer className={styles.footer}>
-    <div className={styles.container}>
+    <div className="container">
       <div className={styles.inner}>
         <div className={styles.logo}>
           <img src={logo} alt="logo" />

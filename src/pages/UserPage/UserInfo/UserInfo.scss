@@ -12,6 +12,7 @@
   .UserDescription {
     color: $primary-light-text;
     &-name {
+      margin-bottom: 20px;
       font-size: 34px;
       font-weight: 400;
     }
@@ -26,11 +27,11 @@
         align-items: center;
       }
       &-speciality {
-        align-self: start;
+        align-self: end;
         font-size: 32px;
       }
       &-level {
-        align-self: end;
+        align-self: center;
         font-size: 20px;
       }
       &-levelIcon {

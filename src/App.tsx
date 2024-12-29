@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 // import { useEffect } from 'react';
-import Profile from './modules/Profile/Profile';
 // import NotPage from './pages/NotPage/NotPage';
 import { Path } from './pages/constants/path';
 // import { useAppDispatch } from './redux/store';
@@ -26,7 +25,7 @@ function App() {
           path={Path.PROFILE}
           element={
             <PrivateRoute>
-              <Profile />
+              <UserPage />
             </PrivateRoute>
           }
         />

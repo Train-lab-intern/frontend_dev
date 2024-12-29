@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/store';
 import MainApiService from '../../api/MainApiService';
 import { updateUser } from '../../redux/reducers/userSlice';
 
-export default function Header() {
+export default function Header({settings}:{settings?: boolean}) {
   const { token, refreshToken } = useAppSelector((state) => state.user.user);
   const dispatch = useAppDispatch();
 
@@ -44,12 +44,16 @@ export default function Header() {
             </>
           ) : (
             <>
-              <NavLink to={Path.PROFILE_SETTINGS}>
-                <CommonButton variant="outline">Настройки</CommonButton>
-              </NavLink>
-              <button type="button" onClick={logOut}>
-                Выйти
-              </button>
+              <CommonButton variant="outline" callBackFunction={logOut}>Выйти</CommonButton>
+              {!settings ? (
+                <NavLink to={Path.PROFILE}>
+                  <CommonButton variant="primary">Профиль</CommonButton>
+                </NavLink>
+              ) : (
+                <NavLink to={Path.PROFILE_SETTINGS}>
+                  <CommonButton variant="primary">Настройки</CommonButton>
+                </NavLink>
+              )}              
             </>
           )}
         </div>
