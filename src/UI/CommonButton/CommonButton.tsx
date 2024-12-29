@@ -12,7 +12,7 @@ export default function CommonButton({
   variant,
   children,
   className,
-  callBackFunction
+  callBackFunction,
 }: CommonButtonPropType) {
   return (
     <button
