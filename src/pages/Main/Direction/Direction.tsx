@@ -3,7 +3,6 @@ import iconQA from '../../../assets/icons/iconQA.png';
 import iconPM from '../../../assets/icons/iconPM.png';
 import iconUIUX from '../../../assets/icons/iconUIUX.png';
 import iconBA from '../../../assets/icons/iconBA.png';
-import iconCode from '../../../assets/icons/iconCode.png';
 
 interface DirectionItemProps {
   src: string;
@@ -13,10 +12,9 @@ interface DirectionItemProps {
 
 const directionItems: DirectionItemProps[] = [
   { src: iconQA, alt: 'icon', title: 'QA' },
-  { src: iconPM, alt: 'icon', title: 'Продакт менджмент' },
-  { src: iconBA, alt: 'icon', title: 'Бизнес анализ' },
-  { src: iconUIUX, alt: 'icon', title: 'UX/UI' },
-  { src: iconCode, alt: 'icon', title: 'Code' },
+  { src: iconPM, alt: 'icon', title: 'Developer' },
+  { src: iconBA, alt: 'icon', title: 'BA' },
+  { src: iconUIUX, alt: 'icon', title: 'PM' },
 ];
 export function Direction() {
   return (

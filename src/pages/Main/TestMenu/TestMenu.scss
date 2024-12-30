@@ -1,0 +1,25 @@
+.mainContainer {
+  display: flex;
+  .sectionDark {
+    background: $primary-dark-bg;
+    display: flex;
+
+    .sectionContainer {
+      max-width: 1440px;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      p {
+        font-size: $font-size-large;
+        color: $text-color-light;
+      }
+    }
+    .sectionImgContainer {
+      img {
+        width: 100px;
+        margin: 1rem;
+        color: $main-white;
+      }
+    }
+  }
+}
